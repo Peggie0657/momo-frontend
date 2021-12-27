@@ -36,7 +36,7 @@ const Home = () => {
 
     return (
         <Layout>
-            <Search />
+            {/* <Search /> */}
             <h2 className="mb-4">New Arrivals</h2>
             <div className="row">
                 {productsByArrival.map((product, i) => (

@@ -1,8 +1,9 @@
 import React from 'react';
+import styled from 'styled-components'
 
-const Header = () => (
-    <div className="header">
-        <nav className="navbar navbar-expand-lg navbar-light justify-content-end navbar1">
+const Element = ({ className }) => (
+    <div className={className}>
+        <nav className="navbar fixed-top navbar-expand-lg navbar-light justify-content-end navbar1">
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">
                     <img src="https://cdn-icons-png.flaticon.com/512/220/220127.png" alt="" className="brandImg" />哞哞購物</a>
@@ -37,7 +38,32 @@ const Header = () => (
                 </div>
             </div>
         </nav>
+        <form className="d-flex mt-3 search">
+            <input className="form-control me-2" type="search" placeholder="請輸入關鍵字" aria-label="Search" />
+            <button className="btn pinkBtn" type="submit">搜尋</button>
+        </form>
     </div>
 )
+
+const Header = styled(Element)`
+.navbar1{
+    background-color:rgb(248, 209, 215);
+}
+.brandImg{
+    width:40px;height:35px;
+}
+.login{
+    width:100px
+}
+.search{
+    margin:20px auto;
+    width:30%;
+}
+.pinkBtn{
+    border:solid 2px pink;
+    color:pink;
+    white-space: nowrap;
+}
+`
 
 export default Header;
