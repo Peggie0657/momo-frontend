@@ -1,0 +1,49 @@
+.content{
+    width:66.666667%;
+    margin:20px auto 0;
+    background-color: rgb(250, 237, 237);
+    padding-bottom:50px;
+    padding-top:50px;
+}
+.accountWrap{
+    height:220px;
+
+}
+.accountWrap a{
+    font-size: 20px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    color: black;
+}
+.photo{
+    width:150px;
+    height:150px;
+    border-radius: 50%;
+    background-color:rgb(248, 231, 210);
+    text-align: center;
+    color:rgb(117, 79, 85);
+}
+.account{
+    display: flex;
+    justify-content: center;
+}
+.update-wrap{
+    width:80%;
+    margin:0 auto;
+}
+.input-wrap input{
+    border:solid rgb(245, 201, 201) 1px;
+}
+.input-wrap{
+    width:60%;
+    margin:0 auto;
+    text-align: center;
+}
+.pinkBtn{
+    border:solid 2px pink;color:pink;white-space: nowrap;
+}
+.btn-mg{
+    margin-top:30px;
+    margin-left:80%;
+}
