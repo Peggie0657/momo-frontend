@@ -1,0 +1,88 @@
+.navbar1{
+    background-color:rgb(248, 209, 215);
+}
+.brandImg{
+    width:40px;height:35px;
+}
+.login{
+    width:100px
+}
+.search{
+    margin:20px auto;width:30%;
+}
+.pinkBtn{
+    border:solid 2px pink;color:pink;white-space: nowrap;
+}
+.content{
+    width:66.666667%;
+    margin:20px auto 0;
+    background-color: rgb(250, 237, 237);
+}
+.info{
+    display: flex;
+    justify-content:space-evenly;
+}
+.productImg{
+    width:400px;
+    height:400px;
+}
+.detail{
+    padding-top:50px;
+    height:400px;
+}
+.detailList{
+    font-size: 25px;
+}
+.detailList>li{
+    margin:15px 0;
+}
+.detailList>li:nth-child(2){
+    font-size: 15px;
+    margin-left:85%;
+}
+.discription{
+    margin-top: 50px;
+    text-align: center;
+}
+.discription h6{
+    font-size: 30px;
+}
+.discription p{
+    margin: 20px 80px 70px;
+    font-size: 20px;
+    text-align: left;
+}
+.btnRed{
+    background-color:rgb(240, 147, 147);
+}
+.btn-right-15{
+    margin-right:15px;
+}
+.slide-indicator{
+    background-color: rgb(165, 165, 165);
+}
+.slide-500{
+    width:400px;
+    height:400px;
+}
+.btnWrap{
+    text-align: right;
+    margin-top:90px;
+}
+.breadcrumbWrap{
+    background-color: #fff;
+}
+.commentWrap{
+    text-align: center;
+}
+.commentField{
+    width:400px;
+    height:200px;
+    margin-right: 30px;
+}
+.btn-left-40{
+    margin-left:40px ;
+}
+.checked {
+    color: orange;
+}
