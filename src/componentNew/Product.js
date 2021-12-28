@@ -1,86 +1,106 @@
+import React, { useEffect, useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components'
 import Layout from '../component/Layout';
+import { addItem, itemTotal } from './cartHelpers';
 
-const Element = ({ className }) => (
-    <Layout>
-        <div className={className}>
-            <div className="content">
-                <div className="breadcrumbWrap">
-                    <nav className="breadcrumb" aria-label="breadcrumb">
-                        <ol className="breadcrumb">
-                            <li className="breadcrumb-item"><a href="#">美妝保養</a></li>
-                            <li className="breadcrumb-item active" aria-current="page">香氛</li>
-                        </ol>
-                    </nav>
-                </div>
-                <div className="info">
-                    <div id="carouselExampleIndicators" className="carousel slide slide-500" data-bs-ride="carousel">
-                        <div className="carousel-indicators">
-                            <button type="button slide-indicator" data-bs-target="#carouselExampleIndicators"
-                                data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button slide-indicator" data-bs-target="#carouselExampleIndicators"
-                                data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button slide-indicator" data-bs-target="#carouselExampleIndicators"
-                                data-bs-slide-to="2" aria-label="Slide 3"></button>
-                        </div>
-                        <div className="carousel-inner">
-                            <div className="carousel-item active">
-                                <img src="https://7ego.7-11.com.tw/Files/market/106354/image/MAI_214356379_X700X700.jpg"
-                                    className="d-block w-100 productImg" alt="..." />
-                            </div>
-                            <div className="carousel-item">
-                                <img src="https://7ego.7-11.com.tw/Files/market/106354/image/MAI_214356379_X700X700.jpg"
-                                    className="d-block w-100 productImg" alt="..." />
-                            </div>
-                            <div className="carousel-item">
-                                <img src="https://7ego.7-11.com.tw/Files/market/106354/image/MAI_214356379_X700X700.jpg"
-                                    className="d-block w-100 productImg" alt="..." />
-                            </div>
-                        </div>
-                        <button className="carousel-control-prev slide-indicator" type="button"
-                            data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span className="visually-hidden">Previous</span>
-                        </button>
-                        <button className="carousel-control-next slide-indicator" type="button"
-                            data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span className="visually-hidden">Next</span>
-                        </button>
+const Element = ({ className }) => {
+    const [redirect, setRedirect] = useState(false)
+
+    const addIntoCart = () => {
+        addItem({ id: 1, _id: 1 }, () => {
+            setRedirect(true)
+        })
+    }
+
+    const shouldRedirect = redirect => {
+        if (redirect) {
+            return <Redirect to="/" />
+        }
+    }
+
+    return (
+        <Layout>
+            {shouldRedirect(redirect)}
+            <div className={className}>
+                <div className="content">
+                    <div className="breadcrumbWrap">
+                        <nav className="breadcrumb" aria-label="breadcrumb">
+                            <ol className="breadcrumb">
+                                <li className="breadcrumb-item"><a href="#">美妝保養</a></li>
+                                <li className="breadcrumb-item active" aria-current="page">香氛</li>
+                            </ol>
+                        </nav>
                     </div>
-                    <div className="detail">
-                        <ul className="detailList">
-                            <li>JO MALONE 英國梨與小蒼蘭香水 100ml</li>
-                            <li>5.0(<a href="#">199</a>)</li>
-                            <li>售價：4420元</li>
-                            <li>庫存：100</li>
-                        </ul>
-                        <div className="btnWrap">
-                            <button className="btn btnRed btn-right-15">直接購買</button>
-                            <button className="btn btnRed">加入購物車</button>
+                    <div className="info">
+                        <div id="carouselExampleIndicators" className="carousel slide slide-500" data-bs-ride="carousel">
+                            <div className="carousel-indicators">
+                                <button type="button slide-indicator" data-bs-target="#carouselExampleIndicators"
+                                    data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button slide-indicator" data-bs-target="#carouselExampleIndicators"
+                                    data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                <button type="button slide-indicator" data-bs-target="#carouselExampleIndicators"
+                                    data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            </div>
+                            <div className="carousel-inner">
+                                <div className="carousel-item active">
+                                    <img src="https://7ego.7-11.com.tw/Files/market/106354/image/MAI_214356379_X700X700.jpg"
+                                        className="d-block w-100 productImg" alt="..." />
+                                </div>
+                                <div className="carousel-item">
+                                    <img src="https://7ego.7-11.com.tw/Files/market/106354/image/MAI_214356379_X700X700.jpg"
+                                        className="d-block w-100 productImg" alt="..." />
+                                </div>
+                                <div className="carousel-item">
+                                    <img src="https://7ego.7-11.com.tw/Files/market/106354/image/MAI_214356379_X700X700.jpg"
+                                        className="d-block w-100 productImg" alt="..." />
+                                </div>
+                            </div>
+                            <button className="carousel-control-prev slide-indicator" type="button"
+                                data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span className="visually-hidden">Previous</span>
+                            </button>
+                            <button className="carousel-control-next slide-indicator" type="button"
+                                data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span className="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                        <div className="detail">
+                            <ul className="detailList">
+                                <li>JO MALONE 英國梨與小蒼蘭香水 100ml</li>
+                                <li>5.0(<a href="#">199</a>)</li>
+                                <li>售價：4420元</li>
+                                <li>庫存：100</li>
+                            </ul>
+                            <div className="btnWrap">
+                                <button className="btn btnRed btn-right-15">直接購買</button>
+                                <button className="btn btnRed" onClick={addIntoCart}>加入購物車</button>
+                            </div>
                         </div>
                     </div>
+                    <hr />
+                    <div className="discription">
+                        <h6>商品描述</h6>
+                        <p>彷彿集結秋天的氣息。 猶如新鮮採摘的清新梨子香氣，搭配白色小蒼蘭所綻放的花香，佐以琥珀、廣藿香與木質香調的柔和芳香。 擁有奢華的金色光澤。</p>
+                    </div>
+                    <hr />
+                    <div className="commentWrap">
+                        <input type="textfield" className="commentField" />
+                        <span className="fa fa-star checked"></span>
+                        <span className="fa fa-star checked"></span>
+                        <span className="fa fa-star checked"></span>
+                        <span className="fa fa-star"></span>
+                        <span className="fa fa-star"></span>
+                        <button type="submit" className="btn btnRed btn-left-40">送出評論</button>
+                    </div>
                 </div>
-                <hr />
-                <div className="discription">
-                    <h6>商品描述</h6>
-                    <p>彷彿集結秋天的氣息。 猶如新鮮採摘的清新梨子香氣，搭配白色小蒼蘭所綻放的花香，佐以琥珀、廣藿香與木質香調的柔和芳香。 擁有奢華的金色光澤。</p>
-                </div>
-                <hr />
-                <div className="commentWrap">
-                    <input type="textfield" className="commentField" />
-                    <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star checked"></span>
-                    <span className="fa fa-star"></span>
-                    <span className="fa fa-star"></span>
-                    <button type="submit" className="btn btnRed btn-left-40">送出評論</button>
-                </div>
+
             </div>
-
-        </div>
-    </Layout>
-)
+        </Layout>
+    )
+}
 
 const Product = styled(Element)`
 .content{

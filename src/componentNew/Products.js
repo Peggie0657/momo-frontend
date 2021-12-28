@@ -12,7 +12,7 @@ const Element = ({ className }) => (
 
             <div class="dropdown-box">
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle dropdown-btn" type="button" id="dropdownMenuButton1"
+                    <button class="btn btn-secondary dropdown-toggle dropdown-btn btn-sm" type="button" id="dropdownMenuButton1"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         商品價格
                     </button>
@@ -22,7 +22,7 @@ const Element = ({ className }) => (
                     </ul>
                 </div>
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle dropdown-btn" type="button" id="dropdownMenuButton1"
+                    <button class="btn btn-secondary dropdown-toggle dropdown-btn btn-sm" type="button" id="dropdownMenuButton1"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         上架日期
                     </button>
