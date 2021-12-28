@@ -1,0 +1,51 @@
+.navbar1{
+    background-color:rgb(248, 209, 215);
+}
+.brandImg{
+    width:40px;height:35px;
+}
+.login{
+    width:100px
+}
+.search{
+    margin:20px auto;width:50%;
+}
+.pinkBtn{
+    border:solid 2px pink;color:pink;white-space: nowrap;
+}
+.prod-content{
+    width: 66.666667%;
+    margin: 0 auto;
+}
+.card-style{
+    height: 350px;
+}
+.card-text{
+    font-size: 10px;
+}
+.card-content{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.price-div{
+    position: absolute;
+    bottom:5px;
+}
+.card-position{
+    position: relative;
+}
+.card-img-size{
+    height: 200px;
+}
+.dropdown-box{
+    background-color: rgb(221, 208, 216);
+    height: 50px;
+    display: flex;
+    justify-content: start;
+}
+.dropdown-btn{
+    margin: 5px auto auto 5px;
+}

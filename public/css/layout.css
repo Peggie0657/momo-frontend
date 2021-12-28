@@ -1,0 +1,15 @@
+.navbar1{
+    background-color:rgb(248, 209, 215);
+}
+.brandImg{
+    width:40px;height:35px;
+}
+.login{
+    width:100px
+}
+.search{
+    margin:20px auto;width:30%;
+}
+.pinkBtn{
+    border:solid 2px pink;color:pink;white-space: nowrap;
+}

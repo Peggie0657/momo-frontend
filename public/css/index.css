@@ -1,0 +1,52 @@
+.navbar1{
+    background-color:rgb(248, 209, 215);
+}
+.brandImg{
+    width:40px;height:35px;
+}
+.login{
+    width:100px
+}
+.search{
+    margin:20px auto;width:30%;
+}
+.pinkBtn{
+    border:solid 2px pink;color:pink;white-space: nowrap;
+}
+.carousel1{
+    margin:0 auto;
+}
+.breadcrumbWrap{
+    margin-top:100px;
+}
+.breadcrumb{
+    --bs-breadcrumb-divider: '>';
+    padding-left:15%
+}
+.productList{
+    margin-left:200px;
+    margin-right:200px;
+    display: flex;
+    justify-content:space-between
+}
+.card1{
+    width: 18rem;
+}
+.categoryWrap{
+    position:absolute;
+    left:20px;
+    top:110px;
+    width:150px;
+}
+ad1{
+    position: absolute;right:80px;top:150px;
+}
+ad2{
+    position: absolute;right:80px;top:350px;
+}
+adImg{
+    width:200px;height:200px;z-index: 0;
+}
+adBtn{
+    position: absolute;right:15px;z-index: 1;top:7px;
+}
