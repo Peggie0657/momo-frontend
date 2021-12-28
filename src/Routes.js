@@ -5,7 +5,7 @@ import Signup from './user/Signup';
 import Dashboard from './user/UserDashboard'
 import Home from './componentNew/Home';
 import Shop from './component/Shop';
-import Product from './component/Product';
+import Product from './componentNew/Product';
 import Cart from './component/Cart';
 import Profile from './user/Profile'
 

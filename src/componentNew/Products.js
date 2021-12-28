@@ -35,7 +35,7 @@ const Element = ({ className }) => (
             </div>
 
             <div class="row">
-                <div class="col-6 col-lg-3 mt-3">
+                <a class="col-6 col-lg-3 mt-3" href="http://localhost:3000/product/1">
                     <div class="card card-style">
                         <img src="https://cf.shopee.tw/file/b5772fc8fe61728bd8afd0b135c54cf3_tn" class="card-img-top card-img-size"
                             alt="..." />
@@ -44,7 +44,7 @@ const Element = ({ className }) => (
                             <p class="price-div">$100</p>
                         </div>
                     </div>
-                </div>
+                </a>
                 <div class="col-6 col-lg-3 mt-3">
                     <div class="card card-style">
                         <img src="https://www.crudo-leather.com/site/assets/files/61506/20_1-1.746x0.webp"
