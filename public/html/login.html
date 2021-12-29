@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <script src="login.js"></script>
+    <title>Login page</title>
+</head>
+<body>
+    <div class="system_name">
+    <h2>哞哞購物</h2>
+    </div>
+      
+    <div class="login_page">
+        <div id="container1">
+  
+            <div class="login">  
+            
+            <h3>登入 Login</h3>
+  
+            <form action="">
+                <input type="text" id="username" name="username" placeholder="請輸入Email / 帳號" required>
+                <input type="text" id="password" name="password" placeholder="請輸入密碼（6-20英數字）" required>
+                <input type="submit" value="登入" class="submit" onclick="">
+            </form>  
+  
+            <h5 onclick="show_hide()">註冊帳號</h5>
+            
+            </div><!-- login end-->
+        </div><!-- container1 end-->
+    </div><!-- login_page end-->
+      
+    <div class="signup_page">
+        <div id="container2" style="height: 620px;"> <!-- 在css改height這裡不會改到!!! -->
+  
+            <div class="signup">  
+            
+            <h3>註冊 Sign Up</h3>
+  
+            <form action="">
+                <input type="text" id="fullname" name="fullname" placeholder="使用者全名" required>
+                <input type="text" id="username_signup" name="username" placeholder="信箱" required>
+                <input type="text" id="password_signup" name="password" placeholder="密碼" required>
+                <input type="text" id="comfirm_password" name="comfirm_password" placeholder="確認密碼" required>
+                <input type="text" id="birthday" name="birthday" placeholder="生日 ( YYYY-MM-DD )" required>
+                <input type="text" id="gender" name="gender" placeholder="性別 ( Male / Female )" required>
+                <input type="text" id="phone" name="phone" placeholder="手機號碼" required>
+                <input type="text" id="address" name="address" placeholder="地址" required>           
+                <input type="submit" value="註冊" class="submit">
+            </form>  
+  
+            <h5 onclick="show_hide()">登入帳號</h5>
+            
+            </div><!-- signup end-->
+        </div><!-- container2 end-->
+    </div><!-- signup_page end--> 
+    
+    <div id="footer"></div>
+</body>
+</html>
