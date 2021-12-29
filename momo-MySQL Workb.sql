@@ -42,8 +42,7 @@ CREATE TABLE IF NOT EXISTS `moshop`.`orders` (
   `payment` VARCHAR(20) NULL COMMENT '付款方式',
   `status` VARCHAR(20) NULL COMMENT '訂單狀態',
   `shippingadd` VARCHAR(45) NULL COMMENT '運送地址',
-  `setuptime` DATETIME NULL DEFAULT CURRENT_TIMESTAMP COMMENT '建立時間',
-  `userid` INT NOT NULL,
+  `userid` INT NOT NULL COMMENT '買家帳號',
   PRIMARY KEY (`id`),
   INDEX `fk_orders_user1_idx` (`userid` ASC),
   CONSTRAINT `fk_orders_user1`
@@ -64,11 +63,11 @@ CREATE TABLE IF NOT EXISTS `moshop`.`products` (
   `stock` INT NULL COMMENT '庫存',
   `description` TEXT NULL COMMENT '商品描述',
   `category` VARCHAR(50) NULL COMMENT '分類',
-  `userid` INT NOT NULL,
+  `sellerid` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_products_user1_idx` (`userid` ASC),
+  INDEX `fk_products_user1_idx` (`sellerid` ASC),
   CONSTRAINT `fk_products_user1`
-    FOREIGN KEY (`userid`)
+    FOREIGN KEY (`sellerid`)
     REFERENCES `moshop`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -80,25 +79,27 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `moshop`.`productpic` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `picname` BLOB NULL COMMENT '產品相片',
-  `productsid` INT NOT NULL,
+  `picname` VARCHAR(100) NULL COMMENT '產品相片',
+  `productsid` INT NOT NULL COMMENT '商品id',
   PRIMARY KEY (`id`),
   INDEX `fk_productpic_products1_idx` (`productsid` ASC),
   CONSTRAINT `fk_productpic_products1`
     FOREIGN KEY (`productsid`)
     REFERENCES `moshop`.`products` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `moshop`.`products_has_orders`
+-- Table `moshop`.`orderdetail`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `moshop`.`products_has_orders` (
+CREATE TABLE IF NOT EXISTS `moshop`.`orderdetail` (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `productsid` INT NOT NULL,
   `ordersid` INT NOT NULL,
-  PRIMARY KEY (`productsid`, `ordersid`),
+  `setuptime` DATETIME NULL DEFAULT CURRENT_TIMESTAMP COMMENT '成立時間',
+  PRIMARY KEY (`id`),
   INDEX `fk_products_has_orders_orders1_idx` (`ordersid` ASC),
   INDEX `fk_products_has_orders_products1_idx` (`productsid` ASC),
   CONSTRAINT `fk_products_has_orders_products1`
@@ -109,6 +110,54 @@ CREATE TABLE IF NOT EXISTS `moshop`.`products_has_orders` (
   CONSTRAINT `fk_products_has_orders_orders1`
     FOREIGN KEY (`ordersid`)
     REFERENCES `moshop`.`orders` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `moshop`.`comment`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `moshop`.`comment` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `index` TEXT NULL COMMENT '評論',
+  `userid` INT NOT NULL COMMENT '評論者',
+  `productsid` INT NOT NULL COMMENT '商品',
+  `setuptime` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  INDEX `fk_comment_user1_idx` (`userid` ASC),
+  INDEX `fk_comment_products1_idx` (`productsid` ASC),
+  CONSTRAINT `fk_comment_user1`
+    FOREIGN KEY (`userid`)
+    REFERENCES `moshop`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_comment_products1`
+    FOREIGN KEY (`productsid`)
+    REFERENCES `moshop`.`products` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `moshop`.`Collection`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `moshop`.`Collection` (
+  `id` INT NOT NULL,
+  `userid` INT NOT NULL,
+  `productsid` INT NOT NULL,
+  INDEX `fk_user_has_products_products1_idx` (`productsid` ASC),
+  INDEX `fk_user_has_products_user1_idx` (`userid` ASC),
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_user_has_products_user1`
+    FOREIGN KEY (`userid`)
+    REFERENCES `moshop`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_user_has_products_products1`
+    FOREIGN KEY (`productsid`)
+    REFERENCES `moshop`.`products` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
