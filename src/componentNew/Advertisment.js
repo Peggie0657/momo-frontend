@@ -18,10 +18,10 @@ const Element = ({ className }) => (
 
 const Advertisment = styled(Element)`
 .ad1{
-    position: fixed;right:80px;top:150px;width:200px;height:200px;
+    position: fixed;right:80px;top:150px;
 }
 .ad2{
-    position: fixed;right:80px;top:350px;
+    position: fixed;right:80px;top:400px;
 }
 .adImg{
     width:200px;height:200px;
