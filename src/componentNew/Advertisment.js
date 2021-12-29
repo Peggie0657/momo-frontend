@@ -17,18 +17,18 @@ const Element = ({ className }) => (
 )
 
 const Advertisment = styled(Element)`
-ad1{
+.ad1{
     float:right;
 }
-ad2{
+.ad2{
     float:right;
 }
-adImg{
+.adImg{
     width:200px;
     height:200px;
     z-index: 0;
 }
-adBtn{
+.adBtn{
     position: absolute;
     right:15px;
     z-index: 1;
