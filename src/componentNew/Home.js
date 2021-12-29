@@ -3,6 +3,7 @@ import Layout from './Layout';
 import Products from './Products';
 import Category from './Category';
 import Advertisment from './Advertisment';
+import ProductsTest from './ProductsTest';
 
 const Home = () => {
     const [productsBySell, setProductsBySell] = useState([])
@@ -37,6 +38,7 @@ const Home = () => {
     return (
         <Layout>
             <Products />
+            {/* <ProductsTest /> */}
             <Category />
             <Advertisment />
         </Layout>
