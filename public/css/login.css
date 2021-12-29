@@ -1,80 +1,114 @@
-  *{
-    font-family:微軟正黑體;  
-  }
+*{
+  font-family:微軟正黑體;  
+}
+
+body{
+  background-color: white;
+}
+
+#username, #password, h3, #username_signup, #email, #password_signup, #comfirm_password, #birthday, #gender, #phone, #address{
+  width: 250px;
+  height: 20px;
+  margin: 10px;
+  color: #f163b1;
+}
+
+h5{
+  margin: 20px;
+  color: #a3a2a3;
+}
+
+h5:hover{
+  color: black;
+}
+
+#container1, #container2{
+  margin: 50px;
+  padding: 10px;
+  width: 280px;
+  height: 500px;
+  background-color: white;
+  border-radius: 5px;
+  border-top: 10px solid #f163b1;
+  box-shadow: 0 0px 70px rgba(0, 0, 0, 0.1);
   
-  body{
-    background-color: white;
-  }
-  
-  #username, #password, h3, #fullname, #username_signup, #password_signup, #comfirm_password, #birthday, #gender, #phone, #address{
-    width: 250px;
-    height: 20px;
-    margin: 10px;
-    color: #f163b1;
-  }
-  
-  h5{
-    margin: 20px;
-    color: #a3a2a3;
-  }
-  
-  h5:hover{
-    color: black;
-  }
-  
-  #container1, #container2{
-    margin: 50px;
-    padding: 10px;
-    width: 280px;
-    height: 500px;  /* ?? */
-    background-color: white;
-    border-radius: 5px;
-    border-top: 10px solid #f163b1;
-    box-shadow: 0 0px 70px rgba(0, 0, 0, 0.1);
-    
-    /*定位對齊*/
-    position:relative;   
-    margin: auto;
-    top: 100px;
-    /* text-align:center;   */
-  }
-  
-  .system_name{
-    /*定位對齊*/
-    position:relative;   
-    margin: auto;
-    top: 100px;
-    text-align:center; 
-  }
-  
-  .submit{
-    color: white;  
-    background: #f163b1;
-    width: 200px;
-    height: 30px;
-    margin: 10px;
-    padding: 5px;
-    border-radius: 5px;
-    border: 0px;
-  }
-  
-  .submit:hover{
-    background: #f163b1c0;
-  }
-  
-  #container2{
-    visibility: hidden;   /*剛開始消失*/
-    height: 350px;
-  }
-  
-  
-  #footer{
-    margin: -200px 0px 0px 0px;
-  }
-  
-  input{
-    padding: 5px;
-    border: none; 
-    border:solid 1px #ccc;
-    border-radius: 5px;
-  }
+  /*定位對齊*/
+  position:relative;   
+  margin: auto;
+  top: 100px;
+  text-align:center;  
+}
+
+h3{
+  text-align: start;
+}
+
+.system_name{
+  /*定位對齊*/
+  position:relative;   
+  margin: auto;
+  top: 100px;
+  text-align:center; 
+}
+
+.submit{
+  color: white;  
+  background: #f163b1;
+  width: 200px;
+  height: 30px;
+  margin: 10px;
+  margin-top: 30px;
+  padding: 5px;
+  border-radius: 20px;
+  border: 0px;
+}
+
+.submit:hover{
+  background: #f163b1c0;
+}
+
+button{
+  color: white;  
+  background: #f5cf66;
+  width: 150px;
+  height: 30px;
+  margin: 10px;
+  margin-top: 20px;
+  padding: 5px;
+  border-radius: 20px;
+  border: 0px;
+}
+#google_login, #fb_login{
+  width: 200px;
+}
+button:hover{
+  background: #f5ca55b4;
+}
+
+
+#container2{
+  visibility: hidden;   /*剛開始消失*/
+  height: 620px;
+  width: 570px;
+}
+
+#footer{
+  margin: -200px 0px 0px 0px;
+}
+
+input{
+  padding: 5px;
+  border: none; 
+  border-bottom:solid 1px #ccc;
+}
+
+#middleLine{
+  margin: 10px;
+  padding: 10px;
+  color: #a3a2a3;
+  font-family: monospace;
+}
+
+form{
+  margin-top: 30px;
+}

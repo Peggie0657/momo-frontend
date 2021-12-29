@@ -15,8 +15,8 @@ function show_hide() {
         signup.style.visibility="visible";
         footer.style.margin = "200px 0px 0px 0px";
      
-        document.getElementById("fullname").value="";
         document.getElementById("username_signup").value="";
+        document.getElementById("email").value="";
         document.getElementById("password_signup").value="";
         document.getElementById("comfirm_password").value="";
         document.getElementById("birthday").value="";
