@@ -24,21 +24,25 @@ const Element = ({ className }) => {
                     <div className="ml-auto mr-1" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <a className="nav-link" href="#">登入</a>
+                                <a className="nav-link" href="http://localhost:3000/signin">登入</a>
+                            </li>
+                            {/* <div class="navbarLinkSeparator"></div> */}
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">註冊</a>
                             </li>
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     會員中心
                                 </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                {/* <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a className="dropdown-item" href="#">訂單管理</a></li>
                                     <li><a className="dropdown-item" href="#">追蹤清單</a></li>
                                     <li>
                                         <hr className="dropdown-divider" />
                                     </li>
                                     <li><a className="dropdown-item" href="#">登出</a></li>
-                                </ul>
+                                </ul> */}
                             </li>
                             <li>
                                 <a className="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -52,10 +56,6 @@ const Element = ({ className }) => {
                     </div>
                 </div>
             </nav>
-            <form className="d-flex mt-3 search">
-                <input className="form-control me-2" type="search" placeholder="請輸入關鍵字" aria-label="Search" />
-                <button className="btn pinkBtn" type="submit">搜尋</button>
-            </form>
             <Cart />
         </div >
 
@@ -81,7 +81,6 @@ const Header = styled(Element)`
     color:pink;
     white-space: nowrap;
 }
-
 `
 
 export default Header;
