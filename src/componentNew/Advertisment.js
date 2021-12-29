@@ -4,12 +4,12 @@ const Element = ({ className }) => (
     <div className={className}>
         <div className="ad1">
             <img className="adImg"
-                src="https://img1.momoshop.com.tw/ecm/img/online/81/007/00/000/mobile/bt_7_503_01/bt_7_503_01_e32.png?t=1639106590934"
+                src="https://picsum.photos/250/250"
                 alt="" />
             <button type="button" className="btn-close adBtn" aria-label="Close"></button>
         </div>
         <div className="ad2">
-            <img src="https://img1.momoshop.com.tw/ecm/img/online/81/007/00/000/mobile/bt_7_503_01/bt_7_503_01_e32.png?t=1639106590934"
+            <img src="https://picsum.photos/250/250"
                 alt="" className="adImg" />
             <button type="button" className="btn-close adBtn" aria-label="Close"></button>
         </div>
