@@ -18,7 +18,7 @@ USE `moshop` ;
 -- Table `moshop`.`user`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `moshop`.`user` (
-  `id` LONG NOT NULL AUTO_INCREMENT,
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
   `account` VARCHAR(40) NULL COMMENT '帳號\n',
   `password` VARCHAR(45) NULL COMMENT '密碼\n',
   `gender` VARCHAR(20) NULL COMMENT '性別\n',
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `moshop`.`orders` (
   `payment` VARCHAR(20) NULL COMMENT '付款方式',
   `status` VARCHAR(20) NULL COMMENT '訂單狀態',
   `shippingadd` VARCHAR(45) NULL COMMENT '運送地址',
-  `userid` LONG NOT NULL COMMENT '買家帳號',
+  `userid` BIGINT NOT NULL COMMENT '買家帳號',
   PRIMARY KEY (`id`),
   INDEX `fk_orders_user1_idx` (`userid` ASC),
   CONSTRAINT `fk_orders_user1`
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `moshop`.`products` (
   `stock` INT NULL COMMENT '庫存',
   `description` TEXT NULL COMMENT '商品描述',
   `category` VARCHAR(50) NULL COMMENT '分類',
-  `sellerid` LONG NOT NULL,
+  `sellerid` BIGINT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_products_user1_idx` (`sellerid` ASC),
   CONSTRAINT `fk_products_user1`
@@ -121,7 +121,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `moshop`.`comment` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `index` TEXT NULL COMMENT '評論',
-  `userid` LONG NOT NULL COMMENT '評論者',
+  `userid` BIGINT NOT NULL COMMENT '評論者',
   `productsid` INT NOT NULL COMMENT '商品',
   `setuptime` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
@@ -145,7 +145,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `moshop`.`Collection` (
   `id` INT NOT NULL,
-  `userid` LONG NOT NULL,
+  `userid` BIGINT NOT NULL,
   `productsid` INT NOT NULL,
   INDEX `fk_user_has_products_products1_idx` (`productsid` ASC),
   INDEX `fk_user_has_products_user1_idx` (`userid` ASC),
