@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `moshop`.`user` (
   `gender` VARCHAR(20) NULL COMMENT '性別\n',
   `email` VARCHAR(50) NULL,
   `birthday` DATE NULL COMMENT '生日',
-  `phone` INT NULL COMMENT '電話',
+  `phone` VARCHAR(15) NULL COMMENT '電話',
   `address` VARCHAR(80) NULL COMMENT '通訊地址',
   `username` VARCHAR(45) NULL COMMENT '使用者名稱',
   `userphoto` VARCHAR(45) NULL COMMENT '使用者照片',
