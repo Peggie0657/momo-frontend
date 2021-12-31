@@ -20,7 +20,8 @@ USE `moshop` ;
 CREATE TABLE IF NOT EXISTS `moshop`.`user` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `account` VARCHAR(40) NULL COMMENT '帳號\n',
-  `password` VARCHAR(45) NULL COMMENT '密碼\n',
+  `
+  ` VARCHAR(255) NULL COMMENT '密碼\n',
   `gender` VARCHAR(20) NULL COMMENT '性別\n',
   `email` VARCHAR(50) NULL,
   `birthday` DATE NULL COMMENT '生日',
