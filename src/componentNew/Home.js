@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Layout from './Layout';
-import Products from './Products';
+import Recommendation from './Recommendation';
 import Category from './Category';
 import Advertisment from './Advertisment';
 import ProductsTest from './ProductsTest';
 import Carousel from './Carousel';
 import Search from './Search';
+import Sidebar from './Sidebar';
 
 const Home = () => {
     const [productsBySell, setProductsBySell] = useState([])
@@ -41,9 +42,10 @@ const Home = () => {
         <Layout>
             <Search />
             <Carousel />
-            <Products />
+            <Recommendation />
+            <Sidebar />
             {/* <ProductsTest /> */}
-            <Category />
+            {/* <Category /> */}
             <Advertisment />
         </Layout>
     )

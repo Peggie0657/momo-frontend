@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Layout from './Layout';
-import Products from './Products';
 import Category from './Category';
 import Advertisment from './Advertisment';
 

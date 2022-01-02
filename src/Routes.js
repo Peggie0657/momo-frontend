@@ -6,6 +6,7 @@ import Dashboard from './user/UserDashboard'
 import Home from './componentNew/Home';
 import Shop from './component/Shop';
 import Product from './componentNew/Product';
+// import Products from './componentNew/Products';
 import Cart from './component/Cart';
 import Profile from './user/Profile'
 
@@ -17,6 +18,7 @@ const Routes = () => {
                 <Route path="/shop" exact component={Shop} />
                 <Route path="/cart" exact component={Cart} />
                 <Route path="/product/:productId" exact component={Product} />
+                {/* <Route path="/products" exact component={Products} /> */}
                 <Route path="/signin" exact component={Signin} />
                 <Route path="/signup" exact component={Signup} />
                 <Route path="/user/dashboard" exact component={Dashboard} />

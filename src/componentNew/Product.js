@@ -75,7 +75,7 @@ const Element = ({ className }) => {
                                 <li>庫存：100</li>
                             </ul>
                             <div className="btnWrap">
-                                <button className="btn btnRed btn-right-15">直接購買</button>
+                                {/* <button className="btn btnRed btn-right-15">直接購買</button> */}
                                 <button className="btn btnRed" onClick={addIntoCart}>加入購物車</button>
                             </div>
                         </div>

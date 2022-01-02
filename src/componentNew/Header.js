@@ -12,13 +12,13 @@ const Element = ({ className }) => {
     }, []);
     return (
         <div className={className}>
-            <nav className="navbar fixed-top navbar-expand-lg navbar-light justify-content-end navbar1">
+            <nav className="navbar fixed-top navbar-expand-lg navbar-collapse navbar-light justify-content-end navbar1">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">
+                    <a className="navbar-brand" href="/">
                         <img src="https://cdn-icons-png.flaticon.com/512/220/220127.png" alt="" className="brandImg" />哞哞購物</a>
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className="nav-link" href="#">推薦</a>
+                            {/* <a className="nav-link" href="#">推薦</a> */}
                         </li>
                     </ul>
                     <div className="ml-auto mr-1" id="navbarSupportedContent">
@@ -30,9 +30,8 @@ const Element = ({ className }) => {
                             <li className="nav-item">
                                 <a className="nav-link" href="#">註冊</a>
                             </li>
-                            <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">
                                     會員中心
                                 </a>
                                 {/* <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
