@@ -4,9 +4,11 @@ import styled from 'styled-components'
 
 import { itemTotal } from './cartHelpers'
 import Cart from './Cart'
+import { isAuthenticated } from "../auth";
 
 const Element = ({ className }) => {
     const [itemCount, setItemCount] = useState(0)
+
     useEffect(() => {
         setItemCount(itemTotal())
     }, []);
@@ -23,13 +25,14 @@ const Element = ({ className }) => {
                     </ul>
                     <div className="ml-auto mr-1" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <a className="nav-link" href="http://localhost:3000/signin">登入</a>
-                            </li>
-                            {/* <div class="navbarLinkSeparator"></div> */}
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">註冊</a>
-                            </li>
+                            {!isAuthenticated() ? <>
+                                <li className="nav-item">
+                                    <a className="nav-link" href="http://localhost:3000/signin">登入</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link" href="#">註冊</a>
+                                </li>
+                            </> : null}
                             <li className="nav-item">
                                 <a className="nav-link" href="#">
                                     會員中心

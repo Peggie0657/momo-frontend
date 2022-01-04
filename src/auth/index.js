@@ -2,7 +2,7 @@ import { API } from "../config";
 
 export const signup = (user) => {
     // console.log(name, email, password)
-    return fetch(`${API}/signup`, {
+    return fetch(`${API}/auth/register`, {
         method: "POST",
         headers: {
             Accept: 'application/json',
@@ -11,6 +11,7 @@ export const signup = (user) => {
         body: JSON.stringify(user)
     })
         .then(response => {
+            console.log(response)
             return response.json()
         })
         .catch(err => {
@@ -20,7 +21,7 @@ export const signup = (user) => {
 
 export const signin = (user) => {
     // console.log(name, email, password)
-    return fetch(`${API}/signin`, {
+    return fetch(`${API}/auth/signin`, {
         method: "POST",
         headers: {
             Accept: 'application/json',
@@ -36,10 +37,10 @@ export const signin = (user) => {
         })
 }
 
-export const authenticate = (data, next) => {
+export const authenticate = (data) => {
     if (typeof window !== 'undefined') {
         localStorage.setItem('jwt', JSON.stringify(data));
-        next();
+        // next();
     }
 }
 
