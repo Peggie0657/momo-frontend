@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `moshop`.`orders` (
   `status` VARCHAR(20) NULL COMMENT '訂單狀態',
   `shippingadd` VARCHAR(45) NULL COMMENT '運送地址',
   `userid` INT NOT NULL COMMENT '買家帳號',
-  `setuptime` DATETIME NULL DEFAULT CURRENT_TIMESTAMP COMMENT '訂單成立時間',
+  `setuptime` DATETIME NULL DEFAULT CURRENT_TIMESTAMP COMMENT '訂單建立時間',
   PRIMARY KEY (`id`),
   INDEX `fk_orders_user1_idx` (`userid` ASC),
   CONSTRAINT `fk_orders_user1`
