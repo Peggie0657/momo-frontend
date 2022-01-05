@@ -10,7 +10,8 @@ import Layout from './Layout';
 const Element = ({ className }) => {
     const [products, setProducts] = useState([])
     const userId = isAuthenticated() && isAuthenticated().id
-
+    const user = isAuthenticated()
+    console.log(user)
     useEffect(() => {
         getProducts()
             .then(data => {
@@ -42,7 +43,7 @@ const Element = ({ className }) => {
                                                         <a href="" className="phoho-a">
                                                             <img src="https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1611735292266.jpg" alt="" className="photo" />
                                                         </a>
-                                                        <a href="" className="account-a">1234567890@gmail.com</a>
+                                                        <a href="" className="account-a">{user.email}</a>
                                                     </div>
                                                 </div>
                                                 <div className="accordion update-wrap" id="accordionPanelsStayOpenExample">
@@ -55,7 +56,7 @@ const Element = ({ className }) => {
                                                                 <div className="input-wrap">
                                                                     <form action="">
                                                                         <label for="name">真實姓名：</label>
-                                                                        <input type="text" name="name" id="name" value="炸吉拿棒" /><br /><br />
+                                                                        <input type="text" name="name" id="name" value={user.username} /><br /><br />
                                                                         <label for="phone">聯絡電話：</label>
                                                                         <input type="text" name="phone" id="phone" value="0911122233" /><br /><br />
                                                                         <label for="address">通訊地址：</label>

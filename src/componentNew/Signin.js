@@ -25,6 +25,7 @@ const Element = ({ className }) => {
                 console.log(data)
                 if (!data) {
                     alert("帳號密碼錯誤");
+                    setValues({ email: "", password: "" })
                 } else {
                     authenticate(data)
                     history.push("/")
