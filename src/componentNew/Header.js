@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import { itemTotal } from './cartHelpers'
 import Cart from './Cart'
-import { isAuthenticated } from "../auth";
+import { isAuthenticated, signout } from "../auth";
 
 const Element = ({ className }) => {
     const [itemCount, setItemCount] = useState(0)
@@ -30,7 +30,7 @@ const Element = ({ className }) => {
                                     <a className="nav-link" href="http://localhost:3000/signin">登入</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">註冊</a>
+                                    <a className="nav-link" href="http://localhost:3000/signup">註冊</a>
                                 </li>
                             </> : null}
                             <li className="nav-item">
@@ -54,6 +54,10 @@ const Element = ({ className }) => {
                                 </a>
                                 {/* <Cart itemCount={itemCount} /> */}
                             </li>
+                            {isAuthenticated() ?
+                                <li className="nav-item">
+                                    <a className="nav-link" onClick={signout}>登出</a>
+                                </li> : null}
                         </ul>
                     </div>
                 </div>
