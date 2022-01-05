@@ -8,6 +8,7 @@ import Shop from './component/Shop';
 import Product from './componentNew/Product';
 // import Products from './componentNew/Products';
 import Cart from './component/Cart';
+import MemberCenter from './componentNew/MemberCenter';
 import Profile from './user/Profile'
 
 const Routes = () => {
@@ -18,6 +19,7 @@ const Routes = () => {
                 <Route path="/shop" exact component={Shop} />
                 <Route path="/cart" exact component={Cart} />
                 <Route path="/product/:productId" exact component={Product} />
+                <Route path="/memberCenter" exact component={MemberCenter} />
                 {/* <Route path="/products" exact component={Products} /> */}
                 <Route path="/signin" exact component={Signin} />
                 <Route path="/signup" exact component={Signup} />

@@ -27,14 +27,14 @@ const Element = ({ className }) => {
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             {!isAuthenticated() ? <>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="http://localhost:3000/signin">登入</a>
+                                    <a className="nav-link" href="/signin">登入</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="http://localhost:3000/signup">註冊</a>
+                                    <a className="nav-link" href="/signup">註冊</a>
                                 </li>
                             </> : null}
                             <li className="nav-item">
-                                <a className="nav-link" href="#">
+                                <a className="nav-link" href="/memberCenter">
                                     會員中心
                                 </a>
                                 {/* <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -56,7 +56,7 @@ const Element = ({ className }) => {
                             </li>
                             {isAuthenticated() ?
                                 <li className="nav-item">
-                                    <a className="nav-link" onClick={signout}>登出</a>
+                                    <a className="nav-link" href="/" onClick={signout}>登出</a>
                                 </li> : null}
                         </ul>
                     </div>
