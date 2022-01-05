@@ -32,6 +32,9 @@ const Element = ({ className }) => {
                                 <li className="nav-item">
                                     <a className="nav-link" href="/signup">註冊</a>
                                 </li>
+                            </> : null}
+
+                            {isAuthenticated() ? <>
                                 <li className="nav-item">
                                     <a className="nav-link" href="/memberCenter">
                                         會員中心

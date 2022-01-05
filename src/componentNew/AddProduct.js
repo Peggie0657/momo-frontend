@@ -1,11 +1,13 @@
 // import React from 'react';
 import React, { useEffect, useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components'
 
 import { addProduct } from "../product";
 import { isAuthenticated } from "../auth";
 
 const Element = ({ setProducts, products, className }) => {
+    const [redirect, setRedirect] = useState(false)
     const [values, setValues] = useState({
         name: "",
         description: "",
@@ -14,7 +16,11 @@ const Element = ({ setProducts, products, className }) => {
     })
     const { name, description, price, stock } = values
     const token = isAuthenticated() && isAuthenticated().accessToken
-
+    const shouldRedirect = redirect => {
+        if (redirect) {
+            return <Redirect to="/memberCenter" />
+        }
+    }
     const handleChange = name => event => {
         setValues({ ...values, error: false, [name]: event.target.value })
     }
@@ -27,7 +33,7 @@ const Element = ({ setProducts, products, className }) => {
                     setValues({})
                     products.push({ name, description, price, stock })
                     setProducts(products)
-
+                    setRedirect(true)
                 } else {
                     alert("商品建立失敗")
                 }
@@ -64,6 +70,24 @@ const Element = ({ setProducts, products, className }) => {
                                         <b className="dcTitle">商品描述</b>&emsp;
                                         <textarea name="description" id="description" cols="30" rows="5" value={description} onChange={handleChange("description")}></textarea><br /><br />
 
+                                        <b className="dcTitle">商品描述</b>&emsp;
+                                        <select style={{ position: "relative", left: "64px" }} onChange={handleChange("category")}>
+                                            <option id="1" >女生衣著</option>
+                                            <option id="2" >男生衣著</option>
+                                            <option id="3" >運動/健身</option>
+                                            <option id="4" >男女鞋</option>
+                                            <option id="5" >電腦週邊</option>
+                                            <option id="6" >美妝保養</option>
+                                            <option id="7" >服飾飾品</option>
+                                            <option id="8" >手機相機</option>
+                                            <option id="9" >家電影音</option>
+                                            <option id="10">居家生活</option>
+                                            <option id="11">寵物</option>
+                                            <option id="12">戶外/旅行</option>
+                                            <option id="13">書籍</option>
+                                        </select>
+                                        <br /><br />
+
                                         <b>&emsp;&emsp;價格</b>&emsp;
                                         <input type="number" id="price" className="price" placeholder="NT$" value={price} onChange={handleChange("price")} /><br /><br />
 
@@ -89,7 +113,7 @@ const Element = ({ setProducts, products, className }) => {
                 </div>
             </div>
 
-
+            {shouldRedirect(redirect)}
         </div>
 
     )

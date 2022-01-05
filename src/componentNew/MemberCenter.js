@@ -18,41 +18,41 @@ const Element = ({ className }) => {
                     setProducts(data.filter(item => item.userBean.id === userId))
                 }
             })
-    }, [products])
+    }, [])
 
     return (
         <>
             <Layout>
                 <div className={className}>
-                    <div class="content">
-                        <div class="nav flex-column nav-pills me-3 list-style" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            <button class="btn list-group-Btn" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">會員資料</button>
-                            <button class="btn list-group-Btn" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">追蹤清單</button>
-                            <button class="btn list-group-Btn" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">商品管理</button>
-                            <button class="btn list-group-Btn" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">訂單管理</button>
+                    <div className="content">
+                        <div className="nav flex-column nav-pills me-3 list-style" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <button className="btn list-group-Btn" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">會員資料</button>
+                            <button className="btn list-group-Btn" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">追蹤清單</button>
+                            <button className="btn list-group-Btn" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">商品管理</button>
+                            <button className="btn list-group-Btn" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">訂單管理</button>
                         </div>
-                        <div class="tab-wrap">
-                            <div class="tab-content" id="v-pills-tabContent">
-                                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                    <div class="member-box">
-                                        <div class="account-content">
-                                            <div class="wrap">
-                                                <div class="account">
-                                                    <div class="accountWrap">
-                                                        <a href="" class="phoho-a">
-                                                            <img src="https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1611735292266.jpg" alt="" class="photo" />
+                        <div className="tab-wrap">
+                            <div className="tab-content" id="v-pills-tabContent">
+                                <div className="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                    <div className="member-box">
+                                        <div className="account-content">
+                                            <div className="wrap">
+                                                <div className="account">
+                                                    <div className="accountWrap">
+                                                        <a href="" className="phoho-a">
+                                                            <img src="https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1611735292266.jpg" alt="" className="photo" />
                                                         </a>
-                                                        <a href="" class="account-a">1234567890@gmail.com</a>
+                                                        <a href="" className="account-a">1234567890@gmail.com</a>
                                                     </div>
                                                 </div>
-                                                <div class="accordion update-wrap" id="accordionPanelsStayOpenExample">
-                                                    <div class="accordion-item">
-                                                        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                                                            <button class="accordion-button btn-pink" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">會員基本資料</button>
+                                                <div className="accordion update-wrap" id="accordionPanelsStayOpenExample">
+                                                    <div className="accordion-item">
+                                                        <h2 className="accordion-header" id="panelsStayOpen-headingOne">
+                                                            <button className="accordion-button btn-pink" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">會員基本資料</button>
                                                         </h2>
-                                                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-                                                            <div class="accordion-body">
-                                                                <div class="input-wrap">
+                                                        <div id="panelsStayOpen-collapseOne" className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                                                            <div className="accordion-body">
+                                                                <div className="input-wrap">
                                                                     <form action="">
                                                                         <label for="name">真實姓名：</label>
                                                                         <input type="text" name="name" id="name" value="炸吉拿棒" /><br /><br />
@@ -65,13 +65,13 @@ const Element = ({ className }) => {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="accordion-item">
-                                                        <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-                                                            <button class="accordion-button btn-pink collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">變更密碼</button>
+                                                    <div className="accordion-item">
+                                                        <h2 className="accordion-header" id="panelsStayOpen-headingThree">
+                                                            <button className="accordion-button btn-pink collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">變更密碼</button>
                                                         </h2>
-                                                        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
-                                                            <div class="accordion-body">
-                                                                <div class="input-wrap">
+                                                        <div id="panelsStayOpen-collapseThree" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                                                            <div className="accordion-body">
+                                                                <div className="input-wrap">
                                                                     <form action="">
                                                                         <label for="oldPwd">請輸入舊密碼：</label>
                                                                         <input type="text" name="oldPwd" id="oldPwd" /><br /><br />
@@ -84,31 +84,31 @@ const Element = ({ className }) => {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <button class="btn pinkBtn btn-light btn-mg">儲存變更</button>
+                                                    <button className="btn pinkBtn btn-light btn-mg">儲存變更</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
-                                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                                    <div class="member-box">
-                                        <div class="title">
+                                <div className="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
+                                <div className="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                                    <div className="member-box">
+                                        <div className="title">
                                             <h5>我的商品</h5>
-                                            {/* <button class="btn create-product">新增商品</button> */}
+                                            {/* <button className="btn create-product">新增商品</button> */}
                                             <AddProduct setProducts={setProducts} products={products} />
                                         </div>
-                                        <div class="row">
+                                        <div className="row">
                                             {products && products.map(item => (
-                                                <div class="col-6 col-lg-3 mt-3">
-                                                    <a href="#" class="a-style">
-                                                        <div class="card card-style">
-                                                            <img src="https://cf.shopee.tw/file/b5772fc8fe61728bd8afd0b135c54cf3_tn" class="card-img-top card-img-size" alt="..." />
-                                                            <div class="card-body card-position">
-                                                                <p class="card-text card-content">名稱：{item.name.slice(0, 10)}</p>
-                                                                <p class="card-text card-content">描述：{item.description.slice(0, 10)}</p>
-                                                                <p class="price-div">價格：{item.price}</p>
-                                                                <p class="">數量：{item.stock}</p>
+                                                <div className="col-6 col-lg-3 mt-3">
+                                                    <a href="#" className="a-style">
+                                                        <div className="card card-style">
+                                                            <img src="https://cf.shopee.tw/file/b5772fc8fe61728bd8afd0b135c54cf3_tn" className="card-img-top card-img-size" alt="..." />
+                                                            <div className="card-body card-position">
+                                                                <p className="card-text card-content">名稱：{item.name.slice(0, 10)}</p>
+                                                                <p className="card-text card-content">描述：{item.description.slice(0, 10)}</p>
+                                                                <p className="price-div">價格：{item.price}</p>
+                                                                <p className="">數量：{item.stock}</p>
                                                             </div>
                                                         </div>
                                                     </a>
@@ -117,7 +117,7 @@ const Element = ({ className }) => {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">.123</div>
+                                <div className="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">.123</div>
                             </div>
                         </div>
                     </div >
