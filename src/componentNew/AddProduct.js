@@ -14,7 +14,11 @@ const Element = ({ setProducts, products, className }) => {
         price: 0,
         stock: 0
     })
+    const [images, setImages] = useState([]);
+    const [imageURLs, setImageURLs] = useState([]);
+
     const { name, description, price, stock } = values
+
     const token = isAuthenticated() && isAuthenticated().accessToken
     const shouldRedirect = redirect => {
         if (redirect) {
@@ -24,6 +28,7 @@ const Element = ({ setProducts, products, className }) => {
     const handleChange = name => event => {
         setValues({ ...values, error: false, [name]: event.target.value })
     }
+
     const clickSubmit = (event) => {
         event.preventDefault()
         addProduct({ name, description, price, stock }, token)
@@ -33,13 +38,24 @@ const Element = ({ setProducts, products, className }) => {
                     setValues({})
                     products.push({ name, description, price, stock })
                     setProducts(products)
-                    setRedirect(true)
+
                 } else {
                     alert("商品建立失敗")
                 }
             })
     }
 
+    const handleImages = (e) => {
+        setImages([...e.target.files])
+    }
+
+    useEffect(() => {
+        if (images.length < 1) return
+        const arr = []
+        images.forEach(image => arr.push(URL.createObjectURL(image)))
+        setImageURLs(arr)
+    }, [images])
+    console.log(imageURLs.toString)
     return (
         <div className={className}>
             <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct">
@@ -59,10 +75,15 @@ const Element = ({ setProducts, products, className }) => {
                                     <form action="">
                                         <b>商品圖片</b>&emsp;
                                         <label className="uploadImg">
-                                            <input type="file" id="img" className="img" accept="image/*" multiple="multiple" />
+                                            <input type="file" id="img" className="img" accept="image/*" multiple onChange={handleImages} />
                                             {/* <i className="fa fa-photo"></i>&ensp; */}
                                             上傳圖片
-                                        </label><br /><br />
+                                        </label>
+                                        {imageURLs && imageURLs.map(item => (
+                                            <img src={item} height={100} style={{ margin: "20px" }} alt="" />
+                                        ))}
+                                        {/* <img src={imagesSrc} height={100} style={{ margin: "20px" }} alt="" /> */}
+                                        <br /><br />
 
                                         <b>商品名稱</b>&emsp;
                                         <input type="text" id="productName" className="productName" value={name} onChange={handleChange("name")} /><br /><br />
@@ -114,6 +135,7 @@ const Element = ({ setProducts, products, className }) => {
             </div>
 
             {shouldRedirect(redirect)}
+
         </div>
 
     )
