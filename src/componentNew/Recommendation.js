@@ -18,32 +18,33 @@ const Element = ({ className }) => {
         <div className={className}>
             <div className="prod-content">
 
-                <nav className="breadcrumb">
+                {/* <nav className="breadcrumb">
                     <a className="breadcrumb-item" href="#">首頁</a>
                     <a className="breadcrumb-item" href="#">首頁下一頁</a>
                     <a className="breadcrumb-item active" href="#">當前頁</a>
-                </nav>
+                </nav> */}
 
-                <div className="dropdown-box">
+                <div className="mt-5">
+                    <h5>每日推薦</h5>
                     <div className="dropdown">
-                        <button className="btn btn-secondary dropdown-toggle dropdown-btn btn-sm" type="button" id="dropdownMenuButton1"
+                        {/* <button className="btn btn-secondary dropdown-toggle dropdown-btn btn-sm" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             商品價格
                         </button>
                         <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li><a className="dropdown-item" href="#">高到低</a></li>
                             <li><a className="dropdown-item" href="#">低到高</a></li>
-                        </ul>
+                        </ul> */}
                     </div>
                     <div className="dropdown">
-                        <button className="btn btn-secondary dropdown-toggle dropdown-btn btn-sm" type="button" id="dropdownMenuButton1"
+                        {/* <button className="btn btn-secondary dropdown-toggle dropdown-btn btn-sm" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             上架日期
                         </button>
                         <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li><a className="dropdown-item" href="#">新到舊</a></li>
                             <li><a className="dropdown-item" href="#">舊到新</a></li>
-                        </ul>
+                        </ul> */}
                     </div>
 
                 </div>

@@ -54,7 +54,7 @@ const Element = ({ className }) => {
     )
 }
 
-const Sidebar = styled(Element)`
+const Filter = styled(Element)`
 * {
     box-sizing: border-box
 }
@@ -153,4 +153,4 @@ h6 {
 }
 `
 
-export default Sidebar;
+export default Filter;

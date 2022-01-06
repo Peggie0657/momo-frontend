@@ -1,98 +1,84 @@
+// import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components'
 
-const Element = ({ className }) => (
-    <div className={className}>
-        <div className="categoryWrap">
-            <h4>全站分類</h4>
-            <div className="accordion accordion-flush" id="accordionFlushExample">
-                <div className="accordion-item">
-                    <h2 className="accordion-header" id="flush-headingOne">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            美妝保養
-                        </button>
-                    </h2>
-                    <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-                        data-bs-parent="#accordionFlushExample">
-                        <div className="accordion-body">Placeholder content for this accordion, which is intended to
-                            demonstrate the <code>.accordion-flush</code> className. This is the first item's accordion
-                            body.</div>
-                    </div>
-                </div>
-                <div className="accordion-item">
-                    <h2 className="accordion-header" id="flush-headingTwo">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                            服飾飾品
-                        </button>
-                    </h2>
-                    <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
-                        data-bs-parent="#accordionFlushExample">
-                        <div className="accordion-body">Placeholder content for this accordion, which is intended to
-                            demonstrate the <code>.accordion-flush</code> className. This is the second item's accordion
-                            body. Let's imagine this being filled with some actual content.</div>
-                    </div>
-                </div>
-                <div className="accordion-item">
-                    <h2 className="accordion-header" id="flush-headingThree">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseThree" aria-expanded="false"
-                            aria-controls="flush-collapseThree">
-                            手機相機
-                        </button>
-                    </h2>
-                    <div id="flush-collapseThree" className="accordion-collapse collapse"
-                        aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                        <div className="accordion-body">Placeholder content for this accordion, which is intended to
-                            demonstrate the <code>.accordion-flush</code> className. This is the third item's accordion
-                            body. Nothing more exciting happening here in terms of content, but just filling up the
-                            space to make it look, at least at first glance, a bit more representative of how this would
-                            look in a real-world application.</div>
-                    </div>
-                </div>
-                <div className="accordion-item">
-                    <h2 className="accordion-header" id="flush-headingFour">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseOne" aria-expanded="false"
-                            aria-controls="flush-collapseFour">
-                            家電影音
-                        </button>
-                    </h2>
-                    <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-                        data-bs-parent="#accordionFlushExample">
-                        <div className="accordion-body">Placeholder content for this accordion, which is intended to
-                            demonstrate the <code>.accordion-flush</code> className. This is the first item's accordion
-                            body.</div>
-                    </div>
-                </div>
-                <div className="accordion-item">
-                    <h2 className="accordion-header" id="flush-headingFive">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseFive" aria-expanded="false"
-                            aria-controls="flush-collapseFive">
-                            電腦週邊
-                        </button>
-                    </h2>
-                    <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-                        data-bs-parent="#accordionFlushExample">
-                        <div className="accordion-body">Placeholder content for this accordion, which is intended to
-                            demonstrate the <code>.accordion-flush</code> className. This is the first item's accordion
-                            body.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-)
+const Element = ({ className }) => {
 
-const Category = styled(Element)`
-.categoryWrap{
-    position:absolute;
-    left:20px;
-    top:110px;
-    width:150px;
+    return (
+        <div className={className}>
+            <nav class="navbar navbar-expand-lg navbar-light mb-3" style={{ backgroundColor: "#e54040" }}>
+                <div class="container">
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link">女生衣著</a>
+                            </li>
+                            <li class="nav-item category">
+                                <a class="nav-link" href="#">男生衣著</a>
+                            </li>
+                            <li class="nav-item category">
+                                <a class="nav-link" href="#">運動/健身</a>
+                            </li>
+                            <li class="nav-item category">
+                                <a class="nav-link" href="#">男女鞋</a>
+                            </li>
+                            <li class="nav-item category">
+                                <a class="nav-link" href="#">電腦週邊</a>
+                            </li>
+                            <li class="nav-item category">
+                                <a class="nav-link" href="#">美妝保養</a>
+                            </li>
+                            <li class="nav-item category">
+                                <a class="nav-link" href="#">服飾飾品</a>
+                            </li>
+                            <li class="nav-item category">
+                                <a class="nav-link" href="#">手機相機</a>
+                            </li>
+                            <li class="nav-item category">
+                                <a class="nav-link" href="#">家電影音</a>
+                            </li>
+                            <li class="nav-item category">
+                                <a class="nav-link" href="#">居家生活</a>
+                            </li>
+                            <li class="nav-item category">
+                                <a class="nav-link" href="#">寵物</a>
+                            </li>
+                            <li class="nav-item category">
+                                <a class="nav-link" href="#">戶外/旅行</a>
+                            </li>
+                            <li class="nav-item category">
+                                <a class="nav-link" href="#">書籍</a>
+                            </li>
+                            {/* <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Dropdown link
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </li> */}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div >
+    )
 }
 
+const Category = styled(Element)`
+.nav-link{
+    color: #fff !important
+}
+.category:after{
+    content: "";
+    background: #fff;
+    position: absolute;
+    bottom: 30%;
+    height: 40%;
+    width: 1px;
+}
 `
 
 export default Category;

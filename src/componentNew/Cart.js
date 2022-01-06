@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Layout from './Layout';
-import Category from './Category';
 import { getCart } from './cartHelpers';
 
 const Cart = () => {
