@@ -75,7 +75,7 @@ const Element = ({ className }) => {
         </div>
     )
 }
-const Products = styled(Element)`
+const Recommendation = styled(Element)`
 .prod-content{
     width: 66.666667%;
     margin: 0 auto;
@@ -129,4 +129,4 @@ const Products = styled(Element)`
 }   
 `
 
-export default Products;
+export default Recommendation;

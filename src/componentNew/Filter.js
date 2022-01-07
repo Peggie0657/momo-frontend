@@ -2,7 +2,43 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components'
 
-const Element = ({ className }) => {
+const Element = ({ className, categoryId }) => {
+    const [checkArr, setCheckArr] = useState([
+        { id: "1", checked: false },
+        { id: "2", checked: false },
+        { id: "3", checked: false },
+        { id: "4", checked: false },
+        { id: "5", checked: false },
+        { id: "6", checked: false },
+        { id: "7", checked: false },
+        { id: "8", checked: false },
+        { id: "9", checked: false },
+        { id: "10", checked: false },
+        { id: "11", checked: false },
+        { id: "12", checked: false },
+        { id: "13", checked: false },
+    ])
+
+    const handleChange = (e) => {
+        const arr = [...checkArr]
+        if (arr.find(item => item.id === e.target.id)) {
+            const index = arr.indexOf(arr.find(item => item.id === e.target.id))
+            arr[index] = { ["id"]: e.target.id, ["checked"]: e.target.checked }
+        }
+        setCheckArr(arr)
+    }
+
+    useEffect(() => {
+        const arr = [...checkArr]
+
+        const obj = arr.find(item => item.id === categoryId)
+        const index = arr.indexOf(obj)
+        arr[index] = {
+            ...obj,
+            checked: true
+        }
+        setCheckArr(arr)
+    }, [])
 
     return (
         <div className={className}>
@@ -14,19 +50,19 @@ const Element = ({ className }) => {
                     <h6 class="font-weight-bold">分類</h6>
                     <div id="orange"><span class="fa fa-minus"></span></div>
                     <form>
-                        <div class="form-group"> <input type="checkbox" id="1" /> <label for="1">女生衣著</label> </div>
-                        <div class="form-group"> <input type="checkbox" id="2" /> <label for="2">男生衣著</label> </div>
-                        <div class="form-group"> <input type="checkbox" id="3" /> <label for="3">運動/健身</label> </div>
-                        <div class="form-group"> <input type="checkbox" id="4" /> <label for="4">男女鞋</label> </div>
-                        <div class="form-group"> <input type="checkbox" id="5" /> <label for="5">電腦週邊</label> </div>
-                        <div class="form-group"> <input type="checkbox" id="6" /> <label for="6">美妝保養</label> </div>
-                        <div class="form-group"> <input type="checkbox" id="7" /> <label for="7">服飾飾品</label> </div>
-                        <div class="form-group"> <input type="checkbox" id="8" /> <label for="8">手機相機</label> </div>
-                        <div class="form-group"> <input type="checkbox" id="9" /> <label for="9">家電影音</label> </div>
-                        <div class="form-group"> <input type="checkbox" id="10" /> <label for="10">居家生活</label> </div>
-                        <div class="form-group"> <input type="checkbox" id="11" /> <label for="11">寵物</label> </div>
-                        <div class="form-group"> <input type="checkbox" id="12" /> <label for="12">戶外/旅行</label> </div>
-                        <div class="form-group"> <input type="checkbox" id="13" /> <label for="13">書籍</label> </div>
+                        <div class="form-group"> <input type="checkbox" id="1" onChange={handleChange} checked={checkArr[0].checked} /> <label for="1">女生衣著</label> </div>
+                        <div class="form-group"> <input type="checkbox" id="2" onChange={handleChange} checked={checkArr[1].checked} /> <label for="2">男生衣著</label> </div>
+                        <div class="form-group"> <input type="checkbox" id="3" onChange={handleChange} checked={checkArr[2].checked} /> <label for="3">運動/健身</label> </div>
+                        <div class="form-group"> <input type="checkbox" id="4" onChange={handleChange} checked={checkArr[3].checked} /> <label for="4">男女鞋</label> </div>
+                        <div class="form-group"> <input type="checkbox" id="5" onChange={handleChange} checked={checkArr[4].checked} /> <label for="5">電腦週邊</label> </div>
+                        <div class="form-group"> <input type="checkbox" id="6" onChange={handleChange} checked={checkArr[5].checked} /> <label for="6">美妝保養</label> </div>
+                        <div class="form-group"> <input type="checkbox" id="7" onChange={handleChange} checked={checkArr[6].checked} /> <label for="7">服飾飾品</label> </div>
+                        <div class="form-group"> <input type="checkbox" id="8" onChange={handleChange} checked={checkArr[7].checked} /> <label for="8">手機相機</label> </div>
+                        <div class="form-group"> <input type="checkbox" id="9" onChange={handleChange} checked={checkArr[8].checked} /> <label for="9">家電影音</label> </div>
+                        <div class="form-group"> <input type="checkbox" id="10" onChange={handleChange} checked={checkArr[9].checked} /> <label for="10">居家生活</label> </div>
+                        <div class="form-group"> <input type="checkbox" id="11" onChange={handleChange} checked={checkArr[10].checked} /> <label for="11">寵物</label> </div>
+                        <div class="form-group"> <input type="checkbox" id="12" onChange={handleChange} checked={checkArr[11].checked} /> <label for="12">戶外/旅行</label> </div>
+                        <div class="form-group"> <input type="checkbox" id="13" onChange={handleChange} checked={checkArr[12].checked} /> <label for="13">書籍</label> </div>
                     </form>
                 </div>
                 {/* <div class="py-2 border-bottom ml-3">

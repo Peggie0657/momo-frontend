@@ -11,7 +11,15 @@ const Element = ({ className }) => {
     const [products, setProducts] = useState([])
     const userId = isAuthenticated() && isAuthenticated().id
     const user = isAuthenticated()
-    console.log(user)
+
+    const productsFetch = (obj) => {
+        // setProducts(arr)
+        const arr = [...products]
+        arr.push(obj)
+
+        setProducts(arr)
+    }
+
     useEffect(() => {
         getProducts()
             .then(data => {
@@ -28,7 +36,7 @@ const Element = ({ className }) => {
                     <div className="content">
                         <div className="nav flex-column nav-pills me-3 list-style" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             <button className="btn list-group-Btn" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">會員資料</button>
-                            <button className="btn list-group-Btn" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">追蹤清單</button>
+                            <button className="btn list-group-Btn" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">收藏</button>
                             <button className="btn list-group-Btn" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">商品管理</button>
                             <button className="btn list-group-Btn" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">訂單管理</button>
                         </div>
@@ -97,7 +105,7 @@ const Element = ({ className }) => {
                                         <div className="title">
                                             <h5>我的商品</h5>
                                             {/* <button className="btn create-product">新增商品</button> */}
-                                            <AddProduct setProducts={setProducts} products={products} />
+                                            <AddProduct productsFetch={productsFetch} products={products} />
                                         </div>
                                         <div className="row">
                                             {products && products.map(item => (

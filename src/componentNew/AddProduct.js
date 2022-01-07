@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import { addProduct } from "../product";
 import { isAuthenticated } from "../auth";
 
-const Element = ({ setProducts, products, className }) => {
+const Element = ({ className, productsFetch }) => {
     const [redirect, setRedirect] = useState(false)
     const [values, setValues] = useState({
         name: "",
@@ -31,13 +31,17 @@ const Element = ({ setProducts, products, className }) => {
 
     const clickSubmit = (event) => {
         event.preventDefault()
+        productsFetch({ name, description, price, stock })
         addProduct({ name, description, price, stock }, token)
             .then(data => {
                 if (data) {
                     alert("商品建立成功")
-                    setValues({})
-                    products.push({ name, description, price, stock })
-                    setProducts(products)
+                    setValues({
+                        name: "",
+                        description: "",
+                        price: "",
+                        stock: ""
+                    })
 
                 } else {
                     alert("商品建立失敗")
@@ -55,7 +59,7 @@ const Element = ({ setProducts, products, className }) => {
         images.forEach(image => arr.push(URL.createObjectURL(image)))
         setImageURLs(arr)
     }, [images])
-    console.log(imageURLs.toString)
+    console.log(imageURLs)
     return (
         <div className={className}>
             <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct">
