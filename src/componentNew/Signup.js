@@ -46,17 +46,7 @@ const Element = ({ className }) => {
     }
     return (
         <div className={className} style={{ backgroundColor: "rgb(238, 77, 45)" }}>
-            <nav className="navbar fixed-top navbar-expand-lg navbar-collapse navbar-light justify-content-end navbar1">
-                <div className="container-fluid">
-                    <a className="navbar-brand" href="/">
-                        <img src="https://cdn-icons-png.flaticon.com/512/220/220127.png" alt="" className="brandImg" />哞哞購物</a>
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            {/* <a className="nav-link" href="#">推薦</a> */}
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+
             <div style={{ margin: "0 auto", height: "600px", width: "1040px", backgroundImage: "url('https://cf.shopee.tw/file/941617bff55f5cdc82aea8f3bbb16460')", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center center" }}>
                 <div className="form container float-end mt-4">
                     <form className="row g-3 pt-4">

@@ -133,7 +133,7 @@ h6 {
         padding: 20px;
         float: left;
         position: absolute;
-        top: 10%;
+        top: 20%;
     }
 }
 
@@ -147,7 +147,7 @@ h6 {
         padding: 20px;
         float: left;
         position: absolute;
-        top: 10%;
+        top: 20%;
     }
 }
 
@@ -161,7 +161,7 @@ h6 {
         padding: 20px;
         float: left;
         position: absolute;
-        top: 10%;
+        top: 20%;
     }
 }
 
@@ -174,7 +174,7 @@ h6 {
         padding: 20px;
         float: left;
         position: absolute;
-        top: 10%;
+        top: 20%;
     }
     #off {
         padding-left: 2px

@@ -1,6 +1,7 @@
 import React from 'react';
+import styled from 'styled-components'
 
-const Footer = () => (
+const Element = () => (
     <footer className="text-center text-lg-start bg-light text-muted">
         <div className="container text-center text-md-start mt-5">
             <div className="row mt-3">
@@ -75,5 +76,7 @@ const Footer = () => (
         </div>
     </footer >
 )
+const Footer = styled(Element)`
 
+`
 export default Footer;

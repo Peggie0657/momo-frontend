@@ -6,7 +6,7 @@ const Element = ({ className }) => {
 
     return (
         <div className={className}>
-            <nav class="navbar navbar-expand-lg navbar-light mb-3" style={{ backgroundColor: "#e54040" }}>
+            <nav class="navbar navbar-expand-lg navbar-light mt-2" >
                 <div class="container">
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav">
@@ -69,14 +69,14 @@ const Element = ({ className }) => {
 
 const Category = styled(Element)`
 .nav-link{
-    color: #fff !important
+    color: #af4448 !important
 }
 .nav-item:hover{
     background-color: rgba(245, 227, 236, 0.4)
 }
 .category:after{
     content: "";
-    background: #fff;
+    background: #af4448;
     position: absolute;
     bottom: 30%;
     height: 40%;

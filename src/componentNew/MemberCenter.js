@@ -1,14 +1,50 @@
 // import React from 'react';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components'
-import AddProduct from './AddProduct';
+import PropTypes from 'prop-types';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import Tabs from '@mui/material/Tabs';
+import Grid from '@mui/material/Grid';
+import Tab from '@mui/material/Tab';
+import OrderTable from './OrderTable';
 import { getProducts } from "../product";
 import { isAuthenticated } from "../auth";
 import { getOrders } from "../order";
-
+import MyProduct from './MyProduct';
 import Layout from './Layout';
 
+function TabPanel(props) {
+    const { children, value, index, ...other } = props;
+
+    return (
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`vertical-tabpanel-${index}`}
+            aria-labelledby={`vertical-tab-${index}`}
+            {...other}
+        >
+            {value === index && (
+                <Box sx={{ p: 3 }}>
+                    <Typography>{children}</Typography>
+                </Box>
+            )}
+        </div>
+    );
+}
+
+TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.number.isRequired,
+    value: PropTypes.number.isRequired,
+};
+
 const Element = ({ className }) => {
+    const [value, setValue] = React.useState(0);
+
+
     const [products, setProducts] = useState([])
     const userId = isAuthenticated() && isAuthenticated().id
     const user = isAuthenticated()
@@ -21,13 +57,17 @@ const Element = ({ className }) => {
         setProducts(arr)
     }
 
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
     useEffect(() => {
-        // getProducts()
-        //     .then(data => {
-        //         if (data) {
-        //             setProducts(data.filter(item => item.userBean.id === userId))
-        //         }
-        //     })
+        getProducts()
+            .then(data => {
+                if (data) {
+                    setProducts(data.filter(item => item.userBean.id === userId))
+                }
+            })
 
         getOrders()
             .then(data => {
@@ -39,16 +79,24 @@ const Element = ({ className }) => {
         <>
             <Layout>
                 <div className={className}>
-                    <div className="content">
-                        <div className="nav flex-column nav-pills me-3 list-style" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            <button className="btn list-group-Btn" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">會員資料</button>
-                            <button className="btn list-group-Btn" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">收藏</button>
-                            <button className="btn list-group-Btn" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">商品管理</button>
-                            <button className="btn list-group-Btn" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">訂單管理</button>
-                        </div>
-                        <div className="tab-wrap">
-                            <div className="tab-content" id="v-pills-tabContent">
-                                <div className="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                    <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
+                        <Tabs value={value} onChange={handleChange} centered>
+                            <Tab label="基本資料" />
+                            <Tab label="我的收藏" />
+                            <Tab label="我的商品" />
+                            <Tab label="我的訂單" />
+                        </Tabs>
+                        <Grid
+                            container
+                            spacing={0}
+                            direction="column"
+                            alignItems="center"
+                            justifyContent="center"
+                            style={{ minHeight: '100vh' }}
+                        >
+
+                            <Grid item xs={3}>
+                                <TabPanel value={value} index={0}>
                                     <div className="member-box">
                                         <div className="account-content">
                                             <div className="wrap">
@@ -104,50 +152,29 @@ const Element = ({ className }) => {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
-                                <div className="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                                    <div className="member-box">
-                                        <div className="title">
-                                            <h5>我的商品</h5>
-                                            {/* <button className="btn create-product">新增商品</button> */}
-                                            <AddProduct productsFetch={productsFetch} products={products} />
-                                        </div>
-                                        <div className="row">
-                                            {products && products.map(item => (
-                                                <div className="col-6 col-lg-3 mt-3">
-                                                    <a href="#" className="a-style">
-                                                        <div className="card card-style">
-                                                            <img src="https://cf.shopee.tw/file/b5772fc8fe61728bd8afd0b135c54cf3_tn" className="card-img-top card-img-size" alt="..." />
-                                                            <div className="card-body card-position">
-                                                                <p className="card-text card-content">名稱：{item.name.slice(0, 10)}</p>
-                                                                <p className="card-text card-content">描述：{item.description.slice(0, 10)}</p>
-                                                                <p className="price-div">價格：{item.price}</p>
-                                                                <p className="">數量：{item.stock}</p>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>)
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">.123</div>
-                            </div>
-                        </div>
-                    </div >
+                                </TabPanel>
+                                <TabPanel value={value} index={1}>
+                                    <div >123123...</div>
+                                </TabPanel>
+                                <TabPanel value={value} index={2}>
+                                    <MyProduct productsFetch={productsFetch} products={products} />
+                                </TabPanel>
+                                <TabPanel value={value} index={3}>
+                                    <OrderTable />
+                                </TabPanel>
+                            </Grid>
+
+                        </Grid>
+
+                    </Box>
                 </div >
-            </Layout>
+            </Layout >
         </>
     )
 }
 
 const MemberCenter = styled(Element)`
-.content{
-    display: flex;
-    justify-content: space-evenly;
-    margin:50px 140px 0 0;
-}
+
 .list-group-position{
     position: absolute;
     top: 20px;
@@ -182,7 +209,6 @@ const MemberCenter = styled(Element)`
 }
 .account-content{
     width:900px;
-    margin:20px auto 0;
     background-color: rgb(250, 237, 237);
     padding-bottom:50px;
     padding-top:50px;

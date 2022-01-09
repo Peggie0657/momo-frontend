@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components'
 import AddProduct from './AddProduct';
+import ProductCard from './ProductCard';
 import { getProducts } from "../product";
 
 const Element = ({ className }) => {
@@ -25,7 +26,7 @@ const Element = ({ className }) => {
                 </nav> */}
 
                 <div className="mt-5">
-                    <h5>每日推薦</h5>
+                    <h5>人氣商品推薦</h5>
                     <div className="dropdown">
                         {/* <button className="btn btn-secondary dropdown-toggle dropdown-btn btn-sm" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -50,21 +51,23 @@ const Element = ({ className }) => {
                 </div>
 
                 <div className="row">
-                    {/* {products && products.map(item => (
-                        <a className="col-6 col-lg-3 mt-3" href={`/product/${item.id}`} style={{ textDecoration: "none", color: "#000" }}>
-                            <div className="card">
-                                <img src="https://cf.shopee.tw/file/b5772fc8fe61728bd8afd0b135c54cf3_tn" className="card-img-top card-img-size"
-                                    alt="..." />
-                                <div class="card-body" style={{ fontSize: "1.2rem" }}>
-                                    <h3 class="card-title">{item.name.slice(0, 10)}</h3>
-                                    <p class="card-text">{item.description.slice(0, 10)}</p>
-                                    <p class="card-text">${item.price}</p>
-                                    <p class="card-text">數量：{item.stock}</p>
-                                </div>
-                                
-                            </div>
-                        </a>
-                    ))} */}
+                    {products && products.map(product => (
+                        <div className="col-6 col-lg-3 mt-3" style={{ textDecoration: "none", color: "#000" }}>
+                            <ProductCard product={product} />
+
+                            {/* //     <div className="card">
+                        //         <img src="https://cf.shopee.tw/file/b5772fc8fe61728bd8afd0b135c54cf3_tn" className="card-img-top card-img-size"
+                        //             alt="..." />
+                        //         <div class="card-body" style={{ fontSize: "1.2rem" }}>
+                        //             <h3 class="card-title">{item.name.slice(0, 10)}</h3>
+                        //             <p class="card-text">{item.description.slice(0, 10)}</p>
+                        //             <p class="card-text">${item.price}</p>
+                        //             <p class="card-text">數量：{item.stock}</p>
+                        //         </div>
+
+                        //     </div> */}
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>

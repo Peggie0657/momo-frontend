@@ -38,13 +38,12 @@ const Home = () => {
 
     return (
         <Layout>
-            <Search />
-            <Category />
+            {/* <Search /> */}
             <Carousel />
             <Recommendation />
             {/* <Sidebar /> */}
             {/* <ProductsTest /> */}
-            <Advertisment />
+            {/* <Advertisment /> */}
         </Layout>
     )
 }
