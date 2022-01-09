@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Layout from './Layout';
 import Filter from './Filter';
 import { getProducts } from "../product";
+import SplitButton from './SplitButton';
 
 const Element = ({ className, match }) => {
     const [products, setProducts] = useState([])
@@ -27,17 +28,9 @@ const Element = ({ className, match }) => {
                         <a class="breadcrumb-item" href="#">首頁下一頁</a>
                         <a class="breadcrumb-item active" href="#">當前頁</a>
                     </nav>
+                    <SplitButton />
 
                     <div class="dropdown-box">
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle dropdown-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                商品價格
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">高到低</a></li>
-                                <li><a class="dropdown-item" href="#">低到高</a></li>
-                            </ul>
-                        </div>
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle dropdown-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 上架日期
