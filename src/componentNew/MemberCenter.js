@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import AddProduct from './AddProduct';
 import { getProducts } from "../product";
 import { isAuthenticated } from "../auth";
+import { getOrders } from "../order";
 
 import Layout from './Layout';
 
@@ -21,11 +22,16 @@ const Element = ({ className }) => {
     }
 
     useEffect(() => {
-        getProducts()
+        // getProducts()
+        //     .then(data => {
+        //         if (data) {
+        //             setProducts(data.filter(item => item.userBean.id === userId))
+        //         }
+        //     })
+
+        getOrders()
             .then(data => {
-                if (data) {
-                    setProducts(data.filter(item => item.userBean.id === userId))
-                }
+                console.log(data)
             })
     }, [])
 

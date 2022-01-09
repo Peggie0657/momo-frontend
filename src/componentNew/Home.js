@@ -31,7 +31,6 @@ const Home = () => {
     //         }
     //     })
     // }
-    console.log(window)
     useEffect(() => {
         // loadProductsByArrival();
         // loadProductsBySell();

@@ -22,7 +22,6 @@ const Element = ({ className }) => {
         event.preventDefault()
         signin({ email, password })
             .then(data => {
-                console.log(data)
                 if (!data) {
                     alert("帳號密碼錯誤");
                     setValues({ email: "", password: "" })
