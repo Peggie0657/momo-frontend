@@ -27,32 +27,6 @@ import { visuallyHidden } from '@mui/utils';
 import Layout from './Layout';
 import { getCart } from './cartHelpers';
 
-function createData(name, calories, fat, carbs, protein) {
-    return {
-        name,
-        calories,
-        fat,
-        carbs,
-        protein,
-    };
-}
-
-const rows = [
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Donut', 452, 25.0, 51, 4.9),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Honeycomb', 408, 3.2, 87, 6.5),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Jelly Bean', 375, 0.0, 94, 0.0),
-    createData('KitKat', 518, 26.0, 65, 7.0),
-    createData('Lollipop', 392, 0.2, 98, 0.0),
-    createData('Marshmallow', 318, 0, 81, 2.0),
-    createData('Nougat', 360, 19.0, 9, 37.0),
-    createData('Oreo', 437, 18.0, 63, 4.0),
-];
-
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
         return -1;
@@ -85,35 +59,36 @@ function stableSort(array, comparator) {
 
 const headCells = [
     {
-        id: 'name',
+        id: 'photo',
         numeric: false,
         disablePadding: true,
-        label: 'Dessert (100g serving)',
+        label: '圖片',
     },
     {
-        id: 'calories',
+        id: 'name',
         numeric: true,
         disablePadding: false,
-        label: 'Calories',
+        label: '名稱',
     },
     {
-        id: 'fat',
+        id: 'price',
         numeric: true,
         disablePadding: false,
-        label: 'Fat (g)',
+        label: '價格',
     },
     {
-        id: 'carbs',
+        id: 'spec',
         numeric: true,
         disablePadding: false,
-        label: 'Carbs (g)',
+        label: '規格',
     },
     {
-        id: 'protein',
+        id: 'num',
         numeric: true,
         disablePadding: false,
-        label: 'Protein (g)',
+        label: '數量',
     },
+
 ];
 
 function EnhancedTableHead(props) {
@@ -227,29 +202,6 @@ EnhancedTableToolbar.propTypes = {
     numSelected: PropTypes.number.isRequired,
 };
 
-const TAX_RATE = 0.07;
-
-function ccyFormat(num) {
-    return `${num.toFixed(2)}`;
-}
-
-function priceRow(qty, unit) {
-    return qty * unit;
-}
-
-function createRow(desc, qty, unit) {
-    const price = priceRow(qty, unit);
-    return { desc, qty, unit, price };
-}
-
-function subtotal(items) {
-    return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
-}
-
-const invoiceSubtotal = subtotal(rows);
-const invoiceTaxes = TAX_RATE * invoiceSubtotal;
-const invoiceTotal = invoiceTaxes + invoiceSubtotal;
-
 const Cart = () => {
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('calories');
@@ -258,10 +210,6 @@ const Cart = () => {
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
     const [products, setProducts] = useState([])
-    console.log(products)
-    useEffect(() => {
-        setProducts(getCart())
-    }, [])
 
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === 'asc';
@@ -271,7 +219,7 @@ const Cart = () => {
 
     const handleSelectAllClick = (event) => {
         if (event.target.checked) {
-            const newSelecteds = rows.map((n) => n.name);
+            const newSelecteds = products.map((n) => n.name);
             setSelected(newSelecteds);
             return;
         }
@@ -310,28 +258,22 @@ const Cart = () => {
 
     const isSelected = (name) => selected.indexOf(name) !== -1;
 
-    // Avoid a layout jump when reaching the last page with empty rows.
-    const emptyRows =
-        page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
-    // const loadProductsBySell = () => {
-    //     getProducts('sold').then(data => {
-    //         if (data.error) {
-    //             setError(data.error)
-    //         } else {
-    //             setProductsBySell(data)
-    //         }
-    //     })
-    // }
+    const total = () => {
+        let num = 0
+        products.forEach(item => {
+            num = num + item.num * item.product.price
 
-    // const loadProductsByArrival = () => {
-    //     getProducts('createdAt').then(data => {
-    //         if (data.error) {
-    //             setError(data.error)
-    //         } else {
-    //             setProductsByArrival(data)
-    //         }
-    //     })
-    // }
+        })
+        return num;
+    }
+
+    useEffect(() => {
+        setProducts(getCart())
+    }, [])
+
+    // Avoid a layout jump when reaching the last page with empty rows.
+    // const emptyRows =
+    //     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
     return (
         <div>
@@ -360,12 +302,12 @@ const Cart = () => {
                                                 orderBy={orderBy}
                                                 onSelectAllClick={handleSelectAllClick}
                                                 onRequestSort={handleRequestSort}
-                                                rowCount={rows.length}
+                                                rowCount={products.length}
                                             />
                                             <TableBody>
                                                 {/* if you don't need to support IE11, you can replace the `stableSort` call with:
                  rows.slice().sort(getComparator(order, orderBy)) */}
-                                                {stableSort(rows, getComparator(order, orderBy))
+                                                {stableSort(products, getComparator(order, orderBy))
                                                     .map((row, index) => {
                                                         const isItemSelected = isSelected(row.name);
                                                         const labelId = `enhanced-table-checkbox-${index}`;
@@ -395,16 +337,16 @@ const Cart = () => {
                                                                     scope="row"
                                                                     padding="none"
                                                                 >
-                                                                    {row.name}
+                                                                    {row.product.name}
                                                                 </TableCell>
-                                                                <TableCell align="right">{row.calories}</TableCell>
-                                                                <TableCell align="right">{row.fat}</TableCell>
-                                                                <TableCell align="right">{row.carbs}</TableCell>
-                                                                <TableCell align="right">{row.protein}</TableCell>
+                                                                <TableCell align="right">{row.product.name}</TableCell>
+                                                                <TableCell align="right">{row.product.price}</TableCell>
+                                                                <TableCell align="right">1</TableCell>
+                                                                <TableCell align="right">{row.num}</TableCell>
                                                             </TableRow>
                                                         );
                                                     })}
-                                                {emptyRows > 0 && (
+                                                {/* {emptyRows > 0 && (
                                                     <TableRow
                                                         style={{
                                                             height: (53) * emptyRows,
@@ -412,33 +354,15 @@ const Cart = () => {
                                                     >
                                                         <TableCell colSpan={6} />
                                                     </TableRow>
-                                                )}
+                                                )} */}
 
                                             </TableBody>
                                         </Table>
                                     </TableContainer>
                                     <br />
-                                    <TableContainer>
-                                        <Table sx={{ minWidth: 700 }} aria-label="spanning table">
-                                            <TableBody>
-
-                                                <TableRow>
-                                                    <TableCell rowSpan={5} />
-                                                    <TableCell colSpan={2}>Subtotal</TableCell>
-                                                    <TableCell align="right">{ccyFormat(invoiceSubtotal)}</TableCell>
-                                                </TableRow>
-                                                <TableRow>
-                                                    <TableCell>Tax</TableCell>
-                                                    <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
-                                                    <TableCell align="right">{ccyFormat(invoiceTaxes)}</TableCell>
-                                                </TableRow>
-                                                <TableRow>
-                                                    <TableCell colSpan={2}>Total</TableCell>
-                                                    <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
-                                                </TableRow>
-                                            </TableBody>
-                                        </Table>
-                                    </TableContainer>
+                                    <Typography variant="h6" gutterBottom component="div" marginLeft={120}>
+                                        Total {total()} 台幣
+                                    </Typography>
                                 </Paper>
                             </Box>
                             {/* <table className="table table-hover table-responsive" id="' + idCartTable + '">

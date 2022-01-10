@@ -4,10 +4,7 @@ export const addItem = (item, next) => {
         if (localStorage.getItem('cart')) {
             cart = JSON.parse(localStorage.getItem('cart'))
         }
-        cart.push({
-            ...item,
-            count: 1
-        })
+        cart.push(item)
 
         // remove duplicates
         // build an Array from new Set and turn it back into array using Array.from

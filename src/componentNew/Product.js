@@ -33,17 +33,24 @@ const labels = {
 const Element = ({ className, match }) => {
     const [redirect, setRedirect] = useState(false)
     const [product, setProduct] = useState({})
-    const [value, setValue] = React.useState(2);
+    const [star, setStar] = useState(2)
+    const [values, setValues] = React.useState({});
+
+    const { num } = values;
     const productId = match.params.productId
     const addIntoCart = () => {
         console.info(product);
-        // addItem({ id: 1, _id: 1 }, () => {
-        //     setRedirect(true)
-        // })
+        addItem({ num, product }, () => { //數量,規格
+            setRedirect(true)
+        })
     }
 
     const handleButton = () => {
 
+    }
+
+    const handleChange = name => event => {
+        setValues({ ...values, [name]: event.target.value })
     }
 
     const shouldRedirect = redirect => {
@@ -134,12 +141,12 @@ const Element = ({ className, match }) => {
                                 >
                                     <Rating
                                         name="text-feedback"
-                                        value={value}
+                                        value={star}
                                         readOnly
                                         precision={0.5}
                                         emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
                                     />
-                                    <Box sx={{ ml: 2 }}>{labels[value]}</Box>
+                                    <Box sx={{ ml: 2 }}>{labels[star]}</Box>
                                 </Box>
                                 <Typography variant="h5" gutterBottom component="div" marginTop={5}>
 
@@ -165,6 +172,8 @@ const Element = ({ className, match }) => {
                                         id="outlined-size-small"
                                         defaultValue="Small"
                                         size="small"
+                                        value={num}
+                                        onChange={handleChange("num")}
                                     />
                                 </Typography>
 
@@ -173,10 +182,10 @@ const Element = ({ className, match }) => {
                                 </Typography>
                                 <Typography variant="h5" gutterBottom component="div" marginTop={5}>
 
-                                    <Box sx={{ '& button': { m: 1 } }}>
-                                        庫存：100
+                                    <Box sx={{ '& button': { ml: 40 } }}>
+                                        {/* 庫存：100 */}
 
-                                        <Button variant="contained" style={{ marginLeft: "30%" }} onClick={addIntoCart}>
+                                        <Button variant="contained" onClick={addIntoCart}>
                                             加入購物車
                                         </Button>
                                     </Box>
@@ -205,9 +214,9 @@ const Element = ({ className, match }) => {
                             <Box sx={{ marginBottom: "20px" }}>
                                 <Rating
                                     name="simple-controlled"
-                                    value={value}
+                                    value={star}
                                     onChange={(event, newValue) => {
-                                        setValue(newValue);
+                                        setValues(newValue);
                                     }}
                                     sx={{ display: "block", textAlign: "center" }}
                                 />
