@@ -15,6 +15,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Layout from '../component/Layout';
 import { addItem, itemTotal } from './cartHelpers';
+import { getProduct } from '../product';
 
 const labels = {
     0.5: '0.5',
@@ -29,13 +30,20 @@ const labels = {
     5: '5',
 };
 
-const Element = ({ className }) => {
+const Element = ({ className, match }) => {
     const [redirect, setRedirect] = useState(false)
+    const [product, setProduct] = useState({})
     const [value, setValue] = React.useState(2);
+    const productId = match.params.productId
     const addIntoCart = () => {
-        addItem({ id: 1, _id: 1 }, () => {
-            setRedirect(true)
-        })
+        console.info(product);
+        // addItem({ id: 1, _id: 1 }, () => {
+        //     setRedirect(true)
+        // })
+    }
+
+    const handleButton = () => {
+
     }
 
     const shouldRedirect = redirect => {
@@ -46,8 +54,14 @@ const Element = ({ className }) => {
 
     const handleClick = (event) => {
         event.preventDefault();
-        console.info('You clicked a breadcrumb.');
     }
+
+    useEffect(() => {
+        getProduct(productId)
+            .then(data => {
+                setProduct(data)
+            })
+    }, [])
 
     return (
         <Layout>
@@ -158,7 +172,15 @@ const Element = ({ className }) => {
                                     售價：4420元
                                 </Typography>
                                 <Typography variant="h5" gutterBottom component="div" marginTop={5}>
-                                    庫存：100
+
+                                    <Box sx={{ '& button': { m: 1 } }}>
+                                        庫存：100
+
+                                        <Button variant="contained" style={{ marginLeft: "30%" }} onClick={addIntoCart}>
+                                            加入購物車
+                                        </Button>
+                                    </Box>
+                                    {/* <button className="btn btnRed" onClick={addIntoCart}>加入購物車</button> */}
                                 </Typography>
                             </Box>
                             {/* <div className="detail">

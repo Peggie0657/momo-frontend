@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { getOrders } from "../order";
 
 function createData(name, calories, fat, carbs, protein, price) {
     return {
@@ -126,7 +127,16 @@ const rows = [
     createData('Gingerbread', 356, 16.0, 49, 3.9, 1.5),
 ];
 
-export default function CollapsibleTable() {
+const OrderTable = () => {
+    const [orders, setOrders] = useState([])
+
+    useEffect(() => {
+        getOrders()
+            .then(data => {
+                console.log(data)
+            })
+    }, [])
+
     return (
         <>
             <h4>我的訂單</h4>
@@ -156,3 +166,5 @@ export default function CollapsibleTable() {
         </>
     );
 }
+
+export default OrderTable;

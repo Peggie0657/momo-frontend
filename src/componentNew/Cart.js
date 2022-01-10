@@ -258,7 +258,7 @@ const Cart = () => {
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
     const [products, setProducts] = useState([])
-
+    console.log(products)
     useEffect(() => {
         setProducts(getCart())
     }, [])

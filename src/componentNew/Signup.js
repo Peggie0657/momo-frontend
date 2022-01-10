@@ -9,10 +9,11 @@ const Element = ({ className }) => {
     const history = useHistory();
     const [values, setValues] = useState({
         email: '',
+        username: '',
         password: '',
     })
 
-    const { email, password } = values
+    const { email, password, username } = values
 
     const handleChange = name => event => {
         setValues({ ...values, [name]: event.target.value })
@@ -20,7 +21,7 @@ const Element = ({ className }) => {
 
     const clickSubmit = (event) => {
         event.preventDefault()
-        signup({ email, password })
+        signup({ email, password, username })
             .then(data => {
                 console.log(data)
                 if (data.error) {
@@ -53,6 +54,9 @@ const Element = ({ className }) => {
                         <h5>註冊</h5>
                         <div className="mb-3">
                             <input type="text" className="form-control" value={email} placeholder='請輸入帳號:Email' required onChange={handleChange("email")} />
+                        </div>
+                        <div className="mb-3">
+                            <input type="text" className="form-control" value={username} placeholder='請輸入帳號:Email' required onChange={handleChange("username")} />
                         </div>
                         <div className="mb-3">
                             <div className="form-group">
