@@ -100,7 +100,7 @@ const Element = ({ className }) => {
                                 <TabPanel value={value} index={0}>
                                     <Container maxWidth="lg">
 
-                                        <div className="member-box">
+                                        {/* <div className="member-box">
                                             <div className="account-content">
                                                 <div className="wrap">
                                                     <div className="account">
@@ -154,12 +154,14 @@ const Element = ({ className }) => {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> */}
                                         <User />
                                     </Container>
                                 </TabPanel>
                                 <TabPanel value={value} index={1}>
-                                    <div >123123...</div>
+                                    <Container maxWidth="lg">
+                                        <div >123123...</div>
+                                    </Container>
                                 </TabPanel>
                                 <TabPanel value={value} index={2}>
                                     <Container maxWidth="lg">
