@@ -16,7 +16,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 const ProductCard = ({ product, editable = false }) => {
-
     return (
         <Card sx={{ maxWidth: 345 }}>
             {/* <CardHeader

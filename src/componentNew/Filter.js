@@ -95,7 +95,6 @@ const Filter = styled(Element)`
     box-sizing: border-box
 }
 
-
 #burgundy {
     color: rgb(153, 40, 59)
 }
@@ -129,7 +128,6 @@ h6 {
     }
 
     #sidebar {
-        width: 30%;
         padding: 20px;
         float: left;
         position: absolute;
@@ -143,7 +141,6 @@ h6 {
     }
 
     #sidebar {
-        width: 30%;
         padding: 20px;
         float: left;
         position: absolute;
@@ -157,7 +154,6 @@ h6 {
     }
 
     #sidebar {
-        width: 35%;
         padding: 20px;
         float: left;
         position: absolute;
@@ -170,7 +166,6 @@ h6 {
         display: none
     }
     #sidebar {
-        width: 40%;
         padding: 20px;
         float: left;
         position: absolute;

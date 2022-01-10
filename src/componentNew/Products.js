@@ -4,6 +4,7 @@ import Layout from './Layout';
 import Filter from './Filter';
 import { getProducts } from "../product";
 import SplitButton from './SplitButton';
+import ProductCard from './ProductCard';
 
 const Element = ({ className, match }) => {
     const [products, setProducts] = useState([])
@@ -22,13 +23,13 @@ const Element = ({ className, match }) => {
         <Layout>
             <div className={className}>
                 <div className="prod-content">
-
+                    {/* 
                     <nav class="breadcrumb">
                         <a class="breadcrumb-item" href="#">首頁</a>
                         <a class="breadcrumb-item" href="#">首頁下一頁</a>
                         <a class="breadcrumb-item active" href="#">當前頁</a>
-                    </nav>
-                    <SplitButton />
+                    </nav> */}
+                    {/* <SplitButton /> */}
 
                     <div class="dropdown-box">
                         <div class="dropdown">
@@ -46,7 +47,12 @@ const Element = ({ className, match }) => {
                     </div>
 
                     <div className="row">
-                        {products && products.map(item => (
+                        {products && products.map(product => (
+                            <div className="col-6 col-lg-3 mt-3">
+                                <ProductCard product={product} editable={false} />
+                            </div>
+                        ))}
+                        {/* {products && products.map(item => (
                             <a className="col-6 col-lg-3 mt-3" href={`/product/${item.id}`} style={{ textDecoration: "none", color: "#000" }}>
                                 <div className="card">
                                     <img src="https://cf.shopee.tw/file/b5772fc8fe61728bd8afd0b135c54cf3_tn" className="card-img-top card-img-size"
@@ -57,15 +63,9 @@ const Element = ({ className, match }) => {
                                         <p class="card-text">${item.price}</p>
                                         <p class="card-text">數量：{item.stock}</p>
                                     </div>
-                                    {/* <div className="card-body">
-                                    <p className="card-text card-content">名稱：{item.name.slice(0, 10)}</p>
-                                    <p className="card-text card-content">描述：{item.description.slice(0, 10)}</p>
-                                    <p className="price-div">價格：{item.price}</p>
-                                    <p className="">數量：{item.stock}</p>
-                                </div> */}
                                 </div>
                             </a>
-                        ))}
+                        ))} */}
                     </div>
                 </div>
             </div>
