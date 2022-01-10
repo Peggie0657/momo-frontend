@@ -206,6 +206,8 @@ const Cart = () => {
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('calories');
     const [selected, setSelected] = React.useState([]);
+    const [selectedArr, setSelectedArr] = React.useState([]);
+    const [total, setTotal] = React.useState(0);
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -226,24 +228,39 @@ const Cart = () => {
         setSelected([]);
     };
 
-    const handleClick = (event, name) => {
+    const handleClick = (row, name) => {
         const selectedIndex = selected.indexOf(name);
         let newSelected = [];
+        let newSelectedArr = [];
 
         if (selectedIndex === -1) {
             newSelected = newSelected.concat(selected, name);
+            newSelectedArr = newSelectedArr.concat(selectedArr, row)
         } else if (selectedIndex === 0) {
             newSelected = newSelected.concat(selected.slice(1));
+            newSelectedArr = newSelectedArr.concat(selectedArr.slice(1))
         } else if (selectedIndex === selected.length - 1) {
             newSelected = newSelected.concat(selected.slice(0, -1));
+            newSelectedArr = newSelectedArr.concat(selectedArr.slice(0, -1))
         } else if (selectedIndex > 0) {
             newSelected = newSelected.concat(
                 selected.slice(0, selectedIndex),
                 selected.slice(selectedIndex + 1),
             );
-        }
+            newSelectedArr = newSelectedArr.concat(
+                selectedArr.slice(0, selectedIndex),
+                selectedArr.slice(selectedIndex + 1),
+            )
 
+        }
+        let num = 0
+        newSelectedArr.forEach(item => {
+            num = parseInt(num) + parseInt(item.num * (item.product && item.product.price))
+
+        })
         setSelected(newSelected);
+        setSelectedArr(newSelectedArr);
+        setTotal(num)
     };
 
     const handleChangePage = (event, newPage) => {
@@ -257,15 +274,6 @@ const Cart = () => {
 
 
     const isSelected = (name) => selected.indexOf(name) !== -1;
-
-    const total = () => {
-        let num = 0
-        products.forEach(item => {
-            num = num + item.num * item.product.price
-
-        })
-        return num;
-    }
 
     useEffect(() => {
         setProducts(getCart())
@@ -309,13 +317,13 @@ const Cart = () => {
                  rows.slice().sort(getComparator(order, orderBy)) */}
                                                 {stableSort(products, getComparator(order, orderBy))
                                                     .map((row, index) => {
-                                                        const isItemSelected = isSelected(row.name);
+                                                        const isItemSelected = isSelected(row.product && row.product.name || "");
                                                         const labelId = `enhanced-table-checkbox-${index}`;
 
                                                         return (
                                                             <TableRow
                                                                 hover
-                                                                onClick={(event) => handleClick(event, row.name)}
+                                                                onClick={() => handleClick(row, row.product && row.product.name || "")}
                                                                 role="checkbox"
                                                                 aria-checked={isItemSelected}
                                                                 tabIndex={-1}
@@ -337,10 +345,10 @@ const Cart = () => {
                                                                     scope="row"
                                                                     padding="none"
                                                                 >
-                                                                    {row.product.name}
+                                                                    {row.product && row.product.name || ""}
                                                                 </TableCell>
-                                                                <TableCell align="right">{row.product.name}</TableCell>
-                                                                <TableCell align="right">{row.product.price}</TableCell>
+                                                                <TableCell align="right">{row.product && row.product.name || ""}</TableCell>
+                                                                <TableCell align="right">{row.product && row.product.price || ""}</TableCell>
                                                                 <TableCell align="right">1</TableCell>
                                                                 <TableCell align="right">{row.num}</TableCell>
                                                             </TableRow>
@@ -360,8 +368,8 @@ const Cart = () => {
                                         </Table>
                                     </TableContainer>
                                     <br />
-                                    <Typography variant="h6" gutterBottom component="div" marginLeft={120}>
-                                        Total {total()} 台幣
+                                    <Typography variant="h6" gutterBottom component="div" marginLeft={100}>
+                                        Total {total} 台幣
                                     </Typography>
                                 </Paper>
                             </Box>

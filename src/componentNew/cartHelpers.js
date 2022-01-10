@@ -4,8 +4,17 @@ export const addItem = (item, next) => {
         if (localStorage.getItem('cart')) {
             cart = JSON.parse(localStorage.getItem('cart'))
         }
-        cart.push(item)
-
+        if (cart.find(product => product.product.id === item.product.id)) {
+            const index = cart.indexOf(cart.find(product => product.product.id === item.product.id))
+            const num = cart.find(product => product.product.id === item.product.id).num
+            const total = parseInt(num) + parseInt(item.num)
+            cart[index] = {
+                num: total,
+                product: cart.find(product => product.product.id === item.product.id).product
+            }
+        } else {
+            cart.push(item)
+        }
         // remove duplicates
         // build an Array from new Set and turn it back into array using Array.from
         // so that later we can re-map it
@@ -15,8 +24,8 @@ export const addItem = (item, next) => {
         // ...with the array of ids we got on when first map() was used
         // run map() on it again and return the actual product from the cart
 
-        // cart = Array.from(new Set(cart.map(p => p._id))).map(id => {
-        //     return cart.find(p => p._id === id)
+        // cart = Array.from(new Set(cart.map(p => p.product.id))).map(id => {
+        //     return cart.find(p => p.product.id === id)
         // })
 
         localStorage.setItem('cart', JSON.stringify(cart));

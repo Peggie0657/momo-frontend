@@ -141,7 +141,7 @@ const OrderTable = () => {
         <>
             <h4>我的訂單</h4>
             <Paper elevation={3}>
-                <Box sx={{ width: '100%', bgcolor: 'background.paper', minWidth: "1440px" }}>
+                <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
                     <TableContainer >
                         <Table aria-label="collapsible table">
                             <TableHead>

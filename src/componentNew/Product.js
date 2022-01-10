@@ -39,8 +39,8 @@ const Element = ({ className, match }) => {
     const { num } = values;
     const productId = match.params.productId
     const addIntoCart = () => {
-        console.info(product);
-        addItem({ num, product }, () => { //數量,規格
+        const number = parseInt(num)
+        addItem({ num: number, product }, () => { //數量,規格
             setRedirect(true)
         })
     }
@@ -146,7 +146,7 @@ const Element = ({ className, match }) => {
                                         precision={0.5}
                                         emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
                                     />
-                                    <Box sx={{ ml: 2 }}>{labels[star]}</Box>
+                                    <Box sx={{ ml: 2 }}>({labels[star]})</Box>
                                 </Box>
                                 <Typography variant="h5" gutterBottom component="div" marginTop={5}>
 
