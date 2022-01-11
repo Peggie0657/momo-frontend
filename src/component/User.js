@@ -28,6 +28,10 @@ const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
+const formatDate = (d) => {
+    return moment(new Date(d)).format("YYYY-MM-DD")
+}
+
 const genderSel = [
     {
         value: '0',
@@ -42,7 +46,7 @@ const genderSel = [
 const Element = ({ className }) => {
     const [gender, setGender] = useState("");
     const [user, setUser] = useState({});
-    const [date, setDate] = useState(moment(new Date()).format("YYYY-MM-DD"));
+    const [date, setDate] = useState(formatDate());
     const [error, setError] = useState();
 
     const [values, setValues] = useState({
@@ -106,12 +110,14 @@ const Element = ({ className }) => {
     const handleSubmit = (user, token) => {
         const obj = {
             ...user,
-            birthday: new Date(date),
+            birthday: date,
             gender: gender
         }
         putUser(obj, token)
             .then(data => {
-                setShowSave(true)
+                if (data) {
+                    setShowSave(true)
+                }
             })
     }
 
