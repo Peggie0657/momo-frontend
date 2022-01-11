@@ -1,7 +1,7 @@
 import { API } from "../config";
 
 export const getProducts = () => {
-    return fetch(`${API}/products`, {
+    return fetch(`${API}/product`, {
         method: "GET",
     })
         .then(response => {

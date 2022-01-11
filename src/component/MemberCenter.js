@@ -72,7 +72,7 @@ const Element = ({ className }) => {
 
         getOrders()
             .then(data => {
-                console.log(data)
+                // console.log(data)
             })
     }, [])
 
