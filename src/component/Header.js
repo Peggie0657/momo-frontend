@@ -215,7 +215,7 @@ const Element = ({ className }) => {
                                             <NotificationsIcon />
                                         </Badge>
                                     </IconButton>
-                                    <IconButton
+                                    {/* <IconButton
                                         size="large"
                                         edge="end"
                                         aria-label="account of current user"
@@ -224,8 +224,8 @@ const Element = ({ className }) => {
                                         // onClick={handleProfileMenuOpen}
                                         color="inherit"
                                     >
-                                        {/* <AccountCircle /> */}
-                                    </IconButton>
+                                        <AccountCircle />
+                                    </IconButton> */}
                                 </Box>
 
                                 <Box sx={{ flexGrow: 0 }}>
@@ -267,7 +267,7 @@ const Element = ({ className }) => {
                                     <ShoppingCartIcon />
                                 </StyledBadge>
                             </IconButton>
-                            <IconButton
+                            {/* <IconButton
                                 size="large"
                                 edge="end"
                                 aria-label="account of current user"
@@ -276,8 +276,8 @@ const Element = ({ className }) => {
                                 // onClick={handleProfileMenuOpen}
                                 color="inherit"
                             >
-                                {/* <AccountCircle /> */}
-                            </IconButton>
+                                <AccountCircle />
+                            </IconButton> */}
                         </Box>
                     </Toolbar>
                 </Container>
