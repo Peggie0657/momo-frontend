@@ -146,14 +146,15 @@ const Element = ({ className }) => {
 
     return (<div className={className}>
         <Paper elevation={3} sx={{ padding: "1% 5% 5% 5%" }}>
-            <Avatar sx={{ height: '200px', width: '200px', margin: "5% auto" }}></Avatar>
+            <Avatar sx={{ height: '200px', width: '200px', margin: "5% auto", backgroundColor: '#FFF0F5' }}></Avatar>
             <Accordion>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
+                    sx={{backgroundColor: '#f7bacf'}}
                 >
-                    <Typography>基本資料</Typography>
+                    <Typography sx={{color: '#BB3D00'}}>基本資料</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Box
@@ -233,8 +234,9 @@ const Element = ({ className }) => {
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel2a-content"
                     id="panel2a-header"
+                    sx={{backgroundColor: '#f7bacf'}}
                 >
-                    <Typography>變更密碼</Typography>
+                    <Typography sx={{color: '#BB3D00'}}>變更密碼</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Box
@@ -343,7 +345,9 @@ const Element = ({ className }) => {
 }
 
 const User = styled(Element)`
-
+Button{
+    backgroundColor: #f7bacf;
+}
 `
 
 export default User;
