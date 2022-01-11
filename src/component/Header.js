@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { styled, alpha, createTheme } from '@mui/material/styles';
 import styledComponents from 'styled-components'
 import AppBar from '@mui/material/AppBar';
@@ -20,7 +21,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Badge from '@mui/material/Badge';
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
 import ChatIcon from '@mui/icons-material/Chat';
 import { isAuthenticated, signout } from "../auth";
 import { itemTotal } from './cartHelpers'
@@ -191,7 +192,7 @@ const Element = ({ className }) => {
                                     <Button
                                         key={item.id}
                                         onClick={handleCloseNavMenu}
-                                        sx={{ my: 2, color: 'white', display: 'block' }}
+                                        sx={{ my: 2, color: '#af4448', display: 'block' }}
                                         href={item.path}
                                     >
                                         {item.title}
@@ -250,11 +251,11 @@ const Element = ({ className }) => {
                                         onClose={handleCloseUserMenu}
                                     >
                                         {settings.map(item => (
-                                            <MenuItem key={item.id} onClick={() => handleCloseNavMenu(item.id)}>
+                                            <MenuItem component={Link} to={item.path} key={item.id} onClick={() => handleCloseNavMenu(item.id)}>
                                                 {/* <Typography textAlign="center">{setting}</Typography> */}
-                                                <Link href={item.path} underline="none">
-                                                    {item.title}
-                                                </Link>
+                                                {/* <Link href={item.path} underline="none"> */}
+                                                {item.title}
+                                                {/* </Link> */}
                                             </MenuItem>
                                         ))}
                                     </Menu>

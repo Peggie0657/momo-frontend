@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from './Header';
-import Footer from './Footer';
+import Header from '../component/Header';
+import Footer from '../component/Footer';
 
-const Layout = ({ className, children }) => (
+const Layout = ({ title = "", description = "", className, children }) => (
     <div>
         <Header />
         <div className={className}>{children}</div>

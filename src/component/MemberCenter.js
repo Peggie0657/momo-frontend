@@ -14,6 +14,7 @@ import { isAuthenticated } from "../auth";
 import { getOrders } from "../order";
 import MyProduct from './MyProduct';
 import Layout from './Layout';
+import User from './User';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -71,7 +72,7 @@ const Element = ({ className }) => {
 
         getOrders()
             .then(data => {
-                console.log(data)
+                // console.log(data)
             })
     }, [])
 
@@ -90,77 +91,88 @@ const Element = ({ className }) => {
                             container
                             spacing={0}
                             direction="column"
-                            // alignItems="center"
-                            // justifyContent="center"
-                            style={{ minHeight: '100vh' }}
+                        // alignItems="center"
+                        // justifyContent="center"
+                        // style={{ minHeight: '100vh' }}
                         >
 
                             <Grid item xs={3}>
                                 <TabPanel value={value} index={0}>
-                                    <div className="member-box">
-                                        <div className="account-content">
-                                            <div className="wrap">
-                                                <div className="account">
-                                                    <div className="accountWrap">
-                                                        <a href="" className="phoho-a">
-                                                            <img src="https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1611735292266.jpg" alt="" className="photo" />
-                                                        </a>
-                                                        <a href="" className="account-a">{user.email}</a>
+                                    <Container maxWidth="lg">
+
+                                        {/* <div className="member-box">
+                                            <div className="account-content">
+                                                <div className="wrap">
+                                                    <div className="account">
+                                                        <div className="accountWrap">
+                                                            <a href="" className="phoho-a">
+                                                                <img src="https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1611735292266.jpg" alt="" className="photo" />
+                                                            </a>
+                                                            <a href="" className="account-a">{user.email}</a>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div className="accordion update-wrap" id="accordionPanelsStayOpenExample">
-                                                    <div className="accordion-item">
-                                                        <h2 className="accordion-header" id="panelsStayOpen-headingOne">
-                                                            <button className="accordion-button btn-pink" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">會員基本資料</button>
-                                                        </h2>
-                                                        <div id="panelsStayOpen-collapseOne" className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-                                                            <div className="accordion-body">
-                                                                <div className="input-wrap">
-                                                                    <form action="">
-                                                                        <label for="name">真實姓名：</label>
-                                                                        <input type="text" name="name" id="name" value={user.username} /><br /><br />
-                                                                        <label for="phone">聯絡電話：</label>
-                                                                        <input type="text" name="phone" id="phone" value="0911122233" /><br /><br />
-                                                                        <label for="address">通訊地址：</label>
-                                                                        <input type="text" name="address" id="address" value="台中市南屯區公益路二段" />
-                                                                    </form>
+                                                    <div className="accordion update-wrap" id="accordionPanelsStayOpenExample">
+                                                        <div className="accordion-item">
+                                                            <h2 className="accordion-header" id="panelsStayOpen-headingOne">
+                                                                <button className="accordion-button btn-pink" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">會員基本資料</button>
+                                                            </h2>
+                                                            <div id="panelsStayOpen-collapseOne" className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                                                                <div className="accordion-body">
+                                                                    <div className="input-wrap">
+                                                                        <form action="">
+                                                                            <label for="name">真實姓名：</label>
+                                                                            <input type="text" name="name" id="name" value={user.username} /><br /><br />
+                                                                            <label for="phone">聯絡電話：</label>
+                                                                            <input type="text" name="phone" id="phone" value="0911122233" /><br /><br />
+                                                                            <label for="address">通訊地址：</label>
+                                                                            <input type="text" name="address" id="address" value="台中市南屯區公益路二段" />
+                                                                        </form>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div className="accordion-item">
-                                                        <h2 className="accordion-header" id="panelsStayOpen-headingThree">
-                                                            <button className="accordion-button btn-pink collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">變更密碼</button>
-                                                        </h2>
-                                                        <div id="panelsStayOpen-collapseThree" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
-                                                            <div className="accordion-body">
-                                                                <div className="input-wrap">
-                                                                    <form action="">
-                                                                        <label for="oldPwd">請輸入舊密碼：</label>
-                                                                        <input type="text" name="oldPwd" id="oldPwd" /><br /><br />
-                                                                        <label for="newPwd">請輸入新密碼：</label>
-                                                                        <input type="text" name="newPwd" id="newPwd" /><br /><br />
-                                                                        <label for="newPwd2">請確認新密碼：</label>
-                                                                        <input type="text" name="newPwd2" id="newPwd2" />
-                                                                    </form>
+                                                        <div className="accordion-item">
+                                                            <h2 className="accordion-header" id="panelsStayOpen-headingThree">
+                                                                <button className="accordion-button btn-pink collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">變更密碼</button>
+                                                            </h2>
+                                                            <div id="panelsStayOpen-collapseThree" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                                                                <div className="accordion-body">
+                                                                    <div className="input-wrap">
+                                                                        <form action="">
+                                                                            <label for="oldPwd">請輸入舊密碼：</label>
+                                                                            <input type="text" name="oldPwd" id="oldPwd" /><br /><br />
+                                                                            <label for="newPwd">請輸入新密碼：</label>
+                                                                            <input type="text" name="newPwd" id="newPwd" /><br /><br />
+                                                                            <label for="newPwd2">請確認新密碼：</label>
+                                                                            <input type="text" name="newPwd2" id="newPwd2" />
+                                                                        </form>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <button className="btn pinkBtn btn-light btn-mg">儲存變更</button>
                                                     </div>
-                                                    <button className="btn pinkBtn btn-light btn-mg">儲存變更</button>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                        </div> */}
+                                        <User />
+                                    </Container>
                                 </TabPanel>
                                 <TabPanel value={value} index={1}>
-                                    <div >123123...</div>
+                                    <Container maxWidth="lg">
+                                        <div >123123...</div>
+                                    </Container>
                                 </TabPanel>
                                 <TabPanel value={value} index={2}>
-                                    <MyProduct productsFetch={productsFetch} products={products} />
+                                    <Container maxWidth="lg">
+
+                                        <MyProduct productsFetch={productsFetch} products={products} />
+                                    </Container>
                                 </TabPanel>
                                 <TabPanel value={value} index={3}>
-                                    <OrderTable />
+                                    <Container maxWidth="lg">
+                                        <OrderTable />
+                                    </Container>
                                 </TabPanel>
                             </Grid>
 

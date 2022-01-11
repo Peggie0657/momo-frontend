@@ -15,7 +15,7 @@ const firebaseConfig = {
 
 export const signup = (user) => {
     // console.log(name, email, password)
-    return fetch(`${API}/auth/register`, {
+    return fetch(`${API}/auth/user`, {
         method: "POST",
         headers: {
             Accept: 'application/json',
@@ -49,6 +49,54 @@ export const signin = (user) => {
             console.log(err)
         })
 }
+
+export const getUser = (token) => {
+    return fetch(`${API}/auth/user`, {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err))
+}
+
+export const putUser = (user, token) => {
+    return fetch(`${API}/auth/user`, {
+        method: "PUT",
+        headers: {
+            Accept: 'application/json',
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(user)
+
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err))
+}
+
+export const changePw = (user, token) => {
+    return fetch(`${API}/auth/password`, {
+        method: "POST",
+        headers: {
+            Accept: 'application/json',
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(user)
+
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err))
+}
+
 
 export const authenticate = (data) => {
     if (typeof window !== 'undefined') {

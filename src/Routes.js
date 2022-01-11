@@ -1,15 +1,15 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Signin from './componentNew/Signin';
-import Signup from './componentNew/Signup';
+import Signin from './component/Signin';
+import Signup from './component/Signup';
 import Dashboard from './user/UserDashboard'
-import Home from './componentNew/Home';
-import Shop from './component/Shop';
-import Product from './componentNew/Product';
-import Products from './componentNew/Products';
+import Home from './component/Home';
+// import Shop from './component/Shop';
+import Product from './component/Product';
+import Products from './component/Products';
 // import Products from './componentNew/Products';
-import Cart from './component/Cart';
-import MemberCenter from './componentNew/MemberCenter';
+// import Cart from './component/Cart';
+import MemberCenter from './component/MemberCenter';
 import Profile from './user/Profile'
 
 const Routes = () => {
@@ -17,8 +17,8 @@ const Routes = () => {
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={Home} />
-                <Route path="/shop" exact component={Shop} />
-                <Route path="/cart" exact component={Cart} />
+                {/* <Route path="/shop" exact component={Shop} /> */}
+                {/* <Route path="/cart" exact component={Cart} /> */}
                 <Route path="/products/:categoryId" exact component={Products} />
                 <Route path="/products" exact component={Products} />
                 <Route path="/product/:productId" exact component={Product} />
