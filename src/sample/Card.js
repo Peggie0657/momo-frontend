@@ -14,7 +14,7 @@ const Card = ({ product, showViewProductButton = true, showAddToCartButton = tru
                 <Link to={`/product/${product._id}`} className="mr-2">
                     <button className="btn btn-outline-primary mt-2 mb-2">
                         View Product
-                </button>
+                    </button>
                 </Link>
             )
         )

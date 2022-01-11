@@ -14,6 +14,7 @@ import styledComponent from 'styled-components'
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Layout from '../sample/Layout';
+import Comment from './Comment';
 import { addItem, itemTotal } from './cartHelpers';
 import { getProduct } from '../product';
 
@@ -210,7 +211,8 @@ const Element = ({ className, match }) => {
                             <p>彷彿集結秋天的氣息。 猶如新鮮採摘的清新梨子香氣，搭配白色小蒼蘭所綻放的花香，佐以琥珀、廣藿香與木質香調的柔和芳香。 擁有奢華的金色光澤。</p>
                         </div>
                         <hr />
-                        <div className="commentWrap">
+                        <Comment />
+                        {/* <div className="commentWrap">
                             <Box sx={{ marginBottom: "20px" }}>
                                 <Rating
                                     name="simple-controlled"
@@ -228,9 +230,7 @@ const Element = ({ className, match }) => {
                                 />
                             </Box>
                             <Button variant="contained">送出評論</Button>
-
-                            {/* <button type="submit" className="btn btnRed btn-left-40">送出評論</button> */}
-                        </div>
+                        </div> */}
                     </Paper>
                 </div>
 

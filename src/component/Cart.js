@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from "react-router";
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
@@ -203,13 +205,15 @@ EnhancedTableToolbar.propTypes = {
 };
 
 const Cart = () => {
-    const [order, setOrder] = React.useState('asc');
-    const [orderBy, setOrderBy] = React.useState('calories');
-    const [selected, setSelected] = React.useState([]);
-    const [selectedArr, setSelectedArr] = React.useState([]);
-    const [total, setTotal] = React.useState(0);
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(5);
+    const [redirect, setRedirect] = useState(false)
+    const [order, setOrder] = useState('asc');
+    const [orderBy, setOrderBy] = useState('calories');
+    const [selected, setSelected] = useState([]);
+    const [selectedArr, setSelectedArr] = useState([]);
+    const [total, setTotal] = useState(0);
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = useState(5);
+    const history = useHistory();
 
     const [products, setProducts] = useState([])
 
@@ -221,8 +225,14 @@ const Cart = () => {
 
     const handleSelectAllClick = (event) => {
         if (event.target.checked) {
-            const newSelecteds = products.map((n) => n.name);
+            const newSelecteds = products.map((n) => n.product.name);
             setSelected(newSelecteds);
+            setSelectedArr(products);
+            let num = 0
+            products.forEach(item => {
+                num = parseInt(num) + parseInt(item.num * (item.product && item.product.price))
+            })
+            setTotal(num)
             return;
         }
         setSelected([]);
@@ -272,6 +282,15 @@ const Cart = () => {
         setPage(0);
     };
 
+    const handleCheckout = () => {
+        history.push({
+            pathname: "/checkout",
+            state: {
+                selectedArr: selectedArr,
+                total: total
+            }
+        })
+    }
 
     const isSelected = (name) => selected.indexOf(name) !== -1;
 
@@ -395,7 +414,7 @@ const Cart = () => {
                         </div>
                         <div className="modal-footer">
                             {/* <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">X</button> */}
-                            <button type="button" className="btn btn-primary">結帳</button>
+                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={handleCheckout}>結帳</button>
                         </div>
                     </div>
                 </div>

@@ -2,15 +2,11 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Signin from './component/Signin';
 import Signup from './component/Signup';
-import Dashboard from './user/UserDashboard'
 import Home from './component/Home';
-// import Shop from './component/Shop';
 import Product from './component/Product';
 import Products from './component/Products';
-// import Products from './componentNew/Products';
-// import Cart from './component/Cart';
+import Checkout from './component/Checkout';
 import MemberCenter from './component/MemberCenter';
-import Profile from './user/Profile'
 
 const Routes = () => {
     return (
@@ -18,7 +14,7 @@ const Routes = () => {
             <Switch>
                 <Route path="/" exact component={Home} />
                 {/* <Route path="/shop" exact component={Shop} /> */}
-                {/* <Route path="/cart" exact component={Cart} /> */}
+                <Route path="/checkout" exact component={Checkout} />
                 <Route path="/products/:categoryId" exact component={Products} />
                 <Route path="/products" exact component={Products} />
                 <Route path="/product/:productId" exact component={Product} />
