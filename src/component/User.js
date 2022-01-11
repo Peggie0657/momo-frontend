@@ -345,9 +345,7 @@ const Element = ({ className }) => {
 }
 
 const User = styled(Element)`
-Button{
-    backgroundColor: #f7bacf;
-}
+
 `
 
 export default User;
