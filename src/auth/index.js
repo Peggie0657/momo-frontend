@@ -1,4 +1,17 @@
 import { API } from "../config";
+import { getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyCQGDGEqO-l0rnT35viJAezNuXIDCl60sU",
+    authDomain: "momologin1227.firebaseapp.com",
+    projectId: "momologin1227",
+    storageBucket: "momologin1227.appspot.com",
+    messagingSenderId: "446295193951",
+    appId: "1:446295193951:web:3cdc830cb982d3fd665eea",
+    measurementId: "G-W5KGD59XHP"
+};
 
 export const signup = (user) => {
     // console.log(name, email, password)
@@ -68,4 +81,24 @@ export const isAuthenticated = () => {
     } else {
         return false;
     }
+}
+
+export const googlelogin = () => {
+    initializeApp(firebaseConfig);
+    // const analytics = getAnalytics(app);
+
+    const auth = getAuth();
+    const providerGoogle = new GoogleAuthProvider();
+    signInWithPopup(auth, providerGoogle)
+        .then((result) => {
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            const user = result.user;
+            console.log(user)
+        }).catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            const email = error.email;
+            const credential = GoogleAuthProvider.credentialFromError(error);
+        });
 }

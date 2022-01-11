@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components'
 import Footer from './Footer';
-import { signin, authenticate } from "../auth";
+import { signin, authenticate, googlelogin } from "../auth";
 
 const Element = ({ className }) => {
     const history = useHistory();
@@ -44,6 +44,9 @@ const Element = ({ className }) => {
                 // }
             })
     }
+    const google = () => {
+        googlelogin()
+    }
     return (
         <div className={className} style={{ backgroundColor: "rgb(238, 77, 45)" }}>
 
@@ -71,12 +74,12 @@ const Element = ({ className }) => {
                     <div id="middleLine">------------------ or ------------------</div>
                     <div className='pb-4' style={{ display: "flex", textAlign: "center" }}>
                         <div style={{ marginRight: "20px" }}>
-                            <a class="btn btn-block btn-social btn-facebook">
+                            <a class="btn btn-block btn-social btn-facebook" >
                                 <i class="fab fa-facebook-f" style={{ marginRight: "15px" }}></i>Facebook
                             </a>
                         </div>
                         <div>
-                            <a class="btn btn-block btn-social btn-google">
+                            <a class="btn btn-block btn-social btn-google" onClick={google}>
                                 <i class="fab fa-google" style={{ marginRight: "15px" }}></i>Google
                             </a>
                         </div>
