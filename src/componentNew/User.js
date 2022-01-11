@@ -19,6 +19,7 @@ import TextField from '@mui/material/TextField';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Button from '@mui/material/Button';
+import { pink } from '@mui/material/colors';
 
 const currencies = [
     {
@@ -74,21 +75,22 @@ const Element = ({ className }) => {
 
     return (<div className={className}>
         <Paper elevation={3} sx={{ padding: "1% 5% 5% 5%" }}>
-            <Avatar sx={{ height: '200px', width: '200px', margin: "5% auto" }}></Avatar>
+            <Avatar sx={{ height: '200px', width: '200px', margin: "5% auto", backgroundColor: '#fce4ec'}}></Avatar>
             <Accordion>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
+                    sx={{backgroundColor: '#fce4ec', color: '#c38a9e'}}
                 >
-                    <Typography>基本資料</Typography>
+                    <Typography sx={{fontWeight: 'bold'}}>基本資料</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Box
                         component="form"
                         sx={{
                             '& .MuiTextField-root': { m: 1, width: '25ch' },
-                            textAlign: "center"
+                            textAlign: "center",
                         }}
                         noValidate
                         autoComplete="off"
@@ -149,8 +151,9 @@ const Element = ({ className }) => {
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel2a-content"
                     id="panel2a-header"
+                    sx={{backgroundColor: '#fce4ec', color: '#c38a9e'}}
                 >
-                    <Typography>變更密碼</Typography>
+                    <Typography sx={{fontWeight: 'bold'}}>變更密碼</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <FormControl sx={{ m: 1, width: '90%', marginLeft: "5%" }} variant="outlined">
