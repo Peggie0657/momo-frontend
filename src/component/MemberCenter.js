@@ -8,8 +8,7 @@ import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Grid from '@mui/material/Grid';
 import Tab from '@mui/material/Tab';
-import OrderTable from './OrderTable';
-import { getProducts } from "../product";
+import MyOrder from './MyOrder';
 import { isAuthenticated } from "../auth";
 import { getOrders } from "../order";
 import MyProduct from './MyProduct';
@@ -45,36 +44,9 @@ TabPanel.propTypes = {
 const Element = ({ className }) => {
     const [value, setValue] = React.useState(0);
 
-
-    const [products, setProducts] = useState([])
-    const userId = isAuthenticated() && isAuthenticated().id
-    const user = isAuthenticated()
-
-    const productsFetch = (obj) => {
-        // setProducts(arr)
-        const arr = [...products]
-        arr.push(obj)
-
-        setProducts(arr)
-    }
-
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
-    useEffect(() => {
-        getProducts()
-            .then(data => {
-                if (data) {
-                    setProducts(data.filter(item => item.userBean.id === userId))
-                }
-            })
-
-        getOrders()
-            .then(data => {
-                // console.log(data)
-            })
-    }, [])
 
     return (
         <>
@@ -165,13 +137,12 @@ const Element = ({ className }) => {
                                 </TabPanel>
                                 <TabPanel value={value} index={2}>
                                     <Container maxWidth="lg">
-
-                                        <MyProduct productsFetch={productsFetch} products={products} />
+                                        <MyProduct />
                                     </Container>
                                 </TabPanel>
                                 <TabPanel value={value} index={3}>
                                     <Container maxWidth="lg">
-                                        <OrderTable />
+                                        <MyOrder />
                                     </Container>
                                 </TabPanel>
                             </Grid>

@@ -4,13 +4,13 @@ export const addItem = (item, next) => {
         if (localStorage.getItem('cart')) {
             cart = JSON.parse(localStorage.getItem('cart'))
         }
-        if (cart.find(product => product.product.id === item.product.id)) {
-            const index = cart.indexOf(cart.find(product => product.product.id === item.product.id))
-            const num = cart.find(product => product.product.id === item.product.id).num
+        if (cart.find(product => product.id === item.id)) {
+            const index = cart.indexOf(cart.find(product => product.id === item.id))
+            const num = cart.find(product => product.id === item.id).num
             const total = parseInt(num) + parseInt(item.num)
             cart[index] = {
-                num: total,
-                product: cart.find(product => product.product.id === item.product.id).product
+                ...cart.find(product => product.id === item.id),
+                num: total
             }
         } else {
             cart.push(item)
@@ -76,7 +76,7 @@ export const removeItem = (productId) => {
         }
 
         cart.map((product, i) => {
-            if (product._id === productId) {
+            if (product.id === productId) {
                 cart.splice(i, 1)
             }
         })
@@ -85,9 +85,8 @@ export const removeItem = (productId) => {
     return cart;
 }
 
-export const emptyCart = next => {
+export const emptyCart = () => {
     if (typeof window !== 'undefined') {
         localStorage.removeItem("cart");
-        next();
     }
 }

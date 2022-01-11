@@ -225,12 +225,12 @@ const Cart = () => {
 
     const handleSelectAllClick = (event) => {
         if (event.target.checked) {
-            const newSelecteds = products.map((n) => n.product.name);
+            const newSelecteds = products.map((n) => n.name);
             setSelected(newSelecteds);
             setSelectedArr(products);
             let num = 0
             products.forEach(item => {
-                num = parseInt(num) + parseInt(item.num * (item.product && item.product.price))
+                num = parseInt(num) + parseInt(item.num * item.price)
             })
             setTotal(num)
             return;
@@ -265,7 +265,7 @@ const Cart = () => {
         }
         let num = 0
         newSelectedArr.forEach(item => {
-            num = parseInt(num) + parseInt(item.num * (item.product && item.product.price))
+            num = parseInt(num) + parseInt(item.num * item.price)
 
         })
         setSelected(newSelected);
@@ -336,13 +336,13 @@ const Cart = () => {
                  rows.slice().sort(getComparator(order, orderBy)) */}
                                                 {stableSort(products, getComparator(order, orderBy))
                                                     .map((row, index) => {
-                                                        const isItemSelected = isSelected(row.product && row.product.name || "");
+                                                        const isItemSelected = isSelected(row.name);
                                                         const labelId = `enhanced-table-checkbox-${index}`;
 
                                                         return (
                                                             <TableRow
                                                                 hover
-                                                                onClick={() => handleClick(row, row.product && row.product.name || "")}
+                                                                onClick={() => handleClick(row, row.name || "")}
                                                                 role="checkbox"
                                                                 aria-checked={isItemSelected}
                                                                 tabIndex={-1}
@@ -364,10 +364,10 @@ const Cart = () => {
                                                                     scope="row"
                                                                     padding="none"
                                                                 >
-                                                                    {row.product && row.product.name || ""}
+                                                                    {row.name || ""}
                                                                 </TableCell>
-                                                                <TableCell align="right">{row.product && row.product.name || ""}</TableCell>
-                                                                <TableCell align="right">{row.product && row.product.price || ""}</TableCell>
+                                                                <TableCell align="right">{row.name || ""}</TableCell>
+                                                                <TableCell align="right">{row.price || ""}</TableCell>
                                                                 <TableCell align="right">1</TableCell>
                                                                 <TableCell align="right">{row.num}</TableCell>
                                                             </TableRow>

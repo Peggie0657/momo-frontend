@@ -41,7 +41,10 @@ const Element = ({ className, match }) => {
     const productId = match.params.productId
     const addIntoCart = () => {
         const number = parseInt(num)
-        addItem({ num: number, product }, () => { //數量,規格
+        addItem({
+            ...product,
+            num: number
+        }, () => { //數量,規格
             setRedirect(true)
         })
     }

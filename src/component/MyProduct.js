@@ -5,13 +5,33 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import AddProduct from './AddProduct';
 import ProductCard from './ProductCard';
+import { getProducts } from "../product";
+import { isAuthenticated } from "../auth";
 
 
-const Element = ({ className, productsFetch, products }) => {
+const Element = ({ className }) => {
     const [value, setValue] = React.useState(0);
+    const [products, setProducts] = useState([])
+    const userId = isAuthenticated() && isAuthenticated().id
+
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+    const productsFetch = (obj) => {
+        // setProducts(arr)
+        const arr = [...products]
+        arr.push(obj)
+
+        setProducts(arr)
+    }
+    useEffect(() => {
+        getProducts()
+            .then(data => {
+                if (data) {
+                    setProducts(data.filter(item => item.userBean.id === userId))
+                }
+            })
+    }, [])
 
     return (
         <>
