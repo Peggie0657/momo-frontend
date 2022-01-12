@@ -5,6 +5,64 @@ import styled from 'styled-components'
 
 import { addProduct } from "../product";
 import { isAuthenticated } from "../auth";
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import MenuItem from '@mui/material/MenuItem';
+
+const categorySel = [
+    {
+        value: '1',
+        label: '女生衣著',
+    },
+    {
+        value: '2',
+        label: '男生衣著',
+    },
+    {
+        value: '3',
+        label: '運動/健身',
+    },
+    {
+        value: '4',
+        label: '男女鞋',
+    },
+    {
+        value: '5',
+        label: '電腦週邊',
+    },
+    {
+        value: '6',
+        label: '美妝保養',
+    },
+    {
+        value: '7',
+        label: '服飾飾品',
+    },
+    {
+        value: '8',
+        label: '手機相機',
+    },
+    {
+        value: '9',
+        label: '家電影音',
+    },
+    {
+        value: '10',
+        label: '居家生活',
+    },
+    {
+        value: '11',
+        label: '寵物',
+    },
+    {
+        value: '12',
+        label: '戶外/旅行',
+    },
+    {
+        value: '13',
+        label: '書籍',
+    }
+];
 
 const Element = ({ className, productsFetch }) => {
     const [redirect, setRedirect] = useState(false)
@@ -67,17 +125,17 @@ const Element = ({ className, productsFetch }) => {
             </button>
 
             <div className="modal fade" id="addProduct" tabindex="-1" aria-labelledby="addProductLabel" aria-hidden="true">
-                <div className="modal-dialog modal-xl">
+                <div className="modal-dialog modal-lg">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">新增商品</h5>
+                            <h5 className="modal-title" id="exampleModalLabel">&emsp;新增商品</h5>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
                             <div className="container">
                                 <div className="productInformation">
                                     <form action="">
-                                        <b>商品圖片</b>&emsp;
+                                        {/* <b>商品圖片</b>&emsp; */}
                                         <label className="uploadImg">
                                             <input type="file" id="img" className="img" accept="image/*" multiple onChange={handleImages} />
                                             {/* <i className="fa fa-photo"></i>&ensp; */}
@@ -88,42 +146,85 @@ const Element = ({ className, productsFetch }) => {
                                         ))}
                                         {/* <img src={imagesSrc} height={100} style={{ margin: "20px" }} alt="" /> */}
                                         <br /><br />
-
-                                        <b>商品名稱</b>&emsp;
-                                        <input type="text" id="productName" className="productName" value={name} onChange={handleChange("name")} /><br /><br />
-
-                                        <b className="dcTitle">商品描述</b>&emsp;
-                                        <textarea name="description" id="description" cols="30" rows="5" value={description} onChange={handleChange("description")}></textarea><br /><br />
-
-                                        <b className="dcTitle">商品描述</b>&emsp;
-                                        <select style={{ position: "relative", left: "64px" }} onChange={handleChange("category")}>
-                                            <option id="1" >女生衣著</option>
-                                            <option id="2" >男生衣著</option>
-                                            <option id="3" >運動/健身</option>
-                                            <option id="4" >男女鞋</option>
-                                            <option id="5" >電腦週邊</option>
-                                            <option id="6" >美妝保養</option>
-                                            <option id="7" >服飾飾品</option>
-                                            <option id="8" >手機相機</option>
-                                            <option id="9" >家電影音</option>
-                                            <option id="10">居家生活</option>
-                                            <option id="11">寵物</option>
-                                            <option id="12">戶外/旅行</option>
-                                            <option id="13">書籍</option>
-                                        </select>
-                                        <br /><br />
-
-                                        <b>&emsp;&emsp;價格</b>&emsp;
-                                        <input type="number" id="price" className="price" placeholder="NT$" value={price} onChange={handleChange("price")} /><br /><br />
-
-                                        <b className="productSpec">商品數量</b>&emsp;
-                                        <input type="number" id="stock" className="stock" value={stock} onChange={handleChange("stock")} /><br />
                                     </form>
-                                    {/* <div className="downBtn">
-                                        <button id="cancelBtn" className="cancelBtn">取消</button>
-                                        <button id="deleteBtn" className="deleteBtn">下架</button>
-                                        <button id="updateBtn" className="updateBtn">更新</button>
-                                    </div> */}
+                                   <Box
+                                        component="form"
+                                        sx={{
+                                            '& .MuiTextField-root': { m: 1, width: '30ch' },
+                                            textAlign: "center"
+                                        }}
+                                        noValidate
+                                        autoComplete="off"
+                                    >
+                                        <TextField
+                                            id="outlined-productname"
+                                            label="商品名稱"
+                                            type="text"
+                                            value={name}
+                                            onChange={handleChange("name")}
+                                            InputLabelProps={{
+                                                shrink: true,
+                                            }}
+                                        />
+                                        <TextField
+                                            id="outlined-select-category"
+                                            select
+                                            label="商品分類"
+                                            // value={category}
+                                            onChange={handleChange("category")}
+                                        >
+                                            {categorySel.map((option) => (
+                                                <MenuItem key={option.value} value={option.value}  >
+                                                    {option.label}
+                                                </MenuItem>
+                                            ))}
+                                        </TextField>
+                                        <br /><br />
+                                        <TextField
+                                            id="outlined-price"
+                                            label="商品價格"
+                                            type="text"
+                                            placeholder="$"
+                                            value={price}
+                                            onChange={handleChange("price")}
+                                            InputLabelProps={{
+                                                shrink: true,
+                                            }}
+                                        />
+                                        <TextField
+                                            id="outlined-stock"
+                                            label="商品數量"
+                                            type="text"
+                                            value={stock}
+                                            onChange={handleChange("stock")}
+                                            InputLabelProps={{
+                                                shrink: true,
+                                            }}
+                                        />
+                                        <br /><br />                                      
+                                        </Box> 
+                                        <Box
+                                        component="form"
+                                        sx={{
+                                            '& .MuiTextField-root': { m: 1, width: '62ch' },
+                                            textAlign: "center"
+                                        }}
+                                        noValidate
+                                        autoComplete="off"
+                                        >
+                                            <TextField
+                                            id="outlined-description"
+                                            label="商品描述"
+                                            type="text"
+                                            rows={4}
+                                            multiline
+                                            value={description}
+                                            onChange={handleChange("description")}
+                                            InputLabelProps={{
+                                                shrink: true,
+                                            }}
+                                        />
+                                        </Box>
                                 </div>
                             </div>
                         </div>
@@ -150,73 +251,60 @@ const AddProduct = styled(Element)`
     font-family:微軟正黑體;
 }
 
+.productInformation{
+    margin: 0 auto;
+    // background-color: #f163b13d;
+}
+
 .container{
     margin: 50px;
     padding: 10px;
     width: 700px;
-    height: 500px;
-    /* background-color: #f163b13d; */
+    // background-color: #f163b13d;
     
     /*定位對齊*/
-    position: relative;
-    margin: auto;
-    top: 70px;
-}
-
-input, textarea{
-    width: 600px;
-    height: 20px;
-    padding: 5px;
-    border: none; 
-    border: solid 1px #ccc;
-    border-radius: 3px;
-  }
-#description{
-    height: 50px;
-    position: relative; left: 64px;
-}
-
-.dcTitle{
-    position: absolute;
+    margin: 0 auto;
 }
 
 .downBtn{
     margin: auto;
-    top: 100px;
-    text-align:right;
 }
 
 .updateBtn{
+    font-size: 16px;
     color: white;  
     background: #f163b1;
-    width: 90px;
-    height: 30px;
-    margin: 5px;
-    margin-top: 30px;
-    padding: 5px;
+    width: 100px;
+    height: 35px;
+    margin: 10px;
+    margin-top: 25px;
+    margin-bottom: 25px;
     border-radius: 20px;
     border: 0px;
 }
 .updateBtn:hover{
     background: #f163b1c0;
 }
-.cancelBtn, #deleteBtn{
-    width: 90px;
-    height: 30px;
-    margin: 5px;
-    margin-top: 30px;
-    padding: 5px;
+.cancelBtn{
+    font-size: 16px;
+    width: 100px;
+    height: 35px;
+    margin: 10px;
+    margin-top: 25px;
+    margin-bottom: 25px;
     border-radius: 20px;
     border: 0px;
 }
 
 /* 上傳圖片的按鈕 */
 .uploadImg{
-    padding: 4px;
-    border:3px solid;
+    padding: 7px;
+    border:1px solid;
+    margin-left: 55px;
 }
 .uploadImg:hover{
-    color: #00000085;
+    // color: #00000085;
+    color: #f163b1c0;
 }
 .img{
     display: none;
