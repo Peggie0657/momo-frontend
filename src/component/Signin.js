@@ -18,7 +18,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 import Footer from './Footer';
-import { signin, authenticate, googlelogin } from "../auth";
+import { signin, authenticate, googlelogin, facebooklogin, signUpWithOath } from "../auth";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -78,6 +78,12 @@ const Element = ({ className }) => {
     }
     const google = () => {
         googlelogin()
+            .then(data => {
+                signUpWithOath(data);
+            })
+    }
+    const facebook = () => {
+        facebooklogin()
     }
     return (
         <div className={className} style={{ backgroundColor: "rgb(238, 77, 45)" }}>
@@ -141,7 +147,7 @@ const Element = ({ className }) => {
                     <div id="middleLine">------------------ or ------------------</div>
                     <div className='pb-4' style={{ display: "flex", textAlign: "center" }}>
                         <div style={{ marginRight: "20px" }}>
-                            <a class="btn btn-block btn-social btn-facebook" >
+                            <a class="btn btn-block btn-social btn-facebook" onClick={facebook}>
                                 <i class="fab fa-facebook-f" style={{ marginRight: "15px" }}></i>Facebook
                             </a>
                         </div>

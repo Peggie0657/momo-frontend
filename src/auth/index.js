@@ -13,6 +13,8 @@ const firebaseConfig = {
     measurementId: "G-W5KGD59XHP"
 };
 
+initializeApp(firebaseConfig);
+
 export const signup = (user) => {
     // console.log(name, email, password)
     return fetch(`${API}/auth/user`, {
@@ -132,21 +134,56 @@ export const isAuthenticated = () => {
 }
 
 export const googlelogin = () => {
-    initializeApp(firebaseConfig);
-    // const analytics = getAnalytics(app);
-
     const auth = getAuth();
     const providerGoogle = new GoogleAuthProvider();
-    signInWithPopup(auth, providerGoogle)
+    return signInWithPopup(auth, providerGoogle)
         .then((result) => {
             const credential = GoogleAuthProvider.credentialFromResult(result);
             const token = credential.accessToken;
             const user = result.user;
-            console.log(user)
+            const userdetail = { user, token };
+
+            return userdetail;
         }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
             const email = error.email;
             const credential = GoogleAuthProvider.credentialFromError(error);
         });
+}
+
+export const facebooklogin = () => {
+    const auth = getAuth();
+    const providerFb = new FacebookAuthProvider();
+
+    signInWithPopup(auth, providerFb)
+        .then((result) => {
+            const credential = FacebookAuthProvider.credentialFromResult(result);
+            const accessToken = credential.accessToken;
+            const user = result.user;
+            console.log(user.email);
+            console.log(user.uid);
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            const email = error.email;
+            const credential = FacebookAuthProvider.credentialFromError(error);
+        });
+}
+
+export const signUpWithOath = (userdetail) => {
+    return fetch(`${API}/user/Oauth`,
+        {
+            method: "POST",
+            headers: {
+                Accept: 'application/json',
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(userdetail.user)
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err))
 }
