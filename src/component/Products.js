@@ -1,24 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components'
+import { useHistory } from "react-router";
 import Layout from './Layout';
 import Filter from './Filter';
-import { getProducts } from "../product";
-import SplitButton from './SplitButton';
+import { getProducts, searchKeyword } from "../product";
 import ProductCard from './ProductCard';
 
-const Element = ({ className, match }) => {
+const Element = ({ className, match, location }) => {
     const [products, setProducts] = useState([])
+    const history = useHistory();
 
-    const categoryId = match.params.categoryId
+    const categoryId = match.params.categoryId || ""
+    const keyword = (location && location.state && location.state.keyword) || "all"
 
     useEffect(() => {
-        getProducts()
+        if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+            console.info("This page is reloaded");
+            history.push({
+                state: {
+                    keyword: "all"
+                }
+            })
+
+        }
+        searchKeyword(keyword)
             .then(data => {
                 if (data) {
                     setProducts(data)
                 }
             })
-    }, [])
+        // getProducts()
+        //     .then(data => {
+        //         if (data) {
+        //             setProducts(data)
+        //         }
+        //     })
+    }, [keyword])
     return (
         <Layout>
             <div className={className}>
@@ -49,7 +66,7 @@ const Element = ({ className, match }) => {
                     <div className="row">
                         {products && products.map(product => (
                             <div className="col-6 col-lg-3 mt-3">
-                                <ProductCard product={product} editable={false} />
+                                <ProductCard product={product} editable={false} link={true} />
                             </div>
                         ))}
                         {/* {products && products.map(item => (

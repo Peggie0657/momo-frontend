@@ -53,7 +53,7 @@ const Element = ({ className }) => {
                 <div className="row">
                     {products && products.map(product => (
                         <div className="col-6 col-lg-3 mt-3" style={{ textDecoration: "none", color: "#000" }}>
-                            <ProductCard product={product} />
+                            <ProductCard product={product} link={true} />
 
                             {/* //     <div className="card">
                         //         <img src="https://cf.shopee.tw/file/b5772fc8fe61728bd8afd0b135c54cf3_tn" className="card-img-top card-img-size"

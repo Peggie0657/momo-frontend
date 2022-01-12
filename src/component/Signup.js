@@ -2,11 +2,18 @@
 import { useHistory } from "react-router";
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components'
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 import Footer from './Footer';
 import { signup } from "../auth";
 
+const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 const Element = ({ className }) => {
     const history = useHistory();
+    const [show, setShow] = useState(false)
+    const [message, setMessage] = useState({})
     const [values, setValues] = useState({
         email: '',
         username: '',
@@ -18,17 +25,20 @@ const Element = ({ className }) => {
     const handleChange = name => event => {
         setValues({ ...values, [name]: event.target.value })
     }
-
+    const handleClose = () => {
+        setShow(false);
+    };
     const clickSubmit = (event) => {
         event.preventDefault()
         signup({ email, password, username })
             .then(data => {
                 console.log(data)
                 if (data.error) {
-                    alert("已有重複email");
-                    history.push("/")
+                    setShow(true)
+                    setMessage({ string: "已有重複email", status: "error" })
                 } else {
-                    alert("註冊成功");
+                    setShow(true)
+                    setMessage({ string: "註冊成功", status: "success" })
                     history.push("/signin")
                 }
                 // if (data.error) {
@@ -74,6 +84,16 @@ const Element = ({ className }) => {
                     </form>
                 </div>
             </div>
+            <Snackbar
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                open={show}
+                onClose={handleClose}
+                key="1"
+            >
+                <Alert onClose={handleClose} severity={message.status} sx={{ width: '100%' }}>
+                    {message.string}
+                </Alert>
+            </Snackbar>
             <Footer />
         </div>
     )

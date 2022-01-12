@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { styled, alpha, createTheme } from '@mui/material/styles';
+import { useHistory } from "react-router";
 import styledComponents from 'styled-components'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -20,6 +21,7 @@ import MenuItem from '@mui/material/MenuItem';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import FormControl from '@mui/material/FormControl';
 import Badge from '@mui/material/Badge';
 // import Link from '@mui/material/Link';
 import ChatIcon from '@mui/icons-material/Chat';
@@ -90,7 +92,12 @@ const Element = ({ className }) => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const [itemCount, setItemCount] = useState(0)
+    const history = useHistory();
+    const [keyword, setKeyword] = useState("");
+    const handleKeyword = name => event => {
+        setKeyword(event.target.value)
 
+    }
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -112,7 +119,21 @@ const Element = ({ className }) => {
     };
     useEffect(() => {
         setItemCount(itemTotal())
+
+        var input = document.getElementById("search");
+        input.addEventListener("keyup", function (event) {
+            if (event.keyCode === 13) {
+                // Cancel the default action, if needed
+                history.push({
+                    pathname: `/products`,
+                    state: {
+                        keyword: event.target.value
+                    }
+                })
+            }
+        });
     }, []);
+
     return (
         <div className={className}>
             <AppBar className="mb-5" position="static" style={{ backgroundColor: "#f7bacf" }}>
@@ -176,15 +197,23 @@ const Element = ({ className }) => {
                             </a>
                         </Typography>
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                            <Search>
-                                <SearchIconWrapper>
-                                    <SearchIcon />
-                                </SearchIconWrapper>
-                                <StyledInputBase
-                                    placeholder="Search…"
-                                    inputProps={{ 'aria-label': 'search' }}
-                                />
-                            </Search>
+                            <FormControl>
+                                <Search>
+                                    <SearchIconWrapper>
+                                        <SearchIcon />
+                                    </SearchIconWrapper>
+                                    <StyledInputBase
+                                        placeholder="Search…"
+                                        id="search"
+                                        inputProps={{
+                                            'aria-label': 'search',
+                                            "value": keyword,
+                                        }}
+                                        onChange={handleKeyword()}
+                                    // onClick={handleSubmit}
+                                    />
+                                </Search>
+                            </FormControl>
                         </Box>
                         {!isAuthenticated() ?
                             <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>

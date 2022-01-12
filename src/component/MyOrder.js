@@ -15,6 +15,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { getMyOrders } from "../order";
 import { isAuthenticated } from "../auth";
+import AlertBar from "./AlertBar";
 
 function createData(name, calories, fat, carbs, protein, price) {
     return {

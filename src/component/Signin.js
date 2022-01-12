@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components'
 import MuiAlert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 import IconButton from '@mui/material/IconButton';
 import Input from '@mui/material/Input';
 import FilledInput from '@mui/material/FilledInput';
@@ -32,6 +34,7 @@ const Element = ({ className }) => {
         showPassword: false,
     })
     const [show, setShow] = useState(false)
+    const [open, setOpen] = React.useState(false);
 
     const { email, password } = values
 
@@ -51,11 +54,13 @@ const Element = ({ className }) => {
         event.preventDefault();
     };
     const clickSubmit = (event) => {
+        setOpen(true)
         event.preventDefault()
         signin({ email, password })
             .then(data => {
                 if (!data) {
                     setShow(true)
+                    setOpen(false)
                     setValues({ email: "", password: "" })
                 } else {
                     authenticate(data)
@@ -165,6 +170,12 @@ const Element = ({ className }) => {
                     帳號密碼錯誤
                 </Alert>
             </Snackbar>
+            <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={open}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
         </div >
     )
 }

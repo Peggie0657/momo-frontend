@@ -50,7 +50,7 @@ const Element = ({ className }) => {
             <div className="row">
                 {products && products.map(product => (
                     <div className="col-6 col-lg-3 mt-3">
-                        <ProductCard product={product} editable={true} />
+                        <ProductCard product={product} editable={true} link={false} />
                     </div>)
                 )}
             </div>

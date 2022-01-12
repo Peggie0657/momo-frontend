@@ -38,3 +38,20 @@ export const addProduct = (product, token) => {
             console.log(err)
         })
 }
+
+export const searchKeyword = (keyword) => {
+    // console.log(name, email, password)
+    return fetch(`${API}/keyword/${keyword}`, {
+        method: "GET",
+        headers: {
+            Accept: 'application/json',
+            "Content-Type": "application/json",
+        },
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
