@@ -90,7 +90,9 @@ const Element = ({ className, productsFetch }) => {
     const clickSubmit = (event) => {
         event.preventDefault()
         productsFetch({ name, description, price, stock })
-        addProduct({ name, description, price, stock }, token)
+        addProduct({
+            name, description, price, stock, url: imageURLs
+        }, token)
             .then(data => {
                 if (data) {
                     alert("商品建立成功")
@@ -98,7 +100,8 @@ const Element = ({ className, productsFetch }) => {
                         name: "",
                         description: "",
                         price: "",
-                        stock: ""
+                        stock: "",
+                        imageURLs: []
                     })
 
                 } else {
@@ -147,7 +150,7 @@ const Element = ({ className, productsFetch }) => {
                                         {/* <img src={imagesSrc} height={100} style={{ margin: "20px" }} alt="" /> */}
                                         <br /><br />
                                     </form>
-                                   <Box
+                                    <Box
                                         component="form"
                                         sx={{
                                             '& .MuiTextField-root': { m: 1, width: '30ch' },
@@ -201,9 +204,9 @@ const Element = ({ className, productsFetch }) => {
                                                 shrink: true,
                                             }}
                                         />
-                                        <br /><br />                                      
-                                        </Box> 
-                                        <Box
+                                        <br /><br />
+                                    </Box>
+                                    <Box
                                         component="form"
                                         sx={{
                                             '& .MuiTextField-root': { m: 1, width: '62ch' },
@@ -211,8 +214,8 @@ const Element = ({ className, productsFetch }) => {
                                         }}
                                         noValidate
                                         autoComplete="off"
-                                        >
-                                            <TextField
+                                    >
+                                        <TextField
                                             id="outlined-description"
                                             label="商品描述"
                                             type="text"
@@ -224,7 +227,7 @@ const Element = ({ className, productsFetch }) => {
                                                 shrink: true,
                                             }}
                                         />
-                                        </Box>
+                                    </Box>
                                 </div>
                             </div>
                         </div>

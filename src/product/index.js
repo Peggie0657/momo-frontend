@@ -21,7 +21,6 @@ export const getProduct = (id) => {
 }
 
 export const addProduct = (product, token) => {
-    // console.log(name, email, password)
     return fetch(`${API}/product`, {
         method: "POST",
         headers: {
