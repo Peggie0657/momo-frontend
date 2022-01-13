@@ -89,7 +89,6 @@ const Element = ({ className }) => {
                 signUpWithOath(data)
                     .then(user => {
                         const email = user.email
-                        // console.log({ email, uid })
                         signin({ email, password: uid })
                             .then(data => {
                                 authenticate(data)
