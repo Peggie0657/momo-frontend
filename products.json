@@ -1,0 +1,192 @@
+{
+    "products": [
+        {
+            "name": "電腦",
+            "price": 20000,
+            "description": "電腦主機",
+            "category": "4",
+            "specs": [
+                {
+                    "spec": "10ml",
+                    "stock": 20
+                },
+                {
+                    "spec": "30ml",
+                    "stock": 10
+                },
+                {
+                    "spec": "40ml",
+                    "stock": 30
+                }
+            ],
+            "url": [
+                "https://www.cymmetrik.com/img/cms/600/0/1/2017-01/201703101444414490808544.jpg"
+            ]
+        },
+        {
+            "name": "JO MALONE 英國梨與小蒼蘭香水",
+            "price": 2450,
+            "description": "彷彿集結秋天的氣息。 猶如新鮮採摘的清新梨子香氣，搭配白色小蒼蘭所綻放的花香，佐以琥珀、廣藿香與木質香調的柔和芳香。 擁有奢華的金色光澤。",
+            "category": "5",
+            "specs": [
+                {
+                    "spec": "30ml",
+                    "stock": 20
+                }
+            ],
+            "url": [
+                "https://7ego.7-11.com.tw/Files/market/106354/image/MAI_214356379_X700X700.jpg"
+            ]
+        },
+        {
+            "name": "diptyque 感官之水淡香水",
+            "price": 4250,
+            "description": "一股攝人心魄，誘惑感官的香氛體驗。有些人初嗅到它的香氣，眼前彷彿就盛開出許多色彩，有人彷彿聽見它的低語、嚐過它在味蕾間散開的滋味；也有人感覺像某種輕觸撩撥鼻尖，滲入肌底。這就是感官之水的美妙之處，宛若八行詩般輕靈綺麗，令人無限遐想。從橙葉、花朵，以至果皮的點滴精華，完美地綻放出柑橘調與生俱來的無窮活力。像一支音符躍動，輕巧滲進肌膚裡的樂曲。由橙花、苦橙、杜松子、當歸、廣藿香共同譜寫的變奏和弦，令人嚮往不已。",
+            "category": "美妝保養",
+            "specs": [
+                {
+                    "spec": "100ml",
+                    "stock": 30
+                }
+            ],
+            "url": [
+                "https://1010apothecary.com.tw/media/catalog/product/cache/93ea8f4e56b3f0160caeaf8649420f87/d/i/disens100v1_1_2.jpg"
+            ]
+        },
+        {
+            "name": "GUERLAIN 花草水語 晨霧玫瑰淡香水",
+            "price": 3300,
+            "description": "在想像的玫瑰園裡，嬌嫩的玫瑰遇上黑醋栗與荔枝香調，此種非比尋常的組合撼動你的感官。受到這些動人的嗅覺色調吸引，甘甜的檀香也加入了如此宜人的香氛成分，邀請我們巡遊醉人的未知之境。",
+            "category": "美妝保養",
+            "specs": [
+                {
+                    "spec": "75ml",
+                    "stock": 65
+                }
+            ],
+            "url": [
+                "https://diz36nn4q02zr.cloudfront.net/webapi/imagesV3/Original/SalePageSKU/14042810/0/637477690652430000?v=1"
+            ]
+        },
+        {"name":"CHANEL 香奈兒N°5典藏香水","price":5980,"description":"N°5，女性魅力的極致精髓。乙醛花束香氣，蘊藏於簡約俐落的瓶身設計。經典香氛，傳奇不朽。","category":"美妝保養",
+            "specs":[{"spec":"100ml","stock":50}],
+            "url":["https://www.chanel.com/images//t_one/t_fragrance//q_auto:good,f_jpg,fl_lossy,dpr_1.2/w_1920/n-5-eau-de-parfum-spray-3-4fl-oz--packshot-default-125530-8848376856606.jpg"]
+        },
+        {"name":"BYREDO 無人之境淡香精","price":7200,"description":"此款淡香精，向第一次世界大戰時，在前線搶救無數生命的「荒原玫瑰」護士致敬，代表憐憫且無私的愛心。帶來全然的安撫舒適，精緻優雅的香氣溫柔地包覆肌膚並充滿堅定的力量。前調以粉紅胡椒、土耳其玫瑰、覆盆子花為開端，後續貸出紙莎草的草本甘甜與白琥珀的大地氣息。有別於甜膩的玫瑰，BYREDO 無人之境淡香精充滿了對女性堅毅與勇氣的致敬，是一款乾爽、溫暖的中性玫瑰香調。","category":"5",
+            "specs":[{"spec":"100ml","stock":50}],
+            "url":["https://1010apothecary.com.tw/media/catalog/product/cache/93ea8f4e56b3f0160caeaf8649420f87/_/b/_by_by100098_1_1.jpg"]
+        },
+        {"name":"AESOP 熾香水","price":3900,"description":"一款微妙的迷人香氛，使人聯想起扁柏森林的蒼翠和靜謐，煙燻香調搭配上淡淡辛香，轉為深綠的木質土壤氣息。","category":"5",
+            "specs":[{"spec":"50ml","stock":53}],
+            "url":["https://www.aesop.com/u1nb1km7t5q7/3ZQiTGH2HncEKFSsyMimU3/60cbd0bcd44322ad6ab74bed7a8b01b2/Aesop-Fragrance-Hwyl-Eau-de-Parfum-50mL-Hybris-Large-684x668px.png"]
+        },
+        {"name":"DIOR J'adore極蘊香氛","price":6290,"description":"DIOR經典J'ADORE香氛系列，全新創作《J'ADORE極蘊香氛》，為包覆感官、充滿力量的性感花香氣。以馥郁奔放的花朵：格拉斯玫瑰、茉莉、依蘭依蘭，交織出一抹無限蔓延的香氣，並以帶有乳香氣息的檀香，點綴出木質香調，最後一抹由迪奧獨家合作莊園栽種的格拉斯晚香玉，綻放明亮又令人沉醉的張力。《J'ADORE極蘊香氛》是一款承襲經典J'ADORE香氛，卻又充滿驚喜的全新香氣，更加奔放誘人，綻放無盡魅力！","category":"5",
+            "specs":[{"spec":"100ml","stock":76}],
+            "url":["https://eco-beauty.dior.com/dw/image/v2/BDGF_PRD/on/demandware.static/-/Sites-master_dior/default/dwdee47b34/assets/Y0996116/Y0996116_C099600766_E01_ZHC.jpg"]
+        },
+        {"name":"LE LABO 淡香精 - 橙花27","price":9400,"description":"麝香與陽光般的感受，圍繞著白花的香氣與彷彿檸檬般的柑橘清爽。木質香與綠質底韻，就像心情放鬆的走在西班牙南部的賽維亞。","category":"5",
+            "specs":[{"spec":"100ml","stock":23}],
+            "url":["https://1010apothecary.com.tw/media/catalog/product/cache/93ea8f4e56b3f0160caeaf8649420f87/l/l/ll_llj0lt01_1_1.jpg"]
+        },
+        {"name":"亞曼尼MY WAY淡香精","price":3500,"description":"Armani先生相信旅行能探索不同的文化，開拓視野、豐富心靈，並且造就了我們現今的模樣。這款全新香氛就是以此為靈感來源，精品瓶身設計結合了靛藍幸運石與Giorgio Armani LOGO金環，象徵MY WAY陪伴著旅人遊歷體驗，而粉色香水瓶身與宛如頸飾般的訂製布料，代表了Armani先生對每位女性獻上的心意。這款香氛揉合多款優雅白花香氣，前調為來自香水之城格拉斯的埃及橙花，純淨清新；中調為來自印度花園的夜來香，成熟高貴；後調則是來自馬達加斯加的頂及香草，醇厚迷人。","category":"5",
+            "specs":[{"spec":"50ml","stock":98}],
+            "url":["https://img.meepshop.com/PlVBKluhR0PJHkY2GoiNiMzerWWY8ueWy_fXTbHkn7k/w:720/Z3M6Ly9pbWcubWVlcGNsb3VkLmNvbS9tZWVwc2hvcC8yZmQwODFhNy1lYmMwLTRhYTgtOWViOS0zZTAzMDUxNWU5YTQvZmlsZXMvODUwYzdmZGQtMzQxNy00NzU1LThjNmMtNjhhYTI1MTA5YTdhLmpwZWc"]
+        },
+        {"name":"Chloe 蔻依經典同名女性淡香精","price":2840,"description":"玫瑰精華香氛。香水的精髓，盡在 Chloé 玫瑰：如此細膩，如此迷人。木蘭花香揉合帶蜜糖的琥珀香氣。高雅的玻璃瓶綴以銀牌和經典的米色絲帶。Chloé 帶來全新誘人風格。盡顯女性嫵媚，自然時尚。","category":"5",
+            "specs":[{"spec":"50ml","stock":90}],
+            "url":["https://img.everrich.com/img/p/1/0/8/0/4/5/108045-large_retina.jpg"]
+        },
+        {"name":"BOBBI BROWN 羽柔蜜粉-升級版","price":1600,"description":"超細滑粉質，修飾毛孔、平滑升級！細緻微球型粉體，填補肌膚細紋與毛孔凹陷處，吸油同時控油，一刷肌膚彷彿拋光般的完美平滑，給肌膚全天柔霧妝感！其維他命E成份能防止氧化，維持定妝效果預防底妝黯沉。全新旋轉式篩粉開關，更好控制用量，完美定妝不泛油光","category":"5",
+            "specs":[{"spec":"9g","stock":54}],
+            "url":["https://www.bobbibrown.com.tw/media/export/cms/products/v2_1080x1080/bb_sku_ENPW11_1080x1080_0.jpg"]
+        },
+        {"name":"BOBBI BROWN冬蟲夏草精華亮膚持妝乳 SPF 25 PA++","price":1950,"description":"美肌+ 防護+ 持妝+立即修飾暗沉、潤色提亮，一抹高度延展、清爽好吸收，具有潤色、提亮、粉嫩效果。並添加冬蟲夏草及人蔘等多種養膚精華，為肌膚補充能量，為全天持妝做好準備！","category":"5",
+            "specs":[{"spec":"40ml","stock":45}],
+            "url":["https://www.bobbibrown.com.tw/media/export/cms/products/v2_1080x1080/bb_sku_EN6401_1080x1080_0.jpg"]
+        },
+        {"name":"shu uemura 無色限奶油緞光唇釉","price":1150,"description":"植村秀唇釉系列 - 無色限奶油緞光唇釉，像奶油慕斯般的全新質地，保濕潤澤延展性高，一抹滑順瞬間隱藏唇紋！色彩飽和、時尚，輕薄暈染唇妝，溫柔自然好氣色，厚擦上唇，時髦又自帶氣場！指觸型刷頭，取量適當，完美貼合各種唇型，就像手指輕觸般貼心設計。","category":"5",
+            "specs":[{"spec":"BR784","stock":67},{"spec":"BG930","stock":87},{"spec":"BR793","stock":34},{"spec":"OR590","stock":65}],
+            "url":["https://shoplineimg.com/5a8293389f9a4f3b09000791/616fc45886b30d00387eb54e/800x.webp?source_format=jpg"]
+        },
+        {"name":"shu uemura 無極限光澤水粉底 SPF18 PA+++","price":1750,"description":"全新最持久的光澤肌底妝【無極限光澤水粉底】光澤小方瓶，使用保濕粉底液讓肌膚透出宛若原生般的透亮光澤，搭配植村秀最專業的亞洲色選，呈現出高質感的光澤底妝，彷若天生好皮膚的真實與自在。搭配全新「抗暗沉科技」，不暗沉粉底液獨特抗氧化效果能讓底妝一整天明亮零暗沉，持久粉底24小時如光隨行，底妝從上妝亮到卸妝那一刻，水潤保濕粉底液推薦！","category":"5",
+            "specs":[{"spec":"584","stock":65},{"spec":"664","stock":66},{"spec":"674","stock":32}],
+            "url":["https://shoplineimg.com/5a8293389f9a4f3b09000791/5f1808d11bb3bd0042c73106/800x.webp?source_format=jpg"]
+        },
+        {"name":"MAYBELLINE 紐約時尚眼彩盤","price":780,"description":"絕美實用配色X綿密細緻粉質，輕鬆畫出至少36款眼妝組合。從暖暮日落色到浪漫玫瑰色，眼妝質感再升級！內含獨特超仙氣粉棕/裸棕大理石色系；打造史上最美、燦爛閃爍的紐約城市色彩","category":"5",
+            "specs":[{"spec":"大理石裸棕","stock":45},{"spec":"大理石粉棕","stock":56}],
+            "url":["https://diz36nn4q02zr.cloudfront.net/webapi/imagesV3/Original/SalePage/6803490/0/637740648616830000?v=1"]
+        },
+        {"name":"MAKE UP FOR EVER 星沙炫彩晶鑽亮粉","price":950,"description":"100%複合雲母珍珠母貝粉，粉質細膩一抹上色。金屬光澤有如鏡面反射效果，超細緻粉體讓妝感更有質感。","category":"5",
+            "specs":[{"spec":"香檳金","stock":56},{"spec":"雪燦綠","stock":12}],
+            "url":["https://diz36nn4q02zr.cloudfront.net/webapi/imagesV3/Original/SalePage/4902966/0/637746631964270000?v=1"]
+        },
+        {"name":"MAKE UP FOR EVER 龐克豐盈睫毛膏","price":1100,"description":"輕易上色，並創造極致豐盈濃密的效果彈性薄膜完美定裝，不燻眼抗暈染2種專業刷毛混和製成，反覆刷塗不易結塊","category":"5",
+            "specs":[{"spec":"8.5ml","stock":12}],
+            "url":["https://diz36nn4q02zr.cloudfront.net/webapi/imagesV3/Original/SalePage/5861116/1/637746632118770000?v=1"]
+        },
+        {"name":"LANCOME 零粉感超持久蜜粉","price":1800,"description":"蘭蔻蜜粉推薦-零粉感超持久蜜粉！ 定妝蜜粉輕透的霧面質感，結合輕盈細緻的粉末能完美服貼肌膚 擁有完美服貼底妝與持久閃耀妝容 打造持久柔焦美肌，輕拍綻現肌膚柔滑光澤 整體妝容更持久、更顯精緻。","category":"5",
+            "specs":[{"spec":"","stock":}],
+            "url":["https://www.lancome.com.tw/dw/image/v2/AARM_PRD/on/demandware.static/-/Sites-lancome-master-catalog/default/dw6a9a1050/images/PACKSHOTS/MAKEUP/FACE/New_Folder/3614272126008_LONG_TIME_NO_SHINE_Translucent_1.jpg?sw=563&sfrm=jpg&q=70"]
+        },
+        {"name":"","price":,"description":"","category":"",
+            "specs":[{"spec":"","stock":}],
+            "url":["",""]
+        },
+        {"name":"","price":,"description":"","category":"",
+            "specs":[{"spec":"","stock":}],
+            "url":["",""]
+        },
+        {"name":"","price":,"description":"","category":"",
+            "specs":[{"spec":"","stock":}],
+            "url":["",""]
+        },
+        {"name":"","price":,"description":"","category":"",
+            "specs":[{"spec":"","stock":}],
+            "url":["",""]
+        },
+        {"name":"","price":,"description":"","category":"",
+            "specs":[{"spec":"","stock":}],
+            "url":["",""]
+        },
+        {"name":"","price":,"description":"","category":"",
+            "specs":[{"spec":"","stock":}],
+            "url":["",""]
+        },
+        {"name":"","price":,"description":"","category":"",
+            "specs":[{"spec":"","stock":}],
+            "url":["",""]
+        },
+        {"name":"","price":,"description":"","category":"",
+            "specs":[{"spec":"","stock":}],
+            "url":["",""]
+        },
+        {"name":"","price":,"description":"","category":"",
+            "specs":[{"spec":"","stock":}],
+            "url":["",""]
+        },
+        {"name":"","price":,"description":"","category":"",
+            "specs":[{"spec":"","stock":}],
+            "url":["",""]
+        },
+        {"name":"","price":,"description":"","category":"",
+            "specs":[{"spec":"","stock":}],
+            "url":["",""]
+        },
+        {"name":"","price":,"description":"","category":"",
+            "specs":[{"spec":"","stock":}],
+            "url":["",""]
+        },
+        {"name":"","price":,"description":"","category":"",
+            "specs":[{"spec":"","stock":}],
+            "url":["",""]
+        },
+        {"name":"","price":,"description":"","category":"",
+            "specs":[{"spec":"","stock":}],
+            "url":["",""]
+        },
+        {"name":"","price":,"description":"","category":"",
+            "specs":[{"spec":"","stock":}],
+            "url":["",""]
+        },
+    ]
+}
