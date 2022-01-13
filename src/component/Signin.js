@@ -82,9 +82,20 @@ const Element = ({ className }) => {
             })
     }
     const google = () => {
+        let uid = ""
         googlelogin()
             .then(data => {
-                signUpWithOath(data);
+                uid = data.user.uid
+                signUpWithOath(data)
+                    .then(user => {
+                        const email = user.email
+                        // console.log({ email, uid })
+                        signin({ email, password: uid })
+                            .then(data => {
+                                authenticate(data)
+                                history.push("/")
+                            })
+                    })
             })
     }
     const facebook = () => {

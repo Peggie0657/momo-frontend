@@ -143,6 +143,8 @@ export const googlelogin = () => {
             const user = result.user;
             const userdetail = { user, token };
 
+            console.log(token);
+
             return userdetail;
         }).catch((error) => {
             const errorCode = error.code;
@@ -173,7 +175,7 @@ export const facebooklogin = () => {
 }
 
 export const signUpWithOath = (userdetail) => {
-    return fetch(`${API}/user/Oauth`,
+    return fetch(`${API}/auth/Oauth`,
         {
             method: "POST",
             headers: {
