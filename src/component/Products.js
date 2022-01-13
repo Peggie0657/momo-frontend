@@ -15,6 +15,7 @@ const Element = ({ className, match, location }) => {
     const [products, setProducts] = useState([])
     const [selectPage, setSelectPage] = useState(1)
     const [count, setCount] = useState(0)
+    const [filterArr, setFilterArr] = useState([])
     // const [pageNum, setPageNum] = useState(0)
     const history = useHistory();
 
@@ -29,6 +30,7 @@ const Element = ({ className, match, location }) => {
                 if (data) {
                     setCount(Math.ceil(data.length / 24))
                     setProducts(data.slice((page - 1) * 24, 24 * page))
+                    window.scrollTo(0, 0);
                 }
             })
     }
@@ -70,7 +72,7 @@ const Element = ({ className, match, location }) => {
                     {/* <SplitButton /> */}
                     {keyword !== "all" ? <h5>關鍵字："{keyword}"</h5> : null}
                     <div class="dropdown-box">
-                        <div class="dropdown">
+                        {/* <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle dropdown-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 上架日期
                             </button>
@@ -81,7 +83,7 @@ const Element = ({ className, match, location }) => {
                         </div>
                         <button class="btn btn-secondary dropdown-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             熱門商品
-                        </button>
+                        </button> */}
                     </div>
 
                     <div className="row">
@@ -112,7 +114,7 @@ const Element = ({ className, match, location }) => {
                     </Grow>
                 </div>
             </div>
-            <Filter categoryId={categoryId} />
+            <Filter categoryId={categoryId} setFilterArr={setFilterArr} />
         </Layout >
     )
 }
