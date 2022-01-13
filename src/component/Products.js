@@ -1,17 +1,37 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components'
+import styledcomponents from 'styled-components';
+import { styled } from '@mui/material/styles';
 import { useHistory } from "react-router";
+import Pagination from '@mui/material/Pagination';
+import Grow from "@mui/material/Grow";
+import Box from '@mui/material/Box';
 import Layout from './Layout';
 import Filter from './Filter';
 import { getProducts, searchKeyword } from "../product";
 import ProductCard from './ProductCard';
 
+
 const Element = ({ className, match, location }) => {
     const [products, setProducts] = useState([])
+    const [selectPage, setSelectPage] = useState(1)
+    const [count, setCount] = useState(0)
+    // const [pageNum, setPageNum] = useState(0)
     const history = useHistory();
 
     const categoryId = match.params.categoryId || ""
     const keyword = (location && location.state && location.state.keyword) || "all"
+
+    const handleChange = (e, page) => {
+        // setSelectPage(page)
+        // setProducts(products.slice((page - 1) * 24, 24 * page))
+        searchKeyword(keyword)
+            .then(data => {
+                if (data) {
+                    setCount(Math.ceil(data.length / 24))
+                    setProducts(data.slice((page - 1) * 24, 24 * page))
+                }
+            })
+    }
 
     useEffect(() => {
         if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
@@ -26,7 +46,8 @@ const Element = ({ className, match, location }) => {
         searchKeyword(keyword)
             .then(data => {
                 if (data) {
-                    setProducts(data)
+                    setCount(Math.ceil(data.length / 24))
+                    setProducts(data.slice((selectPage - 1) * 24, 24 * selectPage))
                 }
             })
         // getProducts()
@@ -47,7 +68,7 @@ const Element = ({ className, match, location }) => {
                         <a class="breadcrumb-item active" href="#">當前頁</a>
                     </nav> */}
                     {/* <SplitButton /> */}
-
+                    {keyword !== "all" ? <h5>關鍵字："{keyword}"</h5> : null}
                     <div class="dropdown-box">
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle dropdown-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -84,13 +105,18 @@ const Element = ({ className, match, location }) => {
                             </a>
                         ))} */}
                     </div>
+                    <br />
+                    <br />
+                    <Grow in={true}>
+                        <Pagination sx={{ justifyContent: "center" }} count={count} showFirstButton showLastButton onChange={handleChange} />
+                    </Grow>
                 </div>
             </div>
             <Filter categoryId={categoryId} />
-        </Layout>
+        </Layout >
     )
 }
-const Products = styled(Element)`
+const Products = styledcomponents(Element)`
 .prod-content{
     width: 66.666667%;
     margin: 0 auto;
@@ -141,7 +167,10 @@ const Products = styled(Element)`
 }
 .a-style{
     text-decoration: none;
-}   
+}
+.css-wjh20t-MuiPagination-ul{
+    justify-content: center;
+}
 `
 
 export default Products;
