@@ -4,6 +4,7 @@ import Signin from './component/Signin';
 import Signup from './component/Signup';
 import Home from './component/Home';
 import Product from './component/Product';
+import Test from './component/test';
 import Products from './component/Products';
 import Checkout from './component/Checkout';
 import MemberCenter from './component/MemberCenter';
@@ -13,6 +14,7 @@ const Routes = () => {
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={Home} />
+                <Route path="/test" exact component={Test} />
                 {/* <Route path="/shop" exact component={Shop} /> */}
                 <Route path="/checkout" exact component={Checkout} />
                 <Route path="/products/:categoryId" exact component={Products} />
