@@ -2,64 +2,65 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components'
-
-import { addProduct } from "../product";
-import { isAuthenticated } from "../auth";
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
+import ExternalTable from './ExternalTable';
+import { addProduct } from "../product";
+import { isAuthenticated } from "../auth";
+
 
 const categorySel = [
     {
-        value: '1',
+        value: '0',
         label: '女生衣著',
     },
     {
-        value: '2',
+        value: '1',
         label: '男生衣著',
     },
     {
-        value: '3',
+        value: '2',
         label: '運動/健身',
     },
     {
-        value: '4',
+        value: '3',
         label: '男女鞋',
     },
     {
-        value: '5',
+        value: '4',
         label: '電腦週邊',
     },
     {
-        value: '6',
+        value: '5',
         label: '美妝保養',
     },
     {
-        value: '7',
+        value: '6',
         label: '服飾飾品',
     },
     {
-        value: '8',
+        value: '7',
         label: '手機相機',
     },
     {
-        value: '9',
+        value: '8',
         label: '家電影音',
     },
     {
-        value: '10',
+        value: '9',
         label: '居家生活',
     },
     {
-        value: '11',
+        value: '10',
         label: '寵物',
     },
     {
-        value: '12',
+        value: '11',
         label: '戶外/旅行',
     },
     {
-        value: '13',
+        value: '12',
         label: '書籍',
     }
 ];
@@ -70,12 +71,13 @@ const Element = ({ className, productsFetch }) => {
         name: "",
         description: "",
         price: 0,
-        stock: 0
+        stock: 0,
+        category: "1"
     })
     const [images, setImages] = useState([]);
     const [imageURLs, setImageURLs] = useState([]);
 
-    const { name, description, price, stock } = values
+    const { name, description, price, stock, category } = values
 
     const token = isAuthenticated() && isAuthenticated().accessToken
     const shouldRedirect = redirect => {
@@ -89,9 +91,10 @@ const Element = ({ className, productsFetch }) => {
 
     const clickSubmit = (event) => {
         event.preventDefault()
-        productsFetch({ name, description, price, stock })
+        console.log(values)
+        productsFetch({ name, description, price, stock, category })
         addProduct({
-            name, description, price, stock, url: imageURLs
+            name, description, price, stock, url: imageURLs, category
         }, token)
             .then(data => {
                 if (data) {
@@ -173,7 +176,7 @@ const Element = ({ className, productsFetch }) => {
                                             id="outlined-select-category"
                                             select
                                             label="商品分類"
-                                            // value={category}
+                                            value={category}
                                             onChange={handleChange("category")}
                                         >
                                             {categorySel.map((option) => (
@@ -205,6 +208,17 @@ const Element = ({ className, productsFetch }) => {
                                             }}
                                         />
                                         <br /><br />
+                                    </Box>
+                                    <Box
+                                        component="form"
+                                        sx={{
+                                            '& .MuiTextField-root': { m: 1, width: '62ch' },
+                                            textAlign: "center"
+                                        }}
+                                        noValidate
+                                        autoComplete="off"
+                                    >
+                                        <ExternalTable />
                                     </Box>
                                     <Box
                                         component="form"

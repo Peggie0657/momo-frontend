@@ -16,8 +16,11 @@ import FormLabel from '@mui/material/FormLabel';
 const Element = ({ className, location }) => {
     const [products, setProducts] = useState([]);
     const [total, setTotal] = useState(0);
+    const [values, setValues] = useState({});
     const history = useHistory();
     const token = isAuthenticated() && isAuthenticated().accessToken
+
+    const { name, phone, address } = values
 
     const handleSubmit = () => {
         products.forEach(item => {
@@ -31,6 +34,10 @@ const Element = ({ className, location }) => {
             })
     }
 
+    const handleChange = name => event => {
+        setValues({ ...values, [name]: event.target.value })
+    }
+
     useEffect(() => {
         setProducts(location.state.selectedArr)
         setTotal(location.state.total)
@@ -38,44 +45,44 @@ const Element = ({ className, location }) => {
 
     return (<div className={className} >
         <div class="pink w70 center">
-        <div class="m30">
-            <p class="title center">1 . 訂單內容</p><hr class="mg0" />
-            <table class="table pink-table">
-                <thead>
-                    <tr class="thead">
-                        <th scope="col"></th>
-                        <th scope="col">商品名稱</th>
-                        <th scope="col">規格</th>
-                        <th scope="col">數量</th>
-                        <th scope="col">金額</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {products.map((item, index) =>
-                        <tr>
-                            <th scope="row">{index + 1}</th>
-                            <td>{item.name}</td>
-                            <td>50</td>
-                            <td>{item.num}</td>
-                            <td>{item.num * item.price}</td>
+            <div class="m30">
+                <p class="title center">1 . 訂單內容</p><hr class="mg0" />
+                <table class="table pink-table">
+                    <thead>
+                        <tr class="thead">
+                            <th scope="col"></th>
+                            <th scope="col">商品名稱</th>
+                            <th scope="col">規格</th>
+                            <th scope="col">數量</th>
+                            <th scope="col">金額</th>
                         </tr>
-                    )}
-                </tbody>
-                <thead>
-                    <tr>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col" >NT.{total}元</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
-        <div class="col-center">
-            <div class="w50">
-                <p class="title">2 . 購買人資料</p><hr class="mg0" />
-                <Box
+                    </thead>
+                    <tbody>
+                        {products.map((item, index) =>
+                            <tr>
+                                <th scope="row">{index + 1}</th>
+                                <td>{item.name}</td>
+                                <td>50</td>
+                                <td>{item.num}</td>
+                                <td>{item.num * item.price}</td>
+                            </tr>
+                        )}
+                    </tbody>
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col" >NT.{total}元</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="col-center">
+                <div class="w50">
+                    <p class="title">2 . 購買人資料</p><hr class="mg0" />
+                    <Box
                         component="form"
                         sx={{
                             '& .MuiTextField-root': { m: 1, width: '25ch' },
@@ -84,52 +91,59 @@ const Element = ({ className, location }) => {
                         noValidate
                         autoComplete="off"
                     >
-                    <TextField
-                            id="outlined-number"
+                        <TextField
+                            id="outlined-name"
                             label="姓名"
                             type="text"
                             InputLabelProps={{
                                 shrink: true,
                             }}
+                            value={name}
+                            onChange={handleChange("name")}
                         />
-                    <TextField
-                        id="outlined-phone"
-                        label="電話"
-                        type="tel"
-                        InputLabelProps={{
+                        <TextField
+                            id="outlined-phone"
+                            label="電話"
+                            type="tel"
+                            InputLabelProps={{
                                 shrink: true,
-                        }}
-                    />
-                    <TextField
-                        id="outlined-addr"
-                        label="地址"
-                        type="text"
-                        InputLabelProps={{
+                            }}
+                            value={phone}
+                            onChange={handleChange("phone")}
+                        />
+                        <TextField
+                            id="outlined-address"
+                            label="地址"
+                            type="text"
+                            InputLabelProps={{
                                 shrink: true,
-                        }}
-                    />
-                </Box>
+                            }}
+                            value={address}
+                            onChange={handleChange("address")}
+                        />
+                    </Box>
+                </div>
+                <div class="w50">
+                    <p class="title">3 . 付款及運送資訊</p><hr class="mg0" />
+                    <FormControl component="fieldset">
+                        <FormLabel component="legend">付款方式</FormLabel>
+                        <RadioGroup row aria-label="payment" name="row-radio-buttons-group">
+                            <FormControlLabel value="credit" control={<Radio value="credit" onChange={handleChange("payment")} />} label="線上刷卡" />
+                            <FormControlLabel value="cash" control={<Radio value="cash" onChange={handleChange("payment")} />} label="貨到付款" />
+                            <FormControlLabel value="trans" control={<Radio value="trans" onChange={handleChange("payment")} />} label="銀行轉帳" />
+                        </RadioGroup>
+                        <br />
+                        <FormLabel component="legend">運送方式</FormLabel>
+                        <RadioGroup row aria-label="delivery" name="row-radio-buttons-group">
+                            <FormControlLabel value="mart" control={<Radio value="mart" onChange={handleChange("delivery")} />} label="超商取貨" />
+                            <FormControlLabel value="home" control={<Radio value="home" onChange={handleChange("delivery")} />} label="宅配" />
+                        </RadioGroup>
+                    </FormControl>
+                </div>
             </div>
-            <div class="w50">
-                <p class="title">3 . 付款及運送資訊</p><hr class="mg0" />
-                <FormControl component="fieldset">
-                    <FormLabel component="legend">付款方式</FormLabel>
-                    <RadioGroup row aria-label="payment" name="row-radio-buttons-group">
-                        <FormControlLabel value="credit" control={<Radio />} label="線上刷卡" />
-                        <FormControlLabel value="cash" control={<Radio />} label="貨到付款" />
-                        <FormControlLabel value="trans" control={<Radio />} label="銀行轉帳" />
-                    </RadioGroup>
-                    <FormLabel component="legend">運送方式</FormLabel>
-                    <RadioGroup row aria-label="delivery" name="row-radio-buttons-group">
-                        <FormControlLabel value="mart" control={<Radio />} label="超商取貨" />
-                        <FormControlLabel value="home" control={<Radio />} label="宅配" />
-                    </RadioGroup>
-                </FormControl>
-            </div>
+            <button onClick={handleSubmit} class="btn">送出</button>
         </div>
-        <button onClick={handleSubmit} class="btn">送出</button> 
-        </div>
-        
+
     </div>)
 }
 

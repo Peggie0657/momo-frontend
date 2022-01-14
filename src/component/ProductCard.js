@@ -8,6 +8,9 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 import Typography from '@mui/material/Typography';
 
 const ProductCard = ({ product, editable = false, link }) => {
+    const handleState = (state) => {
+
+    }
     return (<>
         <Grow in={true}>
             <Card sx={{ maxWidth: 345 }}>
@@ -46,8 +49,8 @@ const ProductCard = ({ product, editable = false, link }) => {
                 </CardActionArea>
                 {editable ?
                     <CardActions>
-                        <Button disabled={false} size="small">上架</Button>
-                        <Button size="small">下架</Button>
+                        <Button disabled={product.state === 1 ? false : true} size="small">上架</Button>
+                        <Button disabled={product.state === 0 ? true : false} size="small" onClick={handleState("0")}>下架</Button>
                         <Button size="small">更新</Button>
                     </CardActions>
                     : null}

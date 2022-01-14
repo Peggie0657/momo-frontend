@@ -17,29 +17,6 @@ import { getMyOrders } from "../order";
 import { isAuthenticated } from "../auth";
 import AlertBar from "./AlertBar";
 
-function createData(name, calories, fat, carbs, protein, price) {
-    return {
-        name,
-        calories,
-        fat,
-        carbs,
-        protein,
-        price,
-        history: [
-            {
-                date: '2020-01-05',
-                customerId: '11091700',
-                amount: 3,
-            },
-            {
-                date: '2020-01-02',
-                customerId: 'Anonymous',
-                amount: 1,
-            },
-        ],
-    };
-}
-
 function Row(props) {
     const { row } = props;
     const [open, setOpen] = React.useState(false);
@@ -81,15 +58,15 @@ function Row(props) {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {row.history.map((historyRow) => (
-                                        <TableRow key={historyRow.date}>
+                                    {row.data.map(item => (
+                                        <TableRow key={item.id}>
                                             <TableCell component="th" scope="row">
-                                                {historyRow.date}
+                                                {item.name}
                                             </TableCell>
-                                            <TableCell>{historyRow.customerId}</TableCell>
-                                            <TableCell align="right">{historyRow.amount}</TableCell>
+                                            <TableCell>{item.name}</TableCell>
+                                            <TableCell align="right">{item.name}</TableCell>
                                             <TableCell align="right">
-                                                {Math.round(historyRow.amount * row.price * 100) / 100}
+                                                {Math.round(item.name * row.price * 100) / 100}
                                             </TableCell>
                                         </TableRow>
                                     ))}
@@ -103,31 +80,6 @@ function Row(props) {
     );
 }
 
-Row.propTypes = {
-    row: PropTypes.shape({
-        calories: PropTypes.number.isRequired,
-        carbs: PropTypes.number.isRequired,
-        fat: PropTypes.number.isRequired,
-        history: PropTypes.arrayOf(
-            PropTypes.shape({
-                amount: PropTypes.number.isRequired,
-                customerId: PropTypes.string.isRequired,
-                date: PropTypes.string.isRequired,
-            }),
-        ).isRequired,
-        name: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
-        protein: PropTypes.number.isRequired,
-    }).isRequired,
-};
-
-const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0, 3.99),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3, 4.99),
-    createData('Eclair', 262, 16.0, 24, 6.0, 3.79),
-    createData('Cupcake', 305, 3.7, 67, 4.3, 2.5),
-    createData('Gingerbread', 356, 16.0, 49, 3.9, 1.5),
-];
 
 const MyOrder = () => {
     const [orders, setOrders] = useState([])
@@ -136,10 +88,31 @@ const MyOrder = () => {
 
     useEffect(() => {
 
-
+        var map = {}
+        var arr = [];
         getMyOrders(token)
             .then(data => {
                 console.log(data)
+                for (var i = 0; i < data.length; i++) {
+                    var ai = data[i];
+                    if (!map[ai.id]) {
+                        arr.push({
+                            id: ai.id,
+                            data: [ai]
+                        });
+                        map[ai.id] = ai;
+                    } else {
+                        for (var j = 0; j < arr.length; j++) {
+                            var dj = arr[j];
+                            if (dj.id == ai.id) {
+                                dj.data.push(ai);
+                                break;
+                            }
+                        }
+                    }
+                }
+                console.log(arr)
+                setOrders(arr)
             })
     }, [])
 
@@ -161,7 +134,7 @@ const MyOrder = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {rows.map((row) => (
+                                {orders.map((row) => (
                                     <Row key={row.name} row={row} />
                                 ))}
                             </TableBody>

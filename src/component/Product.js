@@ -71,6 +71,8 @@ const Element = ({ className, match }) => {
         getProduct(productId)
             .then(data => {
                 setProduct(data)
+                console.log(data)
+
             })
     }, [])
 
@@ -134,7 +136,7 @@ const Element = ({ className, match }) => {
                             </div>
                             <Box sx={{ width: '100%', maxWidth: 500, padding: "50px 10px 10px 0" }}>
                                 <Typography variant="h5" gutterBottom component="div">
-                                    JO MALONE 英國梨與小蒼蘭香水 100ml
+                                    {product.name}
                                 </Typography>
                                 <Box
                                     sx={{
@@ -182,7 +184,7 @@ const Element = ({ className, match }) => {
                                 </Typography>
 
                                 <Typography variant="h5" gutterBottom component="div" marginTop={5}>
-                                    售價：4420元
+                                    售價：{product.price}元
                                 </Typography>
                                 <Typography variant="h5" gutterBottom component="div" marginTop={5}>
 
@@ -211,7 +213,7 @@ const Element = ({ className, match }) => {
                         <hr />
                         <div className="discription">
                             <h6>商品描述</h6>
-                            <p>彷彿集結秋天的氣息。 猶如新鮮採摘的清新梨子香氣，搭配白色小蒼蘭所綻放的花香，佐以琥珀、廣藿香與木質香調的柔和芳香。 擁有奢華的金色光澤。</p>
+                            <p>{product.description}</p>
                         </div>
                         <hr />
                         <Comment />
