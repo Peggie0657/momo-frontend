@@ -118,6 +118,7 @@ const Element = ({ className }) => {
             .then(data => {
                 if (data) {
                     setShowSave(true)
+                    setUser(data)
                 }
             })
     }

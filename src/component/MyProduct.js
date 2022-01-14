@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components'
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -13,7 +15,10 @@ const Element = ({ className }) => {
     const [value, setValue] = React.useState(0);
     const [products, setProducts] = useState([])
     const userId = isAuthenticated() && isAuthenticated().id
-
+    const [open, setOpen] = React.useState(false);
+    const handleClose = () => {
+        setOpen(false);
+    };
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -25,10 +30,12 @@ const Element = ({ className }) => {
         setProducts(arr)
     }
     useEffect(() => {
+        setOpen(true)
         getProducts()
             .then(data => {
                 if (data) {
                     setProducts(data.filter(item => item.userBean.id === userId))
+                    setOpen(false)
                 }
             })
     }, [])
@@ -54,6 +61,13 @@ const Element = ({ className }) => {
                     </div>)
                 )}
             </div>
+            <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={open}
+                onClick={handleClose}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
         </>
     )
 }
