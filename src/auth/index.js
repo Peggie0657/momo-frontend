@@ -144,6 +144,7 @@ export const googlelogin = () => {
             const userdetail = { user, token };
 
             console.log(token);
+            console.log(result);
 
             return userdetail;
         }).catch((error) => {
