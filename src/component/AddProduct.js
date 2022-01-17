@@ -76,6 +76,7 @@ const Element = ({ className, productsFetch }) => {
     })
     const [images, setImages] = useState([]);
     const [imageURLs, setImageURLs] = useState([]);
+    const [base64, setBase64] = useState([]);
 
     const { name, description, price, stock, category } = values
 
@@ -91,10 +92,9 @@ const Element = ({ className, productsFetch }) => {
 
     const clickSubmit = (event) => {
         event.preventDefault()
-        console.log(values)
-        productsFetch({ name, description, price, stock, category })
+        productsFetch({ name, description, price, stock, category, cover: base64[0] })
         addProduct({
-            name, description, price, stock, url: imageURLs, category
+            name, description, price, stock, url: base64, category
         }, token)
             .then(data => {
                 if (data) {
@@ -120,10 +120,30 @@ const Element = ({ className, productsFetch }) => {
     useEffect(() => {
         if (images.length < 1) return
         const arr = []
-        images.forEach(image => arr.push(URL.createObjectURL(image)))
+        const arr1 = []
+        images.forEach(file => {
+            arr.push(URL.createObjectURL(file))
+            var reader = new FileReader()
+            reader.readAsDataURL(file)
+            reader.onload = function (e) {
+                var image = new Image() //新建一個img標籤（還沒嵌入DOM節點)
+                image.src = e.target.result
+                image.onload = function () {
+                    var canvas = document.createElement('canvas'),
+                        context = canvas.getContext('2d'),
+                        imageWidth = image.width / 3,    //壓縮後圖片的大小
+                        imageHeight = image.height / 3;
+                    canvas.width = imageWidth;
+                    canvas.height = imageHeight;
+                    context.drawImage(image, 0, 0, imageWidth, imageHeight);
+
+                    arr1.push(canvas.toDataURL('image/jpeg'))
+                }
+            }
+        })
         setImageURLs(arr)
+        setBase64(arr1)
     }, [images])
-    console.log(imageURLs)
     return (
         <div className={className}>
             <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct">
