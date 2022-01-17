@@ -29,13 +29,14 @@ const labels = {
     4: '4',
     4.5: '4.5',
     5: '5',
+    6: "6",
 };
 
 const Element = ({ className, match }) => {
     const [redirect, setRedirect] = useState(false)
     const [product, setProduct] = useState({})
     const [star, setStar] = useState(2)
-    const [values, setValues] = React.useState({});
+    const [values, setValues] = useState({});
 
     const { num } = values;
     const productId = match.params.productId
@@ -75,6 +76,7 @@ const Element = ({ className, match }) => {
 
             })
     }, [])
+    console.log(product)
 
     return (
         <Layout>

@@ -76,6 +76,7 @@ const Element = ({ className, productsFetch }) => {
     })
     const [images, setImages] = useState([]);
     const [imageURLs, setImageURLs] = useState([]);
+    const [specArr, setSpecArr] = useState([]);
 
     const { name, description, price, stock, category } = values
 
@@ -94,7 +95,7 @@ const Element = ({ className, productsFetch }) => {
         console.log(values)
         productsFetch({ name, description, price, stock, category })
         addProduct({
-            name, description, price, stock, url: imageURLs, category
+            name, description, price, stock, url: imageURLs, category, specs: specArr
         }, token)
             .then(data => {
                 if (data) {
@@ -123,7 +124,7 @@ const Element = ({ className, productsFetch }) => {
         images.forEach(image => arr.push(URL.createObjectURL(image)))
         setImageURLs(arr)
     }, [images])
-    console.log(imageURLs)
+    console.log(specArr)
     return (
         <div className={className}>
             <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct">
@@ -218,7 +219,7 @@ const Element = ({ className, productsFetch }) => {
                                         noValidate
                                         autoComplete="off"
                                     >
-                                        <ExternalTable />
+                                        <ExternalTable setSpecArr={setSpecArr} specArr={specArr} />
                                     </Box>
                                     <Box
                                         component="form"
