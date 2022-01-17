@@ -11,43 +11,43 @@ const Element = ({ className }) => {
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="/products/1" >女生衣著</a>
+                                <a class="nav-link" href="/products/0" >女生衣著</a>
                             </li>
                             <li class="nav-item category">
-                                <a class="nav-link" href="/products/2">男生衣著</a>
+                                <a class="nav-link" href="/products/1">男生衣著</a>
                             </li>
                             <li class="nav-item category">
-                                <a class="nav-link" href="/products/3">運動/健身</a>
+                                <a class="nav-link" href="/products/2">運動/健身</a>
                             </li>
                             <li class="nav-item category">
-                                <a class="nav-link" href="/products/4">男女鞋</a>
+                                <a class="nav-link" href="/products/3">男女鞋</a>
                             </li>
                             <li class="nav-item category">
-                                <a class="nav-link" href="/products/5">電腦週邊</a>
+                                <a class="nav-link" href="/products/4">電腦週邊</a>
                             </li>
                             <li class="nav-item category">
-                                <a class="nav-link" href="/products/6">美妝保養</a>
+                                <a class="nav-link" href="/products/5">美妝保養</a>
                             </li>
                             <li class="nav-item category">
-                                <a class="nav-link" href="/products/7">服飾飾品</a>
+                                <a class="nav-link" href="/products/6">服飾飾品</a>
                             </li>
                             <li class="nav-item category">
-                                <a class="nav-link" href="/products/8">手機相機</a>
+                                <a class="nav-link" href="/products/7">手機相機</a>
                             </li>
                             <li class="nav-item category">
-                                <a class="nav-link" href="/products/9">家電影音</a>
+                                <a class="nav-link" href="/products/8">家電影音</a>
                             </li>
                             <li class="nav-item category">
-                                <a class="nav-link" href="/products/10">居家生活</a>
+                                <a class="nav-link" href="/products/9">居家生活</a>
                             </li>
                             <li class="nav-item category">
-                                <a class="nav-link" href="/products/11">寵物</a>
+                                <a class="nav-link" href="/products/10">寵物</a>
                             </li>
                             <li class="nav-item category">
-                                <a class="nav-link" href="/products/12">戶外/旅行</a>
+                                <a class="nav-link" href="/products/11">戶外/旅行</a>
                             </li>
                             <li class="nav-item category">
-                                <a class="nav-link" href="/products/13">書籍</a>
+                                <a class="nav-link" href="/products/12">書籍</a>
                             </li>
                             {/* <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
