@@ -56,7 +56,7 @@ const Element = ({ className }) => {
                         <Tabs value={value} onChange={handleChange} centered>
                             <Tab label="基本資料" />
                             <Tab label="我的收藏" />
-                            <Tab label="我的商品" />
+                            <Tab label="我的賣場" />
                             <Tab label="我的訂單" />
                         </Tabs>
                         <Grid
@@ -137,6 +137,7 @@ const Element = ({ className }) => {
                                 </TabPanel>
                                 <TabPanel value={value} index={2}>
                                     <Container maxWidth="lg">
+                                        <MyOrder />
                                         <MyProduct />
                                     </Container>
                                 </TabPanel>

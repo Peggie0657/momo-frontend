@@ -18,7 +18,7 @@ const Routes = () => {
                 {/* <Route path="/shop" exact component={Shop} /> */}
                 <Route path="/checkout" exact component={Checkout} />
                 <Route path="/products/:categoryId" exact component={Products} />
-                <Route path="/products/:keyword" exact component={Products} />
+                {/* <Route path="/products/:keyword" exact component={Products} /> */}
                 <Route path="/products" exact component={Products} />
                 <Route path="/product/:productId" exact component={Product} />
                 <Route path="/memberCenter" exact component={MemberCenter} />

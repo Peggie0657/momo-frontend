@@ -35,7 +35,7 @@ const Element = ({ className, categoryId, setFilterArr }) => {
             { id: "11", checked: false },
             { id: "12", checked: false },
         ]
-        if (arr.find(item => item.id === e.target.id)) {
+        if (arr.find(apple => apple.id === e.target.id)) {
 
             const index = arr.indexOf(arr.find(item => item.id === e.target.id))
             arr[index] = { ["id"]: e.target.id, ["checked"]: e.target.checked }
