@@ -86,13 +86,24 @@ export default function FullFeaturedCrudGrid(props) {
       const row = apiRef.current.getRow(id);
       let arr = []
       arr = [...specArr]
-      arr.push(row)
+      if (arr.find(item => item.id === id)) {
+        const index = arr.indexOf(arr.find(item => item.id === id))
+        arr[index] = row
+      } else {
+        arr.push(row)
+      }
       props.setSpecArr(arr)
       apiRef.current.updateRows([{ ...row, isNew: false }]);
     }
   };
 
   const handleDeleteClick = (id) => (event) => {
+    let arr = []
+    arr = [...specArr]
+
+    const index = arr.indexOf(arr.find(item => item.id === id))
+    arr.splice(index, 1)
+    props.setSpecArr(arr)
     event.stopPropagation();
     apiRef.current.updateRows([{ id, _action: 'delete' }]);
   };
@@ -109,7 +120,7 @@ export default function FullFeaturedCrudGrid(props) {
 
   const columns = [
     { field: 'name', headerName: '規格', width: 180, editable: true },
-    { field: 'age', headerName: '數量', type: 'number', editable: true },
+    { field: 'stock', headerName: '數量', type: 'number', editable: true },
     {
       field: 'actions',
       type: 'actions',

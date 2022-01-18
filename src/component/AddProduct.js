@@ -90,6 +90,7 @@ const Element = ({ className, productsFetch }) => {
         setValues({ ...values, error: false, [name]: event.target.value })
     }
 
+
     const clickSubmit = (event) => {
         event.preventDefault()
         console.log(values)
@@ -107,7 +108,7 @@ const Element = ({ className, productsFetch }) => {
                         stock: "",
                         imageURLs: []
                     })
-
+                    setSpecArr([])
                 } else {
                     alert("商品建立失敗")
                 }
@@ -157,7 +158,7 @@ const Element = ({ className, productsFetch }) => {
                                     <Box
                                         component="form"
                                         sx={{
-                                            '& .MuiTextField-root': { m: 1, width: '30ch' },
+                                            '& .MuiTextField-root': { m: 1, width: '50ch' },
                                             textAlign: "center"
                                         }}
                                         noValidate
@@ -173,6 +174,7 @@ const Element = ({ className, productsFetch }) => {
                                                 shrink: true,
                                             }}
                                         />
+                                        <br /><br />
                                         <TextField
                                             id="outlined-select-category"
                                             select
@@ -186,7 +188,7 @@ const Element = ({ className, productsFetch }) => {
                                                 </MenuItem>
                                             ))}
                                         </TextField>
-                                        <br /><br />
+
                                         <TextField
                                             id="outlined-price"
                                             label="商品價格"
@@ -198,7 +200,7 @@ const Element = ({ className, productsFetch }) => {
                                                 shrink: true,
                                             }}
                                         />
-                                        <TextField
+                                        {/* <TextField
                                             id="outlined-stock"
                                             label="商品數量"
                                             type="text"
@@ -207,7 +209,7 @@ const Element = ({ className, productsFetch }) => {
                                             InputLabelProps={{
                                                 shrink: true,
                                             }}
-                                        />
+                                        /> */}
                                         <br /><br />
                                     </Box>
                                     <Box
