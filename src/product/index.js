@@ -21,6 +21,17 @@ export const getProduct = (id) => {
         .catch(err => console.log(err))
 }
 
+export const getSpecs = (id) => {
+    return fetch(`${API}/productSpec/${id}`,{
+        method:"GET"
+    })
+        .then(response => {
+            console.log(response)
+            return response.json();
+        })
+        .catch(err => console.log(err))
+}
+
 export const addProduct = (product, token) => {
     return fetch(`${API}/product`, {
         method: "POST",
