@@ -179,7 +179,7 @@ const EnhancedTableToolbar = (props) => {
                     id="tableTitle"
                     component="div"
                 >
-                    Nutrition
+                    商品
                 </Typography>
             )}
 

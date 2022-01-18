@@ -76,6 +76,35 @@ const Element = ({ className }) => {
             setGender(event.target.value)
         } else if (name === "birthday") {
             setDate(moment(new Date(event.target.value)).format("YYYY-MM-DD"))
+        } else if (name === "photo") {
+            var file = event.target.files[0];
+            var reader = new FileReader();
+            reader.readAsDataURL(file)
+            reader.onload = function (event) {
+                // 文件里的文本会在这里被打印出来
+                var image = new Image() //新建一個img標籤（還沒嵌入DOM節點)
+                image.src = event.target.result
+                image.onload = function () {
+                    var canvas = document.createElement('canvas'),
+                        context = canvas.getContext('2d'),
+                        imageWidth = image.width / 3,    //壓縮後圖片的大小
+                        imageHeight = image.height / 3;
+                    canvas.width = imageWidth;
+                    canvas.height = imageHeight;
+                    context.drawImage(image, 0, 0, imageWidth, imageHeight);
+
+                    // arr1.push(canvas.toDataURL('image/jpeg'))
+                    // console.log(canvas.toDataURL('image/jpeg'))
+                    setImage(canvas.toDataURL('image/jpeg'))
+
+                }
+                // console.log(event.target.result)
+                // setImage(canvas.toDataURL('image/jpeg'))
+            };
+
+
+            // setImage(canvas.toDataURL('image/jpeg'))
+            // }
         } else {
             setValues({ ...values, [name]: event.target.value })
         }
@@ -109,10 +138,12 @@ const Element = ({ className }) => {
     };
 
     const handleSubmit = (user, token) => {
+        console.log(image)
         const obj = {
             ...user,
             birthday: date,
-            gender: gender
+            gender: gender,
+            userphoto: image
         }
         putUser(obj, token)
             .then(data => {
@@ -159,9 +190,27 @@ const Element = ({ className }) => {
 
     return (<div className={className}>
         <Paper elevation={3} sx={{ padding: "1% 5% 5% 5%" }}>
-            <Avatar sx={{ height: '200px', width: '200px', margin: "5% auto", backgroundColor: '#FFF0F5' }}>
-                <input type="file" id="img" className="img" accept="image/*" onChange={handleImages} />
-            </Avatar>
+            {/* <input type="file" id="img" className="img" accept="image/*" onChange={handleImages} > */}
+
+            <Box sx={{ textAlign: "center" }}>
+                <input
+                    accept="image/*"
+                    // className={classes.input}   
+                    id="contained-button-file"
+                    hidden
+                    type="file"
+                    onChange={handleChange("photo")}
+                />
+                <label htmlFor="contained-button-file">
+                    <Avatar
+                        sx={{ height: '200px', width: '200px', backgroundColor: '#FFF0F5', cursor: "pointer" }}
+                        src={user.userphoto}
+                    />
+                </label>
+            </Box>
+            <br />
+            <br />
+            {/* </input> */}
             <Accordion>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}

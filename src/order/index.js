@@ -52,6 +52,8 @@ export const addOrder = (product, token) => {
         .catch(err => {
             console.log(err)
         })
+
+        
 }
 
 // export const addProduct = (product, token) => {

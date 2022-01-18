@@ -20,6 +20,7 @@ const Element = ({ className, location }) => {
     const history = useHistory();
     const token = isAuthenticated() && isAuthenticated().accessToken
 
+
     const { name, phone, address } = values
 
     const handleSubmit = () => {

@@ -19,6 +19,7 @@
     "@testing-library/user-event": "^12.1.10",
     "braintree-web": "^3.76.3",
     "braintree-web-drop-in-react": "^1.2.1",
+    "ecpay_aio_nodejs": "^1.0.1",
     "firebase": "^9.6.2",
     "gh-pages": "^3.1.0",
     "moment": "^2.29.1",
