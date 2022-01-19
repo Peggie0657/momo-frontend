@@ -141,11 +141,10 @@ export const googlelogin = () => {
             const credential = GoogleAuthProvider.credentialFromResult(result);
             const token = credential.accessToken;
             const user = result.user;
-            const userdetail = { user, token };
 
-            console.log(token);
+            console.log(user);
 
-            return userdetail;
+            return user;
         }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -174,7 +173,7 @@ export const facebooklogin = () => {
         });
 }
 
-export const signUpWithOath = (userdetail) => {
+export const signUpWithOath = (user) => {
     return fetch(`${API}/auth/Oauth`,
         {
             method: "POST",
@@ -182,7 +181,7 @@ export const signUpWithOath = (userdetail) => {
                 Accept: 'application/json',
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(userdetail.user)
+            body: JSON.stringify(user)
         })
         .then(response => {
             return response.json();

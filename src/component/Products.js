@@ -29,7 +29,7 @@ const Element = ({ className, match, location }) => {
             .then(data => {
                 if (data) {
                     setCount(Math.ceil(data.length / 24))
-                    setProducts(data.slice((page - 1) * 24, 24 * page))
+                    setProducts(data.filter(item => item.category === categoryId).slice((page - 1) * 24, 24 * page))
                     window.scrollTo(0, 0);
                 }
             })
@@ -49,7 +49,7 @@ const Element = ({ className, match, location }) => {
             .then(data => {
                 if (data) {
                     setCount(Math.ceil(data.length / 24))
-                    setProducts(data.slice((selectPage - 1) * 24, 24 * selectPage))
+                    setProducts(data.filter(item => item.category === categoryId).slice((selectPage - 1) * 24, 24 * selectPage))
                 }
             })
         // getProducts()

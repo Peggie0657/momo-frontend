@@ -16,7 +16,7 @@ import Box from '@mui/material/Box';
 import Layout from '../sample/Layout';
 import Comment from './Comment';
 import { addItem, itemTotal } from './cartHelpers';
-import { getProduct } from '../product';
+import { getProduct, getSpecs } from '../product';
 
 const labels = {
     0.5: '0.5',
@@ -29,13 +29,15 @@ const labels = {
     4: '4',
     4.5: '4.5',
     5: '5',
+    6: "6",
 };
 
 const Element = ({ className, match }) => {
     const [redirect, setRedirect] = useState(false)
     const [product, setProduct] = useState({})
     const [star, setStar] = useState(2)
-    const [values, setValues] = React.useState({});
+    const [values, setValues] = useState({});
+    const [specs, setSpecs] = useState([])
 
     const { num } = values;
     const productId = match.params.productId
@@ -72,9 +74,14 @@ const Element = ({ className, match }) => {
             .then(data => {
                 setProduct(data)
                 console.log(data)
-
+            })
+        getSpecs(productId)
+            .then(data1 => {
+                setSpecs(data1)
+                console.log(data1)
             })
     }, [])
+    console.log(product)
 
     return (
         <Layout>
@@ -158,7 +165,12 @@ const Element = ({ className, match }) => {
 
                                     <Box sx={{ '& button': { m: 1 } }}>
                                         規格：
-                                        <Button variant="contained" size="small">
+                                        {specs.map(data => (
+                                            <Button variant="contained" size="small">
+                                                {data.spec}
+                                            </Button>
+                                        ))}
+                                        {/* <Button variant="contained" size="small">
                                             20ml
                                         </Button>
                                         <Button variant="outlined" size="small">
@@ -166,7 +178,7 @@ const Element = ({ className, match }) => {
                                         </Button>
                                         <Button variant="outlined" size="small">
                                             100ml
-                                        </Button>
+                                        </Button> */}
                                     </Box>
                                 </Typography>
 

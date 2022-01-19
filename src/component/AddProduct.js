@@ -77,6 +77,7 @@ const Element = ({ className, productsFetch }) => {
     const [images, setImages] = useState([]);
     const [imageURLs, setImageURLs] = useState([]);
     const [base64, setBase64] = useState([]);
+    const [specArr, setSpecArr] = useState([]);
 
     const { name, description, price, stock, category } = values
 
@@ -90,12 +91,13 @@ const Element = ({ className, productsFetch }) => {
         setValues({ ...values, error: false, [name]: event.target.value })
     }
 
+
     const clickSubmit = (event) => {
         event.preventDefault()
         console.log(values)
         productsFetch({ name, description, price, stock, category, cover: base64[0] })
         addProduct({
-            name, description, price, stock, url: base64, category
+            name, description, price, stock, url: imageURLs, category, specs: specArr
         }, token)
             .then(data => {
                 if (data) {
@@ -107,7 +109,7 @@ const Element = ({ className, productsFetch }) => {
                         stock: "",
                         imageURLs: []
                     })
-
+                    setSpecArr([])
                 } else {
                     alert("商品建立失敗")
                 }
@@ -146,6 +148,7 @@ const Element = ({ className, productsFetch }) => {
         setImageURLs(arr)
         setBase64(arr1)
     }, [images])
+
     return (
         <div className={className}>
             <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct">
@@ -194,6 +197,7 @@ const Element = ({ className, productsFetch }) => {
                                                 shrink: true,
                                             }}
                                         />
+                                        <br /><br />
                                         <TextField
                                             id="outlined-select-category"
                                             select
@@ -207,7 +211,7 @@ const Element = ({ className, productsFetch }) => {
                                                 </MenuItem>
                                             ))}
                                         </TextField>
-                                        <br /><br />
+
                                         <TextField
                                             id="outlined-price"
                                             label="商品價格"
@@ -219,7 +223,7 @@ const Element = ({ className, productsFetch }) => {
                                                 shrink: true,
                                             }}
                                         />
-                                        <TextField
+                                        {/* <TextField
                                             id="outlined-stock"
                                             label="商品數量"
                                             type="text"
@@ -228,7 +232,7 @@ const Element = ({ className, productsFetch }) => {
                                             InputLabelProps={{
                                                 shrink: true,
                                             }}
-                                        />
+                                        /> */}
                                         <br /><br />
                                     </Box>
                                     <Box
@@ -240,7 +244,7 @@ const Element = ({ className, productsFetch }) => {
                                         noValidate
                                         autoComplete="off"
                                     >
-                                        <ExternalTable />
+                                        <ExternalTable setSpecArr={setSpecArr} specArr={specArr} />
                                     </Box>
                                     <Box
                                         component="form"

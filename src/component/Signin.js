@@ -85,8 +85,14 @@ const Element = ({ className }) => {
         let uid = ""
         googlelogin()
             .then(data => {
-                uid = data.user.uid
-                signUpWithOath(data)
+                uid = data.uid
+                let oathRequest = {
+                    "email": data.email,
+                    "uid": uid,
+                    "displayName": data.displayName,
+                    "photoURL": data.photoURL
+                }
+                signUpWithOath(oathRequest)
                     .then(user => {
                         const email = user.email
                         signin({ email, password: uid })

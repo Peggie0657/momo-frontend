@@ -138,6 +138,7 @@ const Element = ({ className }) => {
     };
 
     const handleSubmit = (user, token) => {
+        console.log(image)
         const obj = {
             ...user,
             birthday: date,

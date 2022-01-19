@@ -32,7 +32,6 @@ const ProductCard = ({ product, editable = false, link }) => {
                     <CardMedia
                         component="img"
                         height="194"
-                        image="https://cf.shopee.tw/file/b5772fc8fe61728bd8afd0b135c54cf3_tn"
                         image={product.cover}
                         src={product.cover}
                         // image="https://cf.shopee.tw/file/b5772fc8fe61728bd8afd0b135c54cf3_tn"
