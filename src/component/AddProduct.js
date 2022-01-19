@@ -76,7 +76,7 @@ const Element = ({ className, productsFetch }) => {
     })
     const [images, setImages] = useState([]);
     const [imageURLs, setImageURLs] = useState([]);
-    const [base64, setBase64] = useState([]);
+    const [specArr, setSpecArr] = useState([]);
 
     const { name, description, price, stock, category } = values
 
@@ -90,11 +90,13 @@ const Element = ({ className, productsFetch }) => {
         setValues({ ...values, error: false, [name]: event.target.value })
     }
 
+
     const clickSubmit = (event) => {
         event.preventDefault()
-        productsFetch({ name, description, price, stock, category, cover: base64[0] })
+        console.log(values)
+        productsFetch({ name, description, price, stock, category })
         addProduct({
-            name, description, price, stock, url: base64, category
+            name, description, price, stock, url: imageURLs, category, specs: specArr
         }, token)
             .then(data => {
                 if (data) {
@@ -106,7 +108,7 @@ const Element = ({ className, productsFetch }) => {
                         stock: "",
                         imageURLs: []
                     })
-
+                    setSpecArr([])
                 } else {
                     alert("商品建立失敗")
                 }
@@ -120,30 +122,10 @@ const Element = ({ className, productsFetch }) => {
     useEffect(() => {
         if (images.length < 1) return
         const arr = []
-        const arr1 = []
-        images.forEach(file => {
-            arr.push(URL.createObjectURL(file))
-            var reader = new FileReader()
-            reader.readAsDataURL(file)
-            reader.onload = function (e) {
-                var image = new Image() //新建一個img標籤（還沒嵌入DOM節點)
-                image.src = e.target.result
-                image.onload = function () {
-                    var canvas = document.createElement('canvas'),
-                        context = canvas.getContext('2d'),
-                        imageWidth = image.width / 3,    //壓縮後圖片的大小
-                        imageHeight = image.height / 3;
-                    canvas.width = imageWidth;
-                    canvas.height = imageHeight;
-                    context.drawImage(image, 0, 0, imageWidth, imageHeight);
-
-                    arr1.push(canvas.toDataURL('image/jpeg'))
-                }
-            }
-        })
+        images.forEach(image => arr.push(URL.createObjectURL(image)))
         setImageURLs(arr)
-        setBase64(arr1)
     }, [images])
+    console.log(specArr)
     return (
         <div className={className}>
             <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct">
@@ -192,6 +174,7 @@ const Element = ({ className, productsFetch }) => {
                                                 shrink: true,
                                             }}
                                         />
+                                        <br /><br />
                                         <TextField
                                             id="outlined-select-category"
                                             select
@@ -205,7 +188,7 @@ const Element = ({ className, productsFetch }) => {
                                                 </MenuItem>
                                             ))}
                                         </TextField>
-                                        <br /><br />
+
                                         <TextField
                                             id="outlined-price"
                                             label="商品價格"
@@ -217,7 +200,7 @@ const Element = ({ className, productsFetch }) => {
                                                 shrink: true,
                                             }}
                                         />
-                                        <TextField
+                                        {/* <TextField
                                             id="outlined-stock"
                                             label="商品數量"
                                             type="text"
@@ -226,7 +209,7 @@ const Element = ({ className, productsFetch }) => {
                                             InputLabelProps={{
                                                 shrink: true,
                                             }}
-                                        />
+                                        /> */}
                                         <br /><br />
                                     </Box>
                                     <Box
@@ -238,7 +221,7 @@ const Element = ({ className, productsFetch }) => {
                                         noValidate
                                         autoComplete="off"
                                     >
-                                        <ExternalTable />
+                                        <ExternalTable setSpecArr={setSpecArr} specArr={specArr} />
                                     </Box>
                                     <Box
                                         component="form"

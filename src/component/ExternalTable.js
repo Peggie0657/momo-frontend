@@ -21,17 +21,11 @@ import {
 } from '@mui/x-data-grid-generator';
 
 const rows = [
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 25,
-    dateCreated: randomCreatedDate(),
-    lastLogin: randomUpdatedDate(),
-  }
+
 ];
 
 function EditToolbar(props) {
-  const { apiRef } = props;
+  const { apiRef, setSpecArr, specArr } = props;
 
   const handleClick = () => {
     const id = randomId();
@@ -62,7 +56,8 @@ EditToolbar.propTypes = {
   }).isRequired,
 };
 
-export default function FullFeaturedCrudGrid() {
+export default function FullFeaturedCrudGrid(props) {
+  const { setSpecArr, specArr } = props;
   const apiRef = useGridApiRef();
 
   const handleRowEditStart = (params, event) => {
@@ -89,11 +84,26 @@ export default function FullFeaturedCrudGrid() {
     if (isValid) {
       apiRef.current.setRowMode(id, 'view');
       const row = apiRef.current.getRow(id);
+      let arr = []
+      arr = [...specArr]
+      if (arr.find(item => item.id === id)) {
+        const index = arr.indexOf(arr.find(item => item.id === id))
+        arr[index] = row
+      } else {
+        arr.push(row)
+      }
+      props.setSpecArr(arr)
       apiRef.current.updateRows([{ ...row, isNew: false }]);
     }
   };
 
   const handleDeleteClick = (id) => (event) => {
+    let arr = []
+    arr = [...specArr]
+
+    const index = arr.indexOf(arr.find(item => item.id === id))
+    arr.splice(index, 1)
+    props.setSpecArr(arr)
     event.stopPropagation();
     apiRef.current.updateRows([{ id, _action: 'delete' }]);
   };
@@ -109,8 +119,8 @@ export default function FullFeaturedCrudGrid() {
   };
 
   const columns = [
-    { field: 'name', headerName: 'Name', width: 180, editable: true },
-    { field: 'age', headerName: 'Age', type: 'number', editable: true },
+    { field: 'name', headerName: '規格', width: 180, editable: true },
+    { field: 'stock', headerName: '數量', type: 'number', editable: true },
     {
       field: 'actions',
       type: 'actions',
