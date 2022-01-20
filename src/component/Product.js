@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
@@ -31,6 +31,22 @@ const labels = {
     5: '5',
     6: "6",
 };
+
+const category = {
+    0: "女生衣著",
+    1: "男生衣著",
+    2: "運動/健",
+    3: "男女鞋",
+    4: "電腦週邊",
+    5: "美妝保養",
+    6: "服飾飾品",
+    7: "手機相機",
+    8: "家電影音",
+    9: "居家生活",
+    10: "寵物",
+    11: "戶外/旅行",
+    12: "書籍"
+}
 
 const Element = ({ className, match }) => {
     const [redirect, setRedirect] = useState(false)
@@ -72,6 +88,22 @@ const Element = ({ className, match }) => {
     useEffect(() => {
         getProduct(productId)
             .then(data => {
+                console.log(data.category);
+                // switch (data.category) {
+                //     case "0": data.category = '女生衣著'; break;
+                //     case "1": data.category = '男生衣著'; break;
+                //     case "2": data.category = '運動/健身'; break;
+                //     case "3": data.category = '男女鞋'; break;
+                //     case "4": data.category = '電腦週邊'; break;
+                //     case "5": data.category = '美妝保養'; break;
+                //     case "6": data.category = '服飾飾品'; break;
+                //     case "7": data.category = '手機相機'; break;
+                //     case "8": data.category = '家電影音'; break;
+                //     case "9": data.category = '居家生活'; break;
+                //     case "10": data.category = '寵物'; break;
+                //     case "11": data.category = '戶外/旅行'; break;
+                //     case "12": data.category = '書籍'; break;
+                // }
                 setProduct(data)
                 console.log(data)
             })
@@ -90,17 +122,17 @@ const Element = ({ className, match }) => {
                 <div className="content">
                     <div role="presentation" onClick={handleClick}>
                         <Breadcrumbs aria-label="breadcrumb">
-                            <Link underline="hover" color="inherit" href="/">
-                                MUI
+                            <Link underline="hover" color="inherit" to="/">
+                                首頁
                             </Link>
                             <Link
                                 underline="hover"
                                 color="inherit"
-                                href="/getting-started/installation/"
+                                to={`/products/${product.category}`}
                             >
-                                Core
+                                {category[product.category]}
                             </Link>
-                            <Typography color="text.primary">Breadcrumbs</Typography>
+                            <Typography color="text.primary">{product.name}</Typography>
                         </Breadcrumbs>
                     </div>
                     <br />
