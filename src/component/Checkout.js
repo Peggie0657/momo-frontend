@@ -11,6 +11,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import { ecpay } from '../order';
 
 
 const Element = ({ className, location }) => {
@@ -20,7 +21,6 @@ const Element = ({ className, location }) => {
     const history = useHistory();
     const token = isAuthenticated() && isAuthenticated().accessToken
 
-
     const { name, phone, address } = values
 
     const handleSubmit = () => {
@@ -29,10 +29,18 @@ const Element = ({ className, location }) => {
                 removeItem(getCart().find(item2 => item2.id === item.id).id)
             }
         })
-        addOrder({ products, total }, token)
+
+        ecpay()
             .then(data => {
-                history.push("/")
+                var myWindow = window.open("", "response", "resizable=yes");
+                myWindow.document.write(data);
             })
+
+        // addOrder({ products, total }, token)
+        //     .then(data => {
+        //         history.push("/")
+        //     })
+
     }
 
     const handleChange = name => event => {
@@ -144,7 +152,6 @@ const Element = ({ className, location }) => {
             </div>
             <button onClick={handleSubmit} class="btn">送出</button>
         </div>
-
     </div>)
 }
 

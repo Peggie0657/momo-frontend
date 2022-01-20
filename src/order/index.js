@@ -53,7 +53,19 @@ export const addOrder = (product, token) => {
             console.log(err)
         })
 
-        
+
+}
+
+export const ecpay = () => {
+    return fetch(`${API}/ecpay`, {
+        method: "GET",
+    })
+        .then(response => {
+            return response.text()
+        })
+        .catch(err => {
+            console.log(err)
+        })
 }
 
 // export const addProduct = (product, token) => {
