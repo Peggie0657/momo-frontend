@@ -97,7 +97,7 @@ const Element = ({ className, productsFetch }) => {
         console.log(values)
         productsFetch({ name, description, price, stock, category, cover: base64[0] })
         addProduct({
-            name, description, price, stock, url: imageURLs, category, specs: specArr
+            name, description, price, stock, url: base64, category, specs: specArr
         }, token)
             .then(data => {
                 if (data) {
@@ -107,7 +107,8 @@ const Element = ({ className, productsFetch }) => {
                         description: "",
                         price: "",
                         stock: "",
-                        imageURLs: []
+                        imageURLs: [],
+                        base64: []
                     })
                     setSpecArr([])
                 } else {
@@ -123,7 +124,7 @@ const Element = ({ className, productsFetch }) => {
     useEffect(() => {
         if (images.length < 1) return
         const arr = []
-        images.forEach(image => arr.push(URL.createObjectURL(image)))
+        // images.forEach(image => arr.push(URL.createObjectURL(image)))
         const arr1 = []
         images.forEach(file => {
             arr.push(URL.createObjectURL(file))
@@ -147,6 +148,7 @@ const Element = ({ className, productsFetch }) => {
         })
         setImageURLs(arr)
         setBase64(arr1)
+        console.log(arr1)
     }, [images])
 
     return (
