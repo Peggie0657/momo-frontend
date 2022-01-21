@@ -30,16 +30,16 @@ const Element = ({ className, location }) => {
             }
         })
 
-        ecpay()
-            .then(data => {
-                var myWindow = window.open("", "response", "resizable=yes");
-                myWindow.document.write(data);
-            })
-
-        // addOrder({ products, total }, token)
+        // ecpay()
         //     .then(data => {
-        //         history.push("/")
+        //         var myWindow = window.open("", "response", "resizable=yes");
+        //         myWindow.document.write(data);
         //     })
+
+        addOrder({ products, total }, token)
+            .then(data => {
+                history.push("/")
+            })
 
     }
 

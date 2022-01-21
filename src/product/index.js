@@ -22,8 +22,8 @@ export const getProduct = (id) => {
 }
 
 export const getSpecs = (id) => {
-    return fetch(`${API}/productSpec/${id}`,{
-        method:"GET"
+    return fetch(`${API}/productSpec/${id}`, {
+        method: "GET"
     })
         .then(response => {
             console.log(response)
@@ -49,6 +49,25 @@ export const addProduct = (product, token) => {
             console.log(err)
         })
 }
+
+export const addComment = (comment, token, product) => {
+    return fetch(`${API}/comment/${product.id}`, {
+        method: "POST",
+        headers: {
+            Accept: 'application/json',
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(comment)
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+
 
 export const searchKeyword = (keyword) => {
     // console.log(name, email, password)

@@ -277,7 +277,7 @@ const Element = ({ className, productsFetch }) => {
                             <div className="downBtn">
                                 {/* <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button> */}
                                 <button id="cancelBtn" className="btn-secondary cancelBtn" data-bs-dismiss="modal">取消</button>
-                                <button id="updateBtn" className="updateBtn" onClick={clickSubmit} data-bs-dismiss="modal">新增</button>
+                                <button id="updateBtn" className="updateBtn" onClick={clickSubmit} data-bs-dismiss="modal">更新</button>
                             </div>
                         </div>
                     </div>

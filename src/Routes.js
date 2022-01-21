@@ -8,6 +8,7 @@ import ExternalTable from './component/ExternalTable';
 import Products from './component/Products';
 import Checkout from './component/Checkout';
 import MemberCenter from './component/MemberCenter';
+import CommentDialog from './component/CommentDialog';
 
 const Routes = () => {
     return (
@@ -27,6 +28,7 @@ const Routes = () => {
                 <Route path="/signup" exact component={Signup} />
                 {/* <Route path="/user/dashboard" exact component={Dashboard} />
                 <Route path="/profile/:userId" exact component={Profile} /> */}
+                <Route path="/comment/:productId" exact component={CommentDialog}></Route>
             </Switch>
         </BrowserRouter>
     );
