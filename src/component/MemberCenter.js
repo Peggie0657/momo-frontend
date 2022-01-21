@@ -137,13 +137,15 @@ const Element = ({ className }) => {
                                 </TabPanel>
                                 <TabPanel value={value} index={2}>
                                     <Container maxWidth="lg">
-                                        <MyOrder />
+                                        <MyOrder title="賣家訂單" />
+                                        <br />
+                                        <br />
                                         <MyProduct />
                                     </Container>
                                 </TabPanel>
                                 <TabPanel value={value} index={3}>
                                     <Container maxWidth="lg">
-                                        <MyOrder />
+                                        <MyOrder title="買家訂單" />
                                     </Container>
                                 </TabPanel>
                             </Grid>

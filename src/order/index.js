@@ -56,9 +56,15 @@ export const addOrder = (product, token) => {
 
 }
 
-export const ecpay = () => {
-    return fetch(`${API}/ecpay`, {
-        method: "GET",
+export const checkOutOneTime = (product) => {
+    return fetch(`${API}/checkOutOneTime`, {
+        method: "POST",
+        headers: {
+            Accept: 'application/json',
+            "Content-Type": "application/json",
+            // Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(product)
     })
         .then(response => {
             return response.text()
@@ -68,6 +74,23 @@ export const ecpay = () => {
         })
 }
 
+export const checkOutATM = (product) => {
+    return fetch(`${API}/checkOutATM`, {
+        method: "POST",
+        headers: {
+            Accept: 'application/json',
+            "Content-Type": "application/json",
+            // Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(product)
+    })
+        .then(response => {
+            return response.text()
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
 // export const addProduct = (product, token) => {
 //     // console.log(name, email, password)
 //     return fetch(`${API}/product`, {

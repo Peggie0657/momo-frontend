@@ -32,6 +32,16 @@ export const getSpecs = (id) => {
         .catch(err => console.log(err))
 }
 
+export const getPics = (id) => {
+    return fetch(`${API}/productPics/${id}`, {
+        method: "GET"
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+}
+
 export const addProduct = (product, token) => {
     return fetch(`${API}/product`, {
         method: "POST",

@@ -74,7 +74,9 @@ function Row(props) {
                                 <TableHead>
                                     <TableRow>
                                         <TableCell>商品編號</TableCell>
+                                        <TableCell></TableCell>
                                         <TableCell>商品名稱</TableCell>
+                                        <TableCell>規格</TableCell>
                                         <TableCell align="right">商品單價</TableCell>
                                         <TableCell align="right">數量</TableCell>
                                         <TableCell align="right">總金額 $ {row.alltotal}</TableCell>
@@ -86,7 +88,14 @@ function Row(props) {
                                             <TableCell component="th" scope="row">
                                                 #{item.prid}
                                             </TableCell>
+                                            {/* <TableCell>{item.cover}</TableCell> */}
+                                            
+                                            <TableCell> 
+                                                {/* 測試用 */}
+                                            <img src="https://imgur.dcard.tw/5SZBJiMh.jpg" width={90}>
+                                            </img></TableCell>
                                             <TableCell>{item.name}</TableCell>
+                                            <TableCell >{item.spec}</TableCell>
                                             <TableCell align="right">$ {item.prprice}</TableCell>
                                             <TableCell align="right">
                                                 {item.num}
@@ -108,7 +117,7 @@ function Row(props) {
 }
 
 
-const MyOrder = () => {
+const MyOrder = (props) => {
     const [orders, setOrders] = useState([])
 
     const token = isAuthenticated() && isAuthenticated().accessToken
@@ -161,7 +170,7 @@ const MyOrder = () => {
 
     return (
         <>
-            <h4>我的訂單</h4>
+            <h4>{props.title}</h4>
             <Paper elevation={3}>
                 <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
                     <TableContainer >

@@ -16,7 +16,7 @@ import Box from '@mui/material/Box';
 import Layout from '../sample/Layout';
 import Comment from './Comment';
 import { addItem, itemTotal } from './cartHelpers';
-import { getProduct, getSpecs } from '../product';
+import { getProduct, getSpecs, getPics } from '../product';
 
 const labels = {
     0.5: '0.5',
@@ -54,6 +54,7 @@ const Element = ({ className, match }) => {
     const [star, setStar] = useState(2)
     const [values, setValues] = useState({});
     const [specs, setSpecs] = useState([])
+    const [pic, setPic] = useState([])
 
     const { num } = values;
     const productId = match.params.productId
@@ -112,8 +113,14 @@ const Element = ({ className, match }) => {
                 setSpecs(data1)
                 console.log(data1)
             })
+        getPics(productId)
+            .then(pics => {
+                setPic(pics)
+                // console.log(pics)
+            })
     }, [])
     console.log(product)
+    console.log(pic)
 
     return (
         <Layout>
@@ -141,26 +148,34 @@ const Element = ({ className, match }) => {
                         <div className="info">
                             <div id="carouselExampleIndicators" className="carousel slide slide-500" data-bs-ride="carousel">
                                 <div className="carousel-indicators">
-                                    <button type="button slide-indicator" data-bs-target="#carouselExampleIndicators"
+                                    {pic.map((item, index) => {
+                                        return index === 0 ? (
+                                            <button type="button slide-indicator" data-bs-target="#carouselExampleIndicators"
+                                                data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+                                        ) : (
+                                            <button type="button slide-indicator" data-bs-target="#carouselExampleIndicators"
+                                                data-bs-slide-to={index} aria-label={`Slide ${index}`}></button>
+                                        )
+                                    })}
+                                    {/* <button type="button slide-indicator" data-bs-target="#carouselExampleIndicators"
                                         data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
                                     <button type="button slide-indicator" data-bs-target="#carouselExampleIndicators"
                                         data-bs-slide-to="1" aria-label="Slide 2"></button>
                                     <button type="button slide-indicator" data-bs-target="#carouselExampleIndicators"
-                                        data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                        data-bs-slide-to="2" aria-label="Slide 3"></button> */}
                                 </div>
                                 <div className="carousel-inner">
-                                    <div className="carousel-item active">
+                                    {pic.map((item, index) => (
+                                        <div className={`carousel-item picDiv ${index === 0 ? "active" : ""}`}>
+                                            <img src={item.picname}
+                                                className="d-block w-100 productImg" alt="..." />
+                                        </div>
+                                    ))}
+
+                                    {/* <div className="carousel-item">
                                         <img src="https://7ego.7-11.com.tw/Files/market/106354/image/MAI_214356379_X700X700.jpg"
                                             className="d-block w-100 productImg" alt="..." />
-                                    </div>
-                                    <div className="carousel-item">
-                                        <img src="https://7ego.7-11.com.tw/Files/market/106354/image/MAI_214356379_X700X700.jpg"
-                                            className="d-block w-100 productImg" alt="..." />
-                                    </div>
-                                    <div className="carousel-item">
-                                        <img src="https://7ego.7-11.com.tw/Files/market/106354/image/MAI_214356379_X700X700.jpg"
-                                            className="d-block w-100 productImg" alt="..." />
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <button className="carousel-control-prev slide-indicator" type="button"
                                     data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -299,8 +314,11 @@ const Product = styled(Element)`
     justify-content:space-evenly;
 }
 .productImg{
-    width:400px;
-    height:400px;
+    max-width: 100%; 
+    max-height: 100%; 
+    position: absolute; 
+    top: 50%; left: 50%; 
+    transform: translate(-50%, -50%);
 }
 .discription{
     margin-top: 50px;
@@ -348,6 +366,10 @@ const Product = styled(Element)`
 }
 .checked {
     color: orange;
+}
+.picDiv{
+    width:400px;
+    height:400px;
 }
 `
 

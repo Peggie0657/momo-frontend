@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 const Element = ({ className }) => {
 
+    const historyPush = () => { }
     return (
         <div className={className}>
             <nav class="navbar navbar-expand-lg navbar-light mt-2" >
