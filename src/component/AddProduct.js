@@ -8,6 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import ExternalTable from './ExternalTable';
 import { addProduct } from "../product";
 import { isAuthenticated } from "../auth";
+import { Button } from '@mui/material';
 
 
 const categorySel = [
@@ -118,7 +119,16 @@ const Element = ({ className, productsFetch }) => {
     }
 
     const handleImages = (e) => {
-        setImages([...e.target.files])
+        setImages([
+            ...images,
+            ...e.target.files
+        ])
+    }
+
+    const handleDelete = () => {
+        setImages([])
+        setImageURLs([])
+        setBase64([])
     }
 
     useEffect(() => {
@@ -177,6 +187,7 @@ const Element = ({ className, productsFetch }) => {
                                         {imageURLs && imageURLs.map(item => (
                                             <img src={item} height={100} style={{ margin: "20px" }} alt="" />
                                         ))}
+                                        {imageURLs.length > 0 ? <Button variant="contained" color="error" onClick={handleDelete}>清除</Button> : null}
                                         {/* <img src={imagesSrc} height={100} style={{ margin: "20px" }} alt="" /> */}
                                         <br /><br />
                                     </form>

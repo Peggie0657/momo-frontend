@@ -11,7 +11,7 @@ const Element = ({ className }) => {
         getProducts()
             .then(data => {
                 if (data) {
-                    setProducts(data)
+                    setProducts(data.slice(0, 20))
                 }
             })
     }, [])

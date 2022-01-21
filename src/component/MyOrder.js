@@ -17,23 +17,23 @@ import { getMyOrders } from "../order";
 import { isAuthenticated } from "../auth";
 import AlertBar from "./AlertBar";
 
-const statusObj={
-    0:"取消訂單",
-    1:"尚未確認",
-    2:"賣家已確認",
-    3:"賣家已出貨",
-    4:"完成訂單"
+const statusObj = {
+    0: "取消訂單",
+    1: "尚未確認",
+    2: "賣家已確認",
+    3: "賣家已出貨",
+    4: "完成訂單"
 }
 
-const paymentobj={
-    1:"線上刷卡",
-    2:"貨到付款",
-    3:"銀行轉帳"
+const paymentobj = {
+    1: "線上刷卡",
+    2: "貨到付款",
+    3: "銀行轉帳"
 }
 
-const shippingobj={
-    1:"超商取貨",
-    2:"宅配"
+const shippingobj = {
+    1: "超商取貨",
+    2: "宅配"
 }
 
 function Row(props) {
@@ -56,7 +56,7 @@ function Row(props) {
                     No.{row.id}
                 </TableCell>
                 <TableCell align="right">
-                    {statusObj[row.status]} 
+                    {statusObj[row.status]}
                 </TableCell>
                 <TableCell align="right">{shippingobj[row.shipping]}</TableCell>
                 <TableCell align="right">{paymentobj[row.payment]}</TableCell>
@@ -104,7 +104,7 @@ function Row(props) {
 }
 
 
-const MyOrder = () => {
+const MyOrder = (props) => {
     const [orders, setOrders] = useState([])
 
     const token = isAuthenticated() && isAuthenticated().accessToken
@@ -121,10 +121,10 @@ const MyOrder = () => {
                     if (!map[ai.id]) {
                         arr.push({
                             id: ai.id,
-                            status:ai.status,
-                            shipping:ai.shipping,
-                            payment:ai.payment,
-                            setuptime:ai.setuptime,
+                            status: ai.status,
+                            shipping: ai.shipping,
+                            payment: ai.payment,
+                            setuptime: ai.setuptime,
                             data: [ai]
                         });
                         map[ai.id] = ai;
@@ -138,12 +138,12 @@ const MyOrder = () => {
                         }
                     }
                 }
-                arr.forEach(item=>{
-                let alltotal = 0
-                    item.data.forEach(item2=>{
-                        alltotal = alltotal+item2.prtotal
+                arr.forEach(item => {
+                    let alltotal = 0
+                    item.data.forEach(item2 => {
+                        alltotal = alltotal + item2.prtotal
                     })
-                    const index = arr.indexOf(arr.find(arrObj=>arrObj===item))
+                    const index = arr.indexOf(arr.find(arrObj => arrObj === item))
                     arr[index] = {
                         ...item,
                         alltotal
@@ -157,7 +157,7 @@ const MyOrder = () => {
 
     return (
         <>
-            <h4>我的訂單</h4>
+            <h4>{props.title}</h4>
             <Paper elevation={3}>
                 <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
                     <TableContainer >

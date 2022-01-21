@@ -5,6 +5,8 @@ import { useHistory } from "react-router";
 import Pagination from '@mui/material/Pagination';
 import Grow from "@mui/material/Grow";
 import Box from '@mui/material/Box';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 import Layout from './Layout';
 import Filter from './Filter';
 import { getProducts, searchKeyword } from "../product";
@@ -16,12 +18,15 @@ const Element = ({ className, match, location }) => {
     const [selectPage, setSelectPage] = useState(1)
     const [count, setCount] = useState(0)
     const [filterArr, setFilterArr] = useState([])
+    const [open, setOpen] = useState(false);
     // const [pageNum, setPageNum] = useState(0)
     const history = useHistory();
 
     const categoryId = match.params.categoryId || ""
     const keyword = (location && location.state && location.state.keyword) || "all"
-
+    const handleClose = () => {
+        setOpen(false);
+    };
     const handleChange = (e, page) => {
         // setSelectPage(page)
         // setProducts(products.slice((page - 1) * 24, 24 * page))
@@ -50,6 +55,7 @@ const Element = ({ className, match, location }) => {
                 if (data) {
                     setCount(Math.ceil(data.length / 24))
                     setProducts(data.filter(item => item.category === categoryId).slice((selectPage - 1) * 24, 24 * selectPage))
+                    setOpen(false)
                 }
             })
         // getProducts()
@@ -115,6 +121,13 @@ const Element = ({ className, match, location }) => {
                 </div>
             </div>
             <Filter categoryId={categoryId} setFilterArr={setFilterArr} />
+            <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={open}
+                onClick={handleClose}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
         </Layout >
     )
 }
@@ -161,7 +174,6 @@ const Products = styledcomponents(Element)`
 .dropdown-btn{
     margin: 5px auto auto 5px;
 }
-
 .price-div{
     position: absolute;
     bottom:5px;
@@ -175,4 +187,4 @@ const Products = styledcomponents(Element)`
 }
 `
 
-export default Products;
+export default React.memo(Products);
