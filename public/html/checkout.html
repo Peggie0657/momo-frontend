@@ -1,140 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>結帳</title>
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/checkout.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <title>Java後端WebSocket的Tomcat實現</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
 </head>
 
 <body>
-    <div class="content bc-pink">
-        <form id="allPayAPIForm" action="https://payment-stage.ecPay.com.tw/Cashier/AioCheckOut/V5" method="post"><input
-                type="hidden" name="NeedExtraPaidInfo" value="N"><input type="hidden" name="ReturnURL"
-                value="http://211.23.128.214:5000"><input type="hidden" name="CheckMacValue"
-                value="7F532E24D29C5E30B70731440029AD506073BE07304E6B7B7A6AF542BBAD3419"><input type="hidden"
-                name="StoreExpireDate" value="3"><input type="hidden" name="InvoiceItemPrice" value="50"><input
-                type="hidden" name="InvoiceItemTaxType" value="1"><input type="hidden" name="CustomerPhone"
-                value="0911429215"><input type="hidden" name="CustomerIdentifier" value=""><input type="hidden"
-                name="CustomerID" value="123456"><input type="hidden" name="PaymentInfoURL" value=""><input
-                type="hidden" name="ClientRedirectURL" value=""><input type="hidden" name="StoreID" value=""><input
-                type="hidden" name="EncryptType" value="1"><input type="hidden" name="InvoiceItemName"
-                value="%E6%B8%AC%E8%A9%A6"><input type="hidden" name="TaxType" value="1"><input type="hidden"
-                name="IgnorePayment" value=""><input type="hidden" name="PaymentType" value="aio"><input type="hidden"
-                name="ClearanceMark" value=""><input type="hidden" name="InvoiceItemCount" value="1"><input
-                type="hidden" name="OrderResultURL" value=""><input type="hidden" name="PlatformID" value=""><input
-                type="hidden" name="LoveCode" value="X123456"><input type="hidden" name="CustomerEmail" value=""><input
-                type="hidden" name="ItemName" value="TestItem"><input type="hidden" name="InvoiceMark" value="Y"><input
-                type="hidden" name="ChoosePayment" value="CVS"><input type="hidden" name="MerchantID"
-                value="2000132"><input type="hidden" name="InvType" value="07"><input type="hidden" name="CustomerName"
-                value="Mark"><input type="hidden" name="TradeDesc" value="test Description"><input type="hidden"
-                name="ClientBackURL" value=""><input type="hidden" name="InvoiceRemark" value=""><input type="hidden"
-                name="CarruerNum" value=""><input type="hidden" name="Print" value="0"><input type="hidden"
-                name="CustomField4" value=""><input type="hidden" name="Desc_4" value=""><input type="hidden"
-                name="TotalAmount" value="50"><input type="hidden" name="CustomField3" value=""><input type="hidden"
-                name="Desc_3" value=""><input type="hidden" name="DelayDay" value="1"><input type="hidden"
-                name="CustomerAddr"
-                value="%E5%8F%B0%E5%8C%97%E5%B8%82%E5%8D%97%E6%B8%AF%E5%8D%80%E4%B8%89%E9%87%8D%E8%B7%AF"><input
-                type="hidden" name="CustomField2" value=""><input type="hidden" name="Desc_2" value=""><input
-                type="hidden" name="MerchantTradeDate" value="2017/01/01 08:05:23"><input type="hidden"
-                name="CustomField1" value=""><input type="hidden" name="Desc_1" value=""><input type="hidden"
-                name="ChooseSubPayment" value=""><input type="hidden" name="InvoiceItemWord" value="%E5%80%8B"><input
-                type="hidden" name="MerchantTradeNo" value="7201d84227104a399646"><input type="hidden" name="ItemURL"
-                value=""><input type="hidden" name="RelateNumber" value="test202017test"><input type="hidden"
-                name="Remark" value=""><input type="hidden" name="DeviceSource" value=""><input type="hidden"
-                name="Donation" value="0"><input type="hidden" name="CarruerType" value="1">
-            <script language="JavaScript">allPayAPIForm.submit()</script>
-        </form>
-        <div class="top">
-            <p class="title">1 . 訂單內容</p>
-            <hr class="mg0">
-            <table class="table">
-                <thead>
-                    <tr class="thead">
-                        <th scope="col"></th>
-                        <th scope="col">商品名稱</th>
-                        <th scope="col">規格</th>
-                        <th scope="col">數量</th>
-                        <th scope="col">金額</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>可愛吉娃娃</td>
-                        <td>1.5公斤</td>
-                        <td>1</td>
-                        <td>30</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>可怕吉娃娃</td>
-                        <td>10公斤</td>
-                        <td>1</td>
-                        <td>300</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>洋蔥小吉</td>
-                        <td>5公斤</td>
-                        <td>1</td>
-                        <td>150</td>
-                    </tr>
-                </tbody>
-                <thead>
-                    <tr>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col">NT.480元</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
-        <div class="under">
-            <div class="left">
-                <p class="title">2 . 購買人資料</p>
-                <hr class="mg0">
-                <div class="center bd-right">
-                    <label for="name" class="form-block">姓名：</label>
-                    <input type="text" id="name" class="form-block input-7">
-                    <label for="tel" class="form-block">聯絡電話：</label>
-                    <input type="tel" id="tel" class="form-block input-7">
-                    <label for="email" class="form-block">電子信箱：</label>
-                    <input type="email" id="email" class="form-block input-7">
-
-                    </form>
-                </div>
-            </div>
-            <div class="right">
-                <p class="title">3 . 付款及運送資訊</p>
-                <hr class="mg0">
-                <div class="center">
-                    <label for="payment">付款方式：</label><br>
-                    <input type="radio" name="payment" value="cash">貨到付款
-                    <input type="radio" name="payment" value="credit">信用卡付款
-                    <input type="radio" name="payment" value="transfer">銀行轉帳
-                    <br><br><label for="transport">運送方式：</label><br>
-                    <select name="transport" id="transport">
-                        <option value="home">宅配</option>
-                        <optgroup label="超商取貨">
-                            <option value="family-mart">全家</option>
-                            <option value="7-11">7-11</option>
-                            <option value="hi-life">萊爾富</option>
-                            <option value="ok-mart">ok</option>
-                        </optgroup>
-                    </select>
-                </div>
-            </div>
-
-        </div>
-    </div>
+    <div id="main" style="width: 1200px;height:800px;"></div>
+    Welcome<br /><input id="text" type="text" />
+    <button onclick="send()">傳送訊息</button>
+    <hr />
+    <button onclick="closeWebSocket()">關閉WebSocket連線</button>
+    <hr />
+    <div id="message"></div>
 </body>
+<script type="text/javascript">
+    var websocket = null;
+    //判斷當前瀏覽器是否支援WebSocket
+    if ('WebSocket' in window) {
+        //改成你的地址
+        websocket = new WebSocket("ws://api/websocket/100");
+    } else {
+        alert('當前瀏覽器 Not support websocket')
+    }
+
+    //連線發生錯誤的回撥方法
+    websocket.onerror = function () {
+        setMessageInnerHTML("WebSocket連線發生錯誤");
+    };
+
+    //連線成功建立的回撥方法
+    websocket.onopen = function () {
+        setMessageInnerHTML("WebSocket連線成功");
+    }
+    var U01data, Uidata, Usdata
+    //接收到訊息的回撥方法
+    websocket.onmessage = function (event) {
+        console.log(event);
+        setMessageInnerHTML(event);
+        setechart()
+    }
+
+    //連線關閉的回撥方法
+    websocket.onclose = function () {
+        setMessageInnerHTML("WebSocket連線關閉");
+    }
+
+    //監聽視窗關閉事件，當視窗關閉時，主動去關閉websocket連線，防止連線還沒斷開就關閉視窗，server端會拋異常。
+    window.onbeforeunload = function () {
+        closeWebSocket();
+    }
+
+    //將訊息顯示在網頁上
+    function setMessageInnerHTML(innerHTML) {
+        document.getElementById('message').innerHTML += innerHTML + '<br/>';
+    }
+
+    //關閉WebSocket連線
+    function closeWebSocket() {
+        websocket.close();
+    }
+
+    //傳送訊息
+    function send() {
+        var message = document.getElementById('text').value;
+        websocket.send('{"msg":"' + message + '"}');
+        setMessageInnerHTML(message + "&#13;");
+    }
+</script>
 
 </html>
