@@ -17,6 +17,25 @@ import { getMyOrders } from "../order";
 import { isAuthenticated } from "../auth";
 import AlertBar from "./AlertBar";
 
+const statusObj={
+    0:"取消訂單",
+    1:"尚未確認",
+    2:"賣家已確認",
+    3:"賣家已出貨",
+    4:"完成訂單"
+}
+
+const paymentobj={
+    1:"線上刷卡",
+    2:"貨到付款",
+    3:"銀行轉帳"
+}
+
+const shippingobj={
+    1:"超商取貨",
+    2:"宅配"
+}
+
 function Row(props) {
     const { row } = props;
     const [open, setOpen] = React.useState(false);
@@ -34,40 +53,44 @@ function Row(props) {
                     </IconButton>
                 </TableCell>
                 <TableCell component="th" scope="row">
-                    {row.name}
+                    No.{row.id}
                 </TableCell>
-                <TableCell align="right">{row.calories}</TableCell>
-                <TableCell align="right">{row.fat}</TableCell>
-                <TableCell align="right">{row.carbs}</TableCell>
-                <TableCell align="right">{row.protein}</TableCell>
+                <TableCell align="right">
+                    {statusObj[row.status]} 
+                </TableCell>
+                <TableCell align="right">{shippingobj[row.shipping]}</TableCell>
+                <TableCell align="right">{paymentobj[row.payment]}</TableCell>
+                <TableCell align="center">{row.setuptime}</TableCell>
             </TableRow>
             <TableRow>
                 <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
                     <Collapse in={open} timeout="auto" unmountOnExit>
                         <Box sx={{ margin: 1 }}>
                             <Typography variant="h6" gutterBottom component="div">
-                                History
+                                訂單明細
                             </Typography>
                             <Table size="small" aria-label="purchases">
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell>Date</TableCell>
-                                        <TableCell>Customer</TableCell>
-                                        <TableCell align="right">Amount</TableCell>
-                                        <TableCell align="right">Total price ($)</TableCell>
+                                        <TableCell>商品編號</TableCell>
+                                        <TableCell>商品名稱</TableCell>
+                                        <TableCell align="right">商品單價</TableCell>
+                                        <TableCell align="right">數量</TableCell>
+                                        <TableCell align="right">總金額 $ {row.alltotal}</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
                                     {row.data.map(item => (
                                         <TableRow key={item.id}>
                                             <TableCell component="th" scope="row">
-                                                {item.name}
+                                                #{item.prid}
                                             </TableCell>
                                             <TableCell>{item.name}</TableCell>
-                                            <TableCell align="right">{item.name}</TableCell>
+                                            <TableCell align="right">$ {item.prprice}</TableCell>
                                             <TableCell align="right">
-                                                {Math.round(item.name * row.price * 100) / 100}
+                                                {item.num}
                                             </TableCell>
+                                            <TableCell align="right">$ {item.prtotal}</TableCell>
                                         </TableRow>
                                     ))}
                                 </TableBody>
@@ -92,12 +115,16 @@ const MyOrder = () => {
         var arr = [];
         getMyOrders(token)
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 for (var i = 0; i < data.length; i++) {
                     var ai = data[i];
                     if (!map[ai.id]) {
                         arr.push({
                             id: ai.id,
+                            status:ai.status,
+                            shipping:ai.shipping,
+                            payment:ai.payment,
+                            setuptime:ai.setuptime,
                             data: [ai]
                         });
                         map[ai.id] = ai;
@@ -111,7 +138,19 @@ const MyOrder = () => {
                         }
                     }
                 }
+                arr.forEach(item=>{
+                let alltotal = 0
+                    item.data.forEach(item2=>{
+                        alltotal = alltotal+item2.prtotal
+                    })
+                    const index = arr.indexOf(arr.find(arrObj=>arrObj===item))
+                    arr[index] = {
+                        ...item,
+                        alltotal
+                    }
+                })
                 console.log(arr)
+
                 setOrders(arr)
             })
     }, [])
@@ -126,11 +165,11 @@ const MyOrder = () => {
                             <TableHead>
                                 <TableRow>
                                     <TableCell />
-                                    <TableCell>Dessert (100g serving)</TableCell>
-                                    <TableCell align="right">Calories</TableCell>
-                                    <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                                    <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                                    <TableCell align="right">Protein&nbsp;(g)</TableCell>
+                                    <TableCell>訂單編號</TableCell>
+                                    <TableCell align="right">訂單狀況</TableCell>
+                                    <TableCell align="right">運送方式</TableCell>
+                                    <TableCell align="right">付款方式</TableCell>
+                                    <TableCell align="center">訂單日期</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
