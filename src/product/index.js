@@ -61,7 +61,7 @@ export const addProduct = (product, token) => {
 }
 
 export const addComment = (comment, token, product) => {
-    return fetch(`${API}/comment/${product.id}`, {
+    return fetch(`${API}/comment/${product.prid}`, {
         method: "POST",
         headers: {
             Accept: 'application/json',

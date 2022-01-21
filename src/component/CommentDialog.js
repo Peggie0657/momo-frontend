@@ -13,13 +13,13 @@ import { isAuthenticated } from "../auth";
 
 export default function FormDialog(props) {
     const [open, setOpen] = React.useState(false);
-    const [values, setValues] = useState({
-        broad: ""
-    })
+    const [broad, setBroad] = useState("")
     const { product } = props
-    console.log(product)
-    const { broad } = values
     const token = isAuthenticated() && isAuthenticated().accessToken
+
+    const handleChange = name => event => {
+        setBroad(event.target.value)
+    }
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -31,15 +31,11 @@ export default function FormDialog(props) {
 
     const clickSubmit = (event) => {
         event.preventDefault()
-        addComment({
-            broad
-        }, token, product)
+        addComment({ broad }, token, product)
             .then(data => {
                 if (data) {
                     alert("已送出評論")
-                    setValues({
-                        broad: ""
-                    })
+                    setBroad("")
                     setOpen(false)
                 } else {
                     alert("評論失敗")
@@ -70,6 +66,7 @@ export default function FormDialog(props) {
                         fullWidth
                         variant="standard"
                         style={{ width: 500 }}
+                        onChange={handleChange()}
                     />
                 </DialogContent>
                 <DialogActions>
