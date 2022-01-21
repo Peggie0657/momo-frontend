@@ -22,14 +22,24 @@ export const getProduct = (id) => {
 }
 
 export const getSpecs = (id) => {
-    return fetch(`${API}/productSpec/${id}`,{
-        method:"GET"
+    return fetch(`${API}/productSpec/${id}`, {
+        method: "GET"
     })
         .then(response => {
             console.log(response)
             return response.json();
         })
         .catch(err => console.log(err))
+}
+
+export const getPics = (id) => {
+    return fetch(`${API}/productPics/${id}`, {
+        method: "GET"
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
 }
 
 export const addProduct = (product, token) => {
