@@ -124,7 +124,7 @@ const Element = ({ className }) => {
             if (event.keyCode === 13) {
                 // Cancel the default action, if needed
                 history.push({
-                    pathname: `/products/`,
+                    pathname: `${history.location.pathname}`,
                     state: {
                         keyword: event.target.value
                     }

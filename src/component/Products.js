@@ -129,7 +129,7 @@ const Element = ({ className, match, location }) => {
                     </Grow>
                 </div>
             </div>
-            <Filter categoryId={categoryId} setFilterArr={setFilterArr} />
+            {/* <Filter categoryId={categoryId} setFilterArr={setFilterArr} /> */}
             <Backdrop
                 sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                 open={open}
