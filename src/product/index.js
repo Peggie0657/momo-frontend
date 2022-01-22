@@ -95,3 +95,20 @@ export const searchKeyword = (keyword) => {
             console.log(err)
         })
 }
+
+export const updateProductState = (product) => {
+    // console.log(name, email, password)
+    return fetch(`${API}/product/state/${product.id}`, {
+        method: "PUT",
+        headers: {
+            Accept: 'application/json',
+            "Content-Type": "application/json",
+        },
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}

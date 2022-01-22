@@ -12,33 +12,42 @@ import { isAuthenticated } from "../auth";
 
 
 const Element = ({ className }) => {
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = useState(1);
     const [products, setProducts] = useState([])
     const userId = isAuthenticated() && isAuthenticated().id
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
     const handleClose = () => {
         setOpen(false);
     };
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-    const productsFetch = (obj) => {
-        // setProducts(arr)
-        const arr = [...products]
-        arr.push(obj)
+    // const productsFetch = (obj) => {
+    //     // setProducts(arr)
+    //     const arr = [...products]
+    //     arr.push(obj)
 
-        setProducts(arr)
-    }
-    useEffect(() => {
-        setOpen(true)
+    //     setProducts(arr)
+    // }
+    const productsFetch = () => {
         getProducts()
             .then(data => {
                 if (data) {
-                    setProducts(data.filter(item => item.userBean.id === userId))
+                    setProducts(data.filter(item => item.userBean.id === userId).filter(item => item.state === value))
+                }
+            })
+    }
+    useEffect(() => {
+        setOpen(true)
+        console.log(value)
+        getProducts()
+            .then(data => {
+                if (data) {
+                    setProducts(data.filter(item => item.userBean.id === userId).filter(item => item.state === value))
                     setOpen(false)
                 }
             })
-    }, [])
+    }, [value])
 
     return (
         <>
@@ -50,14 +59,14 @@ const Element = ({ className }) => {
             </div>
             <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
                 <Tabs value={value} onChange={handleChange} centered>
-                    <Tab label="上架" />
-                    <Tab label="下架" />
+                    <Tab label="上架" value={1} />
+                    <Tab label="下架" value={0} />
                 </Tabs>
             </Box>
             <div className="row">
                 {products && products.map(product => (
                     <div className="col-6 col-lg-3 mt-3">
-                        <ProductCard product={product} editable={true} link={false} />
+                        <ProductCard product={product} productsFetch={productsFetch} editable={true} link={false} />
                     </div>)
                 )}
             </div>

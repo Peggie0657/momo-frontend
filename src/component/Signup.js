@@ -66,7 +66,7 @@ const Element = ({ className }) => {
                             <input type="text" className="form-control" value={email} placeholder='請輸入帳號:Email' required onChange={handleChange("email")} />
                         </div>
                         <div className="mb-3">
-                            <input type="text" className="form-control" value={username} placeholder='請輸入帳號:Email' required onChange={handleChange("username")} />
+                            <input type="text" className="form-control" value={username} placeholder='請輸入使用者名稱' required onChange={handleChange("username")} />
                         </div>
                         <div className="mb-3">
                             <div className="form-group">

@@ -119,13 +119,12 @@ const Element = ({ className }) => {
     };
     useEffect(() => {
         setItemCount(itemTotal())
-
         var input = document.getElementById("search");
         input.addEventListener("keyup", function (event) {
             if (event.keyCode === 13) {
                 // Cancel the default action, if needed
                 history.push({
-                    pathname: `/products`,
+                    pathname: `/products/`,
                     state: {
                         keyword: event.target.value
                     }

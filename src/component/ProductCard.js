@@ -6,11 +6,17 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import Typography from '@mui/material/Typography';
+import { updateProductState } from '../product';
+import ProductUpdate from './ProductUpdate';
 
-const ProductCard = ({ product, editable = false, link }) => {
+const ProductCard = ({ product, productsFetch, editable = false, link }) => {
     const handleState = (state) => {
-
+        updateProductState(product)
+            .then(data => {
+                productsFetch()
+            })
     }
+
     return (<>
         <Grow in={true}>
             <Card sx={{ maxWidth: 345 }}>
@@ -51,9 +57,9 @@ const ProductCard = ({ product, editable = false, link }) => {
                 </CardActionArea>
                 {editable ?
                     <CardActions>
-                        <Button disabled={product.state === 1 ? false : true} size="small">上架</Button>
-                        <Button disabled={product.state === 0 ? true : false} size="small" onClick={handleState("0")}>下架</Button>
-                        <Button size="small">更新</Button>
+                        <Button disabled={product.state === 1 ? true : false} size="small" onClick={() => handleState()}>上架</Button>
+                        <Button disabled={product.state === 0 ? true : false} size="small" onClick={() => handleState()}>下架</Button>
+                        <ProductUpdate productsFetch={productsFetch} product={product} />
                     </CardActions>
                     : null}
                 {/* <CardActions disableSpacing>

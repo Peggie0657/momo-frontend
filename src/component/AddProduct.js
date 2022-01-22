@@ -96,7 +96,7 @@ const Element = ({ className, productsFetch }) => {
     const clickSubmit = (event) => {
         event.preventDefault()
         console.log(values)
-        productsFetch({ name, description, price, stock, category, cover: base64[0] })
+        // productsFetch({ name, description, price, stock, category, cover: base64[0] })
         addProduct({
             name, description, price, stock, url: base64, category, specs: specArr
         }, token)
@@ -112,6 +112,7 @@ const Element = ({ className, productsFetch }) => {
                         base64: []
                     })
                     setSpecArr([])
+                    productsFetch()
                 } else {
                     alert("商品建立失敗")
                 }
@@ -185,7 +186,7 @@ const Element = ({ className, productsFetch }) => {
                                             上傳圖片
                                         </label>
                                         {imageURLs && imageURLs.map(item => (
-                                            <img src={item} height={100} style={{ margin: "20px" }} alt="" />
+                                            <img src={item} height={100} width={100} style={{ margin: "20px", objectFit: "cover" }} alt="" />
                                         ))}
                                         {imageURLs.length > 0 ? <Button variant="contained" color="error" onClick={handleDelete}>清除</Button> : null}
                                         {/* <img src={imagesSrc} height={100} style={{ margin: "20px" }} alt="" /> */}

@@ -34,27 +34,36 @@ const Element = ({ className, match, location }) => {
             .then(data => {
                 if (data) {
                     setCount(Math.ceil(data.length / 24))
-                    setProducts(data.filter(item => item.category === categoryId).slice((page - 1) * 24, 24 * page))
+                    if (categoryId !== "") {
+                        setProducts(data.filter(item => item.category === categoryId).slice((page - 1) * 24, 24 * page))
+                    } else {
+                        setProducts(data.slice((page - 1) * 24, 24 * page))
+                    }
                     window.scrollTo(0, 0);
                 }
             })
     }
 
     useEffect(() => {
-        if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
-            console.info("This page is reloaded");
-            history.push({
-                state: {
-                    keyword: "all"
-                }
-            })
+        // if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+        //     console.info("This page is reloaded");
+        //     history.push({
+        //         state: {
+        //             keyword: "all"
+        //         }
+        //     })
 
-        }
+        // }
         searchKeyword(keyword)
             .then(data => {
                 if (data) {
                     setCount(Math.ceil(data.length / 24))
-                    setProducts(data.filter(item => item.category === categoryId).slice((selectPage - 1) * 24, 24 * selectPage))
+                    if (categoryId !== "") {
+                        setProducts(data.filter(item => item.category === categoryId).slice((selectPage - 1) * 24, 24 * selectPage))
+                    } else {
+                        setProducts(data.slice((selectPage - 1) * 24, 24 * selectPage))
+
+                    }
                     setOpen(false)
                 }
             })
