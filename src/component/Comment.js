@@ -9,6 +9,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import Avatar from '@mui/material/Avatar';
+import Rating from '@mui/material/Rating';
 
 const messageExamples = [
     {
@@ -52,8 +53,8 @@ const messageExamples = [
     },
 ];
 
-const Element = ({ className }) => {
-
+const Element = ({ className, comments }) => {
+    console.log(comments)
     useEffect(() => {
 
     }, [])
@@ -64,12 +65,13 @@ const Element = ({ className }) => {
                 <Box sx={{ pb: 7 }}>
                     <CssBaseline />
                     <List>
-                        {messageExamples.map(({ primary, secondary, person }, index) => (
-                            <ListItem button key={index + person}>
+                        {comments.map((item, index) => (
+                            <ListItem key={index + item.id}>
                                 <ListItemAvatar>
-                                    <Avatar alt="Profile Picture" src={person} />
+                                    <Avatar alt="Profile Picture" src="" />
                                 </ListItemAvatar>
-                                <ListItemText primary={primary} secondary={secondary} />
+                                <Rating name="read-only" value={item.star} readOnly sx={{ marginRight: "20px" }} />
+                                <ListItemText primary={item.board} secondary="" />
                             </ListItem>
                         ))}
                     </List>

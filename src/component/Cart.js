@@ -291,13 +291,17 @@ const Cart = ({ setItemCount }) => {
     };
 
     const handleCheckout = () => {
-        history.push({
-            pathname: "/checkout",
-            state: {
-                selectedArr: selectedArr,
-                total: total
-            }
-        })
+        if (selectedArr.length > 0) {
+            history.push({
+                pathname: "/checkout",
+                state: {
+                    selectedArr: selectedArr,
+                    total: total
+                }
+            })
+        } else {
+            alert("沒有選擇商品")
+        }
     }
 
     const isSelected = (name) => selected.indexOf(name) !== -1;

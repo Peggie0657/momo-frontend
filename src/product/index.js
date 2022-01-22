@@ -15,7 +15,6 @@ export const getProduct = (id) => {
         method: "GET",
     })
         .then(response => {
-            console.log(response)
             return response.json();
         })
         .catch(err => console.log(err))
@@ -26,7 +25,6 @@ export const getSpecs = (id) => {
         method: "GET"
     })
         .then(response => {
-            console.log(response)
             return response.json();
         })
         .catch(err => console.log(err))
@@ -71,12 +69,25 @@ export const addComment = (comment, token, product) => {
         body: JSON.stringify(comment)
     })
         .then(response => {
-            return response
+            return response.json()
         })
         .catch(err => {
             console.log(err)
         })
 }
+
+export const getComments = (productId) => {
+    return fetch(`${API}/comment/${productId}`, {
+        method: "GET",
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+
 
 
 export const searchKeyword = (keyword) => {

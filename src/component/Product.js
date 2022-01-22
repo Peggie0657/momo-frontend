@@ -16,7 +16,7 @@ import Box from '@mui/material/Box';
 import Layout from '../sample/Layout';
 import Comment from './Comment';
 import { addItem, itemTotal } from './cartHelpers';
-import { getProduct, getSpecs, getPics } from '../product';
+import { getProduct, getSpecs, getPics, getComments } from '../product';
 
 const labels = {
     0.5: '0.5',
@@ -55,6 +55,7 @@ const Element = ({ className, match }) => {
     const [values, setValues] = useState({});
     const [specs, setSpecs] = useState([])
     const [pic, setPic] = useState([])
+    const [comments, setComments] = useState([])
 
     const { num } = values;
     const productId = match.params.productId
@@ -120,24 +121,7 @@ const Element = ({ className, match }) => {
     useEffect(() => {
         getProduct(productId)
             .then(data => {
-                console.log(data.category);
-                // switch (data.category) {
-                //     case "0": data.category = '女生衣著'; break;
-                //     case "1": data.category = '男生衣著'; break;
-                //     case "2": data.category = '運動/健身'; break;
-                //     case "3": data.category = '男女鞋'; break;
-                //     case "4": data.category = '電腦週邊'; break;
-                //     case "5": data.category = '美妝保養'; break;
-                //     case "6": data.category = '服飾飾品'; break;
-                //     case "7": data.category = '手機相機'; break;
-                //     case "8": data.category = '家電影音'; break;
-                //     case "9": data.category = '居家生活'; break;
-                //     case "10": data.category = '寵物'; break;
-                //     case "11": data.category = '戶外/旅行'; break;
-                //     case "12": data.category = '書籍'; break;
-                // }
                 setProduct(data)
-                console.log(data)
             })
         getSpecs(productId)
             .then(data1 => {
@@ -158,13 +142,17 @@ const Element = ({ className, match }) => {
                 })
                 setSpecs(arr)
             })
+
         getPics(productId)
             .then(pics => {
                 setPic(pics)
-                // console.log(pics)
+            })
+
+        getComments(productId)
+            .then(data => {
+                setComments(data)
             })
     }, [])
-    // console.log(specs)
 
     return (
         <Layout>
@@ -319,7 +307,7 @@ const Element = ({ className, match }) => {
                             <p>{product.description}</p>
                         </div>
                         <hr />
-                        <Comment />
+                        <Comment comments={comments} />
                         {/* <div className="commentWrap">
                             <Box sx={{ marginBottom: "20px" }}>
                                 <Rating
