@@ -80,24 +80,24 @@ const Element = ({ className, match, location }) => {
             <div className={className}>
                 <div className="prod-content">
                     {/* 
-                    <nav class="breadcrumb">
-                        <a class="breadcrumb-item" href="#">首頁</a>
-                        <a class="breadcrumb-item" href="#">首頁下一頁</a>
-                        <a class="breadcrumb-item active" href="#">當前頁</a>
+                    <nav className="breadcrumb">
+                        <a className="breadcrumb-item" href="#">首頁</a>
+                        <a className="breadcrumb-item" href="#">首頁下一頁</a>
+                        <a className="breadcrumb-item active" href="#">當前頁</a>
                     </nav> */}
                     {/* <SplitButton /> */}
                     {keyword !== "all" ? <h5>關鍵字："{keyword}"</h5> : null}
-                    <div class="dropdown-box">
-                        {/* <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle dropdown-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div className="dropdown-box">
+                        {/* <div className="dropdown">
+                            <button className="btn btn-secondary dropdown-toggle dropdown-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 上架日期
                             </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">新到舊</a></li>
-                                <li><a class="dropdown-item" href="#">舊到新</a></li>
+                            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a className="dropdown-item" href="#">新到舊</a></li>
+                                <li><a className="dropdown-item" href="#">舊到新</a></li>
                             </ul>
                         </div>
-                        <button class="btn btn-secondary dropdown-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button className="btn btn-secondary dropdown-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             熱門商品
                         </button> */}
                     </div>
@@ -105,7 +105,7 @@ const Element = ({ className, match, location }) => {
                     <div className="row">
                         {products && products.map(product => (
                             <div className="col-6 col-lg-3 mt-3">
-                                <ProductCard product={product} editable={false} link={true} />
+                                <ProductCard product={product} editable={false} link={true} favor={true} />
                             </div>
                         ))}
                         {/* {products && products.map(item => (
@@ -113,11 +113,11 @@ const Element = ({ className, match, location }) => {
                                 <div className="card">
                                     <img src="https://cf.shopee.tw/file/b5772fc8fe61728bd8afd0b135c54cf3_tn" className="card-img-top card-img-size"
                                         alt="..." />
-                                    <div class="card-body" style={{ fontSize: "1.2rem" }}>
-                                        <h3 class="card-title">{item.name.slice(0, 10)}</h3>
-                                        <p class="card-text">{item.description.slice(0, 10)}</p>
-                                        <p class="card-text">${item.price}</p>
-                                        <p class="card-text">數量：{item.stock}</p>
+                                    <div className="card-body" style={{ fontSize: "1.2rem" }}>
+                                        <h3 className="card-title">{item.name.slice(0, 10)}</h3>
+                                        <p className="card-text">{item.description.slice(0, 10)}</p>
+                                        <p className="card-text">${item.price}</p>
+                                        <p className="card-text">數量：{item.stock}</p>
                                     </div>
                                 </div>
                             </a>

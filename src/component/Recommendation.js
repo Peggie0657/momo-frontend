@@ -54,18 +54,6 @@ const Element = ({ className }) => {
                     {products && products.map(product => (
                         <div className="col-6 col-lg-3 mt-3" style={{ textDecoration: "none", color: "#000" }}>
                             <ProductCard product={product} link={true} />
-
-                            {/* //     <div className="card">
-                        //         <img src="https://cf.shopee.tw/file/b5772fc8fe61728bd8afd0b135c54cf3_tn" className="card-img-top card-img-size"
-                        //             alt="..." />
-                        //         <div class="card-body" style={{ fontSize: "1.2rem" }}>
-                        //             <h3 class="card-title">{item.name.slice(0, 10)}</h3>
-                        //             <p class="card-text">{item.description.slice(0, 10)}</p>
-                        //             <p class="card-text">${item.price}</p>
-                        //             <p class="card-text">數量：{item.stock}</p>
-                        //         </div>
-
-                        //     </div> */}
                         </div>
                     ))}
                 </div>

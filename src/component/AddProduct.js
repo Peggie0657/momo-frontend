@@ -1,6 +1,6 @@
 // import React from 'react';
 import React, { useEffect, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import styled from 'styled-components'
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
@@ -169,7 +169,7 @@ const Element = ({ className, productsFetch }) => {
                 新增商品
             </button>
 
-            <div className="modal fade" id="addProduct" tabindex="-1" aria-labelledby="addProductLabel" aria-hidden="true">
+            <div className="modal fade" id="addProduct" tabIndex="-1" aria-labelledby="addProductLabel" aria-hidden="true">
                 <div className="modal-dialog modal-lg">
                     <div className="modal-content">
                         <div className="modal-header">

@@ -86,12 +86,12 @@ const Element = ({ className, location }) => {
     return (
         <Layout>
             <div className={className} >
-                <div class="pink w70 center">
-                    <div class="m30">
-                        <p class="title center">1 . 訂單內容</p><hr class="mg0" />
-                        <table class="table pink-table">
+                <div className="pink w70 center">
+                    <div className="m30">
+                        <p className="title center">1 . 訂單內容</p><hr className="mg0" />
+                        <table className="table pink-table">
                             <thead>
-                                <tr class="thead">
+                                <tr className="thead">
                                     <th scope="col"></th>
                                     <th scope="col">商品名稱</th>
                                     <th scope="col">規格</th>
@@ -121,9 +121,9 @@ const Element = ({ className, location }) => {
                             </thead>
                         </table>
                     </div>
-                    <div class="col-center">
-                        <div class="w50">
-                            <p class="title">2 . 購買人資料</p><hr class="mg0" />
+                    <div className="col-center">
+                        <div className="w50">
+                            <p className="title">2 . 購買人資料</p><hr className="mg0" />
                             <Box
                                 component="form"
                                 sx={{
@@ -165,8 +165,8 @@ const Element = ({ className, location }) => {
                                 />
                             </Box>
                         </div>
-                        <div class="w50">
-                            <p class="title">3 . 付款及運送資訊</p><hr class="mg0" />
+                        <div className="w50">
+                            <p className="title">3 . 付款及運送資訊</p><hr className="mg0" />
                             <FormControl component="fieldset">
                                 <FormLabel component="legend">付款方式</FormLabel>
                                 <RadioGroup row aria-label="payment" name="row-radio-buttons-group">
@@ -183,7 +183,7 @@ const Element = ({ className, location }) => {
                             </FormControl>
                         </div>
                     </div>
-                    <button onClick={handleSubmit} class="btn">送出</button>
+                    <button onClick={handleSubmit} className="btn">送出</button>
                 </div>
             </div>
         </Layout>)

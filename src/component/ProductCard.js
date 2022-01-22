@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Grow from "@mui/material/Grow";
 import Card from '@mui/material/Card';
@@ -6,16 +6,36 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import { updateProductState } from '../product';
 import ProductUpdate from './ProductUpdate';
+import { addFavor, getFavor } from '../favorite';
 
-const ProductCard = ({ product, productsFetch, editable = false, link }) => {
+const ProductCard = ({ product, productsFetch, editable = false, link, favor = false }) => {
+    const [color, setColor] = useState("")
+
+    const handleFavor = () => {
+        if (color === "") {
+            setColor("error")
+        } else {
+            setColor("")
+        }
+        addFavor(product)
+    }
+
     const handleState = (state) => {
         updateProductState(product)
             .then(data => {
                 productsFetch()
             })
     }
+
+    useEffect(() => {
+        if (getFavor().find(item => item.id === product.id)) {
+            setColor("error")
+        }
+    }, [])
 
     return (<>
         <Grow in={true}>
@@ -63,13 +83,12 @@ const ProductCard = ({ product, productsFetch, editable = false, link }) => {
                         <ProductUpdate productsFetch={productsFetch} product={product} />
                     </CardActions>
                     : null}
-                {/* <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                    <FavoriteIcon />
-                </IconButton>
-
-
-            </CardActions> */}
+                {favor ? <CardActions disableSpacing>
+                    <IconButton aria-label="add to favorites">
+                        <FavoriteIcon color={color} onClick={handleFavor} />
+                    </IconButton>
+                </CardActions>
+                    : null}
             </Card>
         </Grow>
     </>);

@@ -14,6 +14,7 @@ import { getOrders } from "../order";
 import MyProduct from './MyProduct';
 import Layout from './Layout';
 import User from './User';
+import MyFavor from './MyFavor';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -131,7 +132,7 @@ const Element = ({ className, location }) => {
                                 </TabPanel>
                                 <TabPanel value={value} index={1}>
                                     <Container maxWidth="lg">
-                                        <div >123123...</div>
+                                        <MyFavor />
                                     </Container>
                                 </TabPanel>
                                 <TabPanel value={value} index={2}>

@@ -149,7 +149,7 @@ const Element = ({ className, product, productsFetch }) => {
         <div className={className}>
             <Button size="small" data-bs-toggle="modal" data-bs-target="#updateProduct">更新商品</Button>
 
-            <div className="modal fade" id="updateProduct" tabindex="-1" aria-labelledby="updateProductLabel" aria-hidden="true">
+            <div className="modal fade" id="updateProduct" tabIndex="-1" aria-labelledby="updateProductLabel" aria-hidden="true">
                 <div className="modal-dialog modal-lg">
                     <div className="modal-content">
                         <div className="modal-header">

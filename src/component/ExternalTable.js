@@ -14,9 +14,6 @@ import {
   GridActionsCellItem,
 } from '@mui/x-data-grid-pro';
 import {
-  randomCreatedDate,
-  randomTraderName,
-  randomUpdatedDate,
   randomId,
 } from '@mui/x-data-grid-generator';
 
@@ -25,7 +22,7 @@ const rows = [
 ];
 
 function EditToolbar(props) {
-  const { apiRef, setSpecArr, specArr } = props;
+  const { apiRef } = props;
 
   const handleClick = () => {
     const id = randomId();
@@ -57,7 +54,7 @@ EditToolbar.propTypes = {
 };
 
 export default function FullFeaturedCrudGrid(props) {
-  const { setSpecArr, specArr } = props;
+  const { specArr } = props;
   const apiRef = useGridApiRef();
 
   const handleRowEditStart = (params, event) => {
