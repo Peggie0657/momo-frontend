@@ -97,6 +97,7 @@ const Element = ({ className, productsFetch }) => {
         event.preventDefault()
         console.log(values)
         // productsFetch({ name, description, price, stock, category, cover: base64[0] })
+        console.log(specArr)
         addProduct({
             name, description, price, stock, url: base64, category, specs: specArr
         }, token)
