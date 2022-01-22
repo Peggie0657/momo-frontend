@@ -16,6 +16,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { getMyOrders } from "../order";
 import { isAuthenticated } from "../auth";
 import AlertBar from "./AlertBar";
+import CommentDialog from './CommentDialog';
 
 const statusObj = {
     0: "取消訂單",
@@ -100,6 +101,9 @@ function Row(props) {
                                                 {item.num}
                                             </TableCell>
                                             <TableCell align="right">$ {item.prtotal}</TableCell>
+                                            <TableCell>
+                                                <CommentDialog product={item} />
+                                            </TableCell>
                                         </TableRow>
                                     ))}
                                 </TableBody>

@@ -73,6 +73,7 @@ const Element = ({ className, match }) => {
     }
 
     const handleChange = name => event => {
+        console.log(name)
         setValues({ ...values, [name]: event.target.value })
     }
 
@@ -84,6 +85,36 @@ const Element = ({ className, match }) => {
 
     const handleClick = (event) => {
         event.preventDefault();
+    }
+
+    const handleSpecBtn = (obj) => {
+        const arr = []
+        specs.forEach(item => {
+            arr.push({
+                ...item,
+                isSel: false
+            })
+        })
+        const index = specs.indexOf(obj)
+        arr[index] = {
+            ...obj,
+            isSel: true
+        }
+
+        setSpecs(arr)
+        // let arr = [
+        //     ...specs
+        // ]
+        // const index = specs.indexOf(obj)
+        // arr[index] = {
+        //     ...obj,
+        //     isSel: true
+        // }
+
+        // setSpecs(arr)
+        // let a = e.target;
+        // a.classList.toggle("alreadyClick")
+        // a.siblings.classList.remove("alreadyClick")
     }
 
     useEffect(() => {
@@ -110,8 +141,22 @@ const Element = ({ className, match }) => {
             })
         getSpecs(productId)
             .then(data1 => {
-                setSpecs(data1)
-                console.log(data1)
+                const arr = []
+                data1.forEach((item, index) => {
+                    if (index === 0) {
+                        arr.push({
+                            ...item,
+                            isSel: true
+                        })
+                    } else {
+                        arr.push({
+                            ...item,
+                            isSel: false
+                        })
+                    }
+
+                })
+                setSpecs(arr)
             })
         getPics(productId)
             .then(pics => {
@@ -119,8 +164,7 @@ const Element = ({ className, match }) => {
                 // console.log(pics)
             })
     }, [])
-    console.log(product)
-    console.log(pic)
+    // console.log(specs)
 
     return (
         <Layout>
@@ -213,7 +257,7 @@ const Element = ({ className, match }) => {
                                     <Box sx={{ '& button': { m: 1 } }}>
                                         規格：
                                         {specs.map(data => (
-                                            <Button variant="contained" size="small">
+                                            <Button variant={`${data.isSel ? "contained" : "outlined"}`} className='' size="small" onClick={() => handleSpecBtn(data)} >
                                                 {data.spec}
                                             </Button>
                                         ))}
@@ -370,6 +414,9 @@ const Product = styled(Element)`
 .picDiv{
     width:400px;
     height:400px;
+}
+.alreadyClick{
+    color:red;
 }
 `
 

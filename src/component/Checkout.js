@@ -31,6 +31,7 @@ const Element = ({ className, location }) => {
             }
         })
 
+
         if (payment === "credit") {
             checkOutOneTime({
                 ...values,
@@ -55,6 +56,12 @@ const Element = ({ className, location }) => {
 
         }
 
+
+        // addOrder({ products, total }, token)
+        //     .then(data => {
+        //         var myWindow = window.open("", "response", "resizable=yes");
+        //         myWindow.document.write(data);
+        //     })
 
         // addOrder({ products, total }, token)
         //     .then(data => {

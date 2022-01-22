@@ -60,6 +60,25 @@ export const addProduct = (product, token) => {
         })
 }
 
+export const addComment = (comment, token, product) => {
+    return fetch(`${API}/comment/${product.prid}`, {
+        method: "POST",
+        headers: {
+            Accept: 'application/json',
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(comment)
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+
+
 export const searchKeyword = (keyword) => {
     // console.log(name, email, password)
     return fetch(`${API}/keyword/${keyword}`, {
