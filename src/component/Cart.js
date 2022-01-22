@@ -27,7 +27,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import Layout from './Layout';
-import { getCart } from './cartHelpers';
+import { getCart, removeItem } from './cartHelpers';
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -150,8 +150,16 @@ EnhancedTableHead.propTypes = {
 };
 
 const EnhancedTableToolbar = (props) => {
-    const { numSelected } = props;
+    const { numSelected, selectedArr, cartFetch, setSelected, setTotal } = props;
 
+    const handleDelete = () => {
+        selectedArr.forEach(item => {
+            removeItem(item.id)
+        })
+        cartFetch()
+        setSelected([])
+        setTotal(0)
+    }
     return (
         <Toolbar
             sx={{
@@ -186,7 +194,7 @@ const EnhancedTableToolbar = (props) => {
             {numSelected > 0 ? (
                 <Tooltip title="Delete">
                     <IconButton>
-                        <DeleteIcon />
+                        <DeleteIcon onClick={handleDelete} />
                     </IconButton>
                 </Tooltip>
             ) : (
@@ -294,6 +302,10 @@ const Cart = () => {
 
     const isSelected = (name) => selected.indexOf(name) !== -1;
 
+    const cartFetch = () => {
+        setProducts(getCart())
+    }
+
     useEffect(() => {
         setProducts(getCart())
     }, [])
@@ -314,7 +326,7 @@ const Cart = () => {
                         <div className="modal-body">
                             <Box sx={{ width: '100%' }}>
                                 <Paper sx={{ width: '100%', mb: 2 }}>
-                                    <EnhancedTableToolbar numSelected={selected.length} />
+                                    <EnhancedTableToolbar numSelected={selected.length} selectedArr={selectedArr} setTotal={setTotal} cartFetch={cartFetch} setSelected={setSelected} />
                                     <TableContainer sx={{ maxHeight: 300 }}>
                                         <Table
                                             sx={{ minWidth: 750 }}
