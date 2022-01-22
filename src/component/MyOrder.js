@@ -80,6 +80,7 @@ function Row(props) {
                                         <TableCell align="right">商品單價</TableCell>
                                         <TableCell align="right">數量</TableCell>
                                         <TableCell align="right">總金額 $ {row.alltotal}</TableCell>
+                                        <TableCell align="right"></TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -88,10 +89,7 @@ function Row(props) {
                                             <TableCell component="th" scope="row">
                                                 #{item.prid}
                                             </TableCell>
-                                            {/* <TableCell>{item.cover}</TableCell> */}
-
                                             <TableCell>
-                                                {/* 測試用 */}
                                                 <img src={item.cover} width={90}>
                                                 </img></TableCell>
                                             <TableCell>{item.name.slice(0, 20)}</TableCell>
