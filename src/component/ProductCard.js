@@ -45,10 +45,11 @@ const ProductCard = ({ product, productsFetch, editable = false, link }) => {
                     />
                     <CardContent>
                         <Typography variant="body2" color="text.secondary">
-                            {product && product.name.slice(0, 20)}
+                            {product && product.name.slice(0, 13)}
                         </Typography>
+                        <br />
                         <Typography variant="body2" color="text.secondary">
-                            {product && product.description.slice(0, 20)}
+                            {product && product.description.slice(0, 25)}
                         </Typography>
                         <Typography variant="h6" color="text.secondary">
                             ${product && product.price}

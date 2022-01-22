@@ -41,9 +41,8 @@ TabPanel.propTypes = {
     value: PropTypes.number.isRequired,
 };
 
-const Element = ({ className }) => {
-    const [value, setValue] = React.useState(0);
-
+const Element = ({ className, location }) => {
+    const [value, setValue] = useState(location && location.state && location.state.state.value || 0);
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -54,10 +53,10 @@ const Element = ({ className }) => {
                 <div className={className}>
                     <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
                         <Tabs value={value} onChange={handleChange} centered>
-                            <Tab label="基本資料" />
-                            <Tab label="我的收藏" />
-                            <Tab label="我的賣場" />
-                            <Tab label="我的訂單" />
+                            <Tab label="基本資料" value={0} />
+                            <Tab label="我的收藏" value={1} />
+                            <Tab label="我的賣場" value={2} />
+                            <Tab label="我的訂單" value={3} />
                         </Tabs>
                         <Grid
                             container

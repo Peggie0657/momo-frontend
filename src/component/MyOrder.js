@@ -41,7 +41,6 @@ const shippingobj = {
 function Row(props) {
     const { row } = props;
     const [open, setOpen] = React.useState(false);
-    console.log(row.data)
     return (
         <React.Fragment>
             <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
@@ -90,11 +89,11 @@ function Row(props) {
                                                 #{item.prid}
                                             </TableCell>
                                             {/* <TableCell>{item.cover}</TableCell> */}
-                                            
-                                            <TableCell> 
+
+                                            <TableCell>
                                                 {/* 測試用 */}
-                                            <img src="https://imgur.dcard.tw/5SZBJiMh.jpg" width={90}>
-                                            </img></TableCell>
+                                                <img src="https://imgur.dcard.tw/5SZBJiMh.jpg" width={90}>
+                                                </img></TableCell>
                                             <TableCell>{item.name}</TableCell>
                                             <TableCell >{item.spec}</TableCell>
                                             <TableCell align="right">$ {item.prprice}</TableCell>
@@ -103,8 +102,8 @@ function Row(props) {
                                             </TableCell>
                                             <TableCell align="right">$ {item.prtotal}</TableCell>
                                             <TableCell>
-                                                {item.iscommented===0?<CommentDialog product={item} />:
-                                                <Button variant="outlined" disabled>已評論</Button>}
+                                                {item.iscommented === 0 ? <CommentDialog product={item} /> :
+                                                    <Button variant="outlined" disabled>已評論</Button>}
                                             </TableCell>
                                         </TableRow>
                                     ))}
@@ -140,7 +139,7 @@ const MyOrder = (props) => {
                             shipping: ai.shipping,
                             payment: ai.payment,
                             setuptime: ai.setuptime,
-                            userid:ai.userid,
+                            userid: ai.userid,
                             data: [ai]
                         });
                         map[ai.id] = ai;
@@ -165,8 +164,6 @@ const MyOrder = (props) => {
                         alltotal
                     }
                 })
-                console.log(arr)
-
                 setOrders(arr)
             })
     }, [])

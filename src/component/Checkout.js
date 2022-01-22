@@ -63,10 +63,14 @@ const Element = ({ className, location }) => {
         //         myWindow.document.write(data);
         //     })
 
-        // addOrder({ products, total }, token)
-        //     .then(data => {
-        //         history.push("/")
-        //     })
+        addOrder({ products, total }, token)
+            .then(data => {
+                history.push("/memberCenter", {
+                    state: {
+                        value: 3
+                    }
+                })
+            })
 
     }
 

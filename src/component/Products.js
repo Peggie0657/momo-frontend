@@ -33,9 +33,9 @@ const Element = ({ className, match, location }) => {
         searchKeyword(keyword)
             .then(data => {
                 if (data) {
-                    setCount(Math.ceil(data.length / 24))
                     if (categoryId !== "") {
-                        setProducts(data.filter(item => item.category === categoryId).slice((page - 1) * 24, 24 * page))
+                        setProducts(data.filter(item => item.category === categoryId && item.state === 1).slice((page - 1) * 24, 24 * page))
+                        setCount(Math.ceil(data.filter(item => item.category === categoryId && item.state === 1).length / 24))
                     } else {
                         setProducts(data.slice((page - 1) * 24, 24 * page))
                     }
@@ -57,9 +57,10 @@ const Element = ({ className, match, location }) => {
         searchKeyword(keyword)
             .then(data => {
                 if (data) {
-                    setCount(Math.ceil(data.length / 24))
+
                     if (categoryId !== "") {
-                        setProducts(data.filter(item => item.category === categoryId).slice((selectPage - 1) * 24, 24 * selectPage))
+                        setProducts(data.filter(item => item.category === categoryId && item.state === 1).slice((selectPage - 1) * 24, 24 * selectPage))
+                        setCount(Math.ceil(data.filter(item => item.category === categoryId && item.state === 1).length / 24))
                     } else {
                         setProducts(data.slice((selectPage - 1) * 24, 24 * selectPage))
 

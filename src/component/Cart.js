@@ -212,7 +212,7 @@ EnhancedTableToolbar.propTypes = {
     numSelected: PropTypes.number.isRequired,
 };
 
-const Cart = () => {
+const Cart = ({ setItemCount }) => {
     const [redirect, setRedirect] = useState(false)
     const [order, setOrder] = useState('asc');
     const [orderBy, setOrderBy] = useState('calories');
@@ -304,6 +304,7 @@ const Cart = () => {
 
     const cartFetch = () => {
         setProducts(getCart())
+        setItemCount(getCart().length)
     }
 
     useEffect(() => {

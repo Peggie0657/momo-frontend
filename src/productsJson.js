@@ -1,4 +1,4 @@
-{
+const obj = {
     "products": [
         {
             "name": "電腦",
@@ -2146,3 +2146,5 @@
         }
     ]
 }
+
+export default obj;

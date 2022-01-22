@@ -67,7 +67,6 @@ const categorySel = [
 ];
 
 const Element = ({ className, product, productsFetch }) => {
-    console.log(product)
     const [values, setValues] = useState(product)
     const [images, setImages] = useState([]);
     const [imageURLs, setImageURLs] = useState([]);

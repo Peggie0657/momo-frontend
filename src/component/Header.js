@@ -310,7 +310,7 @@ const Element = ({ className }) => {
                 </Container>
                 <Category />
             </AppBar>
-            <Cart />
+            <Cart setItemCount={setItemCount} />
         </div >
     );
 };
