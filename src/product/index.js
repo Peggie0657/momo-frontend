@@ -61,7 +61,7 @@ export const addProduct = (product, token) => {
 }
 
 export const addComment = (comment, token, product) => {
-    return fetch(`${API}/comment/${product.prid}`, {
+    return fetch(`${API}/comment/${product.prid}/${product.orderdetailid}`, {
         method: "POST",
         headers: {
             Accept: 'application/json',
@@ -71,7 +71,7 @@ export const addComment = (comment, token, product) => {
         body: JSON.stringify(comment)
     })
         .then(response => {
-            return response.json()
+            return response
         })
         .catch(err => {
             console.log(err)

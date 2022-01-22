@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -40,7 +41,7 @@ const shippingobj = {
 function Row(props) {
     const { row } = props;
     const [open, setOpen] = React.useState(false);
-
+    console.log(row.data)
     return (
         <React.Fragment>
             <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
@@ -102,7 +103,8 @@ function Row(props) {
                                             </TableCell>
                                             <TableCell align="right">$ {item.prtotal}</TableCell>
                                             <TableCell>
-                                                <CommentDialog product={item} />
+                                                {item.iscommented===0?<CommentDialog product={item} />:
+                                                <Button variant="outlined" disabled>已評論</Button>}
                                             </TableCell>
                                         </TableRow>
                                     ))}
@@ -138,6 +140,7 @@ const MyOrder = (props) => {
                             shipping: ai.shipping,
                             payment: ai.payment,
                             setuptime: ai.setuptime,
+                            userid:ai.userid,
                             data: [ai]
                         });
                         map[ai.id] = ai;
