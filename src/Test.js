@@ -7,5 +7,6 @@ export const test = () => {
     obj.products.forEach(item => {
         addProduct(item, token)
     })
+    alert("輸入完畢")
 }
 
