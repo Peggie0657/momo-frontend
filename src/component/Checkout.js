@@ -39,8 +39,8 @@ const Element = ({ className, location }) => {
                 total
             })
                 .then(data => {
-                    var myWindow = window.open("", "response", "resizable=yes");
-                    myWindow.document.write(data);
+                    // var myWindow = window.open("", "response", "resizable=yes");
+                    window.document.write(data);
                 })
         } else if (payment === "atm") {
             checkOutATM({
@@ -49,8 +49,9 @@ const Element = ({ className, location }) => {
                 total
             })
                 .then(data => {
-                    var myWindow = window.open("", "response", "resizable=yes");
-                    myWindow.document.write(data);
+                    // var myWindow = window.open("", "response", "resizable=yes");
+                    // myWindow.document.write(data);
+                    window.document.write(data);
                 })
         } else {
 
@@ -65,11 +66,11 @@ const Element = ({ className, location }) => {
 
         addOrder({ products, total }, token)
             .then(data => {
-                history.push("/memberCenter", {
-                    state: {
-                        value: 4
-                    }
-                })
+                // history.push("/memberCenter", {
+                //     state: {
+                //         value: 4
+                //     }
+                // })
             })
 
     }
