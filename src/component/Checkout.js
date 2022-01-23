@@ -67,7 +67,7 @@ const Element = ({ className, location }) => {
             .then(data => {
                 history.push("/memberCenter", {
                     state: {
-                        value: 3
+                        value: 4
                     }
                 })
             })

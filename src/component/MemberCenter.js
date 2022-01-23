@@ -15,6 +15,8 @@ import MyProduct from './MyProduct';
 import Layout from './Layout';
 import User from './User';
 import MyFavor from './MyFavor';
+import DataCard from './DataCard';
+import Chart from './Chart';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -57,7 +59,8 @@ const Element = ({ className, location }) => {
                             <Tab label="基本資料" value={0} />
                             <Tab label="我的收藏" value={1} />
                             <Tab label="我的賣場" value={2} />
-                            <Tab label="我的訂單" value={3} />
+                            <Tab label="數據中心" value={3} />
+                            <Tab label="我的訂單" value={4} />
                         </Tabs>
                         <Grid
                             container
@@ -144,6 +147,27 @@ const Element = ({ className, location }) => {
                                     </Container>
                                 </TabPanel>
                                 <TabPanel value={value} index={3}>
+                                    <Container maxWidth="lg">
+                                        <Grid container spacing={2}>
+                                            <Grid item xs={3}>
+                                                <DataCard />
+                                            </Grid>
+                                            <Grid item xs={3}>
+                                                <DataCard />
+                                            </Grid>
+                                            <Grid item xs={3}>
+                                                <DataCard />
+                                            </Grid>
+                                            <Grid item xs={3}>
+                                                <DataCard />
+                                            </Grid>
+                                        </Grid>
+                                        <br />
+                                        <br />
+                                        <Chart />
+                                    </Container>
+                                </TabPanel>
+                                <TabPanel value={value} index={4}>
                                     <Container maxWidth="lg">
                                         <MyOrder title="買家訂單" />
                                     </Container>
