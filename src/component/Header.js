@@ -119,13 +119,12 @@ const Element = ({ className }) => {
     };
     useEffect(() => {
         setItemCount(itemTotal())
-
         var input = document.getElementById("search");
         input.addEventListener("keyup", function (event) {
             if (event.keyCode === 13) {
                 // Cancel the default action, if needed
                 history.push({
-                    pathname: `/products`,
+                    pathname: `${history.location.pathname}`,
                     state: {
                         keyword: event.target.value
                     }
@@ -229,21 +228,20 @@ const Element = ({ className }) => {
                                 ))}
                             </Box> : <>
                                 <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
-                                    <IconButton size="large" aria-label="show 4 new mails">{/* color="inherit" */}
+                                    {/* <IconButton size="large" aria-label="show 4 new mails">
 
                                         <Badge badgeContent={4} color="error">
                                             <ChatIcon />
                                         </Badge>
-                                    </IconButton>
-                                    <IconButton
+                                    </IconButton> */}
+                                    {/* <IconButton
                                         size="large"
                                         aria-label="show 17 new notifications"
                                     >
-                                        {/* color="inherit" */}
                                         <Badge badgeContent={17} color="error">
                                             <NotificationsIcon />
                                         </Badge>
-                                    </IconButton>
+                                    </IconButton> */}
                                     {/* <IconButton
                                         size="large"
                                         edge="end"
@@ -312,7 +310,7 @@ const Element = ({ className }) => {
                 </Container>
                 <Category />
             </AppBar>
-            <Cart />
+            <Cart setItemCount={setItemCount} />
         </div >
     );
 };

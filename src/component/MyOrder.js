@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -38,9 +39,8 @@ const shippingobj = {
 }
 
 function Row(props) {
-    const { row } = props;
+    const { row, orderFetch } = props;
     const [open, setOpen] = React.useState(false);
-
     return (
         <React.Fragment>
             <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
@@ -80,6 +80,7 @@ function Row(props) {
                                         <TableCell align="right">商品單價</TableCell>
                                         <TableCell align="right">數量</TableCell>
                                         <TableCell align="right">總金額 $ {row.alltotal}</TableCell>
+                                        <TableCell align="right"></TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -88,13 +89,10 @@ function Row(props) {
                                             <TableCell component="th" scope="row">
                                                 #{item.prid}
                                             </TableCell>
-                                            {/* <TableCell>{item.cover}</TableCell> */}
-                                            
-                                            <TableCell> 
-                                                {/* 測試用 */}
-                                            <img src="https://imgur.dcard.tw/5SZBJiMh.jpg" width={90}>
-                                            </img></TableCell>
-                                            <TableCell>{item.name}</TableCell>
+                                            <TableCell>
+                                                <img src={item.cover} width={90}>
+                                                </img></TableCell>
+                                            <TableCell>{item.name.slice(0, 20)}</TableCell>
                                             <TableCell >{item.spec}</TableCell>
                                             <TableCell align="right">$ {item.prprice}</TableCell>
                                             <TableCell align="right">
@@ -102,7 +100,8 @@ function Row(props) {
                                             </TableCell>
                                             <TableCell align="right">$ {item.prtotal}</TableCell>
                                             <TableCell>
-                                                <CommentDialog product={item} />
+                                                {item.iscommented === 0 ? <CommentDialog product={item} orderFetch={orderFetch} /> :
+                                                    <Button variant="outlined" disabled>已評論</Button>}
                                             </TableCell>
                                         </TableRow>
                                     ))}
@@ -122,8 +121,7 @@ const MyOrder = (props) => {
 
     const token = isAuthenticated() && isAuthenticated().accessToken
 
-    useEffect(() => {
-
+    const orderFetch = () => {
         var map = {}
         var arr = [];
         getMyOrders(token)
@@ -138,6 +136,7 @@ const MyOrder = (props) => {
                             shipping: ai.shipping,
                             payment: ai.payment,
                             setuptime: ai.setuptime,
+                            userid: ai.userid,
                             data: [ai]
                         });
                         map[ai.id] = ai;
@@ -162,8 +161,51 @@ const MyOrder = (props) => {
                         alltotal
                     }
                 })
-                console.log(arr)
+                setOrders(arr)
+            })
+    }
 
+    useEffect(() => {
+
+        var map = {}
+        var arr = [];
+        getMyOrders(token)
+            .then(data => {
+                // console.log(data)
+                for (var i = 0; i < data.length; i++) {
+                    var ai = data[i];
+                    if (!map[ai.id]) {
+                        arr.push({
+                            id: ai.id,
+                            status: ai.status,
+                            shipping: ai.shipping,
+                            payment: ai.payment,
+                            setuptime: ai.setuptime,
+                            userid: ai.userid,
+                            data: [ai]
+                        });
+                        map[ai.id] = ai;
+                    } else {
+                        for (var j = 0; j < arr.length; j++) {
+                            var dj = arr[j];
+                            if (dj.id == ai.id) {
+                                dj.data.push(ai);
+                                break;
+                            }
+                        }
+                    }
+                }
+                arr.forEach(item => {
+                    let alltotal = 0
+                    item.data.forEach(item2 => {
+                        alltotal = alltotal + item2.prtotal
+                    })
+                    const index = arr.indexOf(arr.find(arrObj => arrObj === item))
+                    arr[index] = {
+                        ...item,
+                        alltotal
+                    }
+                })
                 setOrders(arr)
             })
     }, [])
@@ -187,7 +229,7 @@ const MyOrder = (props) => {
                             </TableHead>
                             <TableBody>
                                 {orders.map((row) => (
-                                    <Row key={row.name} row={row} />
+                                    <Row key={row.name} row={row} orderFetch={orderFetch} />
                                 ))}
                             </TableBody>
                         </Table>

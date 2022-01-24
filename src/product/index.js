@@ -15,7 +15,6 @@ export const getProduct = (id) => {
         method: "GET",
     })
         .then(response => {
-            console.log(response)
             return response.json();
         })
         .catch(err => console.log(err))
@@ -26,7 +25,6 @@ export const getSpecs = (id) => {
         method: "GET"
     })
         .then(response => {
-            console.log(response)
             return response.json();
         })
         .catch(err => console.log(err))
@@ -61,7 +59,7 @@ export const addProduct = (product, token) => {
 }
 
 export const addComment = (comment, token, product) => {
-    return fetch(`${API}/comment/${product.prid}`, {
+    return fetch(`${API}/comment/${product.prid}/${product.orderdetailid}`, {
         method: "POST",
         headers: {
             Accept: 'application/json',
@@ -78,11 +76,41 @@ export const addComment = (comment, token, product) => {
         })
 }
 
+export const getComments = (productId) => {
+    return fetch(`${API}/comment/${productId}`, {
+        method: "GET",
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+
+
 
 export const searchKeyword = (keyword) => {
     // console.log(name, email, password)
     return fetch(`${API}/keyword/${keyword}`, {
         method: "GET",
+        headers: {
+            Accept: 'application/json',
+            "Content-Type": "application/json",
+        },
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+
+export const updateProductState = (product) => {
+    // console.log(name, email, password)
+    return fetch(`${API}/product/state/${product.id}`, {
+        method: "PUT",
         headers: {
             Accept: 'application/json',
             "Content-Type": "application/json",

@@ -1,4 +1,4 @@
-{
+const obj = {
     "products": [
         {
             "name": "電腦",
@@ -7,15 +7,15 @@
             "category": "4",
             "specs": [
                 {
-                    "spec": "10ml",
+                    "name": "10ml",
                     "stock": 20
                 },
                 {
-                    "spec": "30ml",
+                    "name": "30ml",
                     "stock": 10
                 },
                 {
-                    "spec": "40ml",
+                    "name": "40ml",
                     "stock": 30
                 }
             ],
@@ -30,7 +30,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "30ml",
+                    "name": "30ml",
                     "stock": 20
                 }
             ],
@@ -45,7 +45,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "100ml",
+                    "name": "100ml",
                     "stock": 30
                 }
             ],
@@ -60,7 +60,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "75ml",
+                    "name": "75ml",
                     "stock": 65
                 }
             ],
@@ -75,7 +75,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "100ml",
+                    "name": "100ml",
                     "stock": 50
                 }
             ],
@@ -90,7 +90,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "100ml",
+                    "name": "100ml",
                     "stock": 50
                 }
             ],
@@ -105,7 +105,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "50ml",
+                    "name": "50ml",
                     "stock": 53
                 }
             ],
@@ -120,7 +120,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "100ml",
+                    "name": "100ml",
                     "stock": 76
                 }
             ],
@@ -135,7 +135,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "100ml",
+                    "name": "100ml",
                     "stock": 23
                 }
             ],
@@ -150,7 +150,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "50ml",
+                    "name": "50ml",
                     "stock": 98
                 }
             ],
@@ -165,7 +165,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "50ml",
+                    "name": "50ml",
                     "stock": 90
                 }
             ],
@@ -180,7 +180,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "9g",
+                    "name": "9g",
                     "stock": 54
                 }
             ],
@@ -195,7 +195,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "40ml",
+                    "name": "40ml",
                     "stock": 45
                 }
             ],
@@ -210,19 +210,19 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "BR784",
+                    "name": "BR784",
                     "stock": 67
                 },
                 {
-                    "spec": "BG930",
+                    "name": "BG930",
                     "stock": 87
                 },
                 {
-                    "spec": "BR793",
+                    "name": "BR793",
                     "stock": 34
                 },
                 {
-                    "spec": "OR590",
+                    "name": "OR590",
                     "stock": 65
                 }
             ],
@@ -237,15 +237,15 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "584",
+                    "name": "584",
                     "stock": 65
                 },
                 {
-                    "spec": "664",
+                    "name": "664",
                     "stock": 66
                 },
                 {
-                    "spec": "674",
+                    "name": "674",
                     "stock": 32
                 }
             ],
@@ -260,11 +260,11 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "大理石裸棕",
+                    "name": "大理石裸棕",
                     "stock": 45
                 },
                 {
-                    "spec": "大理石粉棕",
+                    "name": "大理石粉棕",
                     "stock": 56
                 }
             ],
@@ -279,11 +279,11 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "香檳金",
+                    "name": "香檳金",
                     "stock": 56
                 },
                 {
-                    "spec": "雪燦綠",
+                    "name": "雪燦綠",
                     "stock": 12
                 }
             ],
@@ -298,7 +298,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "8.5ml",
+                    "name": "8.5ml",
                     "stock": 12
                 }
             ],
@@ -313,7 +313,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "9g",
+                    "name": "9g",
                     "stock": 23
                 }
             ],
@@ -328,15 +328,15 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "草莓跳跳糖",
+                    "name": "草莓跳跳糖",
                     "stock": 12
                 },
                 {
-                    "spec": "榛果跳跳糖",
+                    "name": "榛果跳跳糖",
                     "stock": 55
                 },
                 {
-                    "spec": "沙士跳跳糖",
+                    "name": "沙士跳跳糖",
                     "stock": 87
                 }
             ],
@@ -351,7 +351,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "落日暖橘",
+                    "name": "落日暖橘",
                     "stock": 2
                 }
             ],
@@ -366,7 +366,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "50ml",
+                    "name": "50ml",
                     "stock": 23
                 }
             ],
@@ -381,7 +381,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "30ml",
+                    "name": "30ml",
                     "stock": 5
                 }
             ],
@@ -396,7 +396,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "250ml",
+                    "name": "250ml",
                     "stock": 7
                 }
             ],
@@ -411,7 +411,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "30ml",
+                    "name": "30ml",
                     "stock": 8
                 }
             ],
@@ -426,7 +426,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "150ml",
+                    "name": "150ml",
                     "stock": 97
                 }
             ],
@@ -441,7 +441,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "30ml",
+                    "name": "30ml",
                     "stock": 75
                 }
             ],
@@ -456,7 +456,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "400ml",
+                    "name": "400ml",
                     "stock": 73
                 }
             ],
@@ -471,7 +471,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "15ml",
+                    "name": "15ml",
                     "stock": 1
                 }
             ],
@@ -486,7 +486,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "200ml",
+                    "name": "200ml",
                     "stock": 64
                 }
             ],
@@ -501,7 +501,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "200ml",
+                    "name": "200ml",
                     "stock": 84
                 }
             ],
@@ -516,23 +516,23 @@
             "category": "0",
             "specs": [
                 {
-                    "spec": "xs",
+                    "name": "xs",
                     "stock": 42
                 },
                 {
-                    "spec": "s",
+                    "name": "s",
                     "stock": 42
                 },
                 {
-                    "spec": "m",
+                    "name": "m",
                     "stock": 54
                 },
                 {
-                    "spec": "l",
+                    "name": "l",
                     "stock": 66
                 },
                 {
-                    "spec": "xl",
+                    "name": "xl",
                     "stock": 13
                 }
             ],
@@ -547,23 +547,23 @@
             "category": "0",
             "specs": [
                 {
-                    "spec": "xs",
+                    "name": "xs",
                     "stock": 54
                 },
                 {
-                    "spec": "s",
+                    "name": "s",
                     "stock": 24
                 },
                 {
-                    "spec": "m",
+                    "name": "m",
                     "stock": 87
                 },
                 {
-                    "spec": "l",
+                    "name": "l",
                     "stock": 90
                 },
                 {
-                    "spec": "xl",
+                    "name": "xl",
                     "stock": 73
                 }
             ],
@@ -578,23 +578,23 @@
             "category": "0",
             "specs": [
                 {
-                    "spec": "xs",
+                    "name": "xs",
                     "stock": 84
                 },
                 {
-                    "spec": "s",
+                    "name": "s",
                     "stock": 134
                 },
                 {
-                    "spec": "m",
+                    "name": "m",
                     "stock": 92
                 },
                 {
-                    "spec": "l",
+                    "name": "l",
                     "stock": 562
                 },
                 {
-                    "spec": "xl",
+                    "name": "xl",
                     "stock": 92
                 }
             ],
@@ -609,15 +609,15 @@
             "category": "0",
             "specs": [
                 {
-                    "spec": "s",
+                    "name": "s",
                     "stock": 20
                 },
                 {
-                    "spec": "m",
+                    "name": "m",
                     "stock": 10
                 },
                 {
-                    "spec": "l",
+                    "name": "l",
                     "stock": 30
                 }
             ],
@@ -634,15 +634,15 @@
             "category": "0",
             "specs": [
                 {
-                    "spec": "s",
+                    "name": "s",
                     "stock": 10
                 },
                 {
-                    "spec": "m",
+                    "name": "m",
                     "stock": 10
                 },
                 {
-                    "spec": "l",
+                    "name": "l",
                     "stock": 5
                 }
             ],
@@ -658,15 +658,15 @@
             "category": "0",
             "specs": [
                 {
-                    "spec": "s",
+                    "name": "s",
                     "stock": 10
                 },
                 {
-                    "spec": "m",
+                    "name": "m",
                     "stock": 10
                 },
                 {
-                    "spec": "l",
+                    "name": "l",
                     "stock": 10
                 }
             ],
@@ -683,15 +683,15 @@
             "category": "0",
             "specs": [
                 {
-                    "spec": "s",
+                    "name": "s",
                     "stock": 5
                 },
                 {
-                    "spec": "m",
+                    "name": "m",
                     "stock": 10
                 },
                 {
-                    "spec": "l",
+                    "name": "l",
                     "stock": 10
                 }
             ],
@@ -708,15 +708,15 @@
             "category": "0",
             "specs": [
                 {
-                    "spec": "s",
+                    "name": "s",
                     "stock": 5
                 },
                 {
-                    "spec": "m",
+                    "name": "m",
                     "stock": 5
                 },
                 {
-                    "spec": "l",
+                    "name": "l",
                     "stock": 10
                 }
             ],
@@ -733,15 +733,15 @@
             "category": "0",
             "specs": [
                 {
-                    "spec": "s",
+                    "name": "s",
                     "stock": 5
                 },
                 {
-                    "spec": "m",
+                    "name": "m",
                     "stock": 5
                 },
                 {
-                    "spec": "l",
+                    "name": "l",
                     "stock": 10
                 }
             ],
@@ -756,15 +756,15 @@
             "category": "0",
             "specs": [
                 {
-                    "spec": "s",
+                    "name": "s",
                     "stock": 5
                 },
                 {
-                    "spec": "m",
+                    "name": "m",
                     "stock": 10
                 },
                 {
-                    "spec": "l",
+                    "name": "l",
                     "stock": 15
                 }
             ],
@@ -779,15 +779,15 @@
             "category": "0",
             "specs": [
                 {
-                    "spec": "s",
+                    "name": "s",
                     "stock": 20
                 },
                 {
-                    "spec": "m",
+                    "name": "m",
                     "stock": 10
                 },
                 {
-                    "spec": "l",
+                    "name": "l",
                     "stock": 10
                 }
             ],
@@ -804,11 +804,11 @@
             "category": "1",
             "specs": [
                 {
-                    "spec": "s",
+                    "name": "s",
                     "stock": 10
                 },
                 {
-                    "spec": "m",
+                    "name": "m",
                     "stock": 15
                 }
             ],
@@ -824,15 +824,15 @@
             "category": "1",
             "specs": [
                 {
-                    "spec": "s",
+                    "name": "s",
                     "stock": 5
                 },
                 {
-                    "spec": "m",
+                    "name": "m",
                     "stock": 5
                 },
                 {
-                    "spec": "l",
+                    "name": "l",
                     "stock": 10
                 }
             ],
@@ -847,15 +847,15 @@
             "category": "1",
             "specs": [
                 {
-                    "spec": "s",
+                    "name": "s",
                     "stock": 5
                 },
                 {
-                    "spec": "m",
+                    "name": "m",
                     "stock": 5
                 },
                 {
-                    "spec": "l",
+                    "name": "l",
                     "stock": 10
                 }
             ],
@@ -870,15 +870,15 @@
             "category": "1",
             "specs": [
                 {
-                    "spec": "s",
+                    "name": "s",
                     "stock": 5
                 },
                 {
-                    "spec": "m",
+                    "name": "m",
                     "stock": 5
                 },
                 {
-                    "spec": "l",
+                    "name": "l",
                     "stock": 10
                 }
             ],
@@ -893,15 +893,15 @@
             "category": "1",
             "specs": [
                 {
-                    "spec": "s",
+                    "name": "s",
                     "stock": 15
                 },
                 {
-                    "spec": "m",
+                    "name": "m",
                     "stock": 5
                 },
                 {
-                    "spec": "l",
+                    "name": "l",
                     "stock": 10
                 }
             ],
@@ -916,15 +916,15 @@
             "category": "1",
             "specs": [
                 {
-                    "spec": "s",
+                    "name": "s",
                     "stock": 5
                 },
                 {
-                    "spec": "m",
+                    "name": "m",
                     "stock": 5
                 },
                 {
-                    "spec": "l",
+                    "name": "l",
                     "stock": 10
                 }
             ],
@@ -939,15 +939,15 @@
             "category": "1",
             "specs": [
                 {
-                    "spec": "s",
+                    "name": "s",
                     "stock": 25
                 },
                 {
-                    "spec": "m",
+                    "name": "m",
                     "stock": 15
                 },
                 {
-                    "spec": "l",
+                    "name": "l",
                     "stock": 15
                 }
             ],
@@ -962,19 +962,19 @@
             "category": "6",
             "specs": [
                 {
-                    "spec": "復古桔藍格",
+                    "name": "復古桔藍格",
                     "stock": 25
                 },
                 {
-                    "spec": "藍綠格",
+                    "name": "藍綠格",
                     "stock": 5
                 },
                 {
-                    "spec": "灰綠米色格紅色格",
+                    "name": "灰綠米色格紅色格",
                     "stock": 25
                 },
                 {
-                    "spec": "紅色格",
+                    "name": "紅色格",
                     "stock": 30
                 }
             ],
@@ -992,15 +992,15 @@
             "category": "6",
             "specs": [
                 {
-                    "spec": "麻灰",
+                    "name": "麻灰",
                     "stock": 15
                 },
                 {
-                    "spec": "卡其",
+                    "name": "卡其",
                     "stock": 25
                 },
                 {
-                    "spec": "紅棕",
+                    "name": "紅棕",
                     "stock": 15
                 }
             ],
@@ -1017,7 +1017,7 @@
             "category": "6",
             "specs": [
                 {
-                    "spec": "深咖",
+                    "name": "深咖",
                     "stock": 30
                 }
             ],
@@ -1032,11 +1032,11 @@
             "category": "6",
             "specs": [
                 {
-                    "spec": "咖啡",
+                    "name": "咖啡",
                     "stock": 30
                 },
                 {
-                    "spec": "米白",
+                    "name": "米白",
                     "stock": 35
                 }
             ],
@@ -1052,15 +1052,15 @@
             "category": "6",
             "specs": [
                 {
-                    "spec": "深麻灰",
+                    "name": "深麻灰",
                     "stock": 65
                 },
                 {
-                    "spec": "藍色",
+                    "name": "藍色",
                     "stock": 55
                 },
                 {
-                    "spec": "白色",
+                    "name": "白色",
                     "stock": 50
                 }
             ],
@@ -1077,11 +1077,11 @@
             "category": "6",
             "specs": [
                 {
-                    "spec": "咖啡",
+                    "name": "咖啡",
                     "stock": 60
                 },
                 {
-                    "spec": "酒紅",
+                    "name": "酒紅",
                     "stock": 66
                 }
             ],
@@ -1097,19 +1097,19 @@
             "category": "6",
             "specs": [
                 {
-                    "spec": "s",
+                    "name": "s",
                     "stock": 25
                 },
                 {
-                    "spec": "m",
+                    "name": "m",
                     "stock": 36
                 },
                 {
-                    "spec": "l",
+                    "name": "l",
                     "stock": 28
                 },
                 {
-                    "spec": "xl",
+                    "name": "xl",
                     "stock": 40
                 }
             ],
@@ -1124,15 +1124,15 @@
             "category": "6",
             "specs": [
                 {
-                    "spec": "黑灰格",
+                    "name": "黑灰格",
                     "stock": 42
                 },
                 {
-                    "spec": "藍灰格",
+                    "name": "藍灰格",
                     "stock": 55
                 },
                 {
-                    "spec": "粉棕格",
+                    "name": "粉棕格",
                     "stock": 52
                 }
             ],
@@ -1149,11 +1149,11 @@
             "category": "6",
             "specs": [
                 {
-                    "spec": "灰藍白條",
+                    "name": "灰藍白條",
                     "stock": 33
                 },
                 {
-                    "spec": "綠色白條",
+                    "name": "綠色白條",
                     "stock": 46
                 }
             ],
@@ -1169,19 +1169,19 @@
             "category": "7",
             "specs": [
                 {
-                    "spec": "天峰藍色",
+                    "name": "天峰藍色",
                     "stock": 126
                 },
                 {
-                    "spec": "銀色 ",
+                    "name": "銀色 ",
                     "stock": 166
                 },
                 {
-                    "spec": "金色 ",
+                    "name": "金色 ",
                     "stock": 177
                 },
                 {
-                    "spec": "石墨色 ",
+                    "name": "石墨色 ",
                     "stock": 155
                 }
             ],
@@ -1199,19 +1199,19 @@
             "category": "7",
             "specs": [
                 {
-                    "spec": "天峰藍色",
+                    "name": "天峰藍色",
                     "stock": 105
                 },
                 {
-                    "spec": "銀色 ",
+                    "name": "銀色 ",
                     "stock": 167
                 },
                 {
-                    "spec": "金色 ",
+                    "name": "金色 ",
                     "stock": 166
                 },
                 {
-                    "spec": "石墨色 ",
+                    "name": "石墨色 ",
                     "stock": 152
                 }
             ],
@@ -1229,19 +1229,19 @@
             "category": "7",
             "specs": [
                 {
-                    "spec": "天峰藍色",
+                    "name": "天峰藍色",
                     "stock": 112
                 },
                 {
-                    "spec": "銀色 ",
+                    "name": "銀色 ",
                     "stock": 99
                 },
                 {
-                    "spec": "金色 ",
+                    "name": "金色 ",
                     "stock": 132
                 },
                 {
-                    "spec": "石墨色 ",
+                    "name": "石墨色 ",
                     "stock": 137
                 }
             ],
@@ -1259,19 +1259,19 @@
             "category": "7",
             "specs": [
                 {
-                    "spec": "天峰藍色",
+                    "name": "天峰藍色",
                     "stock": 100
                 },
                 {
-                    "spec": "銀色 ",
+                    "name": "銀色 ",
                     "stock": 102
                 },
                 {
-                    "spec": "金色 ",
+                    "name": "金色 ",
                     "stock": 145
                 },
                 {
-                    "spec": "石墨色 ",
+                    "name": "石墨色 ",
                     "stock": 152
                 }
             ],
@@ -1289,27 +1289,27 @@
             "category": "7",
             "specs": [
                 {
-                    "spec": "紫色",
+                    "name": "紫色",
                     "stock": 122
                 },
                 {
-                    "spec": "藍色",
+                    "name": "藍色",
                     "stock": 154
                 },
                 {
-                    "spec": "綠色",
+                    "name": "綠色",
                     "stock": 146
                 },
                 {
-                    "spec": "白色",
+                    "name": "白色",
                     "stock": 185
                 },
                 {
-                    "spec": "黑色",
+                    "name": "黑色",
                     "stock": 142
                 },
                 {
-                    "spec": "紅色",
+                    "name": "紅色",
                     "stock": 136
                 }
             ],
@@ -1329,27 +1329,27 @@
             "category": "7",
             "specs": [
                 {
-                    "spec": "紫色",
+                    "name": "紫色",
                     "stock": 134
                 },
                 {
-                    "spec": "藍色",
+                    "name": "藍色",
                     "stock": 162
                 },
                 {
-                    "spec": "綠色",
+                    "name": "綠色",
                     "stock": 175
                 },
                 {
-                    "spec": "白色",
+                    "name": "白色",
                     "stock": 130
                 },
                 {
-                    "spec": "黑色",
+                    "name": "黑色",
                     "stock": 122
                 },
                 {
-                    "spec": "紅色",
+                    "name": "紅色",
                     "stock": 146
                 }
             ],
@@ -1369,27 +1369,27 @@
             "category": "7",
             "specs": [
                 {
-                    "spec": "紫色",
+                    "name": "紫色",
                     "stock": 134
                 },
                 {
-                    "spec": "藍色",
+                    "name": "藍色",
                     "stock": 146
                 },
                 {
-                    "spec": "綠色",
+                    "name": "綠色",
                     "stock": 166
                 },
                 {
-                    "spec": "白色",
+                    "name": "白色",
                     "stock": 130
                 },
                 {
-                    "spec": "黑色",
+                    "name": "黑色",
                     "stock": 201
                 },
                 {
-                    "spec": "紅色",
+                    "name": "紅色",
                     "stock": 97
                 }
             ],
@@ -1409,15 +1409,15 @@
             "category": "7",
             "specs": [
                 {
-                    "spec": "白色",
+                    "name": "白色",
                     "stock": 133
                 },
                 {
-                    "spec": "黑色",
+                    "name": "黑色",
                     "stock": 158
                 },
                 {
-                    "spec": "紅色",
+                    "name": "紅色",
                     "stock": 169
                 }
             ],
@@ -1434,15 +1434,15 @@
             "category": "7",
             "specs": [
                 {
-                    "spec": "白色",
+                    "name": "白色",
                     "stock": 169
                 },
                 {
-                    "spec": "黑色",
+                    "name": "黑色",
                     "stock": 204
                 },
                 {
-                    "spec": "紅色",
+                    "name": "紅色",
                     "stock": 213
                 }
             ],
@@ -1459,28 +1459,28 @@
             "category": "0",
             "specs": [
                 {
-                    "spec": "32",
+                    "name": "32",
                     "stock": 5
                 },
                 {
-                    "spec": "34",
+                    "name": "34",
                     "stock": 5
                 },
                 {
-                    "spec": "36",
+                    "name": "36",
                     "stock": 5
                 },
                 {
-                    "spec": "38",
+                    "name": "38",
                     "stock": 5
                 },
                 {
-                    "spec": "40",
+                    "name": "40",
                     "stock": 5
                 }
             ],
             "url": [
-                "https://i4.momoshop.com.tw/1636003330/goodsimg/0009/516/954/spec/9516954_01_001_R.webp",
+                "https://i4.momoshop.com.tw/1636003330/goodsimg/0009/516/954/name/9516954_01_001_R.webp",
                 "https://i2.momoshop.com.tw/1636003330/goodsimg/0009/516/954/9516954_R2.webp"
             ]
         },
@@ -1491,23 +1491,23 @@
             "category": "0",
             "specs": [
                 {
-                    "spec": "32",
+                    "name": "32",
                     "stock": 5
                 },
                 {
-                    "spec": "34",
+                    "name": "34",
                     "stock": 5
                 },
                 {
-                    "spec": "36",
+                    "name": "36",
                     "stock": 5
                 },
                 {
-                    "spec": "38",
+                    "name": "38",
                     "stock": 5
                 },
                 {
-                    "spec": "40",
+                    "name": "40",
                     "stock": 5
                 }
             ],
@@ -1523,23 +1523,23 @@
             "category": "0",
             "specs": [
                 {
-                    "spec": "32",
+                    "name": "32",
                     "stock": 5
                 },
                 {
-                    "spec": "34",
+                    "name": "34",
                     "stock": 5
                 },
                 {
-                    "spec": "36",
+                    "name": "36",
                     "stock": 5
                 },
                 {
-                    "spec": "38",
+                    "name": "38",
                     "stock": 5
                 },
                 {
-                    "spec": "40",
+                    "name": "40",
                     "stock": 5
                 }
             ],
@@ -1555,23 +1555,23 @@
             "category": "1",
             "specs": [
                 {
-                    "spec": "36",
+                    "name": "36",
                     "stock": 5
                 },
                 {
-                    "spec": "38",
+                    "name": "38",
                     "stock": 5
                 },
                 {
-                    "spec": "40",
+                    "name": "40",
                     "stock": 5
                 },
                 {
-                    "spec": "42",
+                    "name": "42",
                     "stock": 5
                 },
                 {
-                    "spec": "44",
+                    "name": "44",
                     "stock": 5
                 }
             ],
@@ -1587,24 +1587,24 @@
             "category": "1",
             "specs": [
                 {
-                    "spec": "38",
+                    "name": "38",
                     "stock": 5
                 },
                 {
-                    "spec": "40",
+                    "name": "40",
                     "stock": 5
                 },
                 {
-                    "spec": "42",
+                    "name": "42",
                     "stock": 5
                 },
                 {
-                    "spec": "44",
+                    "name": "44",
                     "stock": 5
                 }
             ],
             "url": [
-                "https://i1.momoshop.com.tw/1640168434/goodsimg/0009/466/870/spec/9466870_02_001_R.webp",
+                "https://i1.momoshop.com.tw/1640168434/goodsimg/0009/466/870/name/9466870_02_001_R.webp",
                 "https://img3.momoshop.com.tw/expertimg/0007/647/434/9817500379-5.jpg?t=1598880376696"
             ]
         },
@@ -1615,19 +1615,19 @@
             "category": "1",
             "specs": [
                 {
-                    "spec": "S",
+                    "name": "S",
                     "stock": 1
                 },
                 {
-                    "spec": "M",
+                    "name": "M",
                     "stock": 5
                 },
                 {
-                    "spec": "L",
+                    "name": "L",
                     "stock": 1
                 },
                 {
-                    "spec": "XL",
+                    "name": "XL",
                     "stock": 5
                 }
             ],
@@ -1643,7 +1643,7 @@
             "category": "2",
             "specs": [
                 {
-                    "spec": "黑色",
+                    "name": "黑色",
                     "stock": 5
                 }
             ],
@@ -1658,11 +1658,11 @@
             "category": "2",
             "specs": [
                 {
-                    "spec": "綠",
+                    "name": "綠",
                     "stock": 6
                 },
                 {
-                    "spec": "藍",
+                    "name": "藍",
                     "stock": 5
                 }
             ],
@@ -1677,11 +1677,11 @@
             "category": "2",
             "specs": [
                 {
-                    "spec": "3kg",
+                    "name": "3kg",
                     "stock": 2
                 },
                 {
-                    "spec": "6kg",
+                    "name": "6kg",
                     "stock": 5
                 }
             ],
@@ -1696,19 +1696,19 @@
             "category": "3",
             "specs": [
                 {
-                    "spec": "9",
+                    "name": "9",
                     "stock": 5
                 },
                 {
-                    "spec": "10",
+                    "name": "10",
                     "stock": 3
                 },
                 {
-                    "spec": "11",
+                    "name": "11",
                     "stock": 5
                 },
                 {
-                    "spec": "12",
+                    "name": "12",
                     "stock": 5
                 }
             ],
@@ -1723,11 +1723,11 @@
             "category": "3",
             "specs": [
                 {
-                    "spec": "UK6",
+                    "name": "UK6",
                     "stock": 5
                 },
                 {
-                    "spec": "UK8",
+                    "name": "UK8",
                     "stock": 5
                 }
             ],
@@ -1742,19 +1742,19 @@
             "category": "3",
             "specs": [
                 {
-                    "spec": "35",
+                    "name": "35",
                     "stock": 4
                 },
                 {
-                    "spec": "36",
+                    "name": "36",
                     "stock": 1
                 },
                 {
-                    "spec": "38",
+                    "name": "38",
                     "stock": 2
                 },
                 {
-                    "spec": "40",
+                    "name": "40",
                     "stock": 5
                 }
             ],
@@ -1769,7 +1769,7 @@
             "category": "4",
             "specs": [
                 {
-                    "spec": "i5-1135 Win11",
+                    "name": "i5-1135 Win11",
                     "stock": 2
                 }
             ],
@@ -1785,7 +1785,7 @@
             "category": "4",
             "specs": [
                 {
-                    "spec": "8GB",
+                    "name": "8GB",
                     "stock": 9
                 }
             ],
@@ -1801,11 +1801,11 @@
             "category": "4",
             "specs": [
                 {
-                    "spec": "黑色",
+                    "name": "黑色",
                     "stock": 2
                 },
                 {
-                    "spec": "白色",
+                    "name": "白色",
                     "stock": 1
                 }
             ],
@@ -1821,11 +1821,11 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "好有虎氣",
+                    "name": "好有虎氣",
                     "stock": 6
                 },
                 {
-                    "spec": "02迷迷虎虎",
+                    "name": "02迷迷虎虎",
                     "stock": 8
                 }
             ],
@@ -1840,7 +1840,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "180ml",
+                    "name": "180ml",
                     "stock": 9
                 }
             ],
@@ -1856,7 +1856,7 @@
             "category": "5",
             "specs": [
                 {
-                    "spec": "3入組",
+                    "name": "3入組",
                     "stock": 10
                 }
             ],
@@ -1871,7 +1871,7 @@
             "category": "6",
             "specs": [
                 {
-                    "spec": "銀",
+                    "name": "銀",
                     "stock": 26
                 }
             ],
@@ -1886,17 +1886,17 @@
             "category": "6",
             "specs": [
                 {
-                    "spec": "1.鐵灰",
+                    "name": "1.鐵灰",
                     "stock": 9
                 },
                 {
-                    "spec": "2.粉色",
+                    "name": "2.粉色",
                     "stock": 9
                 }
             ],
             "url": [
-                "https://i3.momoshop.com.tw/1642040048/goodsimg/0009/304/857/spec/9304857_01_001_R.webp",
-                "https://i4.momoshop.com.tw/1642040048/goodsimg/0009/304/857/spec/9304857_01_002_R.webp"
+                "https://i3.momoshop.com.tw/1642040048/goodsimg/0009/304/857/name/9304857_01_001_R.webp",
+                "https://i4.momoshop.com.tw/1642040048/goodsimg/0009/304/857/name/9304857_01_002_R.webp"
             ]
         },
         {
@@ -1906,11 +1906,11 @@
             "category": "6",
             "specs": [
                 {
-                    "spec": "50mm",
+                    "name": "50mm",
                     "stock": 4
                 },
                 {
-                    "spec": "54mm",
+                    "name": "54mm",
                     "stock": 8
                 }
             ],
@@ -1926,19 +1926,19 @@
             "category": "7",
             "specs": [
                 {
-                    "spec": "風暴黑",
+                    "name": "風暴黑",
                     "stock": 6
                 },
                 {
-                    "spec": "雲霧白",
+                    "name": "雲霧白",
                     "stock": 2
                 },
                 {
-                    "spec": "湖泊藍",
+                    "name": "湖泊藍",
                     "stock": 2
                 },
                 {
-                    "spec": "魅力紫",
+                    "name": "魅力紫",
                     "stock": 2
                 }
             ],
@@ -1954,11 +1954,11 @@
             "category": "7",
             "specs": [
                 {
-                    "spec": "1.鐵灰",
+                    "name": "1.鐵灰",
                     "stock": 9
                 },
                 {
-                    "spec": "2.粉色",
+                    "name": "2.粉色",
                     "stock": 9
                 }
             ],
@@ -1974,7 +1974,7 @@
             "category": "7",
             "specs": [
                 {
-                    "spec": "就是白",
+                    "name": "就是白",
                     "stock": 4
                 }
             ],
@@ -1989,7 +1989,7 @@
             "category": "8",
             "specs": [
                 {
-                    "spec": "4T-C65CJ1T",
+                    "name": "4T-C65CJ1T",
                     "stock": 5
                 }
             ],
@@ -2005,7 +2005,7 @@
             "category": "8",
             "specs": [
                 {
-                    "spec": "65型",
+                    "name": "65型",
                     "stock": 9
                 }
             ],
@@ -2020,7 +2020,7 @@
             "category": "8",
             "specs": [
                 {
-                    "spec": "黑框",
+                    "name": "黑框",
                     "stock": 4
                 }
             ],
@@ -2035,11 +2035,11 @@
             "category": "9",
             "specs": [
                 {
-                    "spec": "小日春和",
+                    "name": "小日春和",
                     "stock": 5
                 },
                 {
-                    "spec": "繽紛羽毛",
+                    "name": "繽紛羽毛",
                     "stock": 5
                 }
             ],
@@ -2055,7 +2055,7 @@
             "category": "9",
             "specs": [
                 {
-                    "spec": "沈思",
+                    "name": "沈思",
                     "stock": 9
                 }
             ],
@@ -2070,23 +2070,23 @@
             "category": "9",
             "specs": [
                 {
-                    "spec": "爵士灰",
+                    "name": "爵士灰",
                     "stock": 4
                 },
                 {
-                    "spec": "爵士米灰",
+                    "name": "爵士米灰",
                     "stock": 4
                 },
                 {
-                    "spec": "爵士紅",
+                    "name": "爵士紅",
                     "stock": 4
                 },
                 {
-                    "spec": "爵士紫",
+                    "name": "爵士紫",
                     "stock": 4
                 },
                 {
-                    "spec": "爵士咖",
+                    "name": "爵士咖",
                     "stock": 4
                 }
             ],
@@ -2101,7 +2101,7 @@
             "category": "10",
             "specs": [
                 {
-                    "spec": "6.5kg",
+                    "name": "6.5kg",
                     "stock": 5
                 }
             ],
@@ -2116,11 +2116,11 @@
             "category": "10",
             "specs": [
                 {
-                    "spec": "5.4KG",
+                    "name": "5.4KG",
                     "stock": 9
                 },
                 {
-                    "spec": "8KG",
+                    "name": "8KG",
                     "stock": 9
                 }
             ],
@@ -2135,7 +2135,7 @@
             "category": "10",
             "specs": [
                 {
-                    "spec": "時尚好用款",
+                    "name": "時尚好用款",
                     "stock": 4
                 }
             ],
@@ -2146,3 +2146,5 @@
         }
     ]
 }
+
+export default obj;

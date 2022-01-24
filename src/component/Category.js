@@ -7,57 +7,57 @@ const Element = ({ className }) => {
     const historyPush = () => { }
     return (
         <div className={className}>
-            <nav class="navbar navbar-expand-lg navbar-light mt-2" >
-                <div class="container">
-                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/products/0" >女生衣著</a>
+            <nav className="navbar navbar-expand-lg navbar-light mt-2" >
+                <div className="container">
+                    <div className="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul className="navbar-nav">
+                            <li key="0" className="nav-item">
+                                <a className="nav-link" href="/products/0" >女生衣著</a>
                             </li>
-                            <li class="nav-item category">
-                                <a class="nav-link" href="/products/1">男生衣著</a>
+                            <li key="1" className="nav-item category">
+                                <a className="nav-link" href="/products/1">男生衣著</a>
                             </li>
-                            <li class="nav-item category">
-                                <a class="nav-link" href="/products/2">運動/健身</a>
+                            <li key="2" className="nav-item category">
+                                <a className="nav-link" href="/products/2">運動/健身</a>
                             </li>
-                            <li class="nav-item category">
-                                <a class="nav-link" href="/products/3">男女鞋</a>
+                            <li key="3" className="nav-item category">
+                                <a className="nav-link" href="/products/3">男女鞋</a>
                             </li>
-                            <li class="nav-item category">
-                                <a class="nav-link" href="/products/4">電腦週邊</a>
+                            <li key="4" className="nav-item category">
+                                <a className="nav-link" href="/products/4">電腦週邊</a>
                             </li>
-                            <li class="nav-item category">
-                                <a class="nav-link" href="/products/5">美妝保養</a>
+                            <li key="5" className="nav-item category">
+                                <a className="nav-link" href="/products/5">美妝保養</a>
                             </li>
-                            <li class="nav-item category">
-                                <a class="nav-link" href="/products/6">服飾飾品</a>
+                            <li key="6" className="nav-item category">
+                                <a className="nav-link" href="/products/6">服飾飾品</a>
                             </li>
-                            <li class="nav-item category">
-                                <a class="nav-link" href="/products/7">手機相機</a>
+                            <li key="7" className="nav-item category">
+                                <a className="nav-link" href="/products/7">手機相機</a>
                             </li>
-                            <li class="nav-item category">
-                                <a class="nav-link" href="/products/8">家電影音</a>
+                            <li key="8" className="nav-item category">
+                                <a className="nav-link" href="/products/8">家電影音</a>
                             </li>
-                            <li class="nav-item category">
-                                <a class="nav-link" href="/products/9">居家生活</a>
+                            <li key="9" className="nav-item category">
+                                <a className="nav-link" href="/products/9">居家生活</a>
                             </li>
-                            <li class="nav-item category">
-                                <a class="nav-link" href="/products/10">寵物</a>
+                            <li key="10" className="nav-item category">
+                                <a className="nav-link" href="/products/10">寵物</a>
                             </li>
-                            <li class="nav-item category">
-                                <a class="nav-link" href="/products/11">戶外/旅行</a>
+                            <li key="11" className="nav-item category">
+                                <a className="nav-link" href="/products/11">戶外/旅行</a>
                             </li>
-                            <li class="nav-item category">
-                                <a class="nav-link" href="/products/12">書籍</a>
+                            <li key="12" className="nav-item category">
+                                <a className="nav-link" href="/products/12">書籍</a>
                             </li>
-                            {/* <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {/* <li className="nav-item dropdown">
+                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Dropdown link
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a className="dropdown-item" href="#">Action</a></li>
+                                    <li><a className="dropdown-item" href="#">Another action</a></li>
+                                    <li><a className="dropdown-item" href="#">Something else here</a></li>
                                 </ul>
                             </li> */}
                         </ul>

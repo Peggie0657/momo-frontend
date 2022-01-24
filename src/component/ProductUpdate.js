@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components'
 import TextField from '@mui/material/TextField';
+import { Button } from '@mui/material';
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import ExternalTable from './ExternalTable';
@@ -65,15 +66,8 @@ const categorySel = [
     }
 ];
 
-const Element = ({ className, productsFetch }) => {
-    const [redirect, setRedirect] = useState(false)
-    const [values, setValues] = useState({
-        name: "",
-        description: "",
-        price: 0,
-        stock: 0,
-        category: "1"
-    })
+const Element = ({ className, product, productsFetch }) => {
+    const [values, setValues] = useState(product)
     const [images, setImages] = useState([]);
     const [imageURLs, setImageURLs] = useState([]);
     const [base64, setBase64] = useState([]);
@@ -95,7 +89,6 @@ const Element = ({ className, productsFetch }) => {
     const clickSubmit = (event) => {
         event.preventDefault()
         console.log(values)
-        productsFetch({ name, description, price, stock, category, cover: base64[0] })
         addProduct({
             name, description, price, stock, url: base64, category, specs: specArr
         }, token)
@@ -111,6 +104,7 @@ const Element = ({ className, productsFetch }) => {
                         base64: []
                     })
                     setSpecArr([])
+                    productsFetch()
                 } else {
                     alert("商品修改失敗")
                 }
@@ -153,11 +147,9 @@ const Element = ({ className, productsFetch }) => {
 
     return (
         <div className={className}>
-            <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateProduct">
-                更新
-            </button>
+            <Button size="small" data-bs-toggle="modal" data-bs-target="#updateProduct">更新商品</Button>
 
-            <div className="modal fade" id="updateProduct" tabindex="-1" aria-labelledby="updateProductLabel" aria-hidden="true">
+            <div className="modal fade" id="updateProduct" tabIndex="-1" aria-labelledby="updateProductLabel" aria-hidden="true">
                 <div className="modal-dialog modal-lg">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -283,15 +275,12 @@ const Element = ({ className, productsFetch }) => {
                     </div>
                 </div>
             </div>
-
-            {shouldRedirect(redirect)}
-
         </div>
 
     )
 }
 
-const UpdateProduct = styled(Element)`
+const ProductUpdate = styled(Element)`
 *{
     font-family:微軟正黑體;
 }
@@ -356,4 +345,4 @@ const UpdateProduct = styled(Element)`
 }
 `
 
-export default UpdateProduct;
+export default ProductUpdate;

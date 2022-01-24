@@ -8,7 +8,6 @@ import ExternalTable from './component/ExternalTable';
 import Products from './component/Products';
 import Checkout from './component/Checkout';
 import MemberCenter from './component/MemberCenter';
-import ChatRoom from './component/ChatRoom';
 import CommentDialog from './component/CommentDialog';
 
 
@@ -17,7 +16,6 @@ const Routes = () => {
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={Home} />
-                <Route path="/chat" exact component={ChatRoom} />
                 {/* <Route path="/shop" exact component={Shop} /> */}
                 <Route path="/checkout" exact component={Checkout} />
                 <Route path="/products/:categoryId" exact component={Products} />

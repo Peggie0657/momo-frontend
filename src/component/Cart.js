@@ -27,7 +27,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import Layout from './Layout';
-import { getCart } from './cartHelpers';
+import { getCart, removeItem } from './cartHelpers';
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -150,8 +150,16 @@ EnhancedTableHead.propTypes = {
 };
 
 const EnhancedTableToolbar = (props) => {
-    const { numSelected } = props;
+    const { numSelected, selectedArr, cartFetch, setSelected, setTotal } = props;
 
+    const handleDelete = () => {
+        selectedArr.forEach(item => {
+            removeItem(item.id)
+        })
+        cartFetch()
+        setSelected([])
+        setTotal(0)
+    }
     return (
         <Toolbar
             sx={{
@@ -186,7 +194,7 @@ const EnhancedTableToolbar = (props) => {
             {numSelected > 0 ? (
                 <Tooltip title="Delete">
                     <IconButton>
-                        <DeleteIcon />
+                        <DeleteIcon onClick={handleDelete} />
                     </IconButton>
                 </Tooltip>
             ) : (
@@ -204,7 +212,7 @@ EnhancedTableToolbar.propTypes = {
     numSelected: PropTypes.number.isRequired,
 };
 
-const Cart = () => {
+const Cart = ({ setItemCount }) => {
     const [redirect, setRedirect] = useState(false)
     const [order, setOrder] = useState('asc');
     const [orderBy, setOrderBy] = useState('calories');
@@ -283,16 +291,25 @@ const Cart = () => {
     };
 
     const handleCheckout = () => {
-        history.push({
-            pathname: "/checkout",
-            state: {
-                selectedArr: selectedArr,
-                total: total
-            }
-        })
+        if (selectedArr.length > 0) {
+            history.push({
+                pathname: "/checkout",
+                state: {
+                    selectedArr: selectedArr,
+                    total: total
+                }
+            })
+        } else {
+            alert("沒有選擇商品")
+        }
     }
 
     const isSelected = (name) => selected.indexOf(name) !== -1;
+
+    const cartFetch = () => {
+        setProducts(getCart())
+        setItemCount(getCart().length)
+    }
 
     useEffect(() => {
         setProducts(getCart())
@@ -304,7 +321,7 @@ const Cart = () => {
 
     return (
         <div>
-            <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-xl">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -314,7 +331,7 @@ const Cart = () => {
                         <div className="modal-body">
                             <Box sx={{ width: '100%' }}>
                                 <Paper sx={{ width: '100%', mb: 2 }}>
-                                    <EnhancedTableToolbar numSelected={selected.length} />
+                                    <EnhancedTableToolbar numSelected={selected.length} selectedArr={selectedArr} setTotal={setTotal} cartFetch={cartFetch} setSelected={setSelected} />
                                     <TableContainer sx={{ maxHeight: 300 }}>
                                         <Table
                                             sx={{ minWidth: 750 }}

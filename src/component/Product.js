@@ -16,20 +16,61 @@ import Box from '@mui/material/Box';
 import Layout from '../sample/Layout';
 import Comment from './Comment';
 import { addItem, itemTotal } from './cartHelpers';
-import { getProduct, getSpecs, getPics } from '../product';
+import { getProduct, getSpecs, getPics, getComments } from '../product';
 
 const labels = {
-    0.5: '0.5',
-    1: '1',
-    1.5: '1.5',
-    2: '2',
-    2.5: '2.5',
-    3: '3',
-    3.5: '3.5',
-    4: '4',
-    4.5: '4.5',
-    5: '5',
-    6: "6",
+    0.0: "0.0",
+    0.1: "0.1",
+    0.2: "0.2",
+    0.3: "0.3",
+    0.4: "0.4",
+    0.5: "0.5",
+    0.6: "0.6",
+    0.7: "0.7",
+    0.8: "0.8",
+    0.9: "0.9",
+    1.0: "1.0",
+    1.1: "1.1",
+    1.2: "1.2",
+    1.3: "1.3",
+    1.4: "1.4",
+    1.5: "1.5",
+    1.6: "1.6",
+    1.7: "1.7",
+    1.8: "1.8",
+    1.9: "1.9",
+    2.0: "2.0",
+    2.0: "2.0",
+    2.1: "2.1",
+    2.2: "2.2",
+    2.3: "2.3",
+    2.4: "2.4",
+    2.5: "2.5",
+    2.6: "2.6",
+    2.7: "2.7",
+    2.8: "2.8",
+    2.9: "2.9",
+    3.0: "3.0",
+    3.1: "3.1",
+    3.2: "3.2",
+    3.3: "3.3",
+    3.4: "3.4",
+    3.5: "3.5",
+    3.6: "3.6",
+    3.7: "3.7",
+    3.8: "3.8",
+    3.9: "3.9",
+    4.0: "4.0",
+    4.1: "4.1",
+    4.2: "4.2",
+    4.3: "4.3",
+    4.4: "4.4",
+    4.5: "4.5",
+    4.6: "4.6",
+    4.7: "4.7",
+    4.8: "4.8",
+    4.9: "4.9",
+    5.0: "5.0",
 };
 
 const category = {
@@ -55,6 +96,8 @@ const Element = ({ className, match }) => {
     const [values, setValues] = useState({});
     const [specs, setSpecs] = useState([])
     const [pic, setPic] = useState([])
+    const [comments, setComments] = useState([])
+    const [average, setAverage] = useState(0)
 
     const { num } = values;
     const productId = match.params.productId
@@ -120,24 +163,7 @@ const Element = ({ className, match }) => {
     useEffect(() => {
         getProduct(productId)
             .then(data => {
-                console.log(data.category);
-                // switch (data.category) {
-                //     case "0": data.category = '女生衣著'; break;
-                //     case "1": data.category = '男生衣著'; break;
-                //     case "2": data.category = '運動/健身'; break;
-                //     case "3": data.category = '男女鞋'; break;
-                //     case "4": data.category = '電腦週邊'; break;
-                //     case "5": data.category = '美妝保養'; break;
-                //     case "6": data.category = '服飾飾品'; break;
-                //     case "7": data.category = '手機相機'; break;
-                //     case "8": data.category = '家電影音'; break;
-                //     case "9": data.category = '居家生活'; break;
-                //     case "10": data.category = '寵物'; break;
-                //     case "11": data.category = '戶外/旅行'; break;
-                //     case "12": data.category = '書籍'; break;
-                // }
                 setProduct(data)
-                console.log(data)
             })
         getSpecs(productId)
             .then(data1 => {
@@ -158,14 +184,22 @@ const Element = ({ className, match }) => {
                 })
                 setSpecs(arr)
             })
+
         getPics(productId)
             .then(pics => {
                 setPic(pics)
-                // console.log(pics)
+            })
+
+        getComments(productId)
+            .then(data => {
+                let ave = 0
+                data.forEach(item => {
+                    ave += item.star
+                })
+                setComments(data)
+                setAverage(ave / data.length)
             })
     }, [])
-    // console.log(specs)
-
     return (
         <Layout>
             {shouldRedirect(redirect)}
@@ -245,12 +279,12 @@ const Element = ({ className, match }) => {
                                 >
                                     <Rating
                                         name="text-feedback"
-                                        value={star}
+                                        value={average}
                                         readOnly
-                                        precision={0.5}
+                                        precision={0.1}
                                         emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
                                     />
-                                    <Box sx={{ ml: 2 }}>({labels[star]})</Box>
+                                    <Box sx={{ ml: 2 }}>({labels[average]})</Box>
                                 </Box>
                                 <Typography variant="h5" gutterBottom component="div" marginTop={5}>
 
@@ -319,7 +353,7 @@ const Element = ({ className, match }) => {
                             <p>{product.description}</p>
                         </div>
                         <hr />
-                        <Comment />
+                        <Comment comments={comments} />
                         {/* <div className="commentWrap">
                             <Box sx={{ marginBottom: "20px" }}>
                                 <Rating

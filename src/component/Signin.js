@@ -110,11 +110,11 @@ const Element = ({ className }) => {
         <div className={className} style={{ backgroundColor: "rgb(238, 77, 45)" }}>
 
             <div style={{ margin: "0 auto", height: "600px", width: "1040px", backgroundImage: "url('https://cf.shopee.tw/file/941617bff55f5cdc82aea8f3bbb16460')", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center center" }}>
-                <div class="form container float-end mt-4">
-                    <form class="row g-3 pt-4">
+                <div className="form container float-end mt-4">
+                    <form className="row g-3 pt-4">
                         <h5 style={{ textAlign: "center" }}>登入</h5>
-                        {/* <div class="mb-3">
-                            <input type="text" class="form-control" value="" placeholder='請輸入帳號:Email' value={email} required onChange={handleChange("email")} />
+                        {/* <div className="mb-3">
+                            <input type="text" className="form-control" value="" placeholder='請輸入帳號:Email' value={email} required onChange={handleChange("email")} />
                         </div> */}
                         <FormControl sx={{ m: 1, width: '90%', marginLeft: "5%" }} variant="outlined">
                             <InputLabel htmlFor="outlined-adornment-email">Email</InputLabel>
@@ -148,18 +148,18 @@ const Element = ({ className }) => {
                                 label="Password"
                             />
                         </FormControl>
-                        {/* <div class="mb-4">
-                            <div class="form-group">
-                                <div class="input-group" id="show_hide_password">
-                                    <input class="form-control" type="password" placeholder='請輸入密碼' value={password} onChange={handleChange("password")} />
-                                    <div class="input-group-text">
-                                        <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                        {/* <div className="mb-4">
+                            <div className="form-group">
+                                <div className="input-group" id="show_hide_password">
+                                    <input className="form-control" type="password" placeholder='請輸入密碼' value={password} onChange={handleChange("password")} />
+                                    <div className="input-group-text">
+                                        <a href=""><i className="fa fa-eye-slash" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                             </div>
                         </div> */}
                         <div style={{ textAlign: "center" }}>
-                            {/* <button class="btn btn-primary" onClick={clickSubmit}>登入</button> */}
+                            {/* <button className="btn btn-primary" onClick={clickSubmit}>登入</button> */}
                             <Button sx={{ width: "70%" }} variant="contained" disableElevation onClick={clickSubmit}>
                                 登入
                             </Button>
@@ -168,17 +168,17 @@ const Element = ({ className }) => {
                     <div id="middleLine">------------------ or ------------------</div>
                     <div className='pb-4' style={{ display: "flex", textAlign: "center" }}>
                         <div style={{ marginRight: "20px" }}>
-                            <a class="btn btn-block btn-social btn-facebook" onClick={facebook}>
-                                <i class="fab fa-facebook-f" style={{ marginRight: "15px" }}></i>Facebook
+                            <a className="btn btn-block btn-social btn-facebook" onClick={facebook}>
+                                <i className="fab fa-facebook-f" style={{ marginRight: "15px" }}></i>Facebook
                             </a>
                         </div>
                         <div>
-                            <a class="btn btn-block btn-social btn-google" onClick={google}>
-                                <i class="fab fa-google" style={{ marginRight: "15px" }}></i>Google
+                            <a className="btn btn-block btn-social btn-google" onClick={google}>
+                                <i className="fab fa-google" style={{ marginRight: "15px" }}></i>Google
                             </a>
                         </div>
                     </div>
-                    <div class="signup">蝦皮新朋友？<a class="signupA" href="/signup">註冊</a></div>
+                    <div className="signup">蝦皮新朋友？<a className="signupA" href="/signup">註冊</a></div>
                 </div>
             </div >
             <Footer />
