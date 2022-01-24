@@ -123,7 +123,7 @@ const Element = ({ className }) => {
         input.addEventListener("keyup", function (event) {
             if (event.keyCode === 13) {
                 // Cancel the default action, if needed
-                history.push({
+                history.push("/products", {
                     pathname: `${history.location.pathname}`,
                     state: {
                         keyword: event.target.value
