@@ -117,6 +117,7 @@ function Row(props) {
 
 
 const MyOrder = (props) => {
+    const { isSeller } = props
     const [orders, setOrders] = useState([])
 
     const token = isAuthenticated() && isAuthenticated().accessToken
@@ -126,7 +127,6 @@ const MyOrder = (props) => {
         var arr = [];
         getMyOrders(token)
             .then(data => {
-                // console.log(data)
                 for (var i = 0; i < data.length; i++) {
                     var ai = data[i];
                     if (!map[ai.id]) {

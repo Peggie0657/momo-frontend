@@ -74,7 +74,7 @@ const Element = ({ className, location }) => {
                             <Grid item xs={3}>
                                 <TabPanel value={value} index={0}>
                                     <Container maxWidth="lg">
-                                        <MyOrder title="買家訂單" />
+                                        <MyOrder title="買家訂單" isSeller={false} />
                                     </Container>
                                 </TabPanel>
 
@@ -85,7 +85,7 @@ const Element = ({ className, location }) => {
                                 </TabPanel>
                                 <TabPanel value={value} index={2}>
                                     <Container maxWidth="lg">
-                                        <MyOrder title="賣家訂單" />
+                                        <MyOrder title="賣家訂單" isSeller={true} />
                                         <br />
                                         <br />
                                         <MyProduct />
