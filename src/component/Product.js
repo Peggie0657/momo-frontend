@@ -133,6 +133,7 @@ const Element = ({ className, match }) => {
     }
 
     const handleSpecBtn = (obj) => {
+        console.log(obj)
         const arr = []
         specs.forEach(item => {
             arr.push({
@@ -315,7 +316,7 @@ const Element = ({ className, match }) => {
                                     數量：
                                     <TextField
                                         type="number"
-                                        label="Size"
+                                        label={`目前剩餘庫存${spec.stock}`}
                                         id="outlined-size-small"
                                         defaultValue="Small"
                                         size="small"
