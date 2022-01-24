@@ -10,12 +10,12 @@ import Checkout from './component/Checkout';
 import MemberCenter from './component/MemberCenter';
 import CommentDialog from './component/CommentDialog';
 
+
 const Routes = () => {
     return (
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={Home} />
-                <Route path="/test" exact component={ExternalTable} />
                 {/* <Route path="/shop" exact component={Shop} /> */}
                 <Route path="/checkout" exact component={Checkout} />
                 <Route path="/products/:categoryId" exact component={Products} />
