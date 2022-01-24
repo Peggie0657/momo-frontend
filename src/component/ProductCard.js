@@ -39,7 +39,7 @@ const ProductCard = ({ product, productsFetch, editable = false, link, favor = f
 
     return (<>
         <Grow in={true}>
-            <Card sx={{ maxWidth: 345 }}>
+            <Card sx={{ maxWidth: 345, minHeight: 410 }}>
                 {/* <CardHeader
                 avatar={
                     <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -71,6 +71,7 @@ const ProductCard = ({ product, productsFetch, editable = false, link, favor = f
                         <Typography variant="body2" color="text.secondary">
                             {product && product.description.slice(0, 25)}
                         </Typography>
+                        <br />
                         <Typography variant="h6" color="text.secondary">
                             ${product && product.price}
                         </Typography>

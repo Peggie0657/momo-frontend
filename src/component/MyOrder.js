@@ -90,8 +90,8 @@ function Row(props) {
                                                 #{item.prid}
                                             </TableCell>
                                             <TableCell>
-                                                <img src={item.cover} width={90}>
-                                                </img></TableCell>
+                                                <img src={item.cover} width={90} />
+                                            </TableCell>
                                             <TableCell>{item.name.slice(0, 20)}</TableCell>
                                             <TableCell >{item.spec}</TableCell>
                                             <TableCell align="right">$ {item.prprice}</TableCell>

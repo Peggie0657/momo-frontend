@@ -381,11 +381,11 @@ const Cart = ({ setItemCount }) => {
                                                                     scope="row"
                                                                     padding="none"
                                                                 >
-                                                                    {row.name || ""}
+                                                                    <img src={row.cover} width={90} />
                                                                 </TableCell>
                                                                 <TableCell align="right">{row.name || ""}</TableCell>
                                                                 <TableCell align="right">{row.price || ""}</TableCell>
-                                                                <TableCell align="right">1</TableCell>
+                                                                <TableCell align="right">{row.spec || ""}</TableCell>
                                                                 <TableCell align="right">{row.num}</TableCell>
                                                             </TableRow>
                                                         );

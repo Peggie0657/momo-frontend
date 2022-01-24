@@ -19,7 +19,7 @@ import { addItem, itemTotal } from './cartHelpers';
 import { getProduct, getSpecs, getPics, getComments } from '../product';
 
 const labels = {
-    0.0: "0.0",
+    0: "0",
     0.1: "0.1",
     0.2: "0.2",
     0.3: "0.3",
@@ -95,6 +95,7 @@ const Element = ({ className, match }) => {
     const [star, setStar] = useState(2)
     const [values, setValues] = useState({});
     const [specs, setSpecs] = useState([])
+    const [spec, setSpec] = useState({})
     const [pic, setPic] = useState([])
     const [comments, setComments] = useState([])
     const [average, setAverage] = useState(0)
@@ -105,6 +106,7 @@ const Element = ({ className, match }) => {
         const number = parseInt(num)
         addItem({
             ...product,
+            spec: spec.spec,
             num: number
         }, () => { //數量,規格
             setRedirect(true)
@@ -145,6 +147,7 @@ const Element = ({ className, match }) => {
         }
 
         setSpecs(arr)
+        setSpec(obj)
         // let arr = [
         //     ...specs
         // ]
@@ -183,6 +186,7 @@ const Element = ({ className, match }) => {
 
                 })
                 setSpecs(arr)
+                setSpec(arr[0])
             })
 
         getPics(productId)
@@ -197,7 +201,7 @@ const Element = ({ className, match }) => {
                     ave += item.star
                 })
                 setComments(data)
-                setAverage(ave / data.length)
+                setAverage((ave / data.length) || 0)
             })
     }, [])
     return (
