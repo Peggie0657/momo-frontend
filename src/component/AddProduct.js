@@ -193,10 +193,11 @@ const Element = ({ className, productsFetch }) => {
                                         {/* <img src={imagesSrc} height={100} style={{ margin: "20px" }} alt="" /> */}
                                         <br /><br />
                                     </form>
+
                                     <Box
                                         component="form"
                                         sx={{
-                                            '& .MuiTextField-root': { m: 1, width: '30ch' },
+                                            '& .MuiTextField-root': { m: 1, width: '72ch' },
                                             textAlign: "center"
                                         }}
                                         noValidate
@@ -212,7 +213,17 @@ const Element = ({ className, productsFetch }) => {
                                                 shrink: true,
                                             }}
                                         />
-                                        <br /><br />
+                                    </Box>
+                                    <br />
+                                    <Box
+                                        component="form"
+                                        sx={{
+                                            '& .MuiTextField-root': { m: 1, width: '34.9ch' },
+                                            textAlign: "center"
+                                        }}
+                                        noValidate
+                                        autoComplete="off"
+                                    >
                                         <TextField
                                             id="outlined-select-category"
                                             select
@@ -226,7 +237,6 @@ const Element = ({ className, productsFetch }) => {
                                                 </MenuItem>
                                             ))}
                                         </TextField>
-
                                         <TextField
                                             id="outlined-price"
                                             label="商品價格"
@@ -253,18 +263,7 @@ const Element = ({ className, productsFetch }) => {
                                     <Box
                                         component="form"
                                         sx={{
-                                            '& .MuiTextField-root': { m: 1, width: '62ch' },
-                                            textAlign: "center"
-                                        }}
-                                        noValidate
-                                        autoComplete="off"
-                                    >
-                                        <ExternalTable setSpecArr={setSpecArr} specArr={specArr} />
-                                    </Box>
-                                    <Box
-                                        component="form"
-                                        sx={{
-                                            '& .MuiTextField-root': { m: 1, width: '62ch' },
+                                            '& .MuiTextField-root': { m: 1, width: '72ch' },
                                             textAlign: "center"
                                         }}
                                         noValidate
@@ -282,6 +281,18 @@ const Element = ({ className, productsFetch }) => {
                                                 shrink: true,
                                             }}
                                         />
+                                        <br /><br />
+                                    </Box>
+                                    <Box
+                                        component="form"
+                                        sx={{
+                                            '& .MuiTextField-root': { m: 1, width: '62ch' },
+                                            textAlign: "center"
+                                        }}
+                                        noValidate
+                                        autoComplete="off"
+                                    >
+                                        <ExternalTable setSpecArr={setSpecArr} specArr={specArr} />
                                     </Box>
                                 </div>
                             </div>
@@ -358,7 +369,7 @@ const AddProduct = styled(Element)`
 .uploadImg{
     padding: 7px;
     border:1px solid;
-    margin-left: 55px;
+    margin-left: 15px;
 }
 .uploadImg:hover{
     // color: #00000085;
