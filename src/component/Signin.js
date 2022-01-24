@@ -165,20 +165,20 @@ const Element = ({ className }) => {
                             </Button>
                         </div>
                     </form>
-                    <div id="middleLine">------------------ or ------------------</div>
+                    <div id="middleLine">---------------- or ----------------</div>
                     <div className='pb-4' style={{ display: "flex", textAlign: "center" }}>
-                        <div style={{ marginRight: "20px" }}>
+                        {/* <div style={{ marginRight: "20px" }}>
                             <a className="btn btn-block btn-social btn-facebook" onClick={facebook}>
                                 <i className="fab fa-facebook-f" style={{ marginRight: "15px" }}></i>Facebook
                             </a>
-                        </div>
+                        </div> */}
                         <div>
                             <a className="btn btn-block btn-social btn-google" onClick={google}>
-                                <i className="fab fa-google" style={{ marginRight: "15px" }}></i>Google
+                                <i className="fab fa-google" style={{ marginRight: "15px" }}></i>Google 登入
                             </a>
                         </div>
                     </div>
-                    <div className="signup">蝦皮新朋友？<a className="signupA" href="/signup">註冊</a></div>
+                    <div className="signup">還是新朋友？ <a className="signupA" href="/signup">註冊</a></div>
                 </div>
             </div >
             <Footer />
