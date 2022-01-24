@@ -316,12 +316,14 @@ const Element = ({ className, match }) => {
                                     數量：
                                     <TextField
                                         type="number"
-                                        label={`目前剩餘庫存${spec.stock}`}
+                                        label={`目前剩餘庫存: ${spec.stock}`}
                                         id="outlined-size-small"
                                         defaultValue="Small"
                                         size="small"
+                                        sx={{width:"200px"}}
                                         value={num}
                                         onChange={handleChange("num")}
+                                        inputProps={{inputProps: {min:0,max:spec.stock} }}
                                     />
                                 </Typography>
 
