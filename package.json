@@ -28,15 +28,7 @@
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
-<<<<<<< HEAD
-    "react-scroll-to-bottom": "^4.2.0",
-    "sockjs": "^0.3.24",
-    "sockjs-client": "^1.5.2",
-    "stomp": "^0.1.1",
-    "stompjs": "^2.3.3",
-=======
     "recharts": "^2.1.8",
->>>>>>> ac4a68f88aaf59089c28cf1df8b8130ba1d03a39
     "styled-components": "^5.3.3",
     "web-vitals": "^1.0.1"
   },
