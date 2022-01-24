@@ -320,9 +320,10 @@ const Element = ({ className, match }) => {
                                         id="outlined-size-small"
                                         defaultValue="Small"
                                         size="small"
+                                        sx={{width:"200px"}}
                                         value={num}
                                         onChange={handleChange("num")}
-                                        inputProps={{min:0,max:(spec.stock)}}
+                                        inputProps={{inputProps: {min:0,max:spec.stock} }}
                                     />
                                 </Typography>
 
