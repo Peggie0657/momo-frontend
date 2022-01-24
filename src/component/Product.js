@@ -296,7 +296,7 @@ const Element = ({ className, match }) => {
                                     <Box sx={{ '& button': { m: 1 } }}>
                                         規格：
                                         {specs.map(data => (
-                                            <Button variant={`${data.isSel ? "contained" : "outlined"}`} className='' size="small" onClick={() => handleSpecBtn(data)} >
+                                            <Button class="btn btn-pink" variant={`${data.isSel ? "contained" : "outlined"}`} className='' size="small" onClick={() => handleSpecBtn(data)} >
                                                 {data.spec}
                                             </Button>
                                         ))}
@@ -333,7 +333,7 @@ const Element = ({ className, match }) => {
                                     <Box sx={{ '& button': { ml: 40 } }}>
                                         {/* 庫存：100 */}
 
-                                        <Button variant="contained" onClick={addIntoCart}>
+                                        <Button class="btn btn-pink" variant="contained" onClick={addIntoCart}>
                                             加入購物車
                                         </Button>
                                     </Box>
