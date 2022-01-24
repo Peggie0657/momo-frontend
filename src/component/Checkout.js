@@ -9,20 +9,25 @@ import Box from '@mui/material/Box';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import FormGroup from '@mui/material/FormGroup';
 import FormControl from '@mui/material/FormControl';
+import Checkbox from '@mui/material/Checkbox';
 import FormLabel from '@mui/material/FormLabel';
 import { checkOutOneTime, checkOutATM } from '../order';
 import Layout from './Layout';
+import { getUser } from '../auth';
 
 
 const Element = ({ className, location }) => {
     const [products, setProducts] = useState([]);
     const [total, setTotal] = useState(0);
     const [values, setValues] = useState({});
+    const [checked, setChecked] = useState(false)
+    const [user, setUser] = useState({})
     const history = useHistory();
     const token = isAuthenticated() && isAuthenticated().accessToken
 
-    const { name, phone, address, payment } = values
+    const { name, phone, address, payment, delivery, receiptName, receiptPhone, receiptAddr } = values
 
     const handleSubmit = () => {
         products.forEach(item => {
@@ -32,7 +37,7 @@ const Element = ({ className, location }) => {
         })
 
 
-        if (payment === "credit") {
+        if (payment === "0") {
             checkOutOneTime({
                 ...values,
                 products,
@@ -42,7 +47,7 @@ const Element = ({ className, location }) => {
                     // var myWindow = window.open("", "response", "resizable=yes");
                     window.document.write(data);
                 })
-        } else if (payment === "atm") {
+        } else if (payment === "1") {
             checkOutATM({
                 ...values,
                 products,
@@ -63,8 +68,7 @@ const Element = ({ className, location }) => {
         //         var myWindow = window.open("", "response", "resizable=yes");
         //         myWindow.document.write(data);
         //     })
-
-        addOrder({ products, total }, token)
+        addOrder({ products, total, payment: parseInt(payment), shipping: parseInt(delivery), shippingadd: receiptAddr }, token)
             .then(data => {
                 // history.push("/memberCenter", {
                 //     state: {
@@ -79,11 +83,38 @@ const Element = ({ className, location }) => {
         setValues({ ...values, [name]: event.target.value })
     }
 
+    const handleCheckbox = (e) => {
+        if (e.target.checked === true) {
+            setValues({
+                ...values,
+                receiptName: user.username,
+                receiptPhone: user.phone,
+                receiptAddr: user.address
+            })
+        } else {
+            setValues({
+                ...values,
+                receiptName: "",
+                receiptPhone: "",
+                receiptAddr: ""
+            })
+        }
+        setChecked(e.target.checked)
+    }
+
     useEffect(() => {
+        getUser(token)
+            .then(data => {
+                setValues({
+                    name: data.username,
+                    phone: data.phone,
+                    address: data.address
+                })
+                setUser(data)
+            })
         setProducts(location.state.selectedArr)
         setTotal(location.state.total)
     }, [])
-
     return (
         <Layout>
             <div className={className} >
@@ -128,7 +159,7 @@ const Element = ({ className, location }) => {
                             <Box
                                 component="form"
                                 sx={{
-                                    '& .MuiTextField-root': { m: 1, width: '25ch' },
+                                    '& .MuiTextField-root': { m: 1, width: '20ch' },
                                     textAlign: "center"
                                 }}
                                 noValidate
@@ -167,22 +198,72 @@ const Element = ({ className, location }) => {
                             </Box>
                         </div>
                         <div className="w50">
-                            <p className="title">3 . 付款及運送資訊</p><hr className="mg0" />
+                            <p className="title">3 . 收貨人資料</p><hr className="mg0" />
+                            <Box
+                                component="form"
+                                sx={{
+                                    '& .MuiTextField-root': { m: 1, width: '20ch' },
+                                    textAlign: "center"
+                                }}
+                                noValidate
+                                autoComplete="off"
+                            >
+                                <TextField
+                                    id="outlined-receiptName"
+                                    label="取貨人姓名"
+                                    type="text"
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                    value={receiptName}
+                                    onChange={handleChange("receiptName")}
+                                />
+                                <TextField
+                                    id="outlined-receiptPhone"
+                                    label="取貨人電話"
+                                    type="tel"
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                    value={receiptPhone}
+                                    onChange={handleChange("receiptPhone")}
+                                />
+                                <TextField
+                                    id="outlined-receiptAddr"
+                                    label="取件人地址"
+                                    type="text"
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                    value={receiptAddr}
+                                    onChange={handleChange("receiptAddr")}
+                                />
+                                <br />
+                                <FormControlLabel control={<Checkbox onChange={handleCheckbox} checked={checked} />} label="與購買人資料相同" />
+                            </Box>
+                        </div>
+                        <div className="w50">
+                            <p className="title">4 . 付款及運送資訊</p><hr className="mg0" />
                             <FormControl component="fieldset">
                                 <FormLabel component="legend">付款方式</FormLabel>
                                 <RadioGroup row aria-label="payment" name="row-radio-buttons-group">
-                                    <FormControlLabel value="credit" control={<Radio value="credit" onChange={handleChange("payment")} />} label="線上刷卡" />
-                                    <FormControlLabel value="cash" control={<Radio value="cash" onChange={handleChange("payment")} />} label="貨到付款" />
-                                    <FormControlLabel value="atm" control={<Radio value="atm" onChange={handleChange("payment")} />} label="銀行轉帳" />
+                                    <FormControlLabel value="0" control={<Radio value="0" onChange={handleChange("payment")} />} label="線上刷卡" />
+                                    <FormControlLabel value="1" control={<Radio value="1" onChange={handleChange("payment")} />} label="貨到付款" />
+                                    <FormControlLabel value="2" control={<Radio value="2" onChange={handleChange("payment")} />} label="銀行轉帳" />
                                 </RadioGroup>
                                 <br />
                                 <FormLabel component="legend">運送方式</FormLabel>
                                 <RadioGroup row aria-label="delivery" name="row-radio-buttons-group">
-                                    <FormControlLabel value="mart" control={<Radio value="mart" onChange={handleChange("delivery")} />} label="超商取貨" />
-                                    <FormControlLabel value="home" control={<Radio value="home" onChange={handleChange("delivery")} />} label="宅配" />
+                                    <FormControlLabel value="0" control={<Radio value="0" onChange={handleChange("delivery")} />} label="超商取貨" />
+                                    <FormControlLabel value="1" control={<Radio value="1" onChange={handleChange("delivery")} />} label="宅配" />
                                 </RadioGroup>
                             </FormControl>
                         </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div className="col-center">
+
                     </div>
                     <button onClick={handleSubmit} className="btn">送出</button>
                 </div>
