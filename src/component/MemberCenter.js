@@ -55,7 +55,8 @@ const Element = ({ className, location }) => {
             <Layout>
                 <div className={className}>
                     <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
-                        <Tabs value={value} onChange={handleChange} centered>
+                        <Tabs value={value} onChange={handleChange} centered TabIndicatorProps={{ style: { background: "#f7bacf" } }}
+>
                             <Tab label="我的訂單" value={0} />
                             <Tab label="我的收藏" value={1} />
                             <Tab label="我的賣場" value={2} />
@@ -264,6 +265,9 @@ const MemberCenter = styled(Element)`
 }
 .a-style{
     text-decoration: none;
+}
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+    color: #f7bacf;
 }
 `
 
