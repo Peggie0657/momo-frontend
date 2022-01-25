@@ -136,7 +136,7 @@ const Element = ({ className, location }) => {
                                     <tr>
                                         <th scope="row">{index + 1}</th>
                                         <td>{item.name}</td>
-                                        <td>50</td>
+                                        <td>{item.spec}</td>
                                         <td>{item.num}</td>
                                         <td>{item.num * item.price}</td>
                                     </tr>
