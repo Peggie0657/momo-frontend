@@ -36,7 +36,7 @@ const Element = () => (
                         關於購物
                     </h6>
                     <p>
-                        <a href="#!" className="text-reset">蝦皮條款</a>
+                        <a href="#!" className="text-reset">哞哞條款</a>
                     </p>
                     <p>
                         <a href="#!" className="text-reset">隱私權政策</a>
