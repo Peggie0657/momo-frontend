@@ -10,13 +10,16 @@ import Grid from '@mui/material/Grid';
 import Tab from '@mui/material/Tab';
 import MyOrder from './MyOrder';
 import { isAuthenticated } from "../auth";
-import { getOrders } from "../order";
+import { getMyOrders } from "../order";
 import MyProduct from './MyProduct';
 import Layout from './Layout';
 import User from './User';
 import MyFavor from './MyFavor';
 import DataCard from './DataCard';
 import Chart from './Chart';
+
+
+
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -46,9 +49,23 @@ TabPanel.propTypes = {
 
 const Element = ({ className, location }) => {
     const [value, setValue] = useState(location && location.state && location.state.state.value || 0);
+    const [data, setData] = useState([])
+
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+
+    useEffect(() => {
+        getMyOrders(isAuthenticated().accessToken)
+            .then(data => {
+                var date = new Date()
+                var y = date.getFullYear()
+                var m = date.getMonth();
+                var firstDay = new Date(y, m, 1);
+                var lastDay = new Date(y, m + 1, 0);
+                setData(data.filter(item => new Date(item.setuptime) > firstDay && new Date(item.setuptime) < lastDay))
+            })
+    }, [])
 
     return (
         <>
@@ -56,7 +73,7 @@ const Element = ({ className, location }) => {
                 <div className={className}>
                     <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
                         <Tabs value={value} onChange={handleChange} centered TabIndicatorProps={{ style: { background: "#f7bacf" } }}
->
+                        >
                             <Tab label="我的訂單" value={0} />
                             <Tab label="我的收藏" value={1} />
                             <Tab label="我的賣場" value={2} />
@@ -95,22 +112,22 @@ const Element = ({ className, location }) => {
                                 <TabPanel value={value} index={3}>
                                     <Container maxWidth="lg">
                                         <Grid container spacing={2}>
-                                            <Grid item xs={3}>
-                                                <DataCard />
+                                            <Grid item xs={4}>
+                                                <DataCard data={data} title="銷售額" type="1" />
                                             </Grid>
-                                            <Grid item xs={3}>
-                                                <DataCard />
+                                            <Grid item xs={4}>
+                                                <DataCard data={data} title="訂單" type="2" />
                                             </Grid>
-                                            <Grid item xs={3}>
-                                                <DataCard />
+                                            <Grid item xs={4}>
+                                                <DataCard data={data} title="平均訂單金額" type="3" />
                                             </Grid>
-                                            <Grid item xs={3}>
-                                                <DataCard />
-                                            </Grid>
+                                            {/* <Grid item xs={3}>
+                                                <DataCard data={data} />
+                                            </Grid> */}
                                         </Grid>
                                         <br />
                                         <br />
-                                        <Chart />
+                                        <Chart data={data} />
                                     </Container>
                                 </TabPanel>
                                 <TabPanel value={value} index={4}>
