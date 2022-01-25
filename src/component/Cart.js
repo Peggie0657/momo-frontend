@@ -64,31 +64,31 @@ const headCells = [
         id: 'photo',
         numeric: false,
         disablePadding: true,
-        label: '圖片',
+        label: '商品圖片',
     },
     {
         id: 'name',
         numeric: true,
         disablePadding: false,
-        label: '名稱',
+        label: '商品名稱',
     },
     {
         id: 'price',
         numeric: true,
         disablePadding: false,
-        label: '價格',
-    },
-    {
-        id: 'spec',
-        numeric: true,
-        disablePadding: false,
-        label: '規格',
+        label: '商品價格',
     },
     {
         id: 'num',
         numeric: true,
         disablePadding: false,
-        label: '數量',
+        label: '購買數量',
+    },
+    {
+        id: 'spec',
+        numeric: true,
+        disablePadding: false,
+        label: '商品規格',
     },
 
 ];
@@ -178,7 +178,7 @@ const EnhancedTableToolbar = (props) => {
                     variant="subtitle1"
                     component="div"
                 >
-                    {numSelected} selected
+                    {numSelected} 項已選擇
                 </Typography>
             ) : (
                 <Typography
@@ -222,6 +222,7 @@ const Cart = ({ setItemCount }) => {
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
     const history = useHistory();
+    const [spec, setSpec] = useState({})
 
     const [products, setProducts] = useState([])
 
@@ -385,8 +386,8 @@ const Cart = ({ setItemCount }) => {
                                                                 </TableCell>
                                                                 <TableCell align="right">{row.name || ""}</TableCell>
                                                                 <TableCell align="right">{row.price || ""}</TableCell>
-                                                                <TableCell align="right">{row.spec || ""}</TableCell>
                                                                 <TableCell align="right">{row.num}</TableCell>
+                                                                <TableCell align="right">{spec.spec || ""}</TableCell>
                                                             </TableRow>
                                                         );
                                                     })}
@@ -405,7 +406,7 @@ const Cart = ({ setItemCount }) => {
                                     </TableContainer>
                                     <br />
                                     <Typography variant="h6" gutterBottom component="div" marginLeft={100}>
-                                        Total {total} 台幣
+                                        總金額 : {total} 台幣
                                     </Typography>
                                 </Paper>
                             </Box>

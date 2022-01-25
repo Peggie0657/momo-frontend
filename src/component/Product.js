@@ -323,7 +323,8 @@ const Element = ({ className, match }) => {
                                         sx={{width:"200px"}}
                                         value={num}
                                         onChange={handleChange("num")}
-                                        inputProps={{inputProps: {min:0,max:spec.stock} }}
+                                        inputProps={{ min: 0, max: spec.stock}}
+                                        // inputProps={{inputProps: {min:0,max:spec.stock}}}
                                     />
                                 </Typography>
 
