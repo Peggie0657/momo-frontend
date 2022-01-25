@@ -25,7 +25,7 @@ import FormControl from '@mui/material/FormControl';
 import Badge from '@mui/material/Badge';
 // import Link from '@mui/material/Link';
 import ChatIcon from '@mui/icons-material/Chat';
-import { isAuthenticated, signout } from "../auth";
+import { isAuthenticated, signout, getUser } from "../auth";
 import { itemTotal } from './cartHelpers'
 import Cart from './Cart'
 import Category from './Category'
@@ -91,9 +91,13 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 const Element = ({ className }) => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const [user, setUser] = useState({})
     const [itemCount, setItemCount] = useState(0)
     const history = useHistory();
     const [keyword, setKeyword] = useState("");
+
+    const token = isAuthenticated() && isAuthenticated().accessToken
+
     const handleKeyword = name => event => {
         setKeyword(event.target.value)
 
@@ -107,7 +111,6 @@ const Element = ({ className }) => {
     };
 
     const handleCloseNavMenu = (id) => {
-        console.log(id)
         if (id === "2") {
             signout();
         }
@@ -118,12 +121,16 @@ const Element = ({ className }) => {
         setAnchorElUser(null);
     };
     useEffect(() => {
+        getUser(token)
+            .then(data => {
+                setUser(data)
+            })
         setItemCount(itemTotal())
         var input = document.getElementById("search");
         input.addEventListener("keyup", function (event) {
             if (event.keyCode === 13) {
                 // Cancel the default action, if needed
-                console.log(history.location.pathname)
+                // console.log(history.location.pathname)
                 if (history.location.pathname === "/") {
                     history.push({
                         pathname: `/products`,
@@ -133,7 +140,7 @@ const Element = ({ className }) => {
                     })
                 } else {
                     history.push({
-                        pathname: `${history.location.pathname}`,
+                        pathname: `/products`,
                         state: {
                             keyword: event.target.value
                         }
@@ -269,7 +276,7 @@ const Element = ({ className }) => {
                                 <Box sx={{ flexGrow: 0 }}>
                                     <Tooltip title="Open settings">
                                         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                            <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                                            <Avatar alt="Remy Sharp" src={user.userphoto} />
                                         </IconButton>
                                     </Tooltip>
                                     <Menu

@@ -23,13 +23,15 @@ import { isAuthenticated } from "../auth";
 import AlertBar from "./AlertBar";
 import CommentDialog from './CommentDialog';
 import StatusChange from './StatusChange';
+// import Box from '@mui/material/Box';
+import Icon from '@mui/material/Icon';
+import MdPhone from '@mui/icons-material/Phone';
+import Chip from '@mui/material/Chip';
 
 const statusObj = {
     0: "取消訂單",
-    1: "尚未確認",
-    2: "賣家已確認",
-    3: "賣家已出貨",
-    4: "完成訂單"
+    1: "等待出貨",
+    2: "賣家已出貨",
 }
 
 const paymentobj = {
@@ -74,10 +76,12 @@ function Row(props) {
                     <Collapse in={open} timeout="auto" unmountOnExit>
                         <Box sx={{ margin: 1 }}>
                             <Typography variant="h6" gutterBottom component="div">
-                                訂單明細
+                                訂單明細  
                             </Typography>
                             <Table size="small" aria-label="purchases">
+                                <caption>收貨人: {row.consignee}  || 收貨人電話: {row.tel} || 收貨地址: {row.shippingadd}</caption>
                                 <TableHead>
+                                
                                     <TableRow>
                                         <TableCell>商品編號</TableCell>
                                         <TableCell></TableCell>
@@ -143,6 +147,7 @@ const MyOrder = (props) => {
                             payment: ai.payment,
                             setuptime: ai.setuptime,
                             userid: ai.userid,
+                            
                             data: [ai]
                         });
                         map[ai.id] = ai;
@@ -188,6 +193,9 @@ const MyOrder = (props) => {
                             payment: ai.payment,
                             setuptime: ai.setuptime,
                             userid: ai.userid,
+                            tel: ai.tel,
+                            consignee: ai.consignee,
+                            shippingadd: ai.shippingadd,
                             data: [ai]
                         });
                         map[ai.id] = ai;
