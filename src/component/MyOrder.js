@@ -23,10 +23,10 @@ import { isAuthenticated } from "../auth";
 import AlertBar from "./AlertBar";
 import CommentDialog from './CommentDialog';
 import StatusChange from './StatusChange';
+import CallOutlinedIcon from '@mui/icons-material/CallOutlined';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 // import Box from '@mui/material/Box';
-import Icon from '@mui/material/Icon';
-import MdPhone from '@mui/icons-material/Phone';
-import Chip from '@mui/material/Chip';
+import HailOutlinedIcon from '@mui/icons-material/HailOutlined';
 
 const statusObj = {
     0: "取消訂單",
@@ -79,9 +79,9 @@ function Row(props) {
                                 訂單明細  
                             </Typography>
                             <Table size="small" aria-label="purchases">
-                                <caption>收貨人: {row.consignee}  || 收貨人電話: {row.tel} || 收貨地址: {row.shippingadd}</caption>
+                                <caption><HailOutlinedIcon color="disabled" /> 收貨人: {row.consignee}  ||  <CallOutlinedIcon color="disabled" /> 收貨人電話: {row.tel} ||   
+                                <HomeOutlinedIcon color="disabled" /> 收貨地址: {row.shippingadd}</caption>
                                 <TableHead>
-                                
                                     <TableRow>
                                         <TableCell>商品編號</TableCell>
                                         <TableCell></TableCell>
