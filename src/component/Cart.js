@@ -387,7 +387,7 @@ const Cart = ({ setItemCount }) => {
                                                                 <TableCell align="right">{row.name || ""}</TableCell>
                                                                 <TableCell align="right">{row.price || ""}</TableCell>
                                                                 <TableCell align="right">{row.num}</TableCell>
-                                                                <TableCell align="right">{spec.spec || ""}</TableCell>
+                                                                <TableCell align="right">{row.spec || ""}</TableCell>
                                                             </TableRow>
                                                         );
                                                     })}

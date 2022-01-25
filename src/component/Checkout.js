@@ -47,7 +47,7 @@ const Element = ({ className, location }) => {
                     // var myWindow = window.open("", "response", "resizable=yes");
                     window.document.write(data);
                 })
-        } else if (payment === "1") {
+        } else if (payment === "2") {
             checkOutATM({
                 ...values,
                 products,
@@ -137,7 +137,7 @@ const Element = ({ className, location }) => {
                                     <tr>
                                         <th scope="row">{index + 1}</th>
                                         <td>{item.name}</td>
-                                        {/* <td>}</td> */}
+                                        <td>{item.spec}</td>
                                         <td>{item.price}</td>
                                         <td>{item.num}</td>
                                         <td>{item.num * item.price}</td>
@@ -198,8 +198,6 @@ const Element = ({ className, location }) => {
                                     value={address}
                                     onChange={handleChange("address")}
                                 />
-                                <span>
-                                <Checkbox></Checkbox>與使用者相同</span>
                             </Box>
                         </div>
                         <div className="w50">

@@ -218,7 +218,7 @@ const Element = ({ className, productsFetch }) => {
                                     <Box
                                         component="form"
                                         sx={{
-                                            '& .MuiTextField-root': { m: 1, width: '34.9ch' },
+                                            '& .MuiTextField-root': { m: 1, width: '47.5%' },
                                             textAlign: "center"
                                         }}
                                         noValidate

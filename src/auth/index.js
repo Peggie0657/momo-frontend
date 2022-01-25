@@ -82,7 +82,7 @@ export const putUser = (user, token) => {
 }
 
 export const changePw = (user, token) => {
-    return fetch(`${API}/auth/password`, {
+    return fetch(`${API}/auth/userpassword`, {
         method: "POST",
         headers: {
             Accept: 'application/json',
