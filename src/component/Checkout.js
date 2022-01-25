@@ -127,8 +127,9 @@ const Element = ({ className, location }) => {
                                     <th scope="col"></th>
                                     <th scope="col">商品名稱</th>
                                     <th scope="col">規格</th>
-                                    <th scope="col">數量</th>
                                     <th scope="col">金額</th>
+                                    <th scope="col">數量</th>
+                                    <th scope="col">總金額</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -136,7 +137,8 @@ const Element = ({ className, location }) => {
                                     <tr>
                                         <th scope="row">{index + 1}</th>
                                         <td>{item.name}</td>
-                                        <td>50</td>
+                                        {/* <td>}</td> */}
+                                        <td>{item.price}</td>
                                         <td>{item.num}</td>
                                         <td>{item.num * item.price}</td>
                                     </tr>
@@ -148,6 +150,7 @@ const Element = ({ className, location }) => {
                                     <th scope="col"></th>
                                     <th scope="col"></th>
                                     <th scope="col"></th>
+                                    <th scope="col"></th>
                                     <th scope="col" >NT.{total}元</th>
                                 </tr>
                             </thead>
@@ -155,7 +158,7 @@ const Element = ({ className, location }) => {
                     </div>
                     <div className="col-center">
                         <div className="w50">
-                            <p className="title">2 . 購買人資料</p><hr className="mg0" />
+                            <p className="title">2 . 收件人資料</p><hr className="mg0" />
                             <Box
                                 component="form"
                                 sx={{
@@ -195,6 +198,8 @@ const Element = ({ className, location }) => {
                                     value={address}
                                     onChange={handleChange("address")}
                                 />
+                                <span>
+                                <Checkbox></Checkbox>與使用者相同</span>
                             </Box>
                         </div>
                         <div className="w50">
