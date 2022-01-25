@@ -459,6 +459,10 @@ const Product = styled(Element)`
 .alreadyClick{
     color:red;
 }
+.btn-pink{
+    background-color: #f7bacf;
+    color:#ffffff;
+}
 `
 
 export default Product;

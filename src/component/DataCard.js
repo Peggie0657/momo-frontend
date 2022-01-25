@@ -1,13 +1,28 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 
-function preventDefault(event) {
-    event.preventDefault();
-}
-
-export default function DataCard() {
+export default function DataCard(props) {
+    const { title, data, type } = props
+    const [total, setTotal] = useState(0)
+    useEffect(() => {
+        if (type === "1") {
+            let total = 0
+            data.forEach(item => {
+                total += item.prtotal
+            })
+            setTotal(total)
+        } else if (type === "2") {
+            setTotal(data.length)
+        } else {
+            let total = 0
+            data.forEach(item => {
+                total += item.prtotal
+            })
+            setTotal((total / data.length).toFixed(0))
+        }
+    }, [])
     return (
         <Paper
             sx={{
@@ -17,12 +32,12 @@ export default function DataCard() {
                 height: 200,
             }}
         >
-            <title>Recent Deposits</title>
+            {/* <title>Recent Deposits</title> */}
             <Typography component="p" variant="h5">
-                銷售額
+                {title}
             </Typography>
             <Typography component="p" variant="h5">
-                $3,024.00
+                {type === "1" ? `$${total}` : type === "2" ? total : `$${total}`}
             </Typography>
             <br />
             <br />

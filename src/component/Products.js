@@ -54,6 +54,7 @@ const Element = ({ className, match, location }) => {
         //     })
 
         // }
+        console.log(keyword)
         searchKeyword(keyword)
             .then(data => {
                 if (data) {

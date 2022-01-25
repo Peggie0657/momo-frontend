@@ -14,10 +14,15 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 import { getMyOrders } from "../order";
 import { isAuthenticated } from "../auth";
 import AlertBar from "./AlertBar";
 import CommentDialog from './CommentDialog';
+import StatusChange from './StatusChange';
 
 const statusObj = {
     0: "取消訂單",
@@ -28,19 +33,20 @@ const statusObj = {
 }
 
 const paymentobj = {
-    1: "線上刷卡",
-    2: "貨到付款",
-    3: "銀行轉帳"
+    0: "線上刷卡",
+    1: "貨到付款",
+    2: "銀行轉帳"
 }
 
 const shippingobj = {
-    1: "超商取貨",
-    2: "宅配"
+    0: "超商取貨",
+    1: "宅配"
 }
 
 function Row(props) {
-    const { row, orderFetch } = props;
+    const { row, orderFetch, isSeller } = props;
     const [open, setOpen] = React.useState(false);
+
     return (
         <React.Fragment>
             <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
@@ -57,7 +63,7 @@ function Row(props) {
                     No.{row.id}
                 </TableCell>
                 <TableCell align="right">
-                    {statusObj[row.status]}
+                    {isSeller ? <StatusChange status={row.status} /> : statusObj[row.status]}
                 </TableCell>
                 <TableCell align="right">{shippingobj[row.shipping]}</TableCell>
                 <TableCell align="right">{paymentobj[row.payment]}</TableCell>
@@ -100,8 +106,8 @@ function Row(props) {
                                             </TableCell>
                                             <TableCell align="right">$ {item.prtotal}</TableCell>
                                             <TableCell>
-                                                {item.iscommented === 0 ? <CommentDialog product={item} orderFetch={orderFetch} /> :
-                                                    <Button variant="outlined" disabled>已評論</Button>}
+                                                {!isSeller && item.iscommented === 0 ? <CommentDialog product={item} orderFetch={orderFetch} /> :
+                                                    !isSeller ? <Button variant="outlined" disabled>已評論</Button> : null}
                                             </TableCell>
                                         </TableRow>
                                     ))}
@@ -117,6 +123,7 @@ function Row(props) {
 
 
 const MyOrder = (props) => {
+    const { isSeller } = props
     const [orders, setOrders] = useState([])
 
     const token = isAuthenticated() && isAuthenticated().accessToken
@@ -126,7 +133,6 @@ const MyOrder = (props) => {
         var arr = [];
         getMyOrders(token)
             .then(data => {
-                // console.log(data)
                 for (var i = 0; i < data.length; i++) {
                     var ai = data[i];
                     if (!map[ai.id]) {
@@ -221,7 +227,7 @@ const MyOrder = (props) => {
                                 <TableRow>
                                     <TableCell />
                                     <TableCell>訂單編號</TableCell>
-                                    <TableCell align="right">訂單狀況</TableCell>
+                                    <TableCell align="right">訂單狀況 </TableCell>
                                     <TableCell align="right">運送方式</TableCell>
                                     <TableCell align="right">付款方式</TableCell>
                                     <TableCell align="center">訂單日期</TableCell>
@@ -229,7 +235,7 @@ const MyOrder = (props) => {
                             </TableHead>
                             <TableBody>
                                 {orders.map((row) => (
-                                    <Row key={row.name} row={row} orderFetch={orderFetch} />
+                                    <Row key={row.name} row={row} orderFetch={orderFetch} isSeller={isSeller} />
                                 ))}
                             </TableBody>
                         </Table>

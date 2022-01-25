@@ -83,6 +83,9 @@ const Category = styled(Element)`
     height: 40%;
     width: 1px;
 }
+.navbar-nav{
+    margin: auto
+}
 `
 
 export default Category;
