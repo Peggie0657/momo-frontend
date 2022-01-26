@@ -4,7 +4,6 @@ import Routes from './Routes';
 import Layout from '../src/component/Layout';
 import "./index.css"
 
-
 ReactDOM.render(
   <Routes />
   , document.getElementById('root')

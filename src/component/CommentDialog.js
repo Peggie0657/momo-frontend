@@ -50,7 +50,7 @@ export default function FormDialog(props) {
 
     return (
         <div>
-            <Button variant="outlined" onClick={handleClickOpen}>
+            <Button class="btn btn-pink" variant="outlined" onClick={handleClickOpen}>
                 評論
             </Button>
             <Dialog open={open} onClose={handleClose}>

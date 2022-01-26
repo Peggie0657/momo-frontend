@@ -162,8 +162,8 @@ const Element = ({ className }) => {
                             component="div"
                             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
                         >
-                            <a className="navbar-brand" href="/">
-                                <img src="https://cdn-icons-png.flaticon.com/512/220/220127.png" alt="" width={40} height={35} />哞哞購物
+                            <a className="navbar-brand logo" href="/">
+                                <img src="https://img.onl/5hFHw" alt="" width={120} height={90} />
                             </a>
                         </Typography>
 
@@ -210,7 +210,7 @@ const Element = ({ className }) => {
                             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
                         >
                             <a className="navbar-brand" href="/">
-                                <img src="https://cdn-icons-png.flaticon.com/512/220/220127.png" alt="" width={40} height={35} />哞哞購物
+                                <img src="https://img.onl/5hFHw" alt="" width={40} height={35} />
                             </a>
                         </Typography>
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -336,6 +336,9 @@ const Element = ({ className }) => {
 const Header = styledComponents(Element)`
 .navbar-brand{
     color:#000
+}
+.logo{
+    margin:0 auto;
 }
 `
 export default Header;

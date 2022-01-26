@@ -409,6 +409,12 @@ const Element = ({ className }) => {
 }
 
 const User = styled(Element)`
+.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+    color:#f7bacf;
+}
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #f7bacf
+}
 
 `
 
