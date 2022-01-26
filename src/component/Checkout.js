@@ -68,7 +68,7 @@ const Element = ({ className, location }) => {
         //         var myWindow = window.open("", "response", "resizable=yes");
         //         myWindow.document.write(data);
         //     })
-        addOrder({ products, total, payment: parseInt(payment), shipping: parseInt(delivery), shippingadd: receiptAddr,consignee:receiptName,tel:receiptPhone }, token)
+        addOrder({ products, total, payment: parseInt(payment), shipping: parseInt(delivery), shippingadd: receiptAddr, consignee: receiptName, tel: receiptPhone }, token)
             .then(data => {
                 // history.push("/memberCenter", {
                 //     state: {
@@ -257,7 +257,7 @@ const Element = ({ className, location }) => {
                                 <br />
                                 <FormLabel component="legend">運送方式</FormLabel>
                                 <RadioGroup row aria-label="delivery" name="row-radio-buttons-group">
-                                    <FormControlLabel value="0" control={<Radio value="0" onChange={handleChange("delivery")} />} label="超商取貨" />
+                                    <FormControlLabel value="0" control={<Radio value="0" onChange={handleChange("delivery")} checked />} label="超商取貨" />
                                     <FormControlLabel value="1" control={<Radio value="1" onChange={handleChange("delivery")} />} label="宅配" />
                                 </RadioGroup>
                             </FormControl>
