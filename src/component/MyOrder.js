@@ -18,7 +18,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { getMyOrders } from "../order";
+import { getMyOrders, changeStatus } from "../order";
 import { isAuthenticated } from "../auth";
 import AlertBar from "./AlertBar";
 import CommentDialog from './CommentDialog';
@@ -32,6 +32,7 @@ const statusObj = {
     0: "取消訂單",
     1: "等待出貨",
     2: "賣家已出貨",
+    3: "已完成訂單",
 }
 
 const paymentobj = {
@@ -48,6 +49,19 @@ const shippingobj = {
 function Row(props) {
     const { row, orderFetch, isSeller } = props;
     const [open, setOpen] = React.useState(false);
+    const token = isAuthenticated() && isAuthenticated().accessToken
+
+    const completeOrder = () => {
+        let completeord = {
+            ...row,
+            status: 3
+        }
+        changeStatus(completeord, token)
+            .then(data => {
+                orderFetch()
+            })
+    }
+
 
     return (
         <React.Fragment>
@@ -71,8 +85,8 @@ function Row(props) {
                 <TableCell align="right">{paymentobj[row.payment]}</TableCell>
                 <TableCell align="center">{row.setuptime}</TableCell>
                 <TableCell>
-                    {!isSeller && statusObj[row.status] === "賣家已出貨" ? <Button className='btn btn-pink' variant="contained">完成訂單</Button>
-                        : ""}
+                    {!isSeller && row.status === 2 ? <Button onClick={completeOrder} className='btn btn-pink' variant="contained">完成訂單</Button>
+                        : row.status === 1 || row.status === 0 ? "" : <Button disabled className='btn' variant="contained">完成訂單</Button>}
                 </TableCell>
             </TableRow>
             <TableRow>
@@ -179,6 +193,7 @@ const MyOrder = (props) => {
                 setOrders(arr)
             })
     }
+
 
     useEffect(() => {
 

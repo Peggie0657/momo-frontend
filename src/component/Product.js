@@ -108,6 +108,7 @@ const Element = ({ className, match }) => {
             spec: spec.spec,
             num: number
         })
+        window.location.reload();
         alert("商品已加入購物車")
     }
 
