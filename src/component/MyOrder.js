@@ -23,6 +23,10 @@ import { isAuthenticated } from "../auth";
 import AlertBar from "./AlertBar";
 import CommentDialog from './CommentDialog';
 import StatusChange from './StatusChange';
+import CallOutlinedIcon from '@mui/icons-material/CallOutlined';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+// import Box from '@mui/material/Box';
+import HailOutlinedIcon from '@mui/icons-material/HailOutlined';
 
 const statusObj = {
     0: "取消訂單",
@@ -75,6 +79,8 @@ function Row(props) {
                                 訂單明細  
                             </Typography>
                             <Table size="small" aria-label="purchases">
+                                <caption><HailOutlinedIcon color="disabled" /> 收貨人: {row.consignee}  ||  <CallOutlinedIcon color="disabled" /> 收貨人電話: {row.tel} ||   
+                                <HomeOutlinedIcon color="disabled" /> 收貨地址: {row.shippingadd}</caption>
                                 <TableHead>
                                     <TableRow>
                                         <TableCell>商品編號</TableCell>
@@ -141,6 +147,7 @@ const MyOrder = (props) => {
                             payment: ai.payment,
                             setuptime: ai.setuptime,
                             userid: ai.userid,
+                            
                             data: [ai]
                         });
                         map[ai.id] = ai;
@@ -186,6 +193,9 @@ const MyOrder = (props) => {
                             payment: ai.payment,
                             setuptime: ai.setuptime,
                             userid: ai.userid,
+                            tel: ai.tel,
+                            consignee: ai.consignee,
+                            shippingadd: ai.shippingadd,
                             data: [ai]
                         });
                         map[ai.id] = ai;
