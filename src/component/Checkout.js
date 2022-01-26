@@ -68,7 +68,7 @@ const Element = ({ className, location }) => {
         //         var myWindow = window.open("", "response", "resizable=yes");
         //         myWindow.document.write(data);
         //     })
-        addOrder({ products, total, payment: parseInt(payment), shipping: parseInt(delivery), shippingadd: receiptAddr }, token)
+        addOrder({ products, total, payment: parseInt(payment), shipping: parseInt(delivery), shippingadd: receiptAddr,consignee:receiptName,tel:receiptPhone }, token)
             .then(data => {
                 // history.push("/memberCenter", {
                 //     state: {
@@ -158,7 +158,7 @@ const Element = ({ className, location }) => {
                     </div>
                     <div className="col-center">
                         <div className="w50">
-                            <p className="title">2 . 收件人資料</p><hr className="mg0" />
+                            <p className="title">2 . 訂購人資料</p><hr className="mg0" />
                             <Box
                                 component="form"
                                 sx={{
