@@ -65,7 +65,7 @@ function Row(props) {
                     No.{row.id}
                 </TableCell>
                 <TableCell align="right">
-                    {isSeller ? <StatusChange status={row.status} /> : statusObj[row.status]}
+                    {isSeller ? <StatusChange status={row.status} order={row} /> : statusObj[row.status]}
                 </TableCell>
                 <TableCell align="right">{shippingobj[row.shipping]}</TableCell>
                 <TableCell align="right">{paymentobj[row.payment]}</TableCell>
@@ -76,11 +76,11 @@ function Row(props) {
                     <Collapse in={open} timeout="auto" unmountOnExit>
                         <Box sx={{ margin: 1 }}>
                             <Typography variant="h6" gutterBottom component="div">
-                                訂單明細  
+                                訂單明細
                             </Typography>
                             <Table size="small" aria-label="purchases">
-                                <caption><HailOutlinedIcon color="disabled" /> 收貨人: {row.consignee}  ||  <CallOutlinedIcon color="disabled" /> 收貨人電話: {row.tel} ||   
-                                <HomeOutlinedIcon color="disabled" /> 收貨地址: {row.shippingadd}</caption>
+                                <caption><HailOutlinedIcon color="disabled" /> 收貨人: {row.consignee}  ||  <CallOutlinedIcon color="disabled" /> 收貨人電話: {row.tel} ||
+                                    <HomeOutlinedIcon color="disabled" /> 收貨地址: {row.shippingadd}</caption>
                                 <TableHead>
                                     <TableRow>
                                         <TableCell>商品編號</TableCell>
@@ -147,7 +147,7 @@ const MyOrder = (props) => {
                             payment: ai.payment,
                             setuptime: ai.setuptime,
                             userid: ai.userid,
-                            
+
                             data: [ai]
                         });
                         map[ai.id] = ai;

@@ -12,10 +12,12 @@ import Dialog from '@mui/material/Dialog';
 import RadioGroup from '@mui/material/RadioGroup';
 import Radio from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import { isAuthenticated } from "../auth";
+import { changeStatus } from "../order";
 
 const options = [
     "取消訂單",
-    // "等待出貨",
+    "等待出貨",
     "已出貨",
 ];
 
@@ -26,10 +28,17 @@ const statusObj = {
     2: "已出貨",
 }
 
+const statusObjR = {
+    "取消訂單": 0,
+    "等待出貨": 1,
+    "已出貨": 2,
+}
+
 function ConfirmationDialogRaw(props) {
-    const { onClose, value: valueProp, open, ...other } = props;
+    const { order, onClose, value: valueProp, open, ...other } = props;
     const [value, setValue] = React.useState(valueProp);
     const radioGroupRef = React.useRef(null);
+    const token = isAuthenticated() && isAuthenticated().accessToken
 
     React.useEffect(() => {
         if (!open) {
@@ -48,6 +57,14 @@ function ConfirmationDialogRaw(props) {
     };
 
     const handleOk = () => {
+        let obj = {
+            ...order,
+            status: statusObjR[value]
+        }
+        changeStatus(obj, token)
+            .then(data => {
+                console.log(data)
+            })
         onClose(value);
     };
 
@@ -98,7 +115,8 @@ ConfirmationDialogRaw.propTypes = {
     value: PropTypes.string.isRequired,
 };
 
-export default function ConfirmationDialog(props) {
+export default function StatusChange(props) {
+    const { order } = props
     const [open, setOpen] = React.useState(false);
     const [value, setValue] = React.useState(statusObj[props.status]);
 
@@ -133,6 +151,7 @@ export default function ConfirmationDialog(props) {
                     open={open}
                     onClose={handleClose}
                     value={value}
+                    order={order}
                 />
             </List>
         </Box>

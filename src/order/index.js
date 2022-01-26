@@ -91,6 +91,24 @@ export const checkOutATM = (product) => {
             console.log(err)
         })
 }
+
+export const changeStatus = (order, token) => {
+    return fetch(`${API}/OrderStatus/${order.id}/${order.status}`, {
+        method: "PATCH",
+        headers: {
+            Accept: 'application/json',
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({})
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
 // export const addProduct = (product, token) => {
 //     // console.log(name, email, password)
 //     return fetch(`${API}/product`, {
