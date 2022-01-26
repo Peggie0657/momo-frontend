@@ -70,6 +70,10 @@ function Row(props) {
                 <TableCell align="right">{shippingobj[row.shipping]}</TableCell>
                 <TableCell align="right">{paymentobj[row.payment]}</TableCell>
                 <TableCell align="center">{row.setuptime}</TableCell>
+                <TableCell>
+                    {!isSeller && statusObj[row.status] === "賣家已出貨" ? <Button className='btn btn-pink' variant="contained">完成訂單</Button>
+                        : ""}
+                </TableCell>
             </TableRow>
             <TableRow>
                 <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -239,6 +243,7 @@ const MyOrder = (props) => {
                                     <TableCell align="right">運送方式</TableCell>
                                     <TableCell align="right">付款方式</TableCell>
                                     <TableCell align="center">訂單日期</TableCell>
+                                    <TableCell align="center"></TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
