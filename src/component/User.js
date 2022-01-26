@@ -203,7 +203,7 @@ const Element = ({ className }) => {
                 />
                 <label htmlFor="contained-button-file">
                     <Avatar
-                        sx={{ height: '200px', width: '200px', backgroundColor: '#FFF0F5', cursor: "pointer" }}
+                        sx={{ height: '200px', width: '200px', backgroundColor: '#fff0f5', cursor: "pointer" }}
                         src={user.userphoto}
                     />
                 </label>
@@ -218,7 +218,7 @@ const Element = ({ className }) => {
                     id="panel1a-header"
                     sx={{ backgroundColor: '#f7bacf' }}
                 >
-                    <Typography sx={{ color: '#BB3D00' }}>基本資料</Typography>
+                    <Typography sx={{ color: '#fff' }}>基本資料</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Box
@@ -287,7 +287,7 @@ const Element = ({ className }) => {
                         />
                         <br />
                         <br />
-                        <Button variant="contained" disableElevation onClick={() => handleSubmit(user, token)}>
+                        <Button class="btn btn-pink" variant="contained" disableElevation onClick={() => handleSubmit(user, token)}>
                             儲存
                         </Button>
                     </Box>
@@ -300,7 +300,7 @@ const Element = ({ className }) => {
                     id="panel2a-header"
                     sx={{ backgroundColor: '#f7bacf' }}
                 >
-                    <Typography sx={{ color: '#BB3D00' }}>變更密碼</Typography>
+                    <Typography sx={{ color: '#fff' }}>變更密碼</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Box
@@ -378,7 +378,7 @@ const Element = ({ className }) => {
                                 label="password2"
                             />
                         </FormControl>
-                        <Button variant="contained" disableElevation onClick={() => handleSubmitPw(token)}>
+                        <Button class="btn btn-pink" variant="contained" disableElevation onClick={() => handleSubmitPw(token)}>
                             更換密碼
                         </Button>
                     </Box>

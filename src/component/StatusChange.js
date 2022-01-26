@@ -15,19 +15,15 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
 const options = [
     "取消訂單",
-    "尚未確認",
-    "賣家已確認",
-    "賣家已出貨",
-    "完成訂單"
+    // "等待出貨",
+    "已出貨",
 ];
 
 
 const statusObj = {
     0: "取消訂單",
-    1: "尚未確認",
-    2: "賣家已確認",
-    3: "賣家已出貨",
-    4: "完成訂單"
+    1: "等待出貨",
+    2: "已出貨",
 }
 
 function ConfirmationDialogRaw(props) {

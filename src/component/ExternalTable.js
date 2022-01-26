@@ -41,7 +41,7 @@ function EditToolbar(props) {
   return (
     <GridToolbarContainer>
       <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
-        Add record
+        新增規格
       </Button>
     </GridToolbarContainer>
   );
@@ -121,7 +121,7 @@ export default function FullFeaturedCrudGrid(props) {
     {
       field: 'actions',
       type: 'actions',
-      headerName: 'Actions',
+      headerName: '',
       width: 100,
       cellClassName: 'actions',
       getActions: ({ id }) => {

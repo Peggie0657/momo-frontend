@@ -26,10 +26,8 @@ import StatusChange from './StatusChange';
 
 const statusObj = {
     0: "取消訂單",
-    1: "尚未確認",
-    2: "賣家已確認",
-    3: "賣家已出貨",
-    4: "完成訂單"
+    1: "等待出貨",
+    2: "賣家已出貨",
 }
 
 const paymentobj = {
@@ -74,7 +72,7 @@ function Row(props) {
                     <Collapse in={open} timeout="auto" unmountOnExit>
                         <Box sx={{ margin: 1 }}>
                             <Typography variant="h6" gutterBottom component="div">
-                                訂單明細
+                                訂單明細  
                             </Typography>
                             <Table size="small" aria-label="purchases">
                                 <TableHead>

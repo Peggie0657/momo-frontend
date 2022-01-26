@@ -74,7 +74,7 @@ const Element = ({ className }) => {
                 <AddProduct productsFetch={productsFetch} products={products} />
             </div>
             <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
-                <Tabs value={value} onChange={handleChange} centered>
+                <Tabs value={value} onChange={handleChange} centered TabIndicatorProps={{ style: { background: "#f7bacf" } }}>
                     <Tab label="上架" value={1} />
                     <Tab label="下架" value={0} />
                 </Tabs>

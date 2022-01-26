@@ -90,7 +90,6 @@ const category = {
 }
 
 const Element = ({ className, match }) => {
-    const [redirect, setRedirect] = useState(false)
     const [product, setProduct] = useState({})
     const [star, setStar] = useState(2)
     const [values, setValues] = useState({});
@@ -108,9 +107,8 @@ const Element = ({ className, match }) => {
             ...product,
             spec: spec.spec,
             num: number
-        }, () => { //數量,規格
-            setRedirect(true)
         })
+        alert("商品已加入購物車")
     }
 
     const handleButton = () => {
@@ -118,14 +116,7 @@ const Element = ({ className, match }) => {
     }
 
     const handleChange = name => event => {
-        console.log(name)
         setValues({ ...values, [name]: event.target.value })
-    }
-
-    const shouldRedirect = redirect => {
-        if (redirect) {
-            return <Redirect to="/" />
-        }
     }
 
     const handleClick = (event) => {
@@ -133,7 +124,6 @@ const Element = ({ className, match }) => {
     }
 
     const handleSpecBtn = (obj) => {
-        console.log(obj)
         const arr = []
         specs.forEach(item => {
             arr.push({
@@ -207,7 +197,6 @@ const Element = ({ className, match }) => {
     }, [])
     return (
         <Layout>
-            {shouldRedirect(redirect)}
             <div className={className}>
                 <div className="content">
                     <div role="presentation" onClick={handleClick}>
@@ -296,7 +285,7 @@ const Element = ({ className, match }) => {
                                     <Box sx={{ '& button': { m: 1 } }}>
                                         規格：
                                         {specs.map(data => (
-                                            <Button variant={`${data.isSel ? "contained" : "outlined"}`} className='' size="small" onClick={() => handleSpecBtn(data)} >
+                                            <Button class="btn btn-pink" variant={`${data.isSel ? "contained" : "outlined"}`} className='' size="small" onClick={() => handleSpecBtn(data)} >
                                                 {data.spec}
                                             </Button>
                                         ))}
@@ -320,10 +309,11 @@ const Element = ({ className, match }) => {
                                         id="outlined-size-small"
                                         defaultValue="Small"
                                         size="small"
-                                        sx={{width:"200px"}}
+                                        sx={{ width: "200px" }}
                                         value={num}
                                         onChange={handleChange("num")}
-                                        inputProps={{inputProps: {min:0,max:spec.stock} }}
+                                        inputProps={{ min: 0, max: spec.stock }}
+                                    // inputProps={{inputProps: {min:0,max:spec.stock}}}
                                     />
                                 </Typography>
 
@@ -335,7 +325,7 @@ const Element = ({ className, match }) => {
                                     <Box sx={{ '& button': { ml: 40 } }}>
                                         {/* 庫存：100 */}
 
-                                        <Button variant="contained" onClick={addIntoCart}>
+                                        <Button class="btn btn-pink" variant="contained" onClick={addIntoCart}>
                                             加入購物車
                                         </Button>
                                     </Box>
@@ -458,6 +448,10 @@ const Product = styled(Element)`
 }
 .alreadyClick{
     color:red;
+}
+.btn-pink{
+    background-color: #f7bacf;
+    color:#ffffff;
 }
 `
 

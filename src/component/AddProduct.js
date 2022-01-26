@@ -165,7 +165,7 @@ const Element = ({ className, productsFetch }) => {
 
     return (
         <div className={className}>
-            <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct">
+            <button type="button" className="btn btn-primary btn-pink btn-border" data-bs-toggle="modal" data-bs-target="#addProduct">
                 新增商品
             </button>
 
@@ -218,7 +218,7 @@ const Element = ({ className, productsFetch }) => {
                                     <Box
                                         component="form"
                                         sx={{
-                                            '& .MuiTextField-root': { m: 1, width: '34.9ch' },
+                                            '& .MuiTextField-root': { m: 1, width: '47.5%' },
                                             textAlign: "center"
                                         }}
                                         noValidate
@@ -377,6 +377,9 @@ const AddProduct = styled(Element)`
 }
 .img{
     display: none;
+}
+.btn-border{
+    border:0px;
 }
 `
 
