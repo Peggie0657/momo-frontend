@@ -28,6 +28,14 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import Layout from './Layout';
 import { getCart, removeItem } from './cartHelpers';
+import { createTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/core/styles';
+import theme from './theme';
+
+// import HUE from '@material-ui/core/colors/HUE';
+
+// const  = red[100];
+
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -92,6 +100,8 @@ const headCells = [
     },
 
 ];
+
+
 
 function EnhancedTableHead(props) {
     const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } =
@@ -321,6 +331,7 @@ const Cart = ({ setItemCount }) => {
     //     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
     return (
+        <ThemeProvider theme={theme}>
         <div>
             <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-xl">
@@ -432,12 +443,13 @@ const Cart = ({ setItemCount }) => {
                         </div>
                         <div className="modal-footer">
                             {/* <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">X</button> */}
-                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={handleCheckout}>結帳</button>
+                            <button type="button" className="btn btn-pink" data-bs-dismiss="modal" onClick={handleCheckout}>結帳</button>
                         </div>
                     </div>
                 </div>
             </div >
         </div >
+        </ThemeProvider>
     )
 }
 

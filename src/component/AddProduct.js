@@ -181,7 +181,7 @@ const Element = ({ className, productsFetch }) => {
                                 <div className="productInformation">
                                     <form action="">
                                         {/* <b>商品圖片</b>&emsp; */}
-                                        <label className="uploadImg">
+                                        <label className="uploadImg btn-pink btn">
                                             <input type="file" id="img" className="img" accept="image/*" multiple onChange={handleImages} />
                                             {/* <i className="fa fa-photo"></i>&ensp; */}
                                             上傳圖片
@@ -301,7 +301,7 @@ const Element = ({ className, productsFetch }) => {
                             <div className="downBtn">
                                 {/* <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button> */}
                                 <button id="cancelBtn" className="btn-secondary cancelBtn" data-bs-dismiss="modal">取消</button>
-                                <button id="updateBtn" className="updateBtn" onClick={clickSubmit} data-bs-dismiss="modal">新增</button>
+                                <button id="updateBtn" className="updateBtn btn-pink" onClick={clickSubmit} data-bs-dismiss="modal">新增</button>
                             </div>
                         </div>
                     </div>
@@ -380,6 +380,12 @@ const AddProduct = styled(Element)`
 }
 .btn-border{
     border:0px;
+}
+.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+    color:#f7bacf;
+}
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #f7bacf
 }
 `
 

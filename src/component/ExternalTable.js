@@ -40,7 +40,7 @@ function EditToolbar(props) {
 
   return (
     <GridToolbarContainer>
-      <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
+      <Button color="primary" startIcon={<AddIcon />} onClick={handleClick} sx={{color:'pink'}}>
         新增規格
       </Button>
     </GridToolbarContainer>

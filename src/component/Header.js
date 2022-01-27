@@ -233,10 +233,11 @@ const Element = ({ className }) => {
                             </FormControl>
                         </Box>
                         {!isAuthenticated() ?
-                            <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
+                            <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' }  }}>
                                 {authentication.map((item) => (
                                     <Button
                                         key={item.id}
+                                        className={'nav-item2'}
                                         onClick={handleCloseNavMenu}
                                         sx={{ my: 2, color: '#af4448', display: 'block' }}
                                         href={item.path}
@@ -296,7 +297,7 @@ const Element = ({ className }) => {
                                         onClose={handleCloseUserMenu}
                                     >
                                         {settings.map(item => (
-                                            <MenuItem sx={{ '&:hover': { color: 'pink' } }} component={Link} to={item.path} key={item.id} onClick={() => handleCloseNavMenu(item.id)}>
+                                            <MenuItem sx={{ '&:hover': { color: '#f7bacf' } }} component={Link} to={item.path} key={item.id} onClick={() => handleCloseNavMenu(item.id)}>
                                                 {/* <Typography textAlign="center">{setting}</Typography> */}
                                                 {/* <Link href={item.path} underline="none"> */}
                                                 {item.title}
@@ -339,6 +340,13 @@ const Header = styledComponents(Element)`
 }
 .logo{
     margin:0 auto;
+}
+.nav-item2{
+    text-align:center;
+}
+.nav-item2:hover{
+    background-color: rgba(245, 227, 236, 0.4);
+    color:#af4448;
 }
 `
 export default Header;
