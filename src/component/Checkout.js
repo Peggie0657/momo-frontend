@@ -59,9 +59,13 @@ const Element = ({ className, location }) => {
                     window.document.write(data);
                 })
         } else {
-
+            
+            const checkvalue =() =>{
+                if (values.shipping == null || values.payment == null ){
+                    alert("空值")
+                }
+            }
         }
-
 
         // addOrder({ products, total }, token)
         //     .then(data => {
@@ -249,15 +253,15 @@ const Element = ({ className, location }) => {
                             <p className="title">4 . 付款及運送資訊</p><hr className="mg0" />
                             <FormControl component="fieldset">
                                 <FormLabel component="legend">付款方式</FormLabel>
-                                <RadioGroup row aria-label="payment" name="row-radio-buttons-group">
+                                <RadioGroup row aria-label="payment" name="row-radio-buttons-group" defaultValue="0">
                                     <FormControlLabel value="0" control={<Radio value="0" onChange={handleChange("payment")} />} label="線上刷卡" />
                                     <FormControlLabel value="1" control={<Radio value="1" onChange={handleChange("payment")} />} label="貨到付款" />
                                     <FormControlLabel value="2" control={<Radio value="2" onChange={handleChange("payment")} />} label="銀行轉帳" />
                                 </RadioGroup>
                                 <br />
                                 <FormLabel component="legend">運送方式</FormLabel>
-                                <RadioGroup row aria-label="delivery" name="row-radio-buttons-group">
-                                    <FormControlLabel value="0" control={<Radio value="0" onChange={handleChange("delivery")} checked />} label="超商取貨" />
+                                <RadioGroup row aria-label="delivery" name="row-radio-buttons-group" defaultValue="0">
+                                    <FormControlLabel value="0" control={<Radio value="0" onChange={handleChange("delivery")} />} label="超商取貨" />
                                     <FormControlLabel value="1" control={<Radio value="1" onChange={handleChange("delivery")} />} label="宅配" />
                                 </RadioGroup>
                             </FormControl>
