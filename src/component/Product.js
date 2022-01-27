@@ -7,6 +7,7 @@ import StarIcon from '@mui/icons-material/Star';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 // import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
+// import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
@@ -103,13 +104,19 @@ const Element = ({ className, match }) => {
     const productId = match.params.productId
     const addIntoCart = () => {
         const number = parseInt(num)
-        addItem({
-            ...product,
-            spec: spec.spec,
-            num: number
-        })
-        window.location.reload();
-        alert("商品已加入購物車")
+        if(number <= spec.stock){
+            addItem({
+                ...product,
+                spec: spec.spec,
+                num: number
+            })
+            window.location.reload();
+            alert("商品已加入購物車")
+        }else{
+            alert("下單數量超過上限,請重試")
+            // return ( <Alert severity="error">下單數量超過上限,請重試</Alert> )
+        }
+        
     }
 
     const handleButton = () => {
@@ -118,6 +125,7 @@ const Element = ({ className, match }) => {
 
     const handleChange = name => event => {
         setValues({ ...values, [name]: event.target.value })
+        console.log(values)
     }
 
     const handleClick = (event) => {
