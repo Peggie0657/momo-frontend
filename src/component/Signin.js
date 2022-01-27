@@ -111,7 +111,7 @@ const Element = ({ className }) => {
 
             {/* backgroundImage: "url('https://wallpaperaccess.com/full/810431.jpg')", */}
 
-            <div style={{ margin: "0 auto", height: "600px", width: "1040px",  backgroundSize: "cover", backgroundRepeat: "repeat", backgroundPosition: "center center" }}>
+            <div style={{ margin: "0 auto", height: "600px", width: "1040px",  backgroundPosition: "center center" }}>
                 <div className="form container float-end mt-4">
                     <form className="row g-3 pt-4">
                         <h5 style={{ textAlign: "center" }}>登入</h5>
@@ -129,7 +129,7 @@ const Element = ({ className }) => {
                             />
                         </FormControl>
                         <FormControl sx={{ m: 1, width: '90%', marginLeft: "5%" }} variant="outlined">
-                            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                            <InputLabel htmlFor="outlined-adornment-password">密碼</InputLabel>
                             <OutlinedInput
                                 id="outlined-adornment-password"
                                 type={values.showPassword ? 'text' : 'password'}
@@ -147,7 +147,7 @@ const Element = ({ className }) => {
                                         </IconButton>
                                     </InputAdornment>
                                 }
-                                label="Password"
+                                label="密碼"
                             />
                         </FormControl>
                         {/* <div className="mb-4">
@@ -167,7 +167,7 @@ const Element = ({ className }) => {
                             </Button>
                         </div>
                     </form>
-                    <div id="middleLine">---------------- or ----------------</div>
+                    <div id="middleLine" style={{ textAlign: "center" }}>---------------- or ----------------</div>
                     <div className='pb-4' style={{ display: "flex", textAlign: "center" }}>
                         {/* <div style={{ marginRight: "20px" }}>
                             <a className="btn btn-block btn-social btn-facebook" onClick={facebook}>
@@ -176,7 +176,7 @@ const Element = ({ className }) => {
                         </div> */}
                         <div className="google-mid">
                             <a className="btn btn-block btn-social btn-google" onClick={google}>
-                                <i className="fab fa-google" style={{ marginRight: "15px" }}></i>Google
+                                <i className="fab fa-google" style={{ marginRight: "10px" }}></i>Google
                             </a>
                         </div>
                     </div>
@@ -221,8 +221,8 @@ const Signin = styled(Element)`
     width: 26.25rem;
 }
 #middleLine{
-    margin: 10px;
-    padding: 10px;
+    margin: 10px 0;
+    padding: 10px 0;
     color: #a3a2a3;
     font-family: monospace;
 }
