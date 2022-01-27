@@ -20,6 +20,29 @@ const Element = ({ className }) => {
         password: '',
     })
 
+    const google = () => {
+        let uid = ""
+        googlelogin()
+            .then(data => {
+                uid = data.uid
+                let oathRequest = {
+                    "email": data.email,
+                    "uid": uid,
+                    "displayName": data.displayName,
+                    "photoURL": data.photoURL
+                }
+                signUpWithOath(oathRequest)
+                    .then(user => {
+                        const email = user.email
+                        signin({ email, password: uid })
+                            .then(data => {
+                                authenticate(data)
+                                history.push("/")
+                            })
+                    })
+            })
+    }
+
     const { email, password, username } = values
 
     const handleChange = name => event => {
@@ -56,9 +79,9 @@ const Element = ({ className }) => {
             })
     }
     return (
-        <div className={className} style={{ backgroundColor: "rgb(238, 77, 45)" }}>
+        <div className={className} style={{ backgroundColor: "#f7bacf", backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundImage: "url('https://img.onl/q1vbQp')" }}>
 
-            <div style={{ margin: "0 auto", height: "600px", width: "1040px", backgroundImage: "url('https://cf.shopee.tw/file/941617bff55f5cdc82aea8f3bbb16460')", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center center" }}>
+            <div style={{ margin: "0 auto", height: "600px", width: "1040px", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center center" }}>
                 <div className="form container float-end mt-4">
                     <form className="row g-3 pt-4">
                         <h5>註冊</h5>
@@ -79,7 +102,12 @@ const Element = ({ className }) => {
                             </div>
                         </div>
                         <div className="d-grid gap-2 col-12 mx-auto loginBtn pb-5">
-                            <button className="btn btn-primary" onClick={clickSubmit}>註冊</button>
+                            <button className="btn btn-primary btn-pink" onClick={clickSubmit}>註冊</button>
+                        </div>
+                        <div className="google-mid">
+                            <a className="btn btn-block btn-social btn-google" onClick={google}>
+                                <i className="fab fa-google" style={{ marginRight: "15px" }}></i>Google
+                            </a>
                         </div>
                     </form>
                 </div>
@@ -100,6 +128,10 @@ const Element = ({ className }) => {
 }
 
 const Signup = styled(Element)`
+.btn-pink{
+    background-color:#f7bacf;
+    border:0px;
+}
 .navbar1{
     background-color:rgb(248, 209, 215);
 }
@@ -138,6 +170,40 @@ const Signup = styled(Element)`
     color: #fff;
     background-color: #dd4b39;
     border-color: rgba(0,0,0,0.2);
+}
+.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+    color:#f7bacf;
+}
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #f7bacf
+}
+.btn-social {
+    position: relative;
+    padding-left: 15px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.btn-google {
+    color: black;
+    background-color: #fff;
+    border-color: #f7bacf;
+    margin:0 auto 20px;
+}
+.fa-google {
+    background: 
+    linear-gradient(to bottom left,transparent 49%,#fbbc05 50%) 0 25%/48% 40%,
+    linear-gradient(to top    left,transparent 49%,#fbbc05 50%) 0 75%/48% 40%,
+  
+    linear-gradient(-40deg ,transparent 53%,#ea4335 54%),
+    linear-gradient( 45deg ,transparent 46%,#4285f4 48%),
+    #34a853;
+    background-repeat:no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
 }
 `
 

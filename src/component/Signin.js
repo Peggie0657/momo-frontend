@@ -107,9 +107,11 @@ const Element = ({ className }) => {
         facebooklogin()
     }
     return (
-        <div className={className} style={{ backgroundColor: "rgb(238, 77, 45)" }}>
+        <div className={className} style={{ backgroundColor: "#f7bacf", backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundImage: "url('https://img.onl/JJ3y1J')"}}>
 
-            <div style={{ margin: "0 auto", height: "600px", width: "1040px", backgroundImage: "url('https://cf.shopee.tw/file/941617bff55f5cdc82aea8f3bbb16460')", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center center" }}>
+            {/* backgroundImage: "url('https://wallpaperaccess.com/full/810431.jpg')", */}
+
+            <div style={{ margin: "0 auto", height: "600px", width: "1040px",  backgroundSize: "cover", backgroundRepeat: "repeat", backgroundPosition: "center center" }}>
                 <div className="form container float-end mt-4">
                     <form className="row g-3 pt-4">
                         <h5 style={{ textAlign: "center" }}>登入</h5>
@@ -160,7 +162,7 @@ const Element = ({ className }) => {
                         </div> */}
                         <div style={{ textAlign: "center" }}>
                             {/* <button className="btn btn-primary" onClick={clickSubmit}>登入</button> */}
-                            <Button sx={{ width: "70%" }} variant="contained" disableElevation onClick={clickSubmit}>
+                            <Button className="btn-pink" sx={{ width: "70%" }} variant="contained" disableElevation onClick={clickSubmit}>
                                 登入
                             </Button>
                         </div>
@@ -172,9 +174,9 @@ const Element = ({ className }) => {
                                 <i className="fab fa-facebook-f" style={{ marginRight: "15px" }}></i>Facebook
                             </a>
                         </div> */}
-                        <div>
+                        <div className="google-mid">
                             <a className="btn btn-block btn-social btn-google" onClick={google}>
-                                <i className="fab fa-google" style={{ marginRight: "15px" }}></i>Google 登入
+                                <i className="fab fa-google" style={{ marginRight: "15px" }}></i>Google
                             </a>
                         </div>
                     </div>
@@ -223,7 +225,7 @@ const Signin = styled(Element)`
     padding: 10px;
     color: #a3a2a3;
     font-family: monospace;
-  }
+}
 .btn-facebook {
     color: #fff;
     background-color: #3b5998;
@@ -238,9 +240,10 @@ const Signin = styled(Element)`
     text-overflow: ellipsis;
 }
 .btn-google {
-    color: #fff;
-    background-color: #dd4b39;
-    border-color: rgba(0,0,0,0.2);
+    color: black;
+    background-color: #fff;
+    border-color: #f7bacf;
+    margin:0 auto;
 }
 .signup{
     align-items: center;
@@ -250,8 +253,37 @@ const Signin = styled(Element)`
     padding-bottom : 10%;
 }
 .signupA{
-    color: #ee4d2d;
+    color: #f7bacf;
     text-decoration: none;
+}
+.btn-pink{
+    background-color:#f7bacf;
+}
+.btn-pink:hover{
+    background-color:#f7bacf;
+}
+.fa-google {
+    background: 
+    linear-gradient(to bottom left,transparent 49%,#fbbc05 50%) 0 25%/48% 40%,
+    linear-gradient(to top    left,transparent 49%,#fbbc05 50%) 0 75%/48% 40%,
+  
+    linear-gradient(-40deg ,transparent 53%,#ea4335 54%),
+    linear-gradient( 45deg ,transparent 46%,#4285f4 48%),
+    #34a853;
+    background-repeat:no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+.google-mid{
+    margin:0 auto;
+}
+.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+    color:#f7bacf;
+}
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #f7bacf
 }
 `
 
