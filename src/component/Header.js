@@ -296,7 +296,7 @@ const Element = ({ className }) => {
                                         onClose={handleCloseUserMenu}
                                     >
                                         {settings.map(item => (
-                                            <MenuItem component={Link} to={item.path} key={item.id} onClick={() => handleCloseNavMenu(item.id)}>
+                                            <MenuItem sx={{ '&:hover': { color: 'pink' } }} component={Link} to={item.path} key={item.id} onClick={() => handleCloseNavMenu(item.id)}>
                                                 {/* <Typography textAlign="center">{setting}</Typography> */}
                                                 {/* <Link href={item.path} underline="none"> */}
                                                 {item.title}
