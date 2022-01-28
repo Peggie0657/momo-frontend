@@ -190,8 +190,9 @@ const EnhancedTableToolbar = (props) => {
                 pl: { sm: 2 },
                 pr: { xs: 1, sm: 1 },
                 ...(numSelected > 0 && {
-                    bgcolor: (theme) =>
-                        alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity),
+                    bgcolor: grey[100]
+                    // (theme) =>
+                    // alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity),      
                 }),
                 // backgroundColor: grey[100]
             }}
