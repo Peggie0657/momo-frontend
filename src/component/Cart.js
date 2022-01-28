@@ -194,7 +194,6 @@ const EnhancedTableToolbar = (props) => {
                     // (theme) =>
                     // alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity),      
                 }),
-                // backgroundColor: grey[100]
             }}
         >
             {numSelected > 0 ? (
@@ -486,8 +485,5 @@ const Element = ({ setItemCount }) => {
 }
 const Cart = styled(Element)`
 
-.css-1q1u3t4-MuiTableRow-root.Mui-selected{
-    color: pink
-}
 `
 export default Cart;
