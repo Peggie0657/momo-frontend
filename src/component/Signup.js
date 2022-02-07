@@ -17,6 +17,10 @@ import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
@@ -106,7 +110,20 @@ const Element = ({ className }) => {
     }
     return (
         <div className={className} style={{ backgroundColor: "#f7bacf", backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundImage: "url('https://img.onl/JJ3y1J')" }}>
-
+            <AppBar className="mb-5" position="static" style={{ backgroundColor: "#fff" }}>
+                <Container maxWidth="xl">
+                    <Toolbar disableGutters>
+                        <Typography
+                            variant="h3"
+                            noWrap
+                            component="div"
+                            sx={{ mr: 2, display: { xs: 'none', md: 'flex' }, color: "#f7bacf" }}
+                        >
+                            <a href="/" style={{ color: "#f7bacf", textDecoration: "none" }}>哞哞購物</a>
+                        </Typography>
+                    </Toolbar>
+                </Container>
+            </AppBar>
             <div style={{ margin: "0 auto", height: "600px", width: "1040px", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center center" }}>
                 <div className="form container float-end mt-4">
                     <form className="row g-3 pt-4">
