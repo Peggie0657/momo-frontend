@@ -58,7 +58,7 @@ const Element = ({ className }) => {
         event.preventDefault()
         signin({ email, password })
             .then(data => {
-                if (!data) {
+                if (data.id === null) {
                     setShow(true)
                     setOpen(false)
                     setValues({ email: "", password: "" })
@@ -107,11 +107,11 @@ const Element = ({ className }) => {
         facebooklogin()
     }
     return (
-        <div className={className} style={{ backgroundColor: "#f7bacf", backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundImage: "url('https://img.onl/JJ3y1J')"}}>
+        <div className={className} style={{ backgroundColor: "#f7bacf", backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundImage: "url('https://img.onl/JJ3y1J')" }}>
 
             {/* backgroundImage: "url('https://wallpaperaccess.com/full/810431.jpg')", */}
 
-            <div style={{ margin: "0 auto", height: "600px", width: "1040px",  backgroundPosition: "center center" }}>
+            <div style={{ margin: "0 auto", height: "600px", width: "1040px", backgroundPosition: "center center" }}>
                 <div className="form container float-end mt-4">
                     <form className="row g-3 pt-4">
                         <h5 style={{ textAlign: "center" }}>登入</h5>

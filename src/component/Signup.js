@@ -87,8 +87,9 @@ const Element = ({ className }) => {
                 } else {
                     setShow(true)
                     setMessage({ string: "註冊成功", status: "success" })
-                    history.push("/signin")
+                    // history.push("/signin")
                 }
+                setValues({})
                 // if (data.error) {
                 //     setValues({ ...values, error: data.error, success: false })
                 // } else {
@@ -120,10 +121,10 @@ const Element = ({ className }) => {
                             <div className="form-group">
                                 <div className="input-group" id="show_hide_password">
                                     <input className="form-control" type="password" placeholder='請輸入密碼' value={password} onChange={handleChange("password")} /> */}
-                                    {/* <div className="input-group-text">
+                        {/* <div className="input-group-text">
                                         <a href=""><i className="fa fa-eye-slash" aria-hidden="true"></i></a>
                                     </div> */}
-                                {/* </div>
+                        {/* </div>
                             </div>
                         </div> */}
 
@@ -185,6 +186,7 @@ const Element = ({ className }) => {
                                 <i className="fab fa-google" style={{ marginRight: "10px" }}></i>Google
                             </a>
                         </div>
+                        <div className="signup">已有帳號？ <a className="signupA" href="/signin">登入</a></div>
                     </form>
                 </div>
             </div>
@@ -289,6 +291,17 @@ const Signup = styled(Element)`
 .google-mid{
     display:inline-block;
     margin:0 auto 20px;
+}
+.signup{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-bottom : 10%;
+}
+.signupA{
+    color: #f7bacf;
+    text-decoration: none;
 }
 `
 
