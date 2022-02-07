@@ -474,7 +474,7 @@ const Element = ({ setItemCount }) => {
                             </div>
                             <div className="modal-footer">
                                 {/* <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">X</button> */}
-                                <button type="button" className="btn btn-pink" data-bs-dismiss="modal" onClick={handleCheckout}>結帳</button>
+                                <button type="button" className="btn pink-btn" data-bs-dismiss="modal" onClick={handleCheckout}>結帳</button>
                             </div>
                         </div>
                     </div>
@@ -484,6 +484,9 @@ const Element = ({ setItemCount }) => {
     )
 }
 const Cart = styled(Element)`
-
+.pink-btn{
+    background-color:#f7bacf;
+    color:#ffffff;
+}
 `
 export default Cart;

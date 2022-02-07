@@ -210,10 +210,10 @@ const Element = ({ className, match }) => {
                 <div className="content">
                     <div role="presentation" onClick={handleClick}>
                         <Breadcrumbs aria-label="breadcrumb">
-                            <Link underline="hover" color="inherit" to="/">
+                            <Link className="pink-link" underline="hover" color="#af4448" to="/">
                                 首頁
                             </Link>
-                            <Link
+                            <Link className="pink-link"
                                 underline="hover"
                                 color="inherit"
                                 to={`/products/${product.category}`}
@@ -463,6 +463,11 @@ const Product = styled(Element)`
     color: #f7bacf;
     border:solid 1px #f7bacf;
 }
+.btn-pink:hover{
+    background-color: #f7bacf;
+    color: #ffffff;
+    border:solid 1px #f7bacf;
+}
 .MuiButton-outlined{
     background-color: #ffffff;
     color: #f7bacf;
@@ -479,6 +484,15 @@ const Product = styled(Element)`
 .MuiButton-contained:hover{
     background-color: #f7bacf;
     color: #ffffff;
+}
+.pink-link{
+    color:#af4448;
+}
+.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+    color:#f7bacf;
+}
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #f7bacf
 }
 `
 
