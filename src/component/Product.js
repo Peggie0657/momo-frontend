@@ -294,7 +294,7 @@ const Element = ({ className, match }) => {
                                     <Box sx={{ '& button': { m: 1 } }}>
                                         規格：
                                         {specs.map(data => (
-                                            <Button class="btn btn-pink" variant={`${data.isSel ? "contained" : "outlined"}`} className='' size="small" onClick={() => handleSpecBtn(data)} >
+                                            <Button variant={`${data.isSel ? "contained" : "outlined"}`} className='btn btn-pink ' size="small" onClick={() => handleSpecBtn(data)} >
                                                 {data.spec}
                                             </Button>
                                         ))}
@@ -459,8 +459,26 @@ const Product = styled(Element)`
     color:red;
 }
 .btn-pink{
+    background-color: #ffffff;
+    color: #f7bacf;
+    border:solid 1px #f7bacf;
+}
+.MuiButton-outlined{
+    background-color: #ffffff;
+    color: #f7bacf;
+    border:solid 1px #f7bacf;
+}
+.MuiButton-outlined:hover{
     background-color: #f7bacf;
-    color:#ffffff;
+    color: #ffffff;
+}
+.MuiButton-contained{
+    background-color: #f7bacf;
+    color: #ffffff;
+}
+.MuiButton-contained:hover{
+    background-color: #f7bacf;
+    color: #ffffff;
 }
 `
 
