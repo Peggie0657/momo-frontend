@@ -59,12 +59,14 @@ const Element = ({ className, location }) => {
                     window.document.write(data);
                 })
         } else {
-            
-            const checkvalue =() =>{
-                if (values.shipping == null || values.payment == null ){
+
+            const checkvalue = () => {
+                if (values.shipping == null || values.payment == null) {
                     alert("空值")
                 }
             }
+            alert('付款完成')
+            history.push("/")
         }
 
         // addOrder({ products, total }, token)
