@@ -65,7 +65,7 @@ const Element = ({ className, location }) => {
                     alert("空值")
                 }
             }
-            alert('付款完成')
+            alert('下單成功')
             history.push("/")
         }
 
