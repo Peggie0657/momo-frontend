@@ -207,6 +207,7 @@ const Element = ({ className, match }) => {
     return (
         <Layout>
             <div className={className}>
+                <div className="bg">
                 <div className="content">
                     <div role="presentation" onClick={handleClick}>
                         <Breadcrumbs aria-label="breadcrumb">
@@ -381,7 +382,7 @@ const Element = ({ className, match }) => {
                         </div> */}
                     </Paper>
                 </div>
-
+                </div>
             </div>
         </Layout >
     )
@@ -493,6 +494,11 @@ const Product = styled(Element)`
 }
 .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
     border-color: #f7bacf
+}
+.bg{
+    background-image: url("https://png.pngtree.com/back_origin_pic/05/14/94/2e1139be16239b483874dec1a4bebb6b.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 `
 

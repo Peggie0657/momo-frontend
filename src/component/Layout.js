@@ -9,7 +9,7 @@ const Layout = ({ className, children }) => (
         backgroundSize: '100% 100%'
     }}>
         <Header />
-        <div className={className}>{children}</div>
+        <div className={className} >{children}</div>
         <Footer />
     </div>
 )
