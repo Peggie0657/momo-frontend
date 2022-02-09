@@ -147,7 +147,7 @@ const Element = ({ className, product, productsFetch }) => {
 
     return (
         <div className={className}>
-            <Button size="small" data-bs-toggle="modal" data-bs-target="#updateProduct">更新商品</Button>
+            <Button size="small" data-bs-toggle="modal" data-bs-target="#updateProduct" sx={{ color: "#f7bacf" }} >更新商品</Button>
 
             <div className="modal fade" id="updateProduct" tabIndex="-1" aria-labelledby="updateProductLabel" aria-hidden="true">
                 <div className="modal-dialog modal-lg">
@@ -197,7 +197,7 @@ const Element = ({ className, product, productsFetch }) => {
                                     <Box
                                         component="form"
                                         sx={{
-                                            '& .MuiTextField-root': { m: 1, width: '34.9ch' },
+                                            '& .MuiTextField-root': { m: 1, width: '47.5%' },
                                             textAlign: "center"
                                         }}
                                         noValidate
@@ -353,6 +353,12 @@ const ProductUpdate = styled(Element)`
 }
 .img{
     display: none;
+}
+.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+    color:#f7bacf;
+}
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #f7bacf
 }
 `
 

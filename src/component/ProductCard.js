@@ -79,9 +79,9 @@ const ProductCard = ({ product, productsFetch, editable = false, link, favor = f
                 </CardActionArea>
                 {editable ?
                     <CardActions>
-                        <Button disabled={product.state === 1 ? true : false} size="small" onClick={() => handleState()}>上架</Button>
-                        <Button disabled={product.state === 0 ? true : false} size="small" onClick={() => handleState()}>下架</Button>
-                        <ProductUpdate productsFetch={productsFetch} product={product} />
+                        <Button disabled={product.state === 1 ? true : false} size="small" sx={{ color:"#f7bacf"}} onClick={() => handleState()}>上架</Button>
+                        <Button disabled={product.state === 0 ? true : false} size="small" sx={{ color: "#f7bacf" }} onClick={() => handleState()}>下架</Button>
+                        <ProductUpdate productsFetch={productsFetch} product={product}/>
                     </CardActions>
                     : null}
                 {favor ? <CardActions disableSpacing>
