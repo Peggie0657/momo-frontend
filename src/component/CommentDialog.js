@@ -11,6 +11,12 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { addComment } from "../product";
 import { isAuthenticated } from "../auth";
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormHelperText from '@mui/material/FormHelperText';
+import FormControl from '@mui/material/FormControl';
+
 
 
 const Element = ({ className, product, orderFetch }) => {
@@ -77,12 +83,13 @@ const Element = ({ className, product, orderFetch }) => {
                         variant="standard"
                         style={{ width: 500 }}
                         onChange={handleChange()}
-                        sx={{ color: "#f7bacf" }}
+                        InputLabelProps={{ style: { color: "#f7bacf", borderColor:"#f7bacf"} , shrink:true }}
                     />
+
                 </DialogContent>
                 <DialogActions>
-                    <Button  onClick={handleClose} sx={{ color:"#f7bacf"}}>取消</Button>
-                    <Button onClick={clickSubmit} sx={{ color: "#f7bacf" }}>送出</Button>
+                    <Button onClick={handleClose} sx={{ color:"#f7bacf"}}>取消</Button>
+                    <Button onClick={clickSubmit} sx={{ color: "#f7bacf"}}>送出</Button>
                 </DialogActions>
             </Dialog>
         </div>
@@ -93,12 +100,6 @@ const Element = ({ className, product, orderFetch }) => {
 }
 
 const CommentDialog = styled(Element)`
-.css-1c2i806-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
-    color:#f7bacf;
-}
-.css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root{
-    color:#f7bacf;
-}
 .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
     border-color: #f7bacf
 }
