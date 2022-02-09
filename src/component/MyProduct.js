@@ -73,7 +73,7 @@ const Element = ({ className }) => {
                 {/* <button className="btn create-product">新增商品</button> */}
                 <AddProduct productsFetch={productsFetch} products={products} />
             </div>
-            <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
+            <Box sx={{ width: '100%'}}>
                 <Tabs value={value} onChange={handleChange} centered TabIndicatorProps={{ style: { background: "#f7bacf" } }}>
                     <Tab label="上架" value={1} />
                     <Tab label="下架" value={0} />

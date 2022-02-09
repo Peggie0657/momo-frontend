@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import styled from 'styled-components'
 import Rating from '@mui/material/Rating';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -12,11 +13,10 @@ import { addComment } from "../product";
 import { isAuthenticated } from "../auth";
 
 
-export default function FormDialog(props) {
+const Element = ({ className, product, orderFetch }) => {
     const [open, setOpen] = useState(false);
     const [broad, setBroad] = useState("");
     const [value, setValue] = useState(0);
-    const { product, orderFetch } = props;
     const token = isAuthenticated() && isAuthenticated().accessToken;
 
     const handleChange = name => event => {
@@ -49,7 +49,7 @@ export default function FormDialog(props) {
     }
 
     return (
-        <div>
+        <div className={className}>
             <Button class="btn btn-pink" variant="outlined" onClick={handleClickOpen}>
                 評論
             </Button>
@@ -71,20 +71,36 @@ export default function FormDialog(props) {
                         autoFocus
                         margin="dense"
                         id="comment"
-                        label="say something"
+                        label="評論內容"
                         type="text"
                         fullWidth
                         variant="standard"
                         style={{ width: 500 }}
                         onChange={handleChange()}
+                        sx={{ color: "#f7bacf" }}
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>取消</Button>
-                    <Button onClick={clickSubmit}>送出</Button>
+                    <Button  onClick={handleClose} sx={{ color:"#f7bacf"}}>取消</Button>
+                    <Button onClick={clickSubmit} sx={{ color: "#f7bacf" }}>送出</Button>
                 </DialogActions>
             </Dialog>
         </div>
     );
 
+
+
 }
+
+const CommentDialog = styled(Element)`
+.css-1c2i806-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+    color:#f7bacf;
+}
+.css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root{
+    color:#f7bacf;
+}
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #f7bacf
+}
+`
+export default CommentDialog;
