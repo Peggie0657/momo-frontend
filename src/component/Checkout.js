@@ -27,7 +27,7 @@ const Element = ({ className, location }) => {
     const history = useHistory();
     const token = isAuthenticated() && isAuthenticated().accessToken
 
-    const { name, phone, address, payment, delivery, receiptName, receiptPhone, receiptAddr } = values
+    const { name, phone, address, payment = "0", delivery, receiptName, receiptPhone, receiptAddr } = values
 
     const handleSubmit = () => {
         products.forEach(item => {
@@ -46,6 +46,14 @@ const Element = ({ className, location }) => {
                 .then(data => {
                     // var myWindow = window.open("", "response", "resizable=yes");
                     window.document.write(data);
+                    addOrder({ products, total, payment: parseInt(payment), shipping: parseInt(delivery), shippingadd: receiptAddr, consignee: receiptName, tel: receiptPhone }, token)
+                        .then(data => {
+                            // history.push("/memberCenter", {
+                            //     state: {
+                            //         value: 4
+                            //     }
+                            // })
+                        })
                 })
         } else if (payment === "2") {
             checkOutATM({
@@ -57,9 +65,24 @@ const Element = ({ className, location }) => {
                     // var myWindow = window.open("", "response", "resizable=yes");
                     // myWindow.document.write(data);
                     window.document.write(data);
+                    addOrder({ products, total, payment: parseInt(payment), shipping: parseInt(delivery), shippingadd: receiptAddr, consignee: receiptName, tel: receiptPhone }, token)
+                        .then(data => {
+                            // history.push("/memberCenter", {
+                            //     state: {
+                            //         value: 4
+                            //     }
+                            // })
+                        })
                 })
         } else {
-
+            addOrder({ products, total, payment: parseInt(payment), shipping: parseInt(delivery), shippingadd: receiptAddr, consignee: receiptName, tel: receiptPhone }, token)
+                .then(data => {
+                    // history.push("/memberCenter", {
+                    //     state: {
+                    //         value: 4
+                    //     }
+                    // })
+                })
             const checkvalue = () => {
                 if (values.shipping == null || values.payment == null) {
                     alert("空值")
@@ -69,19 +92,6 @@ const Element = ({ className, location }) => {
             history.push("/")
         }
 
-        // addOrder({ products, total }, token)
-        //     .then(data => {
-        //         var myWindow = window.open("", "response", "resizable=yes");
-        //         myWindow.document.write(data);
-        //     })
-        addOrder({ products, total, payment: parseInt(payment), shipping: parseInt(delivery), shippingadd: receiptAddr, consignee: receiptName, tel: receiptPhone }, token)
-            .then(data => {
-                // history.push("/memberCenter", {
-                //     state: {
-                //         value: 4
-                //     }
-                // })
-            })
 
     }
 

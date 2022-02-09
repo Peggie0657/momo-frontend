@@ -71,7 +71,7 @@ const Element = ({ className, location }) => {
         <>
             <Layout>
                 <div className={className}>
-                    <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
+                    <Box sx={{ width: '100%' }}>
                         <Tabs value={value} onChange={handleChange} centered TabIndicatorProps={{ style: { background: "#f7bacf" } }}
                         >
                             <Tab label="我的訂單" value={0} />
@@ -127,7 +127,7 @@ const Element = ({ className, location }) => {
                                         </Grid>
                                         <br />
                                         <br />
-                                        <Chart data={data} />
+                                        {/* <Chart data={data} /> */}
                                     </Container>
                                 </TabPanel>
                                 <TabPanel value={value} index={4}>
