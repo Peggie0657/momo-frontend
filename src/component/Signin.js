@@ -177,7 +177,7 @@ const Element = ({ className }) => {
                         </div> */}
                         <div style={{ textAlign: "center" }}>
                             {/* <button className="btn btn-primary" onClick={clickSubmit}>登入</button> */}
-                            <Button className="btn-pink" sx={{ width: "70%" }} variant="contained" disableElevation onClick={clickSubmit}>
+                            <Button className="btn-pink hvr-push " sx={{ width: "70%" }} variant="contained" disableElevation onClick={clickSubmit}>
                                 登入
                             </Button>
                         </div>
@@ -190,8 +190,8 @@ const Element = ({ className }) => {
                             </a>
                         </div> */}
                         <div className="google-mid">
-                            <a className="btn btn-block btn-social btn-google" onClick={google}>
-                                <i className="fab fa-google" style={{ marginRight: "10px" }}></i>Google
+                            <a className="btn btn-block btn-social btn-google hvr-icon-grow" onClick={google}>
+                                <i className="fab fa-google hvr-icon" style={{ marginRight: "10px" }}></i>Google
                             </a>
                         </div>
                     </div>

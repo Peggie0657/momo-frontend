@@ -335,8 +335,8 @@ const Element = ({ className, match }) => {
                                     <Box sx={{ '& button': { ml: 40 } }}>
                                         {/* 庫存：100 */}
 
-                                        <Button class="btn btn-pink" variant="contained" onClick={addIntoCart}>
-                                            加入購物車
+                                        <Button class="btn btn-pink " variant="contained" onClick={addIntoCart}>
+                                        加入購物車 <i class="fas fa-cart-plus "></i> 
                                         </Button>
                                     </Box>
                                     {/* <button className="btn btnRed" onClick={addIntoCart}>加入購物車</button> */}

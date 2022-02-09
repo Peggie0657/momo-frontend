@@ -192,15 +192,15 @@ const Element = ({ className }) => {
                         </div> */}
                         <div style={{ textAlign: "center" }}>
                             {/* <button className="btn btn-primary" onClick={clickSubmit}>登入</button> */}
-                            <Button className="btn-pink" sx={{ width: "70%", textAlign: "center" }} variant="contained" disableElevation onClick={clickSubmit}>
+                            <Button className="btn-pink hvr-pulse" sx={{ width: "70%", textAlign: "center" }} variant="contained" disableElevation onClick={clickSubmit}>
                                 註冊
                             </Button>
                         </div>
 
                         <div id="middleLine" style={{ textAlign: "center" }}>---------------- or ----------------</div>
                         <div className="google-mid" style={{ textAlign: "center" }}>
-                            <a className="btn btn-block btn-social btn-google" onClick={google}>
-                                <i className="fab fa-google" style={{ marginRight: "10px" }}></i>Google
+                            <a className="btn btn-block btn-social btn-google hvr-icon-grow" onClick={google}>
+                                <i className="fab fa-google hvr-icon" style={{ marginRight: "10px" }}></i>Google
                             </a>
                         </div>
                         <div className="signup">已有帳號？ <a className="signupA" href="/signin">登入</a></div>
