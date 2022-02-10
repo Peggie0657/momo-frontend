@@ -11,11 +11,6 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { addComment } from "../product";
 import { isAuthenticated } from "../auth";
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import FormHelperText from '@mui/material/FormHelperText';
-import FormControl from '@mui/material/FormControl';
 
 
 
@@ -81,11 +76,10 @@ const Element = ({ className, product, orderFetch }) => {
                         type="text"
                         fullWidth
                         variant="standard"
-                        style={{ width: 500 }}
+                        style={{ width: 500, borderBottomColor: "#f7bacf" }}
                         onChange={handleChange()}
-                        InputLabelProps={{ style: { color: "#f7bacf", borderColor:"#f7bacf"} , shrink:true }}
+                        InputLabelProps={{ style: { color: "#f7bacf"} }}
                     />
-
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} sx={{ color:"#f7bacf"}}>取消</Button>
@@ -103,5 +97,6 @@ const CommentDialog = styled(Element)`
 .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
     border-color: #f7bacf
 }
+
 `
 export default CommentDialog;

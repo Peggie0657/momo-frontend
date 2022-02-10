@@ -136,7 +136,7 @@ const Element = ({ className }) => {
                         <FormControl sx={{ m: 1, width: '90%', marginLeft: "5%" }} variant="outlined">
                             <InputLabel htmlFor="outlined-adornment-email">Email</InputLabel>
                             <OutlinedInput
-                                InputLabelProps={{ style: { shrink: true } }}
+                                
                                 id="outlined-adornment-email"
                                 type='text'
                                 value={values.email}
@@ -147,7 +147,7 @@ const Element = ({ className }) => {
                         <FormControl sx={{ m: 1, width: '90%', marginLeft: "5%" }} variant="outlined">
                             <InputLabel htmlFor="outlined-adornment-password">密碼</InputLabel>
                             <OutlinedInput
-                                InputLabelProps={{ style: { shrink: true } }}
+                                
                                 id="outlined-adornment-password"
                                 type={values.showPassword ? 'text' : 'password'}
                                 value={values.password}

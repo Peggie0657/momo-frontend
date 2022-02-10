@@ -239,7 +239,7 @@ const Element = ({ className }) => {
                                         key={item.id}
                                         className={'nav-item2'}
                                         onClick={handleCloseNavMenu}
-                                        sx={{ my: 2, color: '#af4448', display: 'block' }}
+                                        sx={{ my: 2, color: '#af4448', display: 'block' ,borderRadius:'10px'}}
                                         href={item.path}
                                     >
                                         {item.title}

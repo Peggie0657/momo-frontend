@@ -73,7 +73,9 @@ const Category = styled(Element)`
     color: #af4448 !important
 }
 .nav-item:hover{
-    background-color: rgba(245, 227, 236, 0.4)
+    background-color: rgba(245, 227, 236, 0.4);
+    border-radius: 10px;
+    border:solid 1px rgba(245, 227, 236, 0.4);
 }
 .category:after{
     content: "";
