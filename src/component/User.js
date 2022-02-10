@@ -97,6 +97,20 @@ const Element = ({ className }) => {
                     // console.log(canvas.toDataURL('image/jpeg'))
                     setImage(canvas.toDataURL('image/jpeg'))
 
+                    const obj = {
+                        ...user,
+                        // birthday: date,
+                        // gender: gender,
+                        userphoto: canvas.toDataURL('image/jpeg')
+                    }
+                    putUser(obj, token)
+                        .then(data => {
+                            if (data) {
+                                setShowSave(true)
+                                console.log(data)
+                                setUser(data)
+                            }
+                        })
                 }
                 // console.log(event.target.result)
                 // setImage(canvas.toDataURL('image/jpeg'))
@@ -143,7 +157,7 @@ const Element = ({ className }) => {
             ...user,
             birthday: date,
             gender: gender,
-            userphoto: image
+            // userphoto: image
         }
         putUser(obj, token)
             .then(data => {
