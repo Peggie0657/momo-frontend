@@ -30,6 +30,7 @@ import { itemTotal } from './cartHelpers'
 import Cart from './Cart'
 import Category from './Category'
 
+
 const authentication = [
     { id: "1", title: "登入", path: "/signin" },
     { id: "2", title: "註冊", path: "/signup" },
@@ -237,7 +238,7 @@ const Element = ({ className }) => {
                                 {authentication.map((item) => (
                                     <Button
                                         key={item.id}
-                                        className={'nav-item2'}
+                                        className='nav-item2 hvr-buzz-out '
                                         onClick={handleCloseNavMenu}
                                         sx={{ my: 2, color: '#af4448', display: 'block' ,borderRadius:'10px'}}
                                         href={item.path}
@@ -275,7 +276,7 @@ const Element = ({ className }) => {
                                 </Box>
 
                                 <Box sx={{ flexGrow: 0 }}>
-                                    <Tooltip title="Open settings">
+                                    <Tooltip title="">
                                         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                             <Avatar alt="Remy Sharp" src={user.userphoto} />
                                         </IconButton>
@@ -341,12 +342,13 @@ const Header = styledComponents(Element)`
 .logo{
     margin:0 auto;
 }
-.nav-item2{
+.nav-item2:{
     text-align:center;
 }
 .nav-item2:hover{
     background-color: rgba(245, 227, 236, 0.4);
     color:#af4448;
+    
 }
 `
 export default Header;

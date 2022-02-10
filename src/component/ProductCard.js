@@ -85,7 +85,7 @@ const ProductCard = ({ product, productsFetch, editable = false, link, favor = f
                     </CardActions>
                     : null}
                 {favor ? <CardActions disableSpacing>
-                    <IconButton aria-label="add to favorites">
+                    <IconButton aria-label="add to favorites ">
                         <FavoriteIcon color={color} onClick={handleFavor} />
                     </IconButton>
                 </CardActions>
