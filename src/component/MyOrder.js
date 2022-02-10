@@ -18,7 +18,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { getMyOrders, changeStatus } from "../order";
+import { getMyOrders, changeStatus,getSellerOrders } from "../order";
 import { isAuthenticated } from "../auth";
 import AlertBar from "./AlertBar";
 import CommentDialog from './CommentDialog';
@@ -97,7 +97,7 @@ function Row(props) {
                                 訂單明細
                             </Typography>
                             <Table size="small" aria-label="purchases">
-                                <caption><HailOutlinedIcon color="disabled" /> 收貨人: {row.consignee}  ||  <CallOutlinedIcon color="disabled" /> 收貨人電話: {row.tel} ||
+                                <caption><HailOutlinedIcon color="disabled" /> 收貨人: {row.consignee}  ||  <CallOutlinedIcon color="disabled"  /> 收貨人電話: {row.tel} ||
                                     <HomeOutlinedIcon color="disabled" /> 收貨地址: {row.shippingadd}</caption>
                                 <TableHead>
                                     <TableRow>
@@ -199,7 +199,51 @@ const MyOrder = (props) => {
 
         var map = {}
         var arr = [];
-        getMyOrders(token)
+        if(isSeller){
+            getSellerOrders(token)
+            .then(data => {
+                console.log(data)
+                for (var i = 0; i < data.length; i++) {
+                    var ai = data[i];
+                    if (!map[ai.id]) {
+                        arr.push({
+                            id: ai.id,
+                            status: ai.status,
+                            shipping: ai.shipping,
+                            payment: ai.payment,
+                            setuptime: ai.setuptime,
+                            userid: ai.userid,
+                            tel: ai.tel,
+                            consignee: ai.consignee,
+                            shippingadd: ai.shippingadd,
+                            data: [ai]
+                        });
+                        map[ai.id] = ai;
+                    } else {
+                        for (var j = 0; j < arr.length; j++) {
+                            var dj = arr[j];
+                            if (dj.id == ai.id) {
+                                dj.data.push(ai);
+                                break;
+                            }
+                        }
+                    }
+                }
+                arr.forEach(item => {
+                    let alltotal = 0
+                    item.data.forEach(item2 => {
+                        alltotal = alltotal + item2.prtotal
+                    })
+                    const index = arr.indexOf(arr.find(arrObj => arrObj === item))
+                    arr[index] = {
+                        ...item,
+                        alltotal
+                    }
+                })
+                setOrders(arr)
+            })
+        }else{
+            getMyOrders(token)
             .then(data => {
                 // console.log(data)
                 for (var i = 0; i < data.length; i++) {
@@ -241,6 +285,8 @@ const MyOrder = (props) => {
                 })
                 setOrders(arr)
             })
+        }
+        
     }, [])
 
     return (

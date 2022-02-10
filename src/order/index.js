@@ -23,6 +23,19 @@ export const getMyOrders = (token) => {
         .catch(err => console.log(err))
 }
 
+export const getSellerOrders = (token) => {
+    return fetch(`${API}/mycommodity_with_order`, {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err))
+}
+
 export const getMyOrdersDetail = (token) => {
     return fetch(`${API}/myorderdetail`, {
         method: "GET",
