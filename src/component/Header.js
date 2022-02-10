@@ -240,7 +240,7 @@ const Element = ({ className }) => {
                                         key={item.id}
                                         className='nav-item2 hvr-buzz-out '
                                         onClick={handleCloseNavMenu}
-                                        sx={{ my: 2, color: '#af4448', display: 'block' ,borderRadius:'10px'}}
+                                        sx={{ my: 2, color: '#af4448', display: 'block' ,borderRadius:'10px',textAlign:'center'}}
                                         href={item.path}
                                     >
                                         {item.title}
@@ -341,9 +341,6 @@ const Header = styledComponents(Element)`
 }
 .logo{
     margin:0 auto;
-}
-.nav-item2:{
-    text-align:center;
 }
 .nav-item2:hover{
     background-color: rgba(245, 227, 236, 0.4);
