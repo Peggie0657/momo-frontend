@@ -234,13 +234,13 @@ const Element = ({ className }) => {
                             </FormControl>
                         </Box>
                         {!isAuthenticated() ?
-                            <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' }  }}>
+                            <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
                                 {authentication.map((item) => (
                                     <Button
                                         key={item.id}
                                         className='nav-item2 hvr-buzz-out '
                                         onClick={handleCloseNavMenu}
-                                        sx={{ my: 2, color: '#af4448', display: 'block' ,borderRadius:'10px',textAlign:'center'}}
+                                        sx={{ my: 2, color: '#af4448', display: 'block', borderRadius: '10px', textAlign: 'center' }}
                                         href={item.path}
                                     >
                                         {item.title}

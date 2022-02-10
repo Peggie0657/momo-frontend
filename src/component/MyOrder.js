@@ -149,6 +149,7 @@ const MyOrder = (props) => {
     const [orders, setOrders] = useState([])
 
     const token = isAuthenticated() && isAuthenticated().accessToken
+    const user = isAuthenticated()
 
     const orderFetch = () => {
         var map = {}
@@ -190,7 +191,7 @@ const MyOrder = (props) => {
                         alltotal
                     }
                 })
-                setOrders(arr)
+                setOrders(arr.filter(item => item.userid === user.id))
             })
     }
 
@@ -239,7 +240,12 @@ const MyOrder = (props) => {
                         alltotal
                     }
                 })
-                setOrders(arr)
+                console.log(arr)
+                // if (isSeller) {
+                //     setOrders(arr.filter(item => item.sellerid === user.id))
+                // } else {
+                    setOrders(arr)
+                // }
             })
     }, [])
 
